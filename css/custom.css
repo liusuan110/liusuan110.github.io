@@ -1,0 +1,20 @@
+/* 自定义样式 */
+body {
+  background: url('/img/background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+
+/* 确保背景图片正确显示 */
+#web_bg {
+  background: url('/img/background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+}
+
+/* 调整内容区域的透明度 */
+#content-inner {
+  background: rgba(255, 255, 255, 0.9);
+}
