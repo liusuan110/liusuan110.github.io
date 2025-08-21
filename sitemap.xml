@@ -117,13 +117,6 @@
   </url>
   
   <url>
-    <loc>https://liusuan110.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-08-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://liusuan110.github.io/tags/Butterfly/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -132,6 +125,13 @@
   
   <url>
     <loc>https://liusuan110.github.io/tags/%E4%B8%BB%E9%A2%98/</loc>
+    <lastmod>2025-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liusuan110.github.io/tags/%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -147,14 +147,14 @@
   </url>
   
   <url>
-    <loc>https://liusuan110.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <loc>https://liusuan110.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://liusuan110.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</loc>
+    <loc>https://liusuan110.github.io/categories/%E6%8A%80%E6%9C%AF/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2025-08-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
