@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>LSA</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://liusuan110.github.io/</id>
+  <link href="https://liusuan110.github.io/" rel="alternate"/>
+  <link href="https://liusuan110.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, LSA</rights>
+  <subtitle>LSA.blog</subtitle>
+  <title>我的本科学习笔记</title>
+  <updated>2026-05-26T14:00:00.000Z</updated>
+  <entry>
+    <author>
+      <name>LSA</name>
+    </author>
+    <category term="杂记" scheme="https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/"/>
+    <category term="博客" scheme="https://liusuan110.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="flag" scheme="https://liusuan110.github.io/tags/flag/"/>
+    <content>
+      <![CDATA[<p>停更了大半年，今天重新动手把博客拣起来。</p><h2 id="近期想写的内容"><a href="#近期想写的内容" class="headerlink" title="近期想写的内容"></a>近期想写的内容</h2><p><strong>期末课程复习</strong></p><ul><li>电磁场与电磁波</li><li>概率论</li><li>数字电子</li></ul><p><strong>竞赛</strong></p><ul><li>TI 杯（今天的进展与思路）</li></ul><p><strong>科研&#x2F;学习方向</strong></p><ul><li>图神经网络（GNN）</li><li>RAG</li><li>模型蒸馏</li></ul><h2 id="博客结构"><a href="#博客结构" class="headerlink" title="博客结构"></a>博客结构</h2><p>源码与构建产物分开管理：</p><ul><li>源码：<code>~/Desktop/liusuan110-blog-src/</code>，Hexo 8.x + Fluid 主题</li><li>构建产物：<code>~/Desktop/liusuan110.github.io-main/</code>，会被 <code>hexo deploy</code> 自动推到 GitHub Pages</li></ul><p>文章按方向分目录（<code>courses/</code>、<code>competitions/</code>、<code>research/</code>），分类用层级、标签用扁平关键词。</p><h2 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h2><p>期末之前每个方向至少一篇——立此存照。</p>]]>
+    </content>
+    <id>https://liusuan110.github.io/2026/05/26/restart/</id>
+    <link href="https://liusuan110.github.io/2026/05/26/restart/"/>
+    <published>2026-05-26T14:00:00.000Z</published>
+    <summary>停更约 8 个月之后，决定重新开始写。规划近期内容方向。</summary>
+    <title>重启博客</title>
+    <updated>2026-05-26T14:00:00.000Z</updated>
+  </entry>
+</feed>
