@@ -1,38 +1,84 @@
 /* ============================================================
    LSA.blog · 极简学术风自定义样式
-   - 纯 CSS banner 渐变（无图片）
+   - 纸张网格背景 + 纯 CSS banner 层次
    - 衬线正文 + 无衬线标题
    - 柔化卡片阴影、增加正文留白
    - 亮 / 暗双模式，跟随系统
    ============================================================ */
 
-/* ---------- 1. Banner 纯 CSS 渐变（覆盖 Fluid 的背景图） ---------- */
+/* ---------- 1. 全站背景与 Banner 层次（覆盖 Fluid 的背景图） ---------- */
 
-/* 亮色：warm cream → muted clay 三色斜向渐变 */
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background-color: #f6f1e8 !important;
+  background-image:
+    linear-gradient(115deg, rgba(166, 111, 74, 0.10) 0%, rgba(166, 111, 74, 0) 36%),
+    linear-gradient(245deg, rgba(73, 104, 122, 0.08) 0%, rgba(73, 104, 122, 0) 42%),
+    repeating-linear-gradient(0deg, rgba(120, 94, 65, 0.045) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(120, 94, 65, 0.035) 0 1px, transparent 1px 34px) !important;
+  background-attachment: fixed, fixed, fixed, fixed !important;
+}
+
+[data-user-color-scheme="dark"] body,
+html[data-user-color-scheme="dark"] body {
+  background-color: #15191f !important;
+  background-image:
+    linear-gradient(115deg, rgba(201, 162, 130, 0.08) 0%, rgba(201, 162, 130, 0) 36%),
+    linear-gradient(245deg, rgba(86, 126, 155, 0.10) 0%, rgba(86, 126, 155, 0) 44%),
+    repeating-linear-gradient(0deg, rgba(232, 230, 226, 0.035) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(232, 230, 226, 0.025) 0 1px, transparent 1px 34px) !important;
+  background-attachment: fixed, fixed, fixed, fixed !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-user-color-scheme="light"]) body {
+    background-color: #15191f !important;
+    background-image:
+      linear-gradient(115deg, rgba(201, 162, 130, 0.08) 0%, rgba(201, 162, 130, 0) 36%),
+      linear-gradient(245deg, rgba(86, 126, 155, 0.10) 0%, rgba(86, 126, 155, 0) 44%),
+      repeating-linear-gradient(0deg, rgba(232, 230, 226, 0.035) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(232, 230, 226, 0.025) 0 1px, transparent 1px 34px) !important;
+    background-attachment: fixed, fixed, fixed, fixed !important;
+  }
+}
+
+/* 亮色：warm paper + muted clay + faint grid */
 .banner {
-  background: linear-gradient(135deg,
-                #f5ecd9 0%,
-                #ead7b8 45%,
-                #d4b896 100%) !important;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 32%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.16) 0 1px, transparent 1px 18px),
+    linear-gradient(135deg,
+      #f6ead3 0%,
+      #e8d0ad 48%,
+      #c99b74 100%) !important;
   background-size: cover !important;
 }
 
-/* 暗色：deep ink → slate 三色斜向渐变 */
+/* 暗色：deep ink + blue graphite + low-contrast grid */
 [data-user-color-scheme="dark"] .banner,
 html[data-user-color-scheme="dark"] .banner {
-  background: linear-gradient(135deg,
-                #1a1f2a 0%,
-                #252c3a 50%,
-                #353d4f 100%) !important;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 34%),
+    repeating-linear-gradient(115deg, rgba(232, 230, 226, 0.055) 0 1px, transparent 1px 18px),
+    linear-gradient(135deg,
+      #151a23 0%,
+      #242b38 50%,
+      #334052 100%) !important;
 }
 
 /* 跟随系统暗色（用户未手动切换时） */
 @media (prefers-color-scheme: dark) {
   html:not([data-user-color-scheme="light"]) .banner {
-    background: linear-gradient(135deg,
-                  #1a1f2a 0%,
-                  #252c3a 50%,
-                  #353d4f 100%) !important;
+    background:
+      linear-gradient(120deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 34%),
+      repeating-linear-gradient(115deg, rgba(232, 230, 226, 0.055) 0 1px, transparent 1px 18px),
+      linear-gradient(135deg,
+        #151a23 0%,
+        #242b38 50%,
+        #334052 100%) !important;
   }
 }
 
@@ -102,15 +148,21 @@ code, pre, kbd, samp,
 
 /* 主板块阴影更轻 */
 #board {
+  background: rgba(255, 253, 249, 0.92) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04),
-              0 1px 2px rgba(0, 0, 0, 0.06) !important;
+              0 12px 32px rgba(113, 84, 52, 0.08) !important;
+  border: 1px solid rgba(138, 79, 58, 0.08);
   border-radius: 6px;
 }
 
 [data-user-color-scheme="dark"] #board,
 html[data-user-color-scheme="dark"] #board {
+  background: rgba(29, 33, 42, 0.90) !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3),
-              0 1px 2px rgba(0, 0, 0, 0.4) !important;
+              0 14px 34px rgba(0, 0, 0, 0.32) !important;
+  border-color: rgba(201, 162, 130, 0.10);
 }
 
 /* 文章列表项之间的分隔线更柔和 */
@@ -201,16 +253,33 @@ footer {
   }
   .banner {
     /* 移动端 banner 变化方向，避免视觉太满 */
-    background: linear-gradient(160deg,
-                  #f5ecd9 0%,
-                  #ead7b8 60%,
-                  #d4b896 100%) !important;
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 34%),
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 18px),
+      linear-gradient(160deg,
+        #f6ead3 0%,
+        #e8d0ad 60%,
+        #c99b74 100%) !important;
   }
   [data-user-color-scheme="dark"] .banner,
   html[data-user-color-scheme="dark"] .banner {
-    background: linear-gradient(160deg,
-                  #1a1f2a 0%,
-                  #252c3a 60%,
-                  #353d4f 100%) !important;
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 34%),
+      repeating-linear-gradient(115deg, rgba(232, 230, 226, 0.045) 0 1px, transparent 1px 18px),
+      linear-gradient(160deg,
+        #151a23 0%,
+        #242b38 60%,
+        #334052 100%) !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    html:not([data-user-color-scheme="light"]) .banner {
+      background:
+        linear-gradient(140deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 34%),
+        repeating-linear-gradient(115deg, rgba(232, 230, 226, 0.045) 0 1px, transparent 1px 18px),
+        linear-gradient(160deg,
+          #151a23 0%,
+          #242b38 60%,
+          #334052 100%) !important;
+    }
   }
 }
