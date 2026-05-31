@@ -1,5 +1,5 @@
 /* ============================================================
-   LSA.blog · 极简学术风自定义样式
+   Lusu · 极简学术风自定义样式
    - 纸张网格背景 + 纯 CSS banner 层次
    - 衬线正文 + 无衬线标题
    - 柔化卡片阴影、增加正文留白
@@ -92,10 +92,56 @@ html[data-user-color-scheme="dark"] .banner .mask {
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-/* banner 文字微调 —— 极简风去掉粗体 typing 光标味道 */
+/* banner 文字微调 —— 首页用 Lusu 艺术字作主视觉，其他页面仍保持清爽标题 */
 #subtitle {
   font-weight: 400;
   letter-spacing: 0.04em;
+}
+
+#subtitle[data-typed-text="Learning · Ideas · Notes · Making"] {
+  display: inline-block;
+  max-width: min(92vw, 760px);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0;
+  font-weight: 500;
+}
+
+#subtitle[data-typed-text="Learning · Ideas · Notes · Making"] + .typed-cursor {
+  display: none;
+}
+
+#subtitle[data-typed-text="Learning · Ideas · Notes · Making"]::before {
+  content: "Lusu";
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: "Didot", "Bodoni 72", "Baskerville", "Times New Roman", serif;
+  font-size: 6rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: #f7f9fb;
+  background: linear-gradient(105deg, #ffffff 0%, #dce4ec 42%, #8f9aa6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 12px 28px rgba(74, 45, 25, 0.25);
+}
+
+#subtitle[data-typed-text="Learning · Ideas · Notes · Making"]::after {
+  content: "Learning · Ideas · Notes · Making";
+  display: block;
+  color: rgba(255, 253, 249, 0.88);
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+               "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  text-transform: uppercase;
 }
 
 
@@ -124,6 +170,20 @@ h1, h2, h3, h4, h5, h6,
 .navbar, .navbar-brand, .nav-link {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
                "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.navbar-brand strong {
+  font-family: "Didot", "Bodoni 72", "Baskerville", "Times New Roman", serif !important;
+  font-size: 1.55rem;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #f7f9fb;
+  background: linear-gradient(105deg, #ffffff 0%, #dce4ec 48%, #9aa5b1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.18);
 }
 
 /* 正文行距更舒展（衬线字体需要更宽行距） */
@@ -250,6 +310,17 @@ footer {
 @media (max-width: 768px) {
   .markdown-body, .post-content {
     line-height: 1.78;
+  }
+  #subtitle[data-typed-text="Learning · Ideas · Notes · Making"] {
+    max-width: 88vw;
+  }
+  #subtitle[data-typed-text="Learning · Ideas · Notes · Making"]::before {
+    font-size: 4rem;
+    letter-spacing: 0.06em;
+  }
+  #subtitle[data-typed-text="Learning · Ideas · Notes · Making"]::after {
+    font-size: 0.82rem;
+    letter-spacing: 0.11em;
   }
   .banner {
     /* 移动端 banner 变化方向，避免视觉太满 */
