@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Lusu logo</title>
+  <desc id="desc">A transparent silver-white handwritten letter L logo.</desc>
+  <defs>
+    <linearGradient id="silver" x1="106" y1="78" x2="408" y2="414" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.28" stop-color="#eef3f7"/>
+      <stop offset="0.55" stop-color="#b9c3cf"/>
+      <stop offset="0.78" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#8290a0"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="145" y1="114" x2="369" y2="407" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#d7dee7" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#6f7d8e" stop-opacity="0.75"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0f141b" flood-opacity="0.28"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#ffffff" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <path
+    d="M306 82
+       C256 102 227 160 206 228
+       C184 300 163 367 103 405
+       C73 424 65 384 89 367
+       C123 342 158 330 203 331
+       C270 333 340 359 412 331
+       C441 320 454 358 424 375
+       C370 406 281 401 209 382
+       C156 368 110 383 81 420"
+    fill="none"
+    stroke="#7f8c9a"
+    stroke-width="58"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.4"/>
+
+  <path
+    d="M304 74
+       C252 96 223 157 201 229
+       C178 304 157 366 99 402
+       C75 417 69 389 91 373
+       C126 348 160 337 204 337
+       C270 339 338 363 409 336
+       C433 327 444 354 420 368
+       C368 399 281 394 211 376
+       C157 362 111 377 82 415"
+    fill="none"
+    stroke="url(#silver)"
+    stroke-width="38"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#soft-shadow)"/>
+
+  <path
+    d="M296 92
+       C258 111 232 166 212 232
+       C190 302 170 357 119 391
+       M198 352
+       C263 354 335 380 400 351"
+    fill="none"
+    stroke="url(#edge)"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.9"/>
+</svg>
