@@ -47,6 +47,20 @@
 
   
   <url>
+    <loc>https://liusuan110.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liusuan110.github.io/tags/flag/</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://liusuan110.github.io/tags/%E6%95%B0%E7%94%B5/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -76,20 +90,6 @@
   
   <url>
     <loc>https://liusuan110.github.io/tags/%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liusuan110.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liusuan110.github.io/tags/flag/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -154,14 +154,14 @@
 
   
   <url>
-    <loc>https://liusuan110.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/</loc>
+    <loc>https://liusuan110.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
