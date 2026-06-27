@@ -7,10 +7,10 @@ https://liusuan110.github.io/about/index.html
 https://liusuan110.github.io/2026/05/31/courses/probability/probability-formula-review/
 https://liusuan110.github.io/2026/05/26/restart/
 https://liusuan110.github.io/
-https://liusuan110.github.io/tags/%E9%9F%B3%E4%B9%90/
-https://liusuan110.github.io/tags/%E7%94%9F%E6%B4%BB/
 https://liusuan110.github.io/tags/%E5%8D%9A%E5%AE%A2/
 https://liusuan110.github.io/tags/flag/
+https://liusuan110.github.io/tags/%E9%9F%B3%E4%B9%90/
+https://liusuan110.github.io/tags/%E7%94%9F%E6%B4%BB/
 https://liusuan110.github.io/tags/%E7%94%B5%E8%B5%9B/
 https://liusuan110.github.io/tags/%E4%BF%A1%E5%8F%B7%E5%88%86%E7%A6%BB/
 https://liusuan110.github.io/tags/MSPM0/
@@ -40,8 +40,8 @@ https://liusuan110.github.io/tags/%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E6%96%B9%
 https://liusuan110.github.io/tags/%E5%B9%B3%E9%9D%A2%E6%B3%A2/
 https://liusuan110.github.io/tags/%E6%B3%A2%E5%AF%BC/
 https://liusuan110.github.io/tags/%E5%A4%A9%E7%BA%BF/
-https://liusuan110.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/
+https://liusuan110.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://liusuan110.github.io/categories/%E7%AB%9E%E8%B5%9B/
 https://liusuan110.github.io/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/
 https://liusuan110.github.io/categories/%E7%AB%9E%E8%B5%9B/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1%E7%AB%9E%E8%B5%9B/
