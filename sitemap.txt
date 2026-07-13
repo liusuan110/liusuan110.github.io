@@ -1,3 +1,4 @@
+https://liusuan110.github.io/2026/07/13/competitions/ti-cup/frequency-characteristic-tester-ad9959-ad835-mspm0/
 https://liusuan110.github.io/2026/05/31/courses/digital-circuits/digital-circuits-review/
 https://liusuan110.github.io/2026/06/24/competitions/ti-cup/signal-separation-mspm0-ad9959/
 https://liusuan110.github.io/2026/05/30/courses/em-waves/em-exam-review/
@@ -40,6 +41,10 @@ https://liusuan110.github.io/tags/%E8%AE%A1%E6%95%B0%E5%99%A8/
 https://liusuan110.github.io/tags/%E5%8F%AF%E7%BC%96%E7%A8%8B%E9%80%BB%E8%BE%91%E5%99%A8%E4%BB%B6/
 https://liusuan110.github.io/tags/DAC/
 https://liusuan110.github.io/tags/ADC/
+https://liusuan110.github.io/tags/%E9%A2%91%E7%8E%87%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E4%BB%AA/
+https://liusuan110.github.io/tags/AD835/
+https://liusuan110.github.io/tags/%E6%AD%A3%E4%BA%A4%E8%A7%A3%E8%B0%83/
+https://liusuan110.github.io/tags/I-Q/
 https://liusuan110.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/
 https://liusuan110.github.io/categories/%E7%AB%9E%E8%B5%9B/
