@@ -1,0 +1,965 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/lusu-logo.png">
+  <link rel="icon" href="/img/lusu-logo.svg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#3a3633">
+  <meta name="author" content="Lusu">
+  <meta name="keywords" content="Lusu, blog, BUPT-ee">
+  
+    <meta name="description" content="记录 math-2026 仓库的当前状态：从代码模板、论文模板、历年工程、优秀论文复盘，到 Windows 建模与 Mac 写作分工，尝试把国赛备赛从“临时找资料”整理成一个可复用的工作流。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把数学建模备赛变成一个可复用工程">
+<meta property="og:url" content="https://liusuan110.github.io/2026/08/08/math-2026-cumcm-prep-repo/index.html">
+<meta property="og:site_name" content="Lusu">
+<meta property="og:description" content="记录 math-2026 仓库的当前状态：从代码模板、论文模板、历年工程、优秀论文复盘，到 Windows 建模与 Mac 写作分工，尝试把国赛备赛从“临时找资料”整理成一个可复用的工作流。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-08T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-08-08T13:30:00.000Z">
+<meta property="article:author" content="Lusu">
+<meta property="article:tag" content="CUMCM">
+<meta property="article:tag" content="备赛">
+<meta property="article:tag" content="工程化">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="论文写作">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>把数学建模备赛变成一个可复用工程 - Lusu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liusuan110.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Lusu" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lusu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="把数学建模备赛变成一个可复用工程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-08 21:30" pubdate>
+          2026年8月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">把数学建模备赛变成一个可复用工程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这段时间我把数学建模国赛的准备工作整理成了一个仓库：<code>math-2026</code>。</p>
+<p>它一开始只是一个备赛资料夹：代码模板、论文模板、往年赛题、一些教程链接。整理到现在，它慢慢变成了一个更像“作战工作台”的东西：Windows 负责跑模型，Mac 负责写论文；本地沉淀完整工程；优秀论文不只是收藏，而是拆成建模、画图、摘要和验证方法。</p>
+<p>这篇文章算是一次阶段性复盘：仓库现在有什么、我从优秀工程里学到了什么、以及赛时真正值得守住的几条方法。</p>
+<!-- more -->
+<h2 id="这个仓库现在解决什么问题">这个仓库现在解决什么问题</h2>
+<p>数学建模备赛很容易陷入一种状态：资料很多，但真正比赛时不知道该从哪儿拿；模型会背，但不知道怎么落到题目；论文模板有了，但最后还是靠熬夜临时拼。</p>
+<p>所以我现在更想把备赛做成一个工程，而不是一个资料包。</p>
+<p><code>math-2026</code> 当前的目标是：</p>
+<ol>
+<li>代码能快速启动：常见预测、优化、评价、仿真模块可以直接改数据运行。</li>
+<li>论文能快速成型：LaTeX / Typst 模板提前跑通，摘要和句式有可复用骨架。</li>
+<li>历年题能快速对照：不是只看 PDF，而是尽量保留完整工程、论文、代码、结果图。</li>
+<li>经验能沉淀下来：读完优秀论文后，把方法写回文档，而不是留在聊天记录里。</li>
+<li>跨设备协作清楚：Windows 主要跑模型，Mac 主要写论文和整理材料。</li>
+</ol>
+<p>这个方向有点朴素，但我越来越觉得它重要。比赛现场最怕的不是“完全不会”，而是会一点、资料也有一点，但三个人的工作无法合流。</p>
+<h2 id="当前工程结构">当前工程结构</h2>
+<p>仓库根目录大致分成几类：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">code/            建模与求解代码<br>templates/       LaTeX / Typst 论文模板<br>docs/            备赛指南、写作模板、经验总结<br>past-problems/   历年真题与完整参考工程<br>mock-contests/   模拟赛与提交检查清单<br>tools/           环境自检脚本<br>refs/            外部资料、参考工具、Beacon 等<br></code></pre></td></tr></table></figure>
+<p>其中 <code>code/</code> 更像赛时工具箱，<code>docs/</code> 更像方法论手册，<code>past-problems/</code> 是案例库，<code>templates/</code> 是最终交付的骨架。</p>
+<p>最近几次提交主要做了三件事：</p>
+<ul>
+<li>补充 2025 年 B/C 题成熟参考工程，尤其是 2025 B 碳化硅外延层厚度和 2025 C NIPT 检测时点选择；</li>
+<li>把 Beacon 这类外部多智能体建模工具放到 <code>refs/external-tools/</code> 下做参考；</li>
+<li>继续整理优秀工程的建模手法、论文排版、画图和摘要写作经验。</li>
+</ul>
+<p>现在本地已经有一批比较完整的工程样本，例如：</p>
+<ul>
+<li>2020 B 穿越沙漠国一工程；</li>
+<li>2023 A 定日镜场国一工程；</li>
+<li>2023 B 多波束测线工程；</li>
+<li>2023 C 蔬菜补货定价工程；</li>
+<li>2024 A、2024 B 参考工程；</li>
+<li>2025 B 碳化硅外延层厚度国奖/省奖对照；</li>
+<li>2025 C NIPT 完整工程。</li>
+</ul>
+<p>这些工程最大的价值不是“抄一个模型”，而是看一个完整队伍如何把题目语言翻译成变量、目标函数、约束、算法、图表和论文。</p>
+<h2 id="经验文档：把读论文变成可复用方法">经验文档：把读论文变成可复用方法</h2>
+<p>目前我最看重的几份文档是：</p>
+<ul>
+<li><code>docs/往年优秀工程建模手法分析.md</code></li>
+<li><code>docs/优秀论文排版画图与摘要写作方法.md</code></li>
+<li><code>docs/论文写作模板.md</code></li>
+<li><code>docs/备赛指南.md</code></li>
+<li><code>docs/windows-开发环境.md</code></li>
+<li><code>docs/资源汇总.md</code></li>
+</ul>
+<p>其中前两份是最近投入最多的。</p>
+<p><code>往年优秀工程建模手法分析.md</code> 主要回答：题目要求如何翻译成数学对象。比如 A 题里的几何/物理问题，常常要先变成“路径参数 + 约束方程 + 可行性判定器”；B 题里的实验或工程决策题，常常要把“测量、检测、布设、调度”变成可计算的目标函数；C 题的数据决策题，则更依赖清洗、预测、评价和优化链条。</p>
+<p><code>优秀论文排版画图与摘要写作方法.md</code> 则更关心论文表达。它里面有一个我觉得很重要的判断：优秀论文给人的第一印象，往往不是用了多高级的算法，而是第一页摘要能看出主线，前几页能看出问题拆解，每一问都有“问题分析 -&gt; 模型建立 -&gt; 求解结果 -&gt; 检验或解释”的闭环。</p>
+<p>这个闭环是我现在判断论文质量时最在意的东西。</p>
+<h2 id="h2025-B：国奖和省奖的差距在哪里">2025 B：国奖和省奖的差距在哪里</h2>
+<p>最近最有启发的一次对比，是看 2025 B “碳化硅外延层厚度的确定”。</p>
+<p>我拉了两份参考：</p>
+<ul>
+<li>一份是国奖论文和工程；</li>
+<li>一份是省级奖项论文和工程。</li>
+</ul>
+<p>同一道题，差距非常直观。</p>
+<p>省奖论文并不是不会做。它也写了菲涅尔方程、色散模型、多光束干涉、厚度计算、误差分析，内容很多，页数也更长。但读起来更像“把很多正确模块堆齐”。</p>
+<p>国奖论文更强的地方，是它把物理模型、参数反演、算法求解和结果验证连成了一条链：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">原始反射光谱<br>-&gt; 三层光学反射模型<br>-&gt; 材料色散模型<br>-&gt; 理论反射率<br>-&gt; 残差目标函数<br>-&gt; 全局搜索 + 局部精修<br>-&gt; 拟合图 / 残差图 / 灵敏度 / 稳定性<br>-&gt; 最终厚度是否可信<br></code></pre></td></tr></table></figure>
+<p>这里最值得学习的不是“差分进化 + L-BFGS-B”这两个算法名，而是它把算法放在一个明确的反演框架中：参数为什么是这些、目标函数是什么、拟合好不好、误差是否影响结论。</p>
+<p>我从这次对比里记下几条赛时原则：</p>
+<ol>
+<li>图表必须进入论证链。核心图不能只是流程图或截图，应该能回答“准不准、稳不稳、哪里不准”。</li>
+<li>每一问都要说明它是否影响下一问。比如多光束干涉不能只判断存在与否，还要说明是否需要修正前面的厚度结果。</li>
+<li>误差分析不能泛泛罗列来源，要说明误差对最终答案的影响幅度。</li>
+<li>页数不是优势，证据密度才是优势。</li>
+<li>附录代码最好能一键复现，而不是零散脚本堆在最后。</li>
+</ol>
+<p>这次对比让我更确信：国赛论文拼的不是“我知道多少公式”，而是“我能不能把题目、模型、结果和可信度串起来”。</p>
+<h2 id="画图：不要装饰，要证明">画图：不要装饰，要证明</h2>
+<p>我以前会把画图理解成“让论文好看一点”。现在觉得这个理解太轻了。</p>
+<p>优秀论文里的图表应该有明确任务：</p>
+<ul>
+<li>流程图说明怎么求；</li>
+<li>拟合图说明模型准不准；</li>
+<li>残差图说明误差在哪里；</li>
+<li>灵敏度图说明结论稳不稳；</li>
+<li>结构图说明模型如何分层；</li>
+<li>对比表说明方案为什么优。</li>
+</ul>
+<p>也就是说，图不是装饰，而是证据。</p>
+<p>赛时可以用几个问题检查每张图：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">这张图是在证明什么？<br>这张图和最终结论有什么关系？<br>如果删掉这张图，论文的可信度会不会下降？<br>图中是否有清楚的坐标轴、单位、图例和解释句？<br></code></pre></td></tr></table></figure>
+<p>如果一张图不能回答这些问题，可能就该重画，或者干脆删掉。</p>
+<h2 id="摘要：第一页决定评委是否愿意继续读">摘要：第一页决定评委是否愿意继续读</h2>
+<p>摘要现在被我放到非常高的优先级。它不应该只是“本文建立了某某模型，使用某某算法”，而应该在第一页交代：</p>
+<ol>
+<li>题目对象是什么；</li>
+<li>每一问用了什么方法；</li>
+<li>得到了什么关键数字；</li>
+<li>结果如何支撑后续问题；</li>
+<li>模型有什么检验或亮点。</li>
+</ol>
+<p>我比较喜欢“五段式摘要”：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">第一段：总体题目对象、建模思路和核心目标。<br>第二段：问题一的方法、结果、作用。<br>第三段：问题二的方法、结果、作用。<br>第四段：问题三/四的方法、结果、作用。<br>最后一行：关键词。<br></code></pre></td></tr></table></figure>
+<p>最重要的一点是：摘要一定写结果，不只写方法。</p>
+<p>弱写法是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">本文建立了整数规划模型，求得最优补货策略。<br></code></pre></td></tr></table></figure>
+<p>强写法是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">本文建立 0-1 整数规划模型，在可售单品数和最小陈列量约束下，确定单品选择、补货量和定价方案，使预测收益达到某一具体数值。<br></code></pre></td></tr></table></figure>
+<p>哪怕结果还不完美，也要给出可交付的数字。没有数字的摘要，很难让评委相信模型真的落地了。</p>
+<h2 id="Windows-跑模型，Mac-写论文">Windows 跑模型，Mac 写论文</h2>
+<p>我现在的设备分工也更清楚了：</p>
+<ul>
+<li>Windows：跑 Python、Matlab、Jupyter，生成数据、图表和中间结果；</li>
+<li>Mac：写 LaTeX / Typst，整理文档，做论文表达；</li>
+<li>GitHub：作为两端同步的主通道。</li>
+</ul>
+<p>这个分工的好处是，计算环境和写作环境互不干扰。Windows 端专注“算得出来”，Mac 端专注“写得清楚”。图表统一从 Windows 生成到项目目录，Mac 只负责引用和排版，减少跨平台依赖差异。</p>
+<p>当然，这也要求仓库里的工程必须是普通文件，而不是本地路径或子模块指针。所以最近拉完整外部工程时，我都尽量把嵌套 <code>.git</code> 去掉，让 Windows 端直接 <code>git pull</code> 后就能看到论文、代码、数据和图表。</p>
+<h2 id="我希望比赛时遵守的工作流">我希望比赛时遵守的工作流</h2>
+<p>赛时最理想的节奏大概是这样：</p>
+<ol>
+<li>先读题，拆出每问的输入、输出、约束和评价指标。</li>
+<li>选题后建立一个最小可行模型，不急着堆高级算法。</li>
+<li>每一问尽快形成“模型 -&gt; 代码 -&gt; 图表 -&gt; 文字解释”的小闭环。</li>
+<li>代码手输出可复现结果，图表命名清晰。</li>
+<li>论文手同步写摘要、小标题、符号表和结果解释。</li>
+<li>每隔一段时间做一次证据检查：这个结果是否可信，是否影响下一问。</li>
+<li>最后半天不再大改模型，重点修论文表达、图表、摘要和提交格式。</li>
+</ol>
+<p>一句话概括：不要等全部算完才开始写，也不要等论文写完才发现图表无法证明结论。</p>
+<h2 id="最后：资料不是目的，方法才是">最后：资料不是目的，方法才是</h2>
+<p>整理这个仓库最大的收获，是我慢慢意识到：备赛不是无限下载资料，而是建立自己的判断体系。</p>
+<p>看到一个工程，要问：</p>
+<ul>
+<li>它把题目翻译成了什么数学对象？</li>
+<li>它的目标函数和约束是否清楚？</li>
+<li>它的图表是否能证明结果？</li>
+<li>它的误差分析是否影响最终结论？</li>
+<li>它的代码能否复现论文里的数字？</li>
+</ul>
+<p>这些问题比“用了什么高级算法”更重要。</p>
+<p>接下来我想继续做两件事：一是把 2025 B/C 的成熟工程继续拆成可复用模板；二是把论文图表工具和写作模板打通，尽量让赛时每个结果都能快速变成可放进论文的证据图。</p>
+<p>如果这件事能做好，<code>math-2026</code> 就不只是一个备赛文件夹，而是一套真正能在三天比赛里支撑协作的系统。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AB%9E%E8%B5%9B/" class="category-chain-item">竞赛</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" class="print-no-link">#数学建模</a>
+      
+        <a href="/tags/CUMCM/" class="print-no-link">#CUMCM</a>
+      
+        <a href="/tags/%E5%A4%87%E8%B5%9B/" class="print-no-link">#备赛</a>
+      
+        <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="print-no-link">#工程化</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/" class="print-no-link">#论文写作</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>把数学建模备赛变成一个可复用工程</div>
+      <div>https://liusuan110.github.io/2026/08/08/math-2026-cumcm-prep-repo/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Lusu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月8日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/13/competitions/ti-cup/frequency-characteristic-tester-ad9959-ad835-mspm0/" title="2013 E 题简易频率特性测试仪：软硬件总体设计">
+                        <span class="hidden-mobile">2013 E 题简易频率特性测试仪：软硬件总体设计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
