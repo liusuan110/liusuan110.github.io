@@ -19,26 +19,26 @@
   <meta name="author" content="Lusu">
   <meta name="keywords" content="Lusu, blog, BUPT-ee">
   
-    <meta name="description" content="记录 math-2026 仓库的当前状态：从代码模板、论文模板、历年工程、优秀论文复盘，到 Windows 建模与 Mac 写作分工，尝试把国赛备赛从“临时找资料”整理成一个可复用的工作流。">
+    <meta name="description" content="写给队友的 math-2026 仓库使用说明和一个月备赛协作方案：目标省一等奖以上，Windows 负责建模求解，Mac 负责论文写作，经验沉淀统一放在博客里。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="把数学建模备赛变成一个可复用工程">
+<meta property="og:title" content="math-2026 协作说明：把数学建模备赛变成一套工作流">
 <meta property="og:url" content="https://liusuan110.github.io/2026/08/08/math-2026-cumcm-prep-repo/index.html">
 <meta property="og:site_name" content="Lusu">
-<meta property="og:description" content="记录 math-2026 仓库的当前状态：从代码模板、论文模板、历年工程、优秀论文复盘，到 Windows 建模与 Mac 写作分工，尝试把国赛备赛从“临时找资料”整理成一个可复用的工作流。">
+<meta property="og:description" content="写给队友的 math-2026 仓库使用说明和一个月备赛协作方案：目标省一等奖以上，Windows 负责建模求解，Mac 负责论文写作，经验沉淀统一放在博客里。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-08T13:30:00.000Z">
-<meta property="article:modified_time" content="2026-08-08T13:30:00.000Z">
+<meta property="article:modified_time" content="2026-08-08T14:20:00.000Z">
 <meta property="article:author" content="Lusu">
 <meta property="article:tag" content="CUMCM">
+<meta property="article:tag" content="团队协作">
 <meta property="article:tag" content="备赛">
 <meta property="article:tag" content="工程化">
 <meta property="article:tag" content="数学建模">
-<meta property="article:tag" content="论文写作">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>把数学建模备赛变成一个可复用工程 - Lusu</title>
+  <title>math-2026 协作说明：把数学建模备赛变成一套工作流 - Lusu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -312,7 +312,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="把数学建模备赛变成一个可复用工程"></span>
+            <span id="subtitle" data-typed-text="math-2026 协作说明：把数学建模备赛变成一套工作流"></span>
           
         </div>
 
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.1k 字
         
       </span>
     
@@ -346,7 +346,7 @@
         
         
         
-          31 分钟
+          34 分钟
         
       </span>
     
@@ -385,38 +385,48 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">把数学建模备赛变成一个可复用工程</h1>
+            <h1 id="seo-header">math-2026 协作说明：把数学建模备赛变成一套工作流</h1>
             
             
               <div class="markdown-body">
                 
-                <p>这段时间我把数学建模国赛的准备工作整理成了一个仓库：<code>math-2026</code>。</p>
-<p>它一开始只是一个备赛资料夹：代码模板、论文模板、往年赛题、一些教程链接。整理到现在，它慢慢变成了一个更像“作战工作台”的东西：Windows 负责跑模型，Mac 负责写论文；本地沉淀完整工程；优秀论文不只是收藏，而是拆成建模、画图、摘要和验证方法。</p>
-<p>这篇文章算是一次阶段性复盘：仓库现在有什么、我从优秀工程里学到了什么、以及赛时真正值得守住的几条方法。</p>
-<!-- more -->
-<h2 id="这个仓库现在解决什么问题">这个仓库现在解决什么问题</h2>
-<p>数学建模备赛很容易陷入一种状态：资料很多，但真正比赛时不知道该从哪儿拿；模型会背，但不知道怎么落到题目；论文模板有了，但最后还是靠熬夜临时拼。</p>
-<p>所以我现在更想把备赛做成一个工程，而不是一个资料包。</p>
-<p><code>math-2026</code> 当前的目标是：</p>
-<ol>
-<li>代码能快速启动：常见预测、优化、评价、仿真模块可以直接改数据运行。</li>
-<li>论文能快速成型：LaTeX / Typst 模板提前跑通，摘要和句式有可复用骨架。</li>
-<li>历年题能快速对照：不是只看 PDF，而是尽量保留完整工程、论文、代码、结果图。</li>
-<li>经验能沉淀下来：读完优秀论文后，把方法写回文档，而不是留在聊天记录里。</li>
-<li>跨设备协作清楚：Windows 主要跑模型，Mac 主要写论文和整理材料。</li>
-</ol>
-<p>这个方向有点朴素，但我越来越觉得它重要。比赛现场最怕的不是“完全不会”，而是会一点、资料也有一点，但三个人的工作无法合流。</p>
-<h2 id="当前工程结构">当前工程结构</h2>
-<p>仓库根目录大致分成几类：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">code/            建模与求解代码<br>templates/       LaTeX / Typst 论文模板<br>docs/            备赛指南、写作模板、经验总结<br>past-problems/   历年真题与完整参考工程<br>mock-contests/   模拟赛与提交检查清单<br>tools/           环境自检脚本<br>refs/            外部资料、参考工具、Beacon 等<br></code></pre></td></tr></table></figure>
-<p>其中 <code>code/</code> 更像赛时工具箱，<code>docs/</code> 更像方法论手册，<code>past-problems/</code> 是案例库，<code>templates/</code> 是最终交付的骨架。</p>
-<p>最近几次提交主要做了三件事：</p>
+                <p>这篇文章写给我们队自己看。</p>
+<p>离 9 月国赛还有大约一个月，我们的目标不是“参与一下”，而是尽量冲到<strong>省一等奖以上</strong>。要做到这个目标，光靠赛前临时翻资料、临场各写各的，风险太大。接下来一个月，我们需要把准备工作变成一套可复用、可沟通、可执行的工作流。</p>
+<p><code>math-2026</code> 仓库就是这个工作流的底座。</p>
+<p>它不是资料越多越好，而是要让我们三个人在比赛时快速回答这些问题：</p>
 <ul>
-<li>补充 2025 年 B/C 题成熟参考工程，尤其是 2025 B 碳化硅外延层厚度和 2025 C NIPT 检测时点选择；</li>
-<li>把 Beacon 这类外部多智能体建模工具放到 <code>refs/external-tools/</code> 下做参考；</li>
-<li>继续整理优秀工程的建模手法、论文排版、画图和摘要写作经验。</li>
+<li>这道题适合用什么模型？</li>
+<li>有没有类似的往年完整工程可以对照？</li>
+<li>代码从哪里开始改？</li>
+<li>图表应该怎么画才有说服力？</li>
+<li>论文应该先写哪几块？</li>
+<li>当前结果是否已经足够可信，可以进入下一问？</li>
 </ul>
-<p>现在本地已经有一批比较完整的工程样本，例如：</p>
+<p>这篇文章的定位不是博客展示文，而是我们的队内说明书。之后所有经验总结也尽量写在博客里，<code>math-2026</code> 仓库本身只放工程、代码、模板、数据和可运行项目。</p>
+<!-- more -->
+<h2 id="一句话共识">一句话共识</h2>
+<p>我们要做的不是“把资料攒齐”，而是建立一个比赛现场能跑起来的协作系统。</p>
+<p>更具体一点：</p>
+<ul>
+<li>Windows 主要负责建模、跑程序、出结果图；</li>
+<li>Mac 主要负责论文写作、结构整理、图文表达；</li>
+<li>GitHub 负责两端同步；</li>
+<li>博客负责沉淀经验、方法、复盘和队内说明；</li>
+<li><code>math-2026</code> 仓库负责保存真正要运行和交付的工程资产。</li>
+</ul>
+<p>也就是说：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">经验放博客，工程放仓库；<br>模型要能跑，图表要能证明，论文要能读懂。<br></code></pre></td></tr></table></figure>
+<p>这句话后面一个月要反复拿出来检查。</p>
+<h2 id="当前仓库是怎么组织的">当前仓库是怎么组织的</h2>
+<p><code>math-2026</code> 当前大致分成这些部分：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">code/            建模与求解代码<br>templates/       LaTeX / Typst 论文模板<br>docs/            规则、模板、资源索引等基础说明<br>past-problems/   历年真题与完整参考工程<br>mock-contests/   模拟赛与提交检查清单<br>tools/           环境自检脚本<br>refs/            外部工具和参考资料<br></code></pre></td></tr></table></figure>
+<p>其中最重要的是三个入口：</p>
+<ol>
+<li><code>code/</code>：赛时改数据、跑模型、生成图表。</li>
+<li><code>templates/</code>：赛时写论文，不临时折腾格式。</li>
+<li><code>past-problems/external-projects/</code>：看完整工程，学习别人怎么把题目做完。</li>
+</ol>
+<p>现在仓库里已经拉了不少完整工程，包括：</p>
 <ul>
 <li>2020 B 穿越沙漠国一工程；</li>
 <li>2023 A 定日镜场国一工程；</li>
@@ -426,108 +436,233 @@
 <li>2025 B 碳化硅外延层厚度国奖/省奖对照；</li>
 <li>2025 C NIPT 完整工程。</li>
 </ul>
-<p>这些工程最大的价值不是“抄一个模型”，而是看一个完整队伍如何把题目语言翻译成变量、目标函数、约束、算法、图表和论文。</p>
-<h2 id="经验文档：把读论文变成可复用方法">经验文档：把读论文变成可复用方法</h2>
-<p>目前我最看重的几份文档是：</p>
+<p>这些工程不是用来照搬的，而是用来建立直觉：优秀队伍怎么拆题、怎么建模、怎么出图、怎么写结论、怎么让代码和论文互相支撑。</p>
+<h2 id="我们以后怎么分工">我们以后怎么分工</h2>
+<p>为了减少沟通成本，建议按照“三条线”推进。</p>
+<h3 id="h1-建模线">1. 建模线</h3>
+<p>主要负责：</p>
 <ul>
-<li><code>docs/往年优秀工程建模手法分析.md</code></li>
-<li><code>docs/优秀论文排版画图与摘要写作方法.md</code></li>
-<li><code>docs/论文写作模板.md</code></li>
-<li><code>docs/备赛指南.md</code></li>
-<li><code>docs/windows-开发环境.md</code></li>
-<li><code>docs/资源汇总.md</code></li>
+<li>读题，拆每一问的输入、输出、约束、评价指标；</li>
+<li>确定基础模型和备选模型；</li>
+<li>把题目语言翻译成变量、目标函数、约束条件；</li>
+<li>判断模型结果是否足够可信；</li>
+<li>决定什么时候该换模型，什么时候该停止折腾。</li>
 </ul>
-<p>其中前两份是最近投入最多的。</p>
-<p><code>往年优秀工程建模手法分析.md</code> 主要回答：题目要求如何翻译成数学对象。比如 A 题里的几何/物理问题，常常要先变成“路径参数 + 约束方程 + 可行性判定器”；B 题里的实验或工程决策题，常常要把“测量、检测、布设、调度”变成可计算的目标函数；C 题的数据决策题，则更依赖清洗、预测、评价和优化链条。</p>
-<p><code>优秀论文排版画图与摘要写作方法.md</code> 则更关心论文表达。它里面有一个我觉得很重要的判断：优秀论文给人的第一印象，往往不是用了多高级的算法，而是第一页摘要能看出主线，前几页能看出问题拆解，每一问都有“问题分析 -&gt; 模型建立 -&gt; 求解结果 -&gt; 检验或解释”的闭环。</p>
-<p>这个闭环是我现在判断论文质量时最在意的东西。</p>
-<h2 id="h2025-B：国奖和省奖的差距在哪里">2025 B：国奖和省奖的差距在哪里</h2>
-<p>最近最有启发的一次对比，是看 2025 B “碳化硅外延层厚度的确定”。</p>
-<p>我拉了两份参考：</p>
+<p>建模线最重要的产出不是长篇解释，而是这些东西：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs text">本问目标：<br>输入数据：<br>输出结果：<br>核心变量：<br>目标函数/评价指标：<br>约束条件：<br>采用模型：<br>需要代码手跑出的图表：<br>给论文手的一句话结论：<br></code></pre></td></tr></table></figure>
+<p>这套格式简单，但能极大减少“我以为你知道”的沟通。</p>
+<h3 id="h2-代码线">2. 代码线</h3>
+<p>主要负责：</p>
 <ul>
-<li>一份是国奖论文和工程；</li>
-<li>一份是省级奖项论文和工程。</li>
+<li>数据清洗；</li>
+<li>模型实现；</li>
+<li>参数搜索；</li>
+<li>结果复现；</li>
+<li>生成图表；</li>
+<li>保存中间结果。</li>
 </ul>
-<p>同一道题，差距非常直观。</p>
-<p>省奖论文并不是不会做。它也写了菲涅尔方程、色散模型、多光束干涉、厚度计算、误差分析，内容很多，页数也更长。但读起来更像“把很多正确模块堆齐”。</p>
-<p>国奖论文更强的地方，是它把物理模型、参数反演、算法求解和结果验证连成了一条链：</p>
+<p>代码线每完成一个小任务，最好不要只说“跑完了”，而是给出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">运行脚本：<br>输入文件：<br>输出文件：<br>核心结果：<br>图表路径：<br>有没有异常：<br>下一步建议：<br></code></pre></td></tr></table></figure>
+<p>特别注意：比赛时不要让关键结果只存在于 notebook 输出里。重要结果要落成文件：CSV、XLSX、PNG/PDF、TXT 都可以。</p>
+<h3 id="h3-论文线">3. 论文线</h3>
+<p>主要负责：</p>
+<ul>
+<li>摘要；</li>
+<li>小标题和全文结构；</li>
+<li>问题重述与问题分析；</li>
+<li>模型假设、符号说明；</li>
+<li>结果解释；</li>
+<li>图表排版；</li>
+<li>最终提交格式检查。</li>
+</ul>
+<p>论文线不能等全部算完才开始。最晚在选题后 6 小时内，就应该有论文骨架：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">标题草案<br>摘要占位<br>每问小标题<br>模型假设<br>符号表<br>图表清单<br>参考文献占位<br></code></pre></td></tr></table></figure>
+<p>论文线的核心任务不是“润色”，而是把我们做的事变成评委能快速读懂、愿意相信的证据链。</p>
+<h2 id="一个重要改变：经验写博客，工程留仓库">一个重要改变：经验写博客，工程留仓库</h2>
+<p>以后经验文档不再优先写进 <code>math-2026</code> 仓库。</p>
+<p>原因很简单：仓库应该保持轻、稳、可运行。经验总结、读论文复盘、队内沟通规范、赛后反思，都更适合写在博客里。</p>
+<p>这样分开以后：</p>
+<ul>
+<li>队友想知道“怎么协作、怎么读论文、怎么画图”，看博客；</li>
+<li>队友想跑代码、看模板、找数据，看仓库；</li>
+<li>比赛现场不会在仓库里翻一堆长 Markdown 找重点；</li>
+<li>博客可以持续更新，不影响工程目录稳定性。</li>
+</ul>
+<p>以后我们可以把博客当作队伍的“方法手册”，把仓库当作“工具箱”。</p>
+<h2 id="h2025-B-给我们的提醒">2025 B 给我们的提醒</h2>
+<p>最近我们对比了 2025 B “碳化硅外延层厚度的确定”的两份论文：一份国奖，一份省级奖项。</p>
+<p>差距很有启发。</p>
+<p>省奖论文也写了很多正确内容：菲涅尔方程、色散模型、多光束干涉、厚度计算、误差分析。它不是不会做，而是更像把许多模块堆在一起。</p>
+<p>国奖论文更强的地方，是它把所有东西连成了一条链：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">原始反射光谱<br>-&gt; 三层光学反射模型<br>-&gt; 材料色散模型<br>-&gt; 理论反射率<br>-&gt; 残差目标函数<br>-&gt; 全局搜索 + 局部精修<br>-&gt; 拟合图 / 残差图 / 灵敏度 / 稳定性<br>-&gt; 最终厚度是否可信<br></code></pre></td></tr></table></figure>
-<p>这里最值得学习的不是“差分进化 + L-BFGS-B”这两个算法名，而是它把算法放在一个明确的反演框架中：参数为什么是这些、目标函数是什么、拟合好不好、误差是否影响结论。</p>
-<p>我从这次对比里记下几条赛时原则：</p>
+<p>这个例子给我们的核心提醒是：</p>
 <ol>
-<li>图表必须进入论证链。核心图不能只是流程图或截图，应该能回答“准不准、稳不稳、哪里不准”。</li>
-<li>每一问都要说明它是否影响下一问。比如多光束干涉不能只判断存在与否，还要说明是否需要修正前面的厚度结果。</li>
-<li>误差分析不能泛泛罗列来源，要说明误差对最终答案的影响幅度。</li>
-<li>页数不是优势，证据密度才是优势。</li>
-<li>附录代码最好能一键复现，而不是零散脚本堆在最后。</li>
+<li>公式多不等于论文强，模型闭环才重要。</li>
+<li>图表不是装饰，而是证据。</li>
+<li>误差分析不能泛泛罗列，要说明是否影响最终结果。</li>
+<li>每一问都要说明它对下一问有什么作用。</li>
+<li>结果要可复现，不能只靠文字声称。</li>
 </ol>
-<p>这次对比让我更确信：国赛论文拼的不是“我知道多少公式”，而是“我能不能把题目、模型、结果和可信度串起来”。</p>
-<h2 id="画图：不要装饰，要证明">画图：不要装饰，要证明</h2>
-<p>我以前会把画图理解成“让论文好看一点”。现在觉得这个理解太轻了。</p>
-<p>优秀论文里的图表应该有明确任务：</p>
-<ul>
-<li>流程图说明怎么求；</li>
-<li>拟合图说明模型准不准；</li>
-<li>残差图说明误差在哪里；</li>
-<li>灵敏度图说明结论稳不稳；</li>
-<li>结构图说明模型如何分层；</li>
-<li>对比表说明方案为什么优。</li>
-</ul>
-<p>也就是说，图不是装饰，而是证据。</p>
-<p>赛时可以用几个问题检查每张图：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">这张图是在证明什么？<br>这张图和最终结论有什么关系？<br>如果删掉这张图，论文的可信度会不会下降？<br>图中是否有清楚的坐标轴、单位、图例和解释句？<br></code></pre></td></tr></table></figure>
-<p>如果一张图不能回答这些问题，可能就该重画，或者干脆删掉。</p>
-<h2 id="摘要：第一页决定评委是否愿意继续读">摘要：第一页决定评委是否愿意继续读</h2>
-<p>摘要现在被我放到非常高的优先级。它不应该只是“本文建立了某某模型，使用某某算法”，而应该在第一页交代：</p>
+<p>这件事对我们冲省一以上非常关键。高奖项论文通常不是“看起来很努力”，而是让评委觉得：这个队每一步都知道自己在干什么。</p>
+<h2 id="图表的最低标准">图表的最低标准</h2>
+<p>比赛时每张图都要回答一个问题。</p>
+<p>不要为了“论文看起来丰富”而放图。图必须服务论证。</p>
+<p>常见图表任务如下：</p>
+<table>
+<thead>
+<tr>
+<th>图表类型</th>
+<th>它应该证明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>流程图</td>
+<td>我们怎么求</td>
+</tr>
+<tr>
+<td>拟合图</td>
+<td>模型准不准</td>
+</tr>
+<tr>
+<td>残差图</td>
+<td>误差在哪里</td>
+</tr>
+<tr>
+<td>灵敏度图</td>
+<td>结论稳不稳</td>
+</tr>
+<tr>
+<td>收敛曲线</td>
+<td>优化是否可靠</td>
+</tr>
+<tr>
+<td>对比表</td>
+<td>为什么这个方案更好</td>
+</tr>
+<tr>
+<td>地图/布局图</td>
+<td>空间方案是否满足约束</td>
+</tr>
+</tbody>
+</table>
+<p>每次准备放图前，问四句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">这张图是在证明什么？<br>这张图是否直接支撑某个结论？<br>坐标轴、单位、图例是否清楚？<br>正文有没有解释这张图，而不是只写“如图所示”？<br></code></pre></td></tr></table></figure>
+<p>如果答不上来，就不要放，或者重画。</p>
+<h2 id="摘要的最低标准">摘要的最低标准</h2>
+<p>摘要是第一页，也是评委决定是否继续认真读的地方。</p>
+<p>我们的摘要必须包含：</p>
 <ol>
-<li>题目对象是什么；</li>
-<li>每一问用了什么方法；</li>
-<li>得到了什么关键数字；</li>
-<li>结果如何支撑后续问题；</li>
-<li>模型有什么检验或亮点。</li>
+<li>总体建模思路；</li>
+<li>每一问的方法；</li>
+<li>每一问的关键数字或明确结论；</li>
+<li>模型检验或可信度说明；</li>
+<li>关键词。</li>
 </ol>
-<p>我比较喜欢“五段式摘要”：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">第一段：总体题目对象、建模思路和核心目标。<br>第二段：问题一的方法、结果、作用。<br>第三段：问题二的方法、结果、作用。<br>第四段：问题三/四的方法、结果、作用。<br>最后一行：关键词。<br></code></pre></td></tr></table></figure>
-<p>最重要的一点是：摘要一定写结果，不只写方法。</p>
-<p>弱写法是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">本文建立了整数规划模型，求得最优补货策略。<br></code></pre></td></tr></table></figure>
-<p>强写法是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">本文建立 0-1 整数规划模型，在可售单品数和最小陈列量约束下，确定单品选择、补货量和定价方案，使预测收益达到某一具体数值。<br></code></pre></td></tr></table></figure>
-<p>哪怕结果还不完美，也要给出可交付的数字。没有数字的摘要，很难让评委相信模型真的落地了。</p>
-<h2 id="Windows-跑模型，Mac-写论文">Windows 跑模型，Mac 写论文</h2>
-<p>我现在的设备分工也更清楚了：</p>
+<p>不要写成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">本文建立了模型，使用算法求解，结果较好。<br></code></pre></td></tr></table></figure>
+<p>要写成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">针对问题一，我们将 XXX 转化为 XXX 指标，建立 XXX 模型，得到 XXX 数值；<br>该结果为问题二的 XXX 约束/参数提供依据。<br></code></pre></td></tr></table></figure>
+<p>摘要里没有数字，论文可信度会明显下降。哪怕是阶段性结果，也要尽量给出可交付的量化结果。</p>
+<h2 id="未来一个月怎么准备">未来一个月怎么准备</h2>
+<p>剩下一个月不能平均用力。建议按四个阶段推进。</p>
+<h3 id="第一周：建立共同语言">第一周：建立共同语言</h3>
+<p>目标：三个人对仓库、模板、常见题型和论文标准有共同理解。</p>
+<p>要做：</p>
 <ul>
-<li>Windows：跑 Python、Matlab、Jupyter，生成数据、图表和中间结果；</li>
-<li>Mac：写 LaTeX / Typst，整理文档，做论文表达；</li>
-<li>GitHub：作为两端同步的主通道。</li>
+<li>每个人把 <code>math-2026</code> 拉到本地并跑通环境；</li>
+<li>至少共同精读 2025 B 国奖工程；</li>
+<li>每个人选一个完整工程做 10 分钟讲解；</li>
+<li>明确 Windows/Mac/GitHub 的协作流程；</li>
+<li>确定论文模板和图表风格。</li>
 </ul>
-<p>这个分工的好处是，计算环境和写作环境互不干扰。Windows 端专注“算得出来”，Mac 端专注“写得清楚”。图表统一从 Windows 生成到项目目录，Mac 只负责引用和排版，减少跨平台依赖差异。</p>
-<p>当然，这也要求仓库里的工程必须是普通文件，而不是本地路径或子模块指针。所以最近拉完整外部工程时，我都尽量把嵌套 <code>.git</code> 去掉，让 Windows 端直接 <code>git pull</code> 后就能看到论文、代码、数据和图表。</p>
-<h2 id="我希望比赛时遵守的工作流">我希望比赛时遵守的工作流</h2>
-<p>赛时最理想的节奏大概是这样：</p>
+<p>这一周的重点不是做难题，而是让大家说同一种话。</p>
+<h3 id="第二周：专项能力补齐">第二周：专项能力补齐</h3>
+<p>目标：把常见模型变成能跑的能力。</p>
+<p>建议按题型练：</p>
+<ul>
+<li>B 题：物理/工程建模、优化、灵敏度分析；</li>
+<li>C 题：数据清洗、预测、评价、分类、决策优化；</li>
+<li>A 题：几何、物理、仿真、参数搜索。</li>
+</ul>
+<p>每次练习都要产出三件东西：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">可运行代码<br>结果图表<br>3-5 句论文式结论<br></code></pre></td></tr></table></figure>
+<p>没有论文式结论的练习，不算闭环。</p>
+<h3 id="第三周：全流程模拟">第三周：全流程模拟</h3>
+<p>目标：至少做一次接近真实比赛节奏的模拟。</p>
+<p>模拟时不要只跑模型，要模拟完整流程：</p>
+<ul>
+<li>读题选题；</li>
+<li>分工；</li>
+<li>建模；</li>
+<li>编码；</li>
+<li>出图；</li>
+<li>写摘要；</li>
+<li>写正文；</li>
+<li>做提交检查。</li>
+</ul>
+<p>模拟结束后重点复盘：</p>
+<ul>
+<li>哪一步沟通最慢；</li>
+<li>哪个结果无法复现；</li>
+<li>哪张图无法支撑结论；</li>
+<li>哪段论文最难写；</li>
+<li>哪个文件命名或同步方式造成混乱。</li>
+</ul>
+<p>这些问题比多刷一篇题更值钱。</p>
+<h3 id="第四周：收敛和减法">第四周：收敛和减法</h3>
+<p>目标：停止大规模扩展，形成稳定工具链。</p>
+<p>这一周不要再疯狂收集资料，而是做减法：</p>
+<ul>
+<li>固定论文模板；</li>
+<li>固定图表风格；</li>
+<li>固定常用脚本入口；</li>
+<li>固定文件命名规范；</li>
+<li>固定提交检查清单；</li>
+<li>固定队内沟通格式。</li>
+</ul>
+<p>赛前最后几天，最重要的是稳定，不是新鲜。</p>
+<h2 id="赛时沟通格式">赛时沟通格式</h2>
+<p>比赛现场不要只发“我跑完了”“这个有问题”“你看看”。这种话信息量太低。</p>
+<p>建议统一用短格式。</p>
+<h3 id="建模讨论格式">建模讨论格式</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">问题：<br>当前判断：<br>采用模型：<br>需要的数据：<br>需要代码验证：<br>可能风险：<br>下一步：<br></code></pre></td></tr></table></figure>
+<h3 id="代码结果格式">代码结果格式</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">脚本：<br>输入：<br>输出：<br>核心数字：<br>图表：<br>是否复现：<br>问题：<br></code></pre></td></tr></table></figure>
+<h3 id="论文写作格式">论文写作格式</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">章节：<br>已有内容：<br>缺少结果：<br>需要图表：<br>需要确认的结论：<br>截止时间：<br></code></pre></td></tr></table></figure>
+<p>这个格式看起来麻烦，但能让沟通更快。省一以上的目标，靠的是少犯低级协作错误。</p>
+<h2 id="赛时停止规则">赛时停止规则</h2>
+<p>我们还需要提前约定什么时候该停。</p>
+<p>建议：</p>
 <ol>
-<li>先读题，拆出每问的输入、输出、约束和评价指标。</li>
-<li>选题后建立一个最小可行模型，不急着堆高级算法。</li>
-<li>每一问尽快形成“模型 -&gt; 代码 -&gt; 图表 -&gt; 文字解释”的小闭环。</li>
-<li>代码手输出可复现结果，图表命名清晰。</li>
-<li>论文手同步写摘要、小标题、符号表和结果解释。</li>
-<li>每隔一段时间做一次证据检查：这个结果是否可信，是否影响下一问。</li>
-<li>最后半天不再大改模型，重点修论文表达、图表、摘要和提交格式。</li>
+<li>一个模型连续两轮改动都没有改善，就先回到数据和假设，不要盲目调参。</li>
+<li>超过 30 分钟没有新证据，就不要继续空想，必须产出图、表、数值或反例。</li>
+<li>最后 12 小时原则上不大换模型，只修正明显错误。</li>
+<li>最后 6 小时优先摘要、图表、格式、结论一致性。</li>
+<li>任何一个关键结论，如果无法被图表或数值支撑，就降级表述，不要硬吹。</li>
 </ol>
-<p>一句话概括：不要等全部算完才开始写，也不要等论文写完才发现图表无法证明结论。</p>
-<h2 id="最后：资料不是目的，方法才是">最后：资料不是目的，方法才是</h2>
-<p>整理这个仓库最大的收获，是我慢慢意识到：备赛不是无限下载资料，而是建立自己的判断体系。</p>
-<p>看到一个工程，要问：</p>
+<p>这些规则不是保守，而是为了确保最终论文能交付。</p>
+<h2 id="我们最终要交付什么">我们最终要交付什么</h2>
+<p>比赛结束时，真正交付的不是代码，也不是我们脑子里的思路，而是一篇论文。</p>
+<p>高质量论文至少应该满足：</p>
 <ul>
-<li>它把题目翻译成了什么数学对象？</li>
-<li>它的目标函数和约束是否清楚？</li>
-<li>它的图表是否能证明结果？</li>
-<li>它的误差分析是否影响最终结论？</li>
-<li>它的代码能否复现论文里的数字？</li>
+<li>摘要有方法、有数字、有结论；</li>
+<li>每一问都有小闭环；</li>
+<li>模型和代码能对应；</li>
+<li>图表能证明关键结论；</li>
+<li>误差和灵敏度分析不空泛；</li>
+<li>结果能回应题目要求；</li>
+<li>附录代码和正文结果不矛盾；</li>
+<li>格式干净，没有明显排版事故。</li>
 </ul>
-<p>这些问题比“用了什么高级算法”更重要。</p>
-<p>接下来我想继续做两件事：一是把 2025 B/C 的成熟工程继续拆成可复用模板；二是把论文图表工具和写作模板打通，尽量让赛时每个结果都能快速变成可放进论文的证据图。</p>
-<p>如果这件事能做好，<code>math-2026</code> 就不只是一个备赛文件夹，而是一套真正能在三天比赛里支撑协作的系统。</p>
+<p>如果我们能在一个月里把这些变成习惯，比赛时会从容很多。</p>
+<h2 id="最后">最后</h2>
+<p>这篇文章之后会继续更新。它不是一次性写完的总结，而是我们队接下来一个月的沟通底稿。</p>
+<p>后续如果有新的读论文经验、模拟赛复盘、图表规范、摘要模板，都优先补到博客；<code>math-2026</code> 仓库保持工程化，少放长篇经验 Markdown。</p>
+<p>目标很明确：省一等奖以上。</p>
+<p>方法也很明确：少一点临时发挥，多一点可复用流程；少一点各干各的，多一点证据链协作。</p>
+<p>接下来一个月，把这套系统磨出来。</p>
 
                 
               </div>
@@ -569,7 +704,7 @@
       
         <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="print-no-link">#工程化</a>
       
-        <a href="/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/" class="print-no-link">#论文写作</a>
+        <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" class="print-no-link">#团队协作</a>
       
     </div>
   
@@ -581,7 +716,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>把数学建模备赛变成一个可复用工程</div>
+      <div>math-2026 协作说明：把数学建模备赛变成一套工作流</div>
       <div>https://liusuan110.github.io/2026/08/08/math-2026-cumcm-prep-repo/</div>
     </div>
     <div class="license-meta">
