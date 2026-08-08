@@ -27,7 +27,7 @@
 <meta property="og:description" content="写给队友的 math-2026 仓库使用说明和一个月备赛协作方案：目标省一等奖以上，Windows 负责建模求解，Mac 负责论文写作，经验沉淀统一放在博客里。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-08T13:30:00.000Z">
-<meta property="article:modified_time" content="2026-08-08T15:35:00.000Z">
+<meta property="article:modified_time" content="2026-08-08T15:58:00.000Z">
 <meta property="article:author" content="Lusu">
 <meta property="article:tag" content="CUMCM">
 <meta property="article:tag" content="团队协作">
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.5k 字
+          11k 字
         
       </span>
     
@@ -346,7 +346,7 @@
         
         
         
-          63 分钟
+          96 分钟
         
       </span>
     
@@ -529,6 +529,173 @@
 <li>博客可以持续更新，不影响工程目录稳定性。</li>
 </ul>
 <p>以后我们可以把博客当作队伍的“方法手册”，把仓库当作“工具箱”。</p>
+<h2 id="AI-工具应该怎么用">AI 工具应该怎么用</h2>
+<p>我们可以用 AI，但不能把 AI 当成“替我们比赛的人”。更准确地说，AI 在我们队里的角色应该是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">助教 + 代码助手 + 论文审稿人 + 资料整理员 + 复盘记录员<br></code></pre></td></tr></table></figure>
+<p>它适合做这些事：</p>
+<ul>
+<li>帮我们把题目拆成输入、输出、变量、约束和评价指标；</li>
+<li>帮我们列可选模型，并比较每个模型的适用条件；</li>
+<li>帮我们检查代码是否能复现论文里的结果；</li>
+<li>帮我们把粗糙结论改成论文式表达；</li>
+<li>帮我们设计图表清单；</li>
+<li>帮我们发现假设、验证和敏感性分析里的漏洞；</li>
+<li>帮我们整理 AI 使用记录，方便后续写说明。</li>
+</ul>
+<p>它不应该替我们做这些事：</p>
+<ul>
+<li>直接决定选题；</li>
+<li>编造数据、结果或参考文献；</li>
+<li>在没看附件的情况下给“最优方案”；</li>
+<li>把无法验证的模型包装成确定结论；</li>
+<li>代替我们承担最终建模判断。</li>
+</ul>
+<p>一句话：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">AI 可以帮我们更快地产生候选方案，但最终方案必须能被题目、数据、代码和图表证明。<br></code></pre></td></tr></table></figure>
+<p>OpenAI 官方文档对提示词的建议也很朴素：重要任务要说清目标、上下文、输出格式和边界；不需要迷信固定格式，但要把会改变结果的信息提供出来。对 Codex 这类能操作代码和文件的工具，还要说明相关文件、保留约束和验证方式。我们把这个原则翻译成数模赛时格式。</p>
+<h3 id="数模提示词的通用格式">数模提示词的通用格式</h3>
+<p>比赛时不要只说：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">帮我做一下这题。<br></code></pre></td></tr></table></figure>
+<p>这太空了。更好的提示词应该长这样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs text">任务目标：<br>我正在做 2026 国赛 X 题第 Y 问，请帮我把这一问拆成可建模问题。<br><br>题目信息：<br>这里是问题原文 / 附件字段 / 已知条件 / 单位。<br><br>当前进展：<br>我们已经完成了什么；哪些数据已经清洗；哪些结果已经跑出来。<br><br>希望输出：<br>请输出变量定义、目标函数、约束条件、可选模型、推荐模型、需要生成的图表，以及风险点。<br><br>边界要求：<br>不要编造题目没有给的数据；不直接给最终结论；如果需要额外假设，请单独列出并说明影响。<br></code></pre></td></tr></table></figure>
+<p>可以把它压缩成四个词：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">目标、上下文、输出、边界。<br></code></pre></td></tr></table></figure>
+<p>其中“边界”最容易被忽略，但它决定了 AI 是不是会开始胡跑。比如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">不要假设附件以外的数据。<br>不要改动原始数据文件。<br>不要直接写论文结论，先给可验证的模型方案。<br>如果模型有随机性，请设计重复实验。<br>如果结果不够支撑结论，请明确指出。<br></code></pre></td></tr></table></figure>
+<p>这些话看起来像废话，其实是保险丝。比赛时人很累，AI 也可能顺着你的焦虑往前冲；边界写清楚，能避免我们把“像答案的东西”误当答案。</p>
+<h3 id="根据题型写提示词">根据题型写提示词</h3>
+<p>不同题型，提示词重点不一样。</p>
+<h4 id="A-题：几何-物理-仿真">A 题：几何 / 物理 / 仿真</h4>
+<p>A 题常见问题是场景复杂、变量多、空间关系绕。提示词重点应该是“把物理场景转成可计算对象”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">我在做 A 题，题目涉及几何/运动/物理过程。<br>请你先不要写代码，先帮我完成：<br>1. 把题目对象列成实体表；<br>2. 把每个实体的状态变量列出来；<br>3. 找出可以参数化的轨迹/曲线/空间关系；<br>4. 把约束改写成距离、角度、速度、时间或能量条件；<br>5. 给出最小可运行模型和必须验证的图表。<br><br>要求：<br>所有符号要说明单位；<br>如果需要近似，请解释近似会影响哪一问；<br>不要直接跳到启发式算法。<br></code></pre></td></tr></table></figure>
+<p>这类提示词的关键是逼 AI 先做“对象建模”，而不是一上来就推荐粒子群、遗传算法。A 题如果对象没有建清楚，后面所有优化都会晃。</p>
+<h4 id="B-题：工程-机理-优化">B 题：工程 / 机理 / 优化</h4>
+<p>B 题通常有流程、成本、效率、风险、设备、策略。提示词重点应该是“先画流程，再建目标函数”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">我在做 B 题，这是一个工程决策/生产流程/设备优化问题。<br>请帮我从题目中提取：<br>1. 流程节点；<br>2. 每个节点的输入、输出和状态；<br>3. 决策变量，尤其是 0-1 变量；<br>4. 成本、收益、风险或误差的计算方式；<br>5. 可能导致循环、递归或重复计费的地方；<br>6. 适合的优化模型和仿真方案。<br><br>请先输出流程图文字版和变量表，不要直接写完整论文。<br></code></pre></td></tr></table></figure>
+<p>B 题很怕“模型很大但逻辑断了”。所以提示词要专门要求 AI 检查流程异常，比如死循环、重复成本、约束冲突。</p>
+<h4 id="C-题：数据-统计-预测-决策">C 题：数据 / 统计 / 预测 / 决策</h4>
+<p>C 题最容易被 AI 带偏成“模型名大杂烩”。提示词重点应该是“先看数据，再决定模型”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs text">我在做 C 题，附件是表格数据。<br>请先帮我设计数据分析路线：<br>1. 每个字段的含义、单位和可能的数据质量问题；<br>2. 缺失值、异常值、重复值的检查方式；<br>3. 这一问的响应变量和解释变量；<br>4. 哪些图能帮助判断线性/非线性/分组差异；<br>5. 至少两种候选模型及其适用条件；<br>6. 需要做哪些验证：交叉验证、残差分析、敏感性分析或稳健性检验。<br><br>要求：<br>不要在没看数据分布前指定最终模型；<br>不要只给模型名称，要说明每个模型如何回应题目问题。<br></code></pre></td></tr></table></figure>
+<p>C 题的高分点通常不是“用了机器学习”，而是“知道为什么用、怎么验证、结果是否稳”。提示词要把 AI 往验证链上拉。</p>
+<h3 id="分阶段使用-AI，而不是一次性问完">分阶段使用 AI，而不是一次性问完</h3>
+<p>比赛时最好的用法不是让 AI 一次性生成整篇论文，而是分阶段推进。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>AI 适合做什么</th>
+<th>我们要检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读题 0-2 小时</td>
+<td>拆输入输出、列变量、找约束</td>
+<td>是否遗漏题目要求</td>
+</tr>
+<tr>
+<td>建模 2-8 小时</td>
+<td>比较模型、写目标函数、找风险点</td>
+<td>假设是否合理</td>
+</tr>
+<tr>
+<td>编码 6-24 小时</td>
+<td>写脚本、查 bug、整理输出文件</td>
+<td>结果是否可复现</td>
+</tr>
+<tr>
+<td>出图 12-36 小时</td>
+<td>设计图表、解释每张图证明什么</td>
+<td>图是否支撑结论</td>
+</tr>
+<tr>
+<td>写作 24-60 小时</td>
+<td>改摘要、润色段落、检查逻辑</td>
+<td>是否夸大结果</td>
+</tr>
+<tr>
+<td>收尾 60-72 小时</td>
+<td>查格式、查符号、查图表引用</td>
+<td>是否与代码结果一致</td>
+</tr>
+</tbody>
+</table>
+<p>每个阶段都要让 AI 输出“可检查的东西”，比如变量表、约束表、代码 diff、图表清单、摘要草稿、风险列表。不要让它只输出一大段看起来很完整的散文。</p>
+<h3 id="我们应该怎样使用-Skill">我们应该怎样使用 Skill</h3>
+<p>Skill 可以理解成“给 AI 装一份固定工作手册”。官方文档里说，Skill 适合把可重复工作、模板、示例、流程说明打包起来，让 ChatGPT 或 Codex 在遇到类似任务时按同一套方法做。</p>
+<p>这正适合数学建模备赛。我们有很多反复出现的任务：</p>
+<ul>
+<li>读题拆解；</li>
+<li>数据质量检查；</li>
+<li>模型选择；</li>
+<li>图表审查；</li>
+<li>论文摘要审稿；</li>
+<li>AI 使用记录整理；</li>
+<li>最终提交前检查。</li>
+</ul>
+<p>这些任务每次都靠临时提示词，容易漏步骤。更好的办法是慢慢沉淀成 Skill。</p>
+<p>我建议我们后面至少做 5 个队内 Skill：</p>
+<table>
+<thead>
+<tr>
+<th>Skill 名</th>
+<th>用途</th>
+<th>触发方式示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cumcm-problem-reader</code></td>
+<td>通读题目，拆输入输出、变量、约束、每问关系</td>
+<td><code>$cumcm-problem-reader 读这份 A 题题面</code></td>
+</tr>
+<tr>
+<td><code>cumcm-data-auditor</code></td>
+<td>检查附件字段、缺失值、异常值、单位、数据字典</td>
+<td><code>$cumcm-data-auditor 审查这个 Excel 附件</code></td>
+</tr>
+<tr>
+<td><code>cumcm-model-reviewer</code></td>
+<td>审查模型闭环、假设、目标函数、约束和验证</td>
+<td><code>$cumcm-model-reviewer 检查我们第 2 问方案</code></td>
+</tr>
+<tr>
+<td><code>cumcm-figure-reviewer</code></td>
+<td>判断图表是否支撑结论，给重画建议</td>
+<td><code>$cumcm-figure-reviewer 看这些图够不够进论文</code></td>
+</tr>
+<tr>
+<td><code>cumcm-paper-referee</code></td>
+<td>像评委一样审摘要、逻辑链、符号、结果一致性</td>
+<td><code>$cumcm-paper-referee 审这版论文摘要</code></td>
+</tr>
+</tbody>
+</table>
+<p>Skill 的重点不是让 AI 更“神”，而是让它更稳定。比如 <code>cumcm-paper-referee</code> 每次都必须检查：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">摘要有没有每问方法；<br>有没有关键数字；<br>图表编号是否被正文引用；<br>符号是否前后一致；<br>结论有没有被结果支撑；<br>是否存在没有验证的夸大表述。<br></code></pre></td></tr></table></figure>
+<p>这比每次临时说“帮我看看论文”可靠得多。</p>
+<h3 id="一个可以直接复制的-Skill-草案">一个可以直接复制的 Skill 草案</h3>
+<p>后面我们可以真的把它做成 Codex Skill。先把草案放在这里，方便队友理解。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs text">Skill 名称：cumcm-model-reviewer<br><br>用途：<br>用于审查全国大学生数学建模竞赛的单问或整题建模方案，重点检查模型闭环、题意对应、假设边界、代码可复现性和论文表达风险。<br><br>使用时需要提供：<br>1. 题目原文或该问要求；<br>2. 当前模型思路；<br>3. 已有数据字段或附件说明；<br>4. 已有代码/结果/图表路径；<br>5. 希望审查的重点。<br><br>固定输出格式：<br>1. 这一问真正要回答什么；<br>2. 当前方案的建模链条；<br>3. 变量、目标函数、约束是否完整；<br>4. 最容易被评委质疑的 3 个点；<br>5. 需要补的图表或验证；<br>6. 可以写进论文的结论句；<br>7. 不建议写进论文的夸大句。<br><br>边界：<br>不编造数据；<br>不替队伍直接确认最终最优；<br>所有建议必须能落到题目、数据、代码或图表证据上。<br></code></pre></td></tr></table></figure>
+<p>等我们连续用几次后，再把真实有效的版本固化到 Codex Skill 里。这个过程很像训练自己的“第二大脑”：不是让 AI 变成队长，而是把我们的判断标准变得可重复。</p>
+<h3 id="AI-使用记录怎么写">AI 使用记录怎么写</h3>
+<p>如果比赛要求说明 AI 使用情况，我们不要最后临时回忆。建议从训练开始就按这个格式记录：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">时间：<br>工具：<br>使用目的：<br>输入内容：<br>输出内容：<br>人工修改：<br>是否进入最终论文/代码：<br>责任人：<br></code></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">时间：比赛第 1 天 14:20<br>工具：Codex<br>使用目的：审查第 2 问动态规划建模方案是否遗漏约束<br>输入内容：题目第 2 问、当前变量表、风险函数草稿<br>输出内容：指出 BMI 分组需要最小样本量约束和达标率约束<br>人工修改：队伍根据附件数据重新计算可行分组<br>是否进入最终论文/代码：进入模型约束说明和敏感性分析<br>责任人：建模手确认<br></code></pre></td></tr></table></figure>
+<p>这个记录不是形式主义。它能保护我们，也能倒逼我们把 AI 当工具用，而不是当黑箱答案机。</p>
+<h3 id="AI-使用的底线">AI 使用的底线</h3>
+<p>最后，队里要有几条底线：</p>
+<ol>
+<li>所有最终数字必须来自我们能复现的代码或人工计算。</li>
+<li>所有题目假设必须由队伍确认，不能直接照抄 AI 建议。</li>
+<li>所有参考文献必须能查到真实来源。</li>
+<li>AI 给出的模型名不等于模型成立。</li>
+<li>AI 写出的漂亮段落，如果没有图表或数字支撑，就删掉或降级表述。</li>
+</ol>
+<p>我很喜欢的一句判断标准是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">AI 负责加速，我们负责负责。<br></code></pre></td></tr></table></figure>
+<p>这句话听着有点绕，但很适合比赛：速度可以借助工具，可信度必须靠我们自己守住。</p>
 <h2 id="h2025-B-给我们的提醒">2025 B 给我们的提醒</h2>
 <p>最近我们对比了 2025 B “碳化硅外延层厚度的确定”的两份论文：一份国奖，一份省级奖项。</p>
 <p>差距很有启发。</p>
