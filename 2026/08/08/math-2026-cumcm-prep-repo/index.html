@@ -27,7 +27,7 @@
 <meta property="og:description" content="写给队友的 math-2026 仓库使用说明和一个月备赛协作方案：目标省一等奖以上，Windows 负责建模求解，Mac 负责论文写作，经验沉淀统一放在博客里。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-08T13:30:00.000Z">
-<meta property="article:modified_time" content="2026-08-08T14:20:00.000Z">
+<meta property="article:modified_time" content="2026-08-08T15:35:00.000Z">
 <meta property="article:author" content="Lusu">
 <meta property="article:tag" content="CUMCM">
 <meta property="article:tag" content="团队协作">
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k 字
+          7.5k 字
         
       </span>
     
@@ -346,7 +346,7 @@
         
         
         
-          34 分钟
+          63 分钟
         
       </span>
     
@@ -437,6 +437,46 @@
 <li>2025 C NIPT 完整工程。</li>
 </ul>
 <p>这些工程不是用来照搬的，而是用来建立直觉：优秀队伍怎么拆题、怎么建模、怎么出图、怎么写结论、怎么让代码和论文互相支撑。</p>
+<p>最近又补了 5 个近年优秀工程，建议先按下面的顺序读：</p>
+<table>
+<thead>
+<tr>
+<th>工程</th>
+<th>建议学习重点</th>
+<th>适合谁先看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024 A 板凳龙国一/数模之星</td>
+<td>几何建模、动态搜索、碰撞检测、运动仿真图</td>
+<td>建模手、代码手</td>
+</tr>
+<tr>
+<td>2025 A 无人机烟幕四川省一</td>
+<td>复杂物理场景拆解、优化变量设计、AI 使用说明、Overleaf 协作</td>
+<td>全队一起看</td>
+</tr>
+<tr>
+<td>2024 B 企业生产国二</td>
+<td>0-1 决策、仿真流程、递归风险的假设处理</td>
+<td>建模手</td>
+</tr>
+<tr>
+<td>2025 C NIPT 湖北省一</td>
+<td>数据建模、交叉验证、动态规划、异常识别 pipeline</td>
+<td>C 题方向、代码手</td>
+</tr>
+<tr>
+<td>2024 C 农作物种植广东二等奖</td>
+<td>完整交付、数据处理链、结果表格，也作为“模型局限”反例</td>
+<td>论文手、代码手</td>
+</tr>
+</tbody>
+</table>
+<p>读这些工程时不要平均用力。我们的读法应该是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">先看摘要：有没有每问方法、关键数字和结果文件？<br>再看图表：每张图在证明什么？<br>再看代码：论文里的数字能不能找到脚本入口？<br>最后看作者复盘：哪些地方是他们自己也承认的风险？<br></code></pre></td></tr></table></figure>
+<p>如果只看模型名，很容易误判。真正值得学的是“题目要求 -&gt; 模型选择 -&gt; 求解算法 -&gt; 图表证据 -&gt; 论文结论”这条链有没有闭合。</p>
 <h2 id="我们以后怎么分工">我们以后怎么分工</h2>
 <p>为了减少沟通成本，建议按照“三条线”推进。</p>
 <h3 id="h1-建模线">1. 建模线</h3>
@@ -504,6 +544,68 @@
 <li>结果要可复现，不能只靠文字声称。</li>
 </ol>
 <p>这件事对我们冲省一以上非常关键。高奖项论文通常不是“看起来很努力”，而是让评委觉得：这个队每一步都知道自己在干什么。</p>
+<h2 id="新拉-5-个工程给我们的经验">新拉 5 个工程给我们的经验</h2>
+<p>这 5 个工程放在一起看，很像一组赛前训练样本：有国一/数模之星，有省一，有国二，也有作者主动复盘不足的省二。它们最有价值的地方不是告诉我们“某个题该用什么算法”，而是帮助我们建立判断标准。</p>
+<h3 id="h1-2024-A：强论文会把复杂几何变成可执行搜索">1. 2024 A：强论文会把复杂几何变成可执行搜索</h3>
+<p>2024 A 板凳龙工程的特点很鲜明：问题本身是几何、运动学和碰撞检测混在一起，但论文没有停留在“描述很复杂”。它把问题拆成了几条可计算链：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">螺线运动方程<br>-&gt; 把手位置递推<br>-&gt; 速度函数<br>-&gt; 碰撞检测<br>-&gt; 变步长搜索 / 二分搜索<br>-&gt; 最小螺距和最大速度<br></code></pre></td></tr></table></figure>
+<p>它给我们的经验是：A 题不要怕几何复杂，关键是要尽早把“形状语言”翻译成“可递推、可搜索、可验证”的程序对象。比如位置函数、距离函数、碰撞阈值、速度上界，这些都比泛泛写“建立运动模型”更有说服力。</p>
+<p>赛时如果选 A 题，我们要尽快问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">对象能不能参数化？<br>约束能不能变成距离/角度/速度/时间上的判据？<br>是否存在一个最容易出问题的区域，可以先缩小搜索范围？<br>结果能不能画成路径图、碰撞示意图、收敛图或关键时刻截图？<br></code></pre></td></tr></table></figure>
+<p>这类题的论文强弱，往往不取决于公式多漂亮，而取决于“几何直觉是否被程序稳定复现”。</p>
+<h3 id="h2-2025-A：复杂优化题要先定义“遮蔽是否有效”">2. 2025 A：复杂优化题要先定义“遮蔽是否有效”</h3>
+<p>2025 A 无人机烟幕工程非常值得全队看。它的摘要里每一问都有明确的决策变量、优化目标和关键结果，例如遮蔽时长、航向角、速度、投放/起爆时刻等。</p>
+<p>这类题最重要的经验是：在优化之前，先把判定规则讲清楚。</p>
+<p>如果“有效遮蔽”没有定义好，后面粒子群、遗传算法、二分搜索跑得再热闹，评委也会怀疑结果。优秀论文的做法是先建立运动轨迹，再建立遮蔽判据，再谈优化策略。顺序不能反。</p>
+<p>对我们来说，这可以变成一个硬规则：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">先判定，后优化。<br>先解释目标函数为什么代表题意，再解释算法怎么把目标函数做大/做小。<br></code></pre></td></tr></table></figure>
+<p>这个工程还有一个额外价值：它包含 AI 工具使用说明和 Overleaf 协作材料。2026 年我们自己也会使用 AI/Codex 辅助准备和比赛，必须提前形成透明、可追溯、可解释的使用习惯。AI 可以帮助检查表达、整理代码、生成辅助脚本，但关键建模判断、结果解释和最终提交责任必须由我们自己承担。</p>
+<h3 id="h3-2024-B：好的假设不是“简化”，而是防止模型失控">3. 2024 B：好的假设不是“简化”，而是防止模型失控</h3>
+<p>2024 B 企业生产过程工程的 README 很值得学习。它面对的是多步生产、多个 0-1 决策变量和返修/拆解流程。作者特别说明了为什么要引入假设来避免递归过深和无限循环。</p>
+<p>这件事很关键。很多论文的模型假设只是模板化写几句“忽略影响”“数据真实可靠”。但真正好的假设，是为了解决模型边界问题：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">如果不加这个假设，模型会不会无限递归？<br>如果不加这个假设，决策流程会不会无法终止？<br>如果不加这个假设，成本是否会被重复计算？<br></code></pre></td></tr></table></figure>
+<p>B 题常见陷阱就是流程复杂、约束多、变量多。我们不能只把它写成一个巨大优化问题，而要先画清楚流程图，再把每一个流程节点翻译成成本、收益、概率或状态转移。</p>
+<p>这类题建议优先产出：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">流程图<br>决策变量表<br>状态转移说明<br>成本/收益拆分表<br>异常路径处理规则<br></code></pre></td></tr></table></figure>
+<p>只要流程没画清楚，先不要急着写优化算法。</p>
+<h3 id="h4-2025-C：C-题高分的关键是“验证链”">4. 2025 C：C 题高分的关键是“验证链”</h3>
+<p>2025 C NIPT 湖北省一工程的 README 很细，几乎把每一问的算法流水线都写出来了：Spearman 相关、GBDT、交叉验证、置换检验、特征重要性、动态规划、前缀和优化、Bootstrap、异常评分、分层阈值。</p>
+<p>它给我们的最大提醒是：C 题不是“会用机器学习”就行，而是要证明模型可信。</p>
+<p>一篇强 C 题论文通常会同时回答：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">为什么不用简单线性模型？<br>模型泛化能力怎么样？<br>变量重要性是否稳定？<br>分组策略是不是全局优化，而不是拍脑袋？<br>阈值判定如何控制误判风险？<br>扰动数据后结论是否还稳定？<br></code></pre></td></tr></table></figure>
+<p>所以如果我们赛时选 C 题，代码线不能只输出预测结果，还要同步输出验证材料：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">交叉验证指标<br>真实值-预测值图<br>残差/误差分布<br>特征重要性<br>敏感性或扰动实验<br>关键阈值解释<br></code></pre></td></tr></table></figure>
+<p>这些东西会显著提高论文可信度。尤其是省一以上，评委更关心“你怎么知道这个结果靠谱”，而不只是“你得到了什么结果”。</p>
+<h3 id="h5-2024-C：完整交付很重要，但不能用图表掩盖模型短板">5. 2024 C：完整交付很重要，但不能用图表掩盖模型短板</h3>
+<p>2024 C 农作物种植工程很完整：代码、图表、答案表格、项目总文件都比较齐。它适合学习数据处理链和最终交付组织方式。</p>
+<p>但它更值得学习的是作者的复盘：作者明确提到，当时蒙特卡洛是相对稳妥的替代方案，但不是最理想的求解方法；灵敏度分析也存在逻辑问题。</p>
+<p>这给我们一个很现实的提醒：比赛时有时确实需要用“稳妥方案”把题做完，但论文不能把临时方案包装成完美方案。正确做法是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">承认近似；<br>说明为什么这样近似；<br>用实验次数、可行解数量、结果分布证明它至少稳定；<br>如果灵敏度分析与算法性质冲突，就不要硬塞。<br></code></pre></td></tr></table></figure>
+<p>工程完整可以保底，但高奖项还需要模型质量、验证质量和写作质量一起在线。最后几小时尤其要警惕：不要为了“看起来高级”加一段自己也解释不清的分析。</p>
+<h2 id="从这些工程提炼出的赛时规则">从这些工程提炼出的赛时规则</h2>
+<p>为了让这些经验真的变成比赛能力，我们把它们压缩成几条队内规则。</p>
+<h3 id="规则一：每一问都要有“小闭环”">规则一：每一问都要有“小闭环”</h3>
+<p>每一问至少要闭合成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">题目要求<br>-&gt; 输入数据/已知条件<br>-&gt; 变量和判据<br>-&gt; 模型或算法<br>-&gt; 结果数字<br>-&gt; 图表证据<br>-&gt; 本问结论<br>-&gt; 对下一问的作用<br></code></pre></td></tr></table></figure>
+<p>如果某一问没有结果数字，论文会虚；如果没有图表证据，结论会飘；如果没有说明对下一问的作用，全文会散。</p>
+<h3 id="规则二：摘要必须像“结果索引”">规则二：摘要必须像“结果索引”</h3>
+<p>优秀论文的摘要不是写情绪，也不是写过程流水账，而是结果索引。评委看摘要，应该马上知道我们每一问做了什么、得到了什么、可信度如何。</p>
+<p>摘要草稿可以按这个模板写：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">针对问题一，我们将 XXX 转化为 XXX，建立 XXX 模型，得到 XXX；<br>针对问题二，在问题一基础上引入 XXX 约束/变量，采用 XXX 算法，得到 XXX；<br>针对问题三，为验证/扩展上述结果，我们进行 XXX，结果表明 XXX；<br>最后通过 XXX 检验/敏感性分析，说明模型在 XXX 范围内稳定。<br></code></pre></td></tr></table></figure>
+<p>这里的 XXX 尽量填数字、区间、阈值、误差、时间、收益、比例，而不是只填“较好”“合理”“有效”。</p>
+<h3 id="规则三：图表先列清单，再开始画">规则三：图表先列清单，再开始画</h3>
+<p>比赛时不要等论文写到一半才想“这里放个图吧”。选题后 6 小时内，论文线和代码线应该一起列图表清单：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">问题一：流程图 / 数据分布图 / 拟合或轨迹图<br>问题二：目标函数示意 / 优化收敛图 / 对比表<br>问题三：方案对比图 / 敏感性分析图 / 最终结果表<br></code></pre></td></tr></table></figure>
+<p>每张图都要写一句“它证明什么”。如果说不出来，就先不要画。</p>
+<h3 id="规则四：代码输出必须能回填论文">规则四：代码输出必须能回填论文</h3>
+<p>代码线每跑完一次关键脚本，必须能给论文线这 5 个东西：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">关键数字<br>图表路径<br>结果表路径<br>参数设置<br>一句论文式解释<br></code></pre></td></tr></table></figure>
+<p>不要只发截图，不要只发 notebook 输出，也不要让论文线自己去猜哪个文件是最终版。比赛时最消耗人的不是不会建模，而是“结果到底在哪里”。</p>
+<h3 id="规则五：模型边界要主动说明">规则五：模型边界要主动说明</h3>
+<p>如果模型有近似、随机性、局部最优风险、数据假设或算法替代方案，要主动写清楚。主动说明边界不是示弱，反而会让论文更可信。</p>
+<p>但说明边界必须配证据：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">随机算法：给多次运行结果、方差或收敛曲线；<br>启发式优化：给参数设置、重复运行和最优值稳定性；<br>机器学习：给交叉验证、误差指标和特征重要性；<br>物理几何模型：给判据推导、关键时刻图和阈值解释；<br>规划模型：给约束表、可行性说明和方案对比。<br></code></pre></td></tr></table></figure>
+<p>这也是我们接下来一个月最应该训练的能力：不是把模型说得完美，而是把模型说得可靠。</p>
 <h2 id="图表的最低标准">图表的最低标准</h2>
 <p>比赛时每张图都要回答一个问题。</p>
 <p>不要为了“论文看起来丰富”而放图。图必须服务论证。</p>
