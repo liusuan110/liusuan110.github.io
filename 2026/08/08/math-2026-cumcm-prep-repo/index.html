@@ -27,7 +27,7 @@
 <meta property="og:description" content="写给队友的 math-2026 仓库使用说明和一个月备赛协作方案：目标省一等奖以上，Windows 负责建模求解，Mac 负责论文写作，经验沉淀统一放在博客里。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-08-08T13:30:00.000Z">
-<meta property="article:modified_time" content="2026-08-08T15:58:00.000Z">
+<meta property="article:modified_time" content="2026-08-10T02:30:00.000Z">
 <meta property="article:author" content="Lusu">
 <meta property="article:tag" content="CUMCM">
 <meta property="article:tag" content="团队协作">
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          14k 字
         
       </span>
     
@@ -346,7 +346,7 @@
         
         
         
-          96 分钟
+          121 分钟
         
       </span>
     
@@ -711,6 +711,166 @@
 <li>结果要可复现，不能只靠文字声称。</li>
 </ol>
 <p>这件事对我们冲省一以上非常关键。高奖项论文通常不是“看起来很努力”，而是让评委觉得：这个队每一步都知道自己在干什么。</p>
+<h2 id="如果我们倾向选择物理-工程类题">如果我们倾向选择物理 / 工程类题</h2>
+<p>目前我的判断是：如果赛题里出现类似 2025 B 碳化硅外延层厚度、2025 A 烟幕干扰弹、2024 A 板凳龙、2023 A 定日镜场、2023 B 多波束测线这类题，我们可以认真考虑。</p>
+<p>这类题的共同点是：题目看起来复杂，但只要把物理对象、运动关系、几何判据和数值求解链条理清楚，就比纯数据题更容易做出“我们真的理解了问题”的质感。它不一定简单，但对工科背景更友好。</p>
+<p>可以把这类题理解成六步：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">对象建模<br>-&gt; 物理 / 几何方程<br>-&gt; 可计算判据<br>-&gt; 数值仿真器<br>-&gt; 参数搜索 / 优化<br>-&gt; 可靠性验证和图表表达<br></code></pre></td></tr></table></figure>
+<p>其中最关键的一步不是“优化”，而是“判据”。比如：</p>
+<ul>
+<li>2025 A 的核心不是粒子群，而是“什么时候算有效遮蔽”；</li>
+<li>2025 B 的核心不是 FFT，而是“干涉条纹和厚度之间的物理关系是否成立”；</li>
+<li>2024 A 的核心不是搜索算法，而是“板凳之间是否碰撞”；</li>
+<li>2023 B 的核心不是多目标规划，而是“测线覆盖宽度和重叠率怎么算”；</li>
+<li>2023 A 的核心不是布局优化，而是“太阳、镜面、集热器之间的光线关系怎么算”。</li>
+</ul>
+<p>所以赛时如果我们选这类题，第一件事不是问“用什么算法”，而是问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">这个题的物理对象有哪些？<br>每个对象的位置、速度、形状、状态如何参数化？<br>题目要求的“有效”“覆盖”“遮挡”“碰撞”“误差”到底如何判定？<br>给定一组参数，我们能不能写出一个函数，返回题目关心的指标？<br>这个函数能不能用简单算例或题目给定算例验证？<br></code></pre></td></tr></table></figure>
+<p>只要这个函数可信，后面可以用网格搜索、二分搜索、PSO、差分进化、局部优化，甚至多种算法交叉验证。反过来，如果这个函数不可信，算法越复杂越危险。</p>
+<p>外部资料也印证了这个训练方向。中国大学生在线的赛题讲评页集中整理了近年官方讲评入口，包括 2025 A 烟幕干扰弹、2025 B 碳化硅、2024 A 板凳龙、2023 A 定日镜场、2023 B 多波束等题目；优秀论文展示页也按年份给出了论文展示入口。这些资料不一定直接给我们代码，但很适合用来校准“评委希望看到什么样的建模链条”。</p>
+<p>建议后面专项训练时优先看这些入口：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/hd/sxjm/sxjmstjp/">中国大学生在线：数学建模赛题讲评</a></li>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/a/hd_sxjm_sxjmstjp_2025sxjmstjp/251201/2025724.shtml">2025 A 题讲评：烟幕干扰弹的投放策略</a></li>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/a/hd_sxjm_sxjmstjp_2025sxjmstjp/251125/2024993.shtml">2025 B 题讲评：碳化硅外延层厚度的确定</a></li>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/a/hd_sxjm_sxjmstjp_2024sxjmstjp/241202/1982935.shtml">2024 A 题讲评：板凳龙闹元宵</a></li>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/a/hd_sxjm_sxjmstjp_2023sxjmstjp/231128/1867695.shtml">2023 A 题讲评：定日镜场的优化设计</a></li>
+<li><a target="_blank" rel="noopener" href="https://dxs.moe.gov.cn/zx/hd/sxjm/sxjmlw/qkt_sxjm_lw_lwzs.shtml">中国大学生在线：数学建模竞赛论文展示</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cmathc.org.cn/mcm/lw/">大学生数学竞赛网：全国大学生数学建模竞赛优秀论文汇总（2010-2025）</a></li>
+</ul>
+<h3 id="物理-工程类题的选题判断">物理 / 工程类题的选题判断</h3>
+<p>如果正式比赛时我们想选这类题，建议用下面这个表做快速判断。</p>
+<table>
+<thead>
+<tr>
+<th>判断项</th>
+<th>适合选</th>
+<th>不适合选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>题目对象</td>
+<td>能画出清楚的物理对象和空间关系</td>
+<td>读完后连对象状态都说不清</td>
+</tr>
+<tr>
+<td>判据</td>
+<td>能写成距离、角度、时间、能量、覆盖率、误差等可计算量</td>
+<td>“有效”“好坏”“影响”只能靠文字解释</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>数据量中等，可用于验证模型或反演参数</td>
+<td>数据格式混乱且没有物理解释能力</td>
+</tr>
+<tr>
+<td>代码</td>
+<td>能在 6 小时内写出最小仿真器</td>
+<td>连最小算例都难以复现</td>
+</tr>
+<tr>
+<td>图表</td>
+<td>可以画轨迹、几何示意、拟合图、残差图、收敛曲线</td>
+<td>只能画一堆无关柱状图</td>
+</tr>
+<tr>
+<td>论文</td>
+<td>物理推导能讲清楚，结果能闭环</td>
+<td>只能堆算法名，没有机制解释</td>
+</tr>
+</tbody>
+</table>
+<p>我的个人倾向是：如果题面给出明确几何关系、运动规则、物理过程或实验数据，且我们能在选题后 2 小时内写出最小仿真器，那这类题值得押。如果前 2 小时只是在争论“题目到底什么意思”，就要谨慎。</p>
+<h3 id="h2025-A-烟幕工程给我们的经验">2025 A 烟幕工程给我们的经验</h3>
+<p>新拉下来的 <code>2025-A-smoke-moni2026-python</code> 很值得看。它不是完美工程，但特别适合我们学习“技术同学如何把物理题工程化”。</p>
+<p>它最值得学的地方是这条链：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">导弹直线运动<br>-&gt; 无人机等高度匀速运动<br>-&gt; 烟幕弹平抛运动<br>-&gt; 云团起爆后匀速下沉<br>-&gt; 真目标圆柱离散成关键点<br>-&gt; 导弹视角下用视锥判断遮蔽<br>-&gt; 时间网格积分得到遮蔽时长<br>-&gt; 用 PSO / 热启动 / 局部精修搜索投放策略<br></code></pre></td></tr></table></figure>
+<p>这条链的精髓在于：它先把“给定一组投放参数，能遮蔽多久”做成一个仿真函数，再谈优化。这个顺序非常重要。</p>
+<p>我们可以把它抽象成一个可复用模板：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">def score(params):<br>    根据参数生成所有物理对象轨迹<br>    在时间网格上计算关键判据<br>    汇总题目要求的指标<br>    return 指标值<br></code></pre></td></tr></table></figure>
+<p>后面不管是烟幕、板凳龙、定日镜、多波束，还是其他工程类题，都可以先写这个 <code>score(params)</code>。有了它，算法只是外壳；没有它，算法就是空转。</p>
+<p>这个工程还有几个具体经验：</p>
+<ol>
+<li>
+<p><strong>目标不能偷懒成一个点。</strong> 烟幕题里的真目标是圆柱体，工程把圆柱表面离散成关键点，再判断所有关键点是否被遮蔽。这比“算球心到导弹—目标中心线的距离”更可信。</p>
+</li>
+<li>
+<p><strong>多弹协同不能简单相加。</strong> 多个烟幕云团可能在时间上重叠，也可能互补遮挡目标的不同关键点。论文里必须说明联合遮蔽时长怎么计算，不能把每枚弹单独时长直接相加。</p>
+</li>
+<li>
+<p><strong>优化要热启动。</strong> 先做单弹或低维粗搜，得到可接受解，再扩展到多弹、多机、多导弹的高维优化。这比直接在 40 维空间里随机乱撞稳得多。</p>
+</li>
+<li>
+<p><strong>粗算和精算要分开。</strong> 粗搜索可以用少量关键点和较大时间步长，最终结果必须用更密的关键点和更小时间步长复算。否则搜索速度和结果可信度很难兼顾。</p>
+</li>
+<li>
+<p><strong>工程复盘比结果数字更值钱。</strong> 这个工程自己的诊断报告指出，项目里存在两套流水线：一套是完整 PSO 架构，一套是更快但简化的搜索。README 里的结果未必是最强结果。这提醒我们：比赛时必须明确“最终数字来自哪个脚本、哪个参数、哪次运行”。</p>
+</li>
+</ol>
+<p>它也给我们一个论文避坑：技术强不代表论文自然强。这个工程的论文工作稿里有明显的机器同义改写痕迹，术语出现“迷惑、牵制、完善、布设”等混用。比赛论文宁可朴素，也要术语稳定。比如烟幕题统一用：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">导弹、无人机、烟幕弹、云团、投放、起爆、遮蔽、有效遮蔽时长<br></code></pre></td></tr></table></figure>
+<p>不要为了显得高级，把同一个概念换十种叫法。</p>
+<h3 id="物理类论文的图表清单">物理类论文的图表清单</h3>
+<p>如果我们赛时选物理 / 工程类题，建议优先准备这些图，而不是临时乱画：</p>
+<table>
+<thead>
+<tr>
+<th>图</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景示意图</td>
+<td>让评委一眼知道对象、坐标系和约束</td>
+</tr>
+<tr>
+<td>物理过程时序图</td>
+<td>说明对象状态如何随时间变化</td>
+</tr>
+<tr>
+<td>判据几何图</td>
+<td>解释遮蔽、碰撞、覆盖、反射、干涉等核心判据</td>
+</tr>
+<tr>
+<td>轨迹 / 布局图</td>
+<td>展示最终方案是否符合空间约束</td>
+</tr>
+<tr>
+<td>指标随时间变化图</td>
+<td>展示什么时候有效、什么时候失效</td>
+</tr>
+<tr>
+<td>优化收敛曲线</td>
+<td>说明搜索过程不是拍脑袋</td>
+</tr>
+<tr>
+<td>参数敏感性图</td>
+<td>说明结论是否稳定</td>
+</tr>
+<tr>
+<td>结果对比表</td>
+<td>对比基线方案、粗算方案、精算方案、最终方案</td>
+</tr>
+</tbody>
+</table>
+<p>物理类题最怕论文只写公式，不给直观图。我们的目标是让评委在图上就能看懂“这个模型为什么成立”。</p>
+<h3 id="比赛现场的物理题流程">比赛现场的物理题流程</h3>
+<p>如果最终选择类似 2025A/2025B 的题，建议按这个节奏推进。</p>
+<p>选题后 0-2 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">画对象图；<br>列实体表；<br>确定坐标系和单位；<br>写每个对象的状态变量；<br>找到每问的核心判据。<br></code></pre></td></tr></table></figure>
+<p>2-6 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">写最小仿真器；<br>用题目给定算例验证；<br>输出第一张场景图或时序图；<br>确定结果文件格式。<br></code></pre></td></tr></table></figure>
+<p>6-18 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">实现第一版粗搜索；<br>保存所有候选结果；<br>跑出每问至少一个可行方案；<br>论文线同步写问题分析、模型假设、符号表。<br></code></pre></td></tr></table></figure>
+<p>18-36 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">加精细判据；<br>做多算法或多参数对比；<br>生成核心图表；<br>明确最终方案来自哪个脚本。<br></code></pre></td></tr></table></figure>
+<p>36-60 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">精算最终结果；<br>补敏感性分析；<br>论文把每问小闭环写完整；<br>摘要回填关键数字。<br></code></pre></td></tr></table></figure>
+<p>最后 12 小时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">不大改模型；<br>只修明显错误；<br>统一符号、图表、单位；<br>检查代码结果和论文数字一致。<br></code></pre></td></tr></table></figure>
+<p>这套流程不炫，但可靠。物理 / 工程类题的优势就在于：只要我们把对象、判据、仿真、优化、验证讲清楚，论文会天然有骨架。</p>
 <h2 id="新拉-5-个工程给我们的经验">新拉 5 个工程给我们的经验</h2>
 <p>这 5 个工程放在一起看，很像一组赛前训练样本：有国一/数模之星，有省一，有国二，也有作者主动复盘不足的省二。它们最有价值的地方不是告诉我们“某个题该用什么算法”，而是帮助我们建立判断标准。</p>
 <h3 id="h1-2024-A：强论文会把复杂几何变成可执行搜索">1. 2024 A：强论文会把复杂几何变成可执行搜索</h3>
