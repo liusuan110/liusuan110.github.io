@@ -1,3 +1,4 @@
+https://liusuan110.github.io/2026/08/16/2022A-wave-energy-mock-contest-retrospective/
 https://liusuan110.github.io/2026/08/08/math-2026-cumcm-prep-repo/
 https://liusuan110.github.io/2026/07/13/competitions/ti-cup/frequency-characteristic-tester-ad9959-ad835-mspm0/
 https://liusuan110.github.io/2026/05/31/courses/digital-circuits/digital-circuits-review/
@@ -51,7 +52,11 @@ https://liusuan110.github.io/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/
 https://liusuan110.github.io/tags/CUMCM/
 https://liusuan110.github.io/tags/%E5%A4%87%E8%B5%9B/
 https://liusuan110.github.io/tags/%E5%B7%A5%E7%A8%8B%E5%8C%96/
+https://liusuan110.github.io/tags/%E8%AE%BA%E6%96%87%E5%86%99%E4%BD%9C/
 https://liusuan110.github.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/
+https://liusuan110.github.io/tags/%E6%A8%A1%E6%8B%9F%E8%B5%9B/
+https://liusuan110.github.io/tags/%E7%89%A9%E7%90%86%E5%BB%BA%E6%A8%A1/
+https://liusuan110.github.io/tags/%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97/
 https://liusuan110.github.io/categories/%E9%9A%8F%E7%AC%94/
 https://liusuan110.github.io/categories/%E6%9D%82%E8%AE%B0/
 https://liusuan110.github.io/categories/%E7%AB%9E%E8%B5%9B/
