@@ -1,0 +1,1135 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/lusu-logo.png">
+  <link rel="icon" href="/img/lusu-logo.svg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#3a3633">
+  <meta name="author" content="Lusu">
+  <meta name="keywords" content="Lusu, blog, BUPT-ee">
+  
+    <meta name="description" content="写给自己的 Toastboard 阅读记录。重点学习规则诊断、证据解释和修复建议的组织方式，同时分析其七人非正式用户研究为什么还不足以支撑教学效果结论。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LabGuardian 论文阅读笔记 02：Toastboard 怎样检查面包板错误并反馈给学生">
+<meta property="og:url" content="https://liusuan110.github.io/2026/08/30/labguardian-paper-reading-02-toastboard/index.html">
+<meta property="og:site_name" content="Lusu">
+<meta property="og:description" content="写给自己的 Toastboard 阅读记录。重点学习规则诊断、证据解释和修复建议的组织方式，同时分析其七人非正式用户研究为什么还不足以支撑教学效果结论。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-30T10:00:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T10:00:00.000Z">
+<meta property="article:author" content="Lusu">
+<meta property="article:tag" content="HCI">
+<meta property="article:tag" content="LabGuardian">
+<meta property="article:tag" content="教学反馈">
+<meta property="article:tag" content="电路诊断">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="面包板">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LabGuardian 论文阅读笔记 02：Toastboard 怎样检查面包板错误并反馈给学生 - Lusu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liusuan110.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Lusu" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lusu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LabGuardian 论文阅读笔记 02：Toastboard 怎样检查面包板错误并反馈给学生"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-30 18:00" pubdate>
+          2026年8月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LabGuardian 论文阅读笔记 02：Toastboard 怎样检查面包板错误并反馈给学生</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>这篇继续解决导师提出的另一个问题：LabGuardian 虽然已经能输出一些诊断和语言反馈，但目前缺少系统实验，不能证明反馈是否正确、是否指出了具体位置、是否会产生幻觉，也不能证明学生真的觉得有帮助。</p>
+<p>我选择阅读 <strong>The Toastboard: Ubiquitous Instrumentation and Automated Checking of Breadboarded Circuits</strong>，因为它直接面向面包板调试和初学者反馈。</p>
+<p>它和 LabGuardian 的感知方式不同：Toastboard 改造了面包板并测量每一行的真实电压，LabGuardian 则希望从普通面包板照片恢复连接关系。但是，两者都需要回答：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">哪里可能有错？<br>系统为什么认为这里有错？<br>学生下一步应该怎样修改？<br></code></pre></td></tr></table></figure>
+<p>所以这篇最值得我学习的不是硬件电路，而是诊断规则、反馈格式和用户实验。</p>
+<!-- more -->
+<h2 id="读完后先记住的结论">读完后先记住的结论</h2>
+<p>第一，Toastboard 最好的设计不是“自动报错”，而是把反馈拆成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">错误现象 + How I know + Suggested fix<br></code></pre></td></tr></table></figure>
+<p>第二，它的用户研究只有 7 人，而且主要是观察和访谈，没有对照组、诊断准确率或完成时间，因此只能说明“参与者觉得有用”，不能证明系统显著提高了学习或调试效率。</p>
+<p>第三，规则诊断可能误报。系统必须允许“不确定”或“当前证据不足”，不能把每条规则输出都包装成确定事实。</p>
+<p>第四，LabGuardian 相比 Toastboard 的潜在价值，是不需要改造面包板；但纯照片也无法测量真实电压，因此我只能判断可见的连接拓扑，不能声称识别了损坏元件或真实电气状态。</p>
+<h2 id="论文基本信息">论文基本信息</h2>
+<ul>
+<li>论文：The Toastboard: Ubiquitous Instrumentation and Automated Checking of Breadboarded Circuits</li>
+<li>会议：ACM UIST 2016</li>
+<li>DOI：10.1145/2984511.2984566</li>
+<li>输入：经过专门硬件改造的面包板上各行电压，以及用户在软件中填写的元件信息</li>
+<li>输出：整板电压可视化、组件规则检查、错误解释和修复建议</li>
+<li>用户研究：7 名参与者，非正式可用性研究</li>
+</ul>
+<p>这是一篇 HCI 系统论文，不是目标检测论文。它关注的是调试过程和交互体验，而不是视觉识别准确率。</p>
+<h2 id="为什么作者要做-Toastboard">为什么作者要做 Toastboard</h2>
+<p>作者认为，传统万用表、示波器和逻辑分析仪一次只能检查少量测试点。使用者必须先提出一个故障假设，再选择测量位置验证。如果初学者一开始就不知道应该怀疑哪里，这个过程会很慢。</p>
+<p>Toastboard 想把原本隐藏的电路状态主动显示出来，让用户先看到整块面包板发生了什么，再形成调试假设。</p>
+<p>作者在系统设计前访谈了 5 名实践者：</p>
+<ul>
+<li>1 名初学者；</li>
+<li>2 名电子实验课助教；</li>
+<li>2 名创客空间教师。</li>
+</ul>
+<p>他们归纳出常见问题：</p>
+<ul>
+<li>电源或地线没有连接；</li>
+<li>电压或电流供应不正确；</li>
+<li>元件位置、方向或极性错误；</li>
+<li>元件引脚短接；</li>
+<li>导线接触不良或松脱；</li>
+<li>元件本身损坏；</li>
+<li>跳线过多造成视觉复杂；</li>
+<li>微控制器引脚和程序配置错误；</li>
+<li>传感器读数异常。</li>
+</ul>
+<p>这个分类对我有启发，但必须继续细分“照片能判断”和“照片不能判断”的情况。</p>
+<table>
+<thead>
+<tr>
+<th>错误</th>
+<th>LabGuardian 能否只靠照片判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元件插错孔</td>
+<td>可以，前提是 Hole-ID 和参考网表正确</td>
+</tr>
+<tr>
+<td>少接或多接一根跳线</td>
+<td>可以，前提是跳线端子都被识别</td>
+</tr>
+<tr>
+<td>LED 或二极管方向错误</td>
+<td>可能可以，需要可靠识别极性</td>
+</tr>
+<tr>
+<td>IC 电源脚接错</td>
+<td>可以判断拓扑，不代表芯片实际获得正确电压</td>
+</tr>
+<tr>
+<td>导线没有插紧</td>
+<td>通常不能，只能看到位置，不能确认电接触</td>
+</tr>
+<tr>
+<td>元件内部损坏</td>
+<td>不能</td>
+</tr>
+<tr>
+<td>电阻阻值错误</td>
+<td>目前不能，除非增加色环或 OCR 识别</td>
+</tr>
+<tr>
+<td>传感器输出异常</td>
+<td>不能，仅凭静态照片没有测量证据</td>
+</tr>
+</tbody>
+</table>
+<p>这张边界表以后可以直接用于论文的任务定义和局限性说明。</p>
+<h2 id="Toastboard-是怎样工作的">Toastboard 是怎样工作的</h2>
+<h3 id="h1-改造面包板，测量每一行电压">1. 改造面包板，测量每一行电压</h3>
+<p>作者把标准面包板背板拆掉，通过导电胶带连接到自制 PCB，使 48 行面包板都能被 ADC 扫描。多个多路复用器把不同面包板行依次接入 CC3200 微控制器。</p>
+<p>系统有两种采样方式：</p>
+<ul>
+<li>整板循环扫描约 100 Hz；</li>
+<li>选择单独一行时约 1000 Hz。</li>
+</ul>
+<p>面包板两侧的 LED 灯条直接显示状态：红色表示电源，橙色表示地，绿色表示其他电压。网页端则显示更精确的数值和曲线。</p>
+<p>这个设计的优点是证据来自实际电路测量，不依赖图像推测。缺点是必须使用专门改造的面包板，而且测量电路本身可能对被测电路产生影响。</p>
+<h3 id="h2-检测悬空节点">2. 检测悬空节点</h3>
+<p>系统需要区分真正接地的行和没有连接的悬空行。作者先找出读取结果可能是接地或悬空的行，再通过一个额外扫描路径施加已知电压：</p>
+<ul>
+<li>如果电压被改变，说明这一行原来是悬空的；</li>
+<li>如果仍保持地电位，说明它是真的接地。</li>
+</ul>
+<p>这个过程说明，“看到相同测量值”不一定代表相同电气状态，需要额外实验消除歧义。</p>
+<p>对 LabGuardian 的对应启发是：端子靠近两个候选孔时，也不应该只给最近孔，而应使用元件几何、面包板规则或拒识机制处理歧义。</p>
+<h3 id="h3-用户需要在软件中建立虚拟元件">3. 用户需要在软件中建立虚拟元件</h3>
+<p>Toastboard 不能只靠被动电气连接自动判断面包板上放了什么元件。用户需要在网页端放置与实物对应的虚拟元件，或者加载教师提前准备好的电路文件。</p>
+<p>系统由此获得：</p>
+<ul>
+<li>元件类别；</li>
+<li>元件所在的面包板行；</li>
+<li>元件参数；</li>
+<li>元件引脚的预期功能。</li>
+</ul>
+<p>这是 Toastboard 和 LabGuardian 的关键差别。LabGuardian 的视觉模块正是要自动完成“元件是什么、端子在哪里、插在哪一行”的输入工作。</p>
+<h2 id="组件检查器怎样产生诊断">组件检查器怎样产生诊断</h2>
+<p>Toastboard 为不同元件编写规则检查器。论文中列出的规则包括：</p>
+<table>
+<thead>
+<tr>
+<th>元件</th>
+<th>触发错误的条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电阻</td>
+<td>两端电压相同，或者至少一端悬空</td>
+</tr>
+<tr>
+<td>二极管</td>
+<td>两端压降大于 2.0 V，或者至少一端悬空</td>
+</tr>
+<tr>
+<td>导线</td>
+<td>两端电压不同，或者至少一端悬空</td>
+</tr>
+<tr>
+<td>按钮</td>
+<td>按钮两侧已经短接</td>
+</tr>
+<tr>
+<td>LMC6482 运放</td>
+<td>正电源悬空，或者负电源没有接地</td>
+</tr>
+<tr>
+<td>超声波传感器</td>
+<td>没有供电或没有接地</td>
+</tr>
+</tbody>
+</table>
+<p>每次面包板重新扫描，所有检查器都会运行一次。失败的检查会在对应元件旁显示警告。</p>
+<p>最值得我记下的是按钮检查器的反馈格式。它不是只说“按钮错误”，而是类似这样组织：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">问题：这个按钮可能无法正常工作。<br>How I know：按钮两端当前已经是相同电压。<br>Suggested fix：检查按钮是否卡住；如果没有，尝试旋转按钮。<br></code></pre></td></tr></table></figure>
+<p>另一个运放例子还会指出：</p>
+<ul>
+<li>元件内部是哪个引脚；</li>
+<li>这个引脚插在面包板哪一行；</li>
+<li>当前为什么判断它悬空；</li>
+<li>应该连接到哪里。</li>
+</ul>
+<p>这比“接线错误，请检查”有用得多。</p>
+<h2 id="直接迁移到-LabGuardian-的反馈结构">直接迁移到 LabGuardian 的反馈结构</h2>
+<p>我可以把 LabGuardian 的结构化诊断输出统一成下面的形式：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;error_code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;IC_POWER_PIN_MISSING&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;severity&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;error&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;component_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;U1&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;terminal_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;VCC&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;observed_hole&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;e15&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;expected_node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;VCC&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;observed_node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;N3&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;evidence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-string">&quot;U1.VCC was mapped to hole e15&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;hole e15 belongs to electrical node N3&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-string">&quot;reference netlist requires U1.VCC on node VCC&quot;</span><br>  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;suggested_action&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Move U1.VCC connection from N3 to the VCC rail&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;confidence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.96</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>然后让模板或 LLM 生成学生看到的内容：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">发现的问题：U1 的 VCC 引脚没有连接到电源节点。<br>具体位置：U1.VCC 当前位于 e15，对应节点 N3。<br>判断依据：参考电路要求 U1.VCC 连接 VCC，但识别网表中它连接到 N3。<br>建议操作：检查 U1 的供电引脚，并将它连接到 VCC 电源轨。<br></code></pre></td></tr></table></figure>
+<p>这里的每句话都能追溯到结构化证据。LLM 只能调整表达，不能增加“电压为 0 V”“芯片已经损坏”等视觉系统没有观测到的事实。</p>
+<h2 id="用户研究到底证明了什么">用户研究到底证明了什么</h2>
+<h3 id="研究设计">研究设计</h3>
+<p>Toastboard 招募了 7 名参与者：</p>
+<ul>
+<li>4 名电路经验较少的初学者；</li>
+<li>1 名中等经验使用者；</li>
+<li>2 名有实验课教学经验的专家。</li>
+</ul>
+<p>参与者完成三类任务：</p>
+<ol>
+<li>软件中已经放好虚拟元件，识别并修复预先搭错的电路；</li>
+<li>软件中没有预先放置元件，识别并修复错误；</li>
+<li>根据原理图自行搭建电路，然后诊断自己或实验者加入的错误。</li>
+</ol>
+<p>研究使用出声思考法观察过程，最后再访谈参与者对软硬件、调试功能、与万用表的比较及适用人群的看法。</p>
+<h3 id="论文报告的发现">论文报告的发现</h3>
+<ul>
+<li>所有人都认为硬件容易上手，和普通面包板差别不大；</li>
+<li>所有人都认为即时 LED 反馈有帮助；</li>
+<li>所有人在搭建任务中都查看了软件电压信息；</li>
+<li>多数人认为组件检查器有帮助；</li>
+<li>有初学者通过错误提示第一次意识到二极管可能装反；</li>
+<li>有经验的参与者认为虚拟放置元件比较麻烦；</li>
+<li>有专家担心学生过度依赖自动检查，另一个专家则认为它像适合入门课的“辅助轮”。</li>
+</ul>
+<h3 id="我不能扩大解读的地方">我不能扩大解读的地方</h3>
+<p>论文没有报告：</p>
+<ul>
+<li>每种错误被正确诊断的次数；</li>
+<li>错误类型 Precision、Recall 或 F1；</li>
+<li>用户修复成功率；</li>
+<li>使用 Toastboard 前后的完成时间；</li>
+<li>与万用表或普通面包板的随机对照；</li>
+<li>学习前后测；</li>
+<li>量表题和统计显著性。</li>
+</ul>
+<p>因此准确的结论是：<strong>7 名参与者在非正式研究中普遍认可即时可视化，多数人认为规则反馈有帮助。</strong></p>
+<p>不能写成：<strong>实验已经证明 Toastboard 显著提升了学生成绩或调试效率。</strong></p>
+<h2 id="论文自己暴露出的风险">论文自己暴露出的风险</h2>
+<h3 id="h1-规则会误报">1. 规则会误报</h3>
+<p>有参与者故意设计了只有按下按钮才闭合的电路，按钮检查器却报告按钮可能短路。规则只知道常见用法，不知道用户的真实设计意图。</p>
+<p>这对应 LabGuardian 的两个问题：</p>
+<ul>
+<li>参考电路选错，会把正确但不同的设计判成错误；</li>
+<li>视觉或 Hole-ID 不确定时，错误可能来自识别而不是学生接线。</li>
+</ul>
+<p>所以系统应区分：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">确认错误<br>可能错误<br>证据不足，需要重新拍摄或人工确认<br></code></pre></td></tr></table></figure>
+<h3 id="h2-自动帮助可能削弱主动思考">2. 自动帮助可能削弱主动思考</h3>
+<p>专家担心学生会只按提示改线，而不理解为什么。这说明反馈不能只给最终答案，还应保留判断依据，或者先提示检查区域，再逐步显示修复步骤。</p>
+<p>以后可以比较两种反馈顺序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">直接给出完整修复步骤<br>先给证据和问题位置，学生需要时再展开建议<br></code></pre></td></tr></table></figure>
+<h3 id="h3-系统只能处理静态或低频状态">3. 系统只能处理静态或低频状态</h3>
+<p>整板约 100 Hz 的扫描足以判断电源、接地和静态连通，但难以检查电容、电感和快速动态信号。LabGuardian 的单张照片限制更强，只能做结构拓扑诊断。</p>
+<h3 id="h4-硬件会影响被测电路">4. 硬件会影响被测电路</h3>
+<p>测量网络存在微安级漏电路径，导电胶带也可能产生接触不稳定。虽然多数简单电路不受明显影响，但敏感模拟电路可能被测量系统改变。</p>
+<p>这说明传感式方案和视觉方案各有边界：</p>
+<ul>
+<li>Toastboard 有真实电压证据，但需要专用硬件并可能扰动电路；</li>
+<li>LabGuardian 不接触电路、部署简单，但不能观测真实电气行为。</li>
+</ul>
+<h2 id="这篇论文给-LabGuardian-带来的新实验">这篇论文给 LabGuardian 带来的新实验</h2>
+<h3 id="实验一：诊断规则准确率">实验一：诊断规则准确率</h3>
+<p>先构造一套受控故障测试集。每个正确电路都生成或人工搭建若干单故障与组合故障版本：</p>
+<ul>
+<li>[ ] 缺少电源或地线；</li>
+<li>[ ] 跳线插错一行；</li>
+<li>[ ] 少接一根跳线；</li>
+<li>[ ] 多接一根造成短接的跳线；</li>
+<li>[ ] LED 或二极管方向错误；</li>
+<li>[ ] IC 电源引脚错误；</li>
+<li>[ ] 元件端子插入错误电气节点；</li>
+<li>[ ] 两种错误同时出现。</li>
+</ul>
+<p>至少报告：</p>
+<ul>
+<li>故障存在与否的准确率；</li>
+<li>错误类型 Macro-F1；</li>
+<li>错误位置准确率；</li>
+<li>整张图片的诊断完全正确率；</li>
+<li>误报率；</li>
+<li>系统拒绝判断时的 Coverage 与 Accepted Precision。</li>
+</ul>
+<h3 id="实验二：反馈生成对照">实验二：反馈生成对照</h3>
+<p>对同一批结构化错误，比较三种反馈：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">A：只显示错误码和位置<br>B：固定模板生成“问题 + 证据 + 建议”<br>C：受证据约束的 LLM 自然语言反馈<br></code></pre></td></tr></table></figure>
+<p>教师盲评可以评价：</p>
+<ul>
+<li>[ ] 事实是否正确；</li>
+<li>[ ] 是否指出具体错误位置；</li>
+<li>[ ] 判断依据是否与结构化证据一致；</li>
+<li>[ ] 修复建议是否可执行；</li>
+<li>[ ] 是否出现幻觉；</li>
+<li>[ ] 表达是否适合初学者。</li>
+</ul>
+<p>需要至少两名评分者，并报告评分一致性，而不是只给平均分。</p>
+<h3 id="实验三：学生修复任务">实验三：学生修复任务</h3>
+<p>让学生根据不同反馈修复受控故障，可以记录：</p>
+<ul>
+<li>是否成功修复；</li>
+<li>修复所需时间；</li>
+<li>修改次数；</li>
+<li>是否引入新错误；</li>
+<li>是否需要教师帮助；</li>
+<li>对反馈清晰度和帮助程度的评分。</li>
+</ul>
+<p>如果样本量有限，这部分可以定位为小规模可用性研究，不夸大成教育效果的最终证明。</p>
+<h3 id="实验四：分层反馈与过度依赖">实验四：分层反馈与过度依赖</h3>
+<p>为了回应 Toastboard 中“系统替学生思考”的担忧，可以尝试：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">第一级：只标出可疑元件和孔位<br>第二级：显示判断依据<br>第三级：显示完整修复建议<br></code></pre></td></tr></table></figure>
+<p>这可能比一次性把答案全部告诉学生更符合教学系统的定位。</p>
+<h2 id="我现在对-LLM-部分的重新理解">我现在对 LLM 部分的重新理解</h2>
+<p>导师建议评价 LLM 是否正确、是否指出位置、是否幻觉，以及教师和学生是否认为反馈有效。Toastboard 说明，这部分不能只做“给模型 30 个问题，看回答像不像正确答案”。</p>
+<p>更合理的任务应该是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">确定性诊断器生成结构化错误<br>→ 模板或 LLM 生成反馈<br>→ 教师评价事实与教学质量<br>→ 学生用反馈完成实际修复任务<br></code></pre></td></tr></table></figure>
+<p>LLM 实验的输入必须冻结为同一批结构化错误，这样才能把语言生成能力与前面的视觉、Hole-ID 和诊断错误隔离开。</p>
+<p>如果视觉识别错了，LLM 忠实解释了错误的结构化输入，这属于上游感知失败，不应算作 LLM 幻觉；如果结构化证据没有说元件损坏，LLM 却说元件已损坏，这才是语言模型新增的无依据内容。</p>
+<h2 id="读完后形成的论文主线补充">读完后形成的论文主线补充</h2>
+<p>上一篇 SINA 告诉我，系统论文要从视觉一直评价到网表和功能。Toastboard 又补充了一层：诊断结果必须以学生能够验证和执行的方式呈现。</p>
+<p>现在我对 LabGuardian 的完整链条可以写成：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">照片<br>→ 元件和端子识别<br>→ Hole-ID 与电气节点<br>→ 可审计网表<br>→ 确定性错误诊断<br>→ 问题位置 + 判断证据 + 修复建议<br>→ 教师和学生评价<br></code></pre></td></tr></table></figure>
+<p>这条链中，LLM 只负责最后的表达，不负责发明电气事实。</p>
+<h2 id="还没有解决的问题">还没有解决的问题</h2>
+<ul>
+<li>Toastboard 的规则是如何处理测量噪声和阈值边界的？</li>
+<li>如果多个故障同时存在，规则之间会不会互相干扰？</li>
+<li>LabGuardian 的错误码应该按元件、端子、节点还是电路功能组织？</li>
+<li>对照片无法确认的接触不良，界面怎样表达才不会误导学生？</li>
+<li>学生实验应该采用组间设计还是同一学生交叉使用三种反馈？</li>
+<li>是否需要申请学校的用户研究伦理审查或取得参与者知情同意？</li>
+</ul>
+<p>这些问题后面结合教育反馈和 VLM 评价论文继续补。</p>
+<h2 id="原文入口">原文入口</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://iot.stanford.edu/pubs/drew-toastboard-uist2016.pdf">Stanford 提供的作者版 PDF</a></li>
+<li><a target="_blank" rel="noopener" href="https://doi.org/10.1145/2984511.2984566">ACM DOI 页面</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%91%E7%A0%94/" class="category-chain-item">科研</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/LabGuardian/" class="print-no-link">#LabGuardian</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="print-no-link">#论文阅读</a>
+      
+        <a href="/tags/%E9%9D%A2%E5%8C%85%E6%9D%BF/" class="print-no-link">#面包板</a>
+      
+        <a href="/tags/%E7%94%B5%E8%B7%AF%E8%AF%8A%E6%96%AD/" class="print-no-link">#电路诊断</a>
+      
+        <a href="/tags/%E6%95%99%E5%AD%A6%E5%8F%8D%E9%A6%88/" class="print-no-link">#教学反馈</a>
+      
+        <a href="/tags/HCI/" class="print-no-link">#HCI</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LabGuardian 论文阅读笔记 02：Toastboard 怎样检查面包板错误并反馈给学生</div>
+      <div>https://liusuan110.github.io/2026/08/30/labguardian-paper-reading-02-toastboard/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Lusu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/30/labguardian-paper-reading-01-sina/" title="LabGuardian 论文阅读笔记 01：SINA 与“图像到网表”的实验怎么做">
+                        <span class="hidden-mobile">LabGuardian 论文阅读笔记 01：SINA 与“图像到网表”的实验怎么做</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
