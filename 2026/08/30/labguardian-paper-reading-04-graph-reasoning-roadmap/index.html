@@ -1,0 +1,1562 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/lusu-logo.png">
+  <link rel="icon" href="/img/lusu-logo.svg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#3a3633">
+  <meta name="author" content="Lusu">
+  <meta name="keywords" content="Lusu, blog, BUPT-ee">
+  
+    <meta name="description" content="连续阅读电路补全、SEAL、图匹配、图编辑网络、层次电路标注、Image2Net、KCLNet 和 GNN-ACLP，区分链路预测、相似度、编辑距离与完整修复，并为 LabGuardian 设计“确定性图差分 + 学习排序 + 规则验证”的下游图推理路线。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LabGuardian 论文阅读长笔记 04：从链路预测到可验证的电路图编辑修复">
+<meta property="og:url" content="https://liusuan110.github.io/2026/08/30/labguardian-paper-reading-04-graph-reasoning-roadmap/index.html">
+<meta property="og:site_name" content="Lusu">
+<meta property="og:description" content="连续阅读电路补全、SEAL、图匹配、图编辑网络、层次电路标注、Image2Net、KCLNet 和 GNN-ACLP，区分链路预测、相似度、编辑距离与完整修复，并为 LabGuardian 设计“确定性图差分 + 学习排序 + 规则验证”的下游图推理路线。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-30T15:30:00.000Z">
+<meta property="article:modified_time" content="2026-08-30T15:55:00.000Z">
+<meta property="article:author" content="Lusu">
+<meta property="article:tag" content="LabGuardian">
+<meta property="article:tag" content="图匹配">
+<meta property="article:tag" content="图神经网络">
+<meta property="article:tag" content="图编辑">
+<meta property="article:tag" content="电路诊断">
+<meta property="article:tag" content="网表">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>LabGuardian 论文阅读长笔记 04：从链路预测到可验证的电路图编辑修复 - Lusu</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liusuan110.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 8.1.2"><link rel="alternate" href="/atom.xml" title="Lusu" type="application/atom+xml">
+</head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lusu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.15)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="LabGuardian 论文阅读长笔记 04：从链路预测到可验证的电路图编辑修复"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-08-30 23:30" pubdate>
+          2026年8月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          122 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">LabGuardian 论文阅读长笔记 04：从链路预测到可验证的电路图编辑修复</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>上一篇笔记读了 GNN-ACLP，知道了“端口级电路图 + SEAL 链路预测”可以怎样预测缺失连接。但是继续往前追引用、往后看新工作以后，我发现“下游图推理”至少包含五种不同任务：<strong>链路预测、元件补全、图匹配、编辑距离预测和图编辑脚本预测</strong>。</p>
+<p>它们名字相近，实验指标也经常都出现 AUC、Accuracy 或 GED，但解决的问题并不相同。如果不先分清楚，很容易把“判断一条边是否存在”写成“系统能够修复完整电路”，也容易为了加入 GNN 而替换掉本来更可靠的确定性比较。</p>
+<p>这篇是给我自己的阶段性长笔记。我把八篇工作放到同一张路线图中阅读，最后只回答一个问题：</p>
+<blockquote>
+<p>LabGuardian 已经从照片恢复出元件、端子、孔位和网表以后，应该怎样得到可定位、可验证、可解释的接线错误和修复建议？</p>
+</blockquote>
+<!-- more -->
+<h2 id="先记住最终结论">先记住最终结论</h2>
+<p>读完这一组论文后，我当前的判断是：</p>
+<ol>
+<li><strong>有教师参考电路时，确定性图差分应继续作为主要判定器。</strong> 已知观测图和目标图，且元件身份大多能对应时，没有必要让神经网络重新猜一个已经可以由规则计算的答案。</li>
+<li><strong>GNN 最适合处理不确定性，而不是取代确定性。</strong> 当视觉阶段给出多个 Hole-ID 候选、端子对应不确定或观测网表残缺时，可以让模型对候选编辑排序，再由电气规则和参考图验证。</li>
+<li><strong>链路预测不等于完整修复。</strong> SEAL 和 GNN-ACLP 主要回答候选边是否应该存在，不能自然覆盖多余连线、极性错误、多故障和整图修复成功率。</li>
+<li><strong>图相似度或标量 GED 也不等于错误定位。</strong> 它们能说明“两张图差多少”，却未必告诉我应该改哪根线、哪一个端子和哪个孔位。</li>
+<li><strong>真正适合论文主线的是“可验证图编辑”。</strong> 系统输出 AddEdge、DeleteEdge、ReassignEdge、SwapPin、ReversePolarity 等结构化操作；每个操作都绑定元件、端子、Hole-ID、electrical node 和视觉证据，并能被规则重新检查。</li>
+<li><strong>数据划分必须先按基础电路完成，再生成故障。</strong> 同一正确电路的不同编辑版本不能被随机分散到训练集和测试集，否则模型可能只是在记忆基础拓扑。</li>
+<li><strong>近期最应该补的是诊断闭环实验，而不是先堆更多 GNN。</strong> 先证明 Hole-ID、网表恢复、错误定位和修复建议的准确率，再把学习模型作为不确定场景下的增强实验。</li>
+</ol>
+<h2 id="八篇论文在同一条链路上的位置">八篇论文在同一条链路上的位置</h2>
+<table>
+<thead>
+<tr>
+<th>工作</th>
+<th>输入</th>
+<th>主要输出</th>
+<th>本质任务</th>
+<th>与 LabGuardian 的直接关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Circuit Design Completion Using GNNs</td>
+<td>删除一个元件后的元件级网表图</td>
+<td>元件类别、缺失连接</td>
+<td>元件补全 + 链路预测</td>
+<td>是 GNN-ACLP 的直接前身，但图粒度较粗</td>
+</tr>
+<tr>
+<td>SEAL</td>
+<td>图和一对候选节点</td>
+<td>边存在的概率</td>
+<td>局部子图链路预测</td>
+<td>可作为候选缺失连接排序基线</td>
+</tr>
+<tr>
+<td>GNN-ACLP</td>
+<td>残缺的端口级模拟电路图</td>
+<td>缺失端口连接</td>
+<td>电路专用链路预测</td>
+<td>最接近当前设想的学习型下游方法</td>
+</tr>
+<tr>
+<td>Graph Matching Networks</td>
+<td>一对图</td>
+<td>相似度或相对距离</td>
+<td>图匹配 / 度量学习</td>
+<td>可比较观测图与参考图，但不直接输出修改动作</td>
+</tr>
+<tr>
+<td>Graph Edit Networks</td>
+<td>当前图及其节点表示</td>
+<td>一系列节点、边编辑</td>
+<td>图到图序列预测</td>
+<td>提供“输出编辑脚本”的形式，但原实验不是电路修复</td>
+</tr>
+<tr>
+<td>GNN-based Hierarchical Annotation</td>
+<td>SPICE 网表图</td>
+<td>功能块和基本结构标签</td>
+<td>节点分类 + 子图同构</td>
+<td>展示 GNN、VF2 和规则的混合分工</td>
+</tr>
+<tr>
+<td>Image2Net</td>
+<td>模拟电路原理图图片</td>
+<td>结构化网表</td>
+<td>图像到网表</td>
+<td>提供端到端图恢复流程和 NED 指标</td>
+</tr>
+<tr>
+<td>KCLNet</td>
+<td>模拟电路网表图</td>
+<td>电路表示、类别、子电路、GED</td>
+<td>物理先验图表征学习</td>
+<td>启发端口类型、二部图和电学约束，但不输出修复路径</td>
+</tr>
+</tbody>
+</table>
+<p>这张表最重要的不是模型名字，而是<strong>输出形式</strong>。只有输出直接对应错误位置和操作，才能进入后续的学生反馈。</p>
+<h2 id="先把五个容易混淆的任务分开">先把五个容易混淆的任务分开</h2>
+<h3 id="h1-链路预测">1. 链路预测</h3>
+<p>给定节点对 <code>(u, v)</code>，预测是否应该存在边：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">(目标端子 u, 候选端子或电气节点 v, 局部拓扑)<br>→ P(edge = 1)<br></code></pre></td></tr></table></figure>
+<p>它适合寻找漏接位置。若观测图中已经多出一条错误边，普通链路预测并不会主动告诉我把它删除。</p>
+<h3 id="h2-电路补全">2. 电路补全</h3>
+<p>给定删除了一个元件及全部连接的残缺电路，先判断缺了什么元件，再恢复连接。它比单条边预测多了一步元件类别判断，但通常仍假设“只少一个元件”。</p>
+<h3 id="h3-图匹配或图相似度学习">3. 图匹配或图相似度学习</h3>
+<p>输入观测图和参考图，输出相似度、距离或相对排序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">(G_observed, G_reference) → similarity score<br></code></pre></td></tr></table></figure>
+<p>它适合检索最相近的参考拓扑，或在多个模板中选择一个候选电路。只有一个已知教师参考图时，单个相似度不足以定位具体错误。</p>
+<h3 id="h4-图编辑距离预测">4. 图编辑距离预测</h3>
+<p>输出从一张图变成另一张图大约需要多少次操作：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">(G_observed, G_reference) → predicted GED = 2.3<br></code></pre></td></tr></table></figure>
+<p>这个数能反映整体差异，但它没有给出是哪两步。对于反馈系统，“差 2 步”远远不够。</p>
+<h3 id="h5-图编辑脚本预测">5. 图编辑脚本预测</h3>
+<p>输出明确的操作序列：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">DeleteEdge(R1.right, node_17)<br>AddEdge(R1.right, node_23)<br></code></pre></td></tr></table></figure>
+<p>这是最接近诊断和修复的形式。但在 LabGuardian 中，如果参考图已知、节点对应也已知，脚本通常可以由确定性差分直接得到；学习模型真正有价值的场景，是节点对应或上游视觉结果存在不确定性。</p>
+<h2 id="论文一：Circuit-Design-Completion-Using-Graph-Neural-Networks">论文一：Circuit Design Completion Using Graph Neural Networks</h2>
+<h3 id="它解决什么问题">它解决什么问题</h3>
+<p>这篇 2023 年论文是 GNN-ACLP 的直接前身。作者定义了一个电路补全问题：从原始网表中删除一个元件及其所有连接，系统需要预测被删除元件的类别和连接位置。</p>
+<p>流程分成两阶段：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">残缺元件级网表图<br>→ FEGIN 判断缺失元件类别<br>→ SEAL 判断缺失元件应连接到哪些节点<br></code></pre></td></tr></table></figure>
+<p>FEGIN 在 GIN 的图表示上加入 NetLSD 全局图描述符，再进行排序池化和分类。需要注意，FEGIN 负责的是<strong>缺失元件类别</strong>，连接预测阶段仍然采用 SEAL。</p>
+<h3 id="图表示和数据">图表示和数据</h3>
+<p>论文将一个元件视作一个节点，元件之间的连接视作边。这比端口级图简单，却无法区分元件的具体引脚。例如，“MOS 管与电阻相连”没有说明连接的是 Gate、Drain 还是 Source。</p>
+<p>数据来自三类网表：LTSpice examples、LTSpice demos 和 KiCad GitHub。实验只保留五种最常见元件类别，还删除了过小、过大或稀有类别样本。链路预测图进一步限制在 5 到 25 个节点。</p>
+<p>因此，它证明的是经过明显筛选后的可行性，不是对任意电路元件和任意规模网表的完整覆盖。</p>
+<h3 id="主要实验结果">主要实验结果</h3>
+<p>元件类别识别中，FEGIN 的加权 F1 分别为：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th style="text-align:right">GIN</th>
+<th style="text-align:right">FEGIN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LTSpice examples</td>
+<td style="text-align:right">92.7</td>
+<td style="text-align:right">93.1</td>
+</tr>
+<tr>
+<td>LTSpice demos</td>
+<td style="text-align:right">87.9</td>
+<td style="text-align:right">90.0</td>
+</tr>
+<tr>
+<td>KiCad GitHub</td>
+<td style="text-align:right">66.1</td>
+<td style="text-align:right">67.4</td>
+</tr>
+</tbody>
+</table>
+<p>FEGIN 相比 GIN 有提升，但幅度有限，而且 KiCad 数据的绝对结果明显更低。</p>
+<p>链路预测中，论文用 2-hop SEAL，每次从测试图删除一个节点，重复 10 次并报告平均 AUC：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th style="text-align:right">测试图数量</th>
+<th style="text-align:right">平均节点数</th>
+<th style="text-align:right">SEAL AUC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LTSpice examples</td>
+<td style="text-align:right">217</td>
+<td style="text-align:right">13.52</td>
+<td style="text-align:right">74.74</td>
+</tr>
+<tr>
+<td>LTSpice demos</td>
+<td style="text-align:right">25</td>
+<td style="text-align:right">16.47</td>
+<td style="text-align:right">61.39</td>
+</tr>
+<tr>
+<td>KiCad GitHub</td>
+<td style="text-align:right">29</td>
+<td style="text-align:right">11.69</td>
+<td style="text-align:right">75.09</td>
+</tr>
+</tbody>
+</table>
+<p>这些连接结果不算高，尤其 LTSpice demos 的测试图只有 25 张。</p>
+<h3 id="对我的启发和限制">对我的启发和限制</h3>
+<p>启发是：可以把“缺了什么”和“应该接哪里”分成两个阶段，降低单个模型的任务复杂度。</p>
+<p>不能照搬的部分是：</p>
+<ul>
+<li>只删除一个完整元件，不覆盖多接、错接、错孔和极性错误；</li>
+<li>元件级图丢失端子角色；</li>
+<li>经过类别与图规模筛选，不能代表开放场景；</li>
+<li>只报告候选边 AUC，没有整图修复成功率；</li>
+<li>论文提到故障诊断潜力，但没有直接完成或评价故障诊断。</li>
+</ul>
+<h2 id="论文二：SEAL——为什么围绕候选边提取局部子图">论文二：SEAL——为什么围绕候选边提取局部子图</h2>
+<h3 id="核心想法">核心想法</h3>
+<p>SEAL 是通用链路预测方法，不是电路专用模型。对每个候选节点对 <code>(u, v)</code>，它不直接只看两个节点的向量，而是提取它们周围的 h-hop 包围子图，再把整个局部子图分类为“存在链接”或“不存在链接”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">候选节点对<br>→ 提取 h-hop enclosing subgraph<br>→ DRNL 标记节点与两个目标的结构位置<br>→ DGCNN 得到子图表示<br>→ 判断候选边是否成立<br></code></pre></td></tr></table></figure>
+<p>DRNL 的价值是让模型知道哪些是目标节点，以及其他节点相对两个目标的位置，而不依赖原图中的节点编号。</p>
+<h3 id="实验怎样做">实验怎样做</h3>
+<p>原论文在 8 个通用网络数据集上实验，从已有边中取 10% 作为正测试边，再采样相同数量的不存在边作为负测试样本；剩余边用于训练。主要报告 AUC 和 AP，并与 common neighbors、Jaccard、Adamic-Adar、Katz 等启发式方法比较。</p>
+<p>论文一般在 1-hop 和 2-hop 间选择。h 增大并不一定更好，因为 3-hop 子图遇到高度节点时可能急剧膨胀，带来内存和采样问题。</p>
+<h3 id="对-LabGuardian-最有用的部分">对 LabGuardian 最有用的部分</h3>
+<p>SEAL 提供了一个清晰基线：对每个“端子应该接到哪个 electrical node”的候选，提取局部电路结构并排序。</p>
+<p>但数据构造必须改造。通用 SEAL 实验常用正负样本数量相同，而真实电路中不存在的节点对远多于正确连接。如果随机采负样本，很多负例过于简单，模型可能只学会排除明显不合法的组合。</p>
+<p>LabGuardian 应该加入<strong>困难负样本</strong>：</p>
+<ul>
+<li>同一面包板附近、几何上很像但电气节点不同的孔位；</li>
+<li>元件类型允许连接、但参考图中不应连接的端子；</li>
+<li>同一 IC 的相邻引脚；</li>
+<li>视觉模型置信度相近的 Hole-ID 候选；</li>
+<li>改动后仍满足简单度数规则、但电路功能错误的连接。</li>
+</ul>
+<p>同时必须保留 common neighbors、Jaccard、Adamic-Adar 等简单方法。若简单启发式已经足够，复杂模型没有论文价值上的必然优势。</p>
+<h2 id="论文三：GNN-ACLP——端口级电路链路预测">论文三：GNN-ACLP——端口级电路链路预测</h2>
+<h3 id="相比前一篇进步在哪里">相比前一篇进步在哪里</h3>
+<p>GNN-ACLP 将元件的不同端口拆成节点，保留端口类型，再用 SEAL、DRNL 和 DGCNN 预测缺失连接。这解决了元件级图不能区分具体引脚的问题。</p>
+<p>例如，一个 MOS 元件至少需要区分 Drain、Source、Gate。对 LabGuardian 来说，对应的是：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">component_id<br>terminal_id<br>terminal_type<br>hole_id<br>electrical_node_id<br></code></pre></td></tr></table></figure>
+<p>只有保留到端子级，系统才能输出“R1 右端从 E17 改到 E23”，而不是含糊地说“R1 连接错误”。</p>
+<h3 id="主要结果与不能直接接受的结论">主要结果与不能直接接受的结论</h3>
+<p>论文在 SpiceNetlist、Image2Net 和 Masala-CHAI 等数据上报告较高的候选边分类结果。五折实验 Accuracy 分别为 94.04%、97.10% 和 96.42%，对应 ROC-AUC 为 0.9866、0.9979 和 0.9959。</p>
+<p>但是，这些数字不能写成“完整电路修复率”：</p>
+<ul>
+<li>每次只随机删除一个顶点并预测连接；</li>
+<li>测试集准确率参与 early stopping，结果可能偏乐观；</li>
+<li>Accuracy 会受到正负样本比例影响；</li>
+<li>没有评价多条编辑同时存在时能否恢复整图；</li>
+<li>在更稠密的 AnalogGenie 上，SEAL 超过 48 小时未完成；</li>
+<li>模型输出候选链接，不自然覆盖删除错误边和极性修复。</li>
+</ul>
+<h3 id="版本状态更新">版本状态更新</h3>
+<p>我上一篇阅读笔记依据当时的 arXiv 页面，把它记为待发表预印本。现在已经可以确认其正式信息：论文发表于 <em>Engineering Applications of Artificial Intelligence</em>，第 163 卷，文章号 113035，DOI 为 <code>10.1016/j.engappai.2025.113035</code>。</p>
+<p>以后写 Related Work 应使用正式发表信息，而不是继续写“仅有预印本”。</p>
+<h2 id="论文四：Graph-Matching-Networks——两张图一起推理">论文四：Graph Matching Networks——两张图一起推理</h2>
+<h3 id="它与普通图嵌入的区别">它与普通图嵌入的区别</h3>
+<p>普通图嵌入模型先独立编码两张图，再在向量空间计算距离。Graph Matching Networks（GMN）则在每一轮消息传递中加入跨图注意力，让一张图的节点主动寻找另一张图中最相近的节点。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">独立图嵌入：G1 → h1，G2 → h2，最后比较 h1 与 h2<br>GMN：G1 和 G2 在每层传播时相互对照，再输出相似度<br></code></pre></td></tr></table></figure>
+<p>这种机制对“参考图与观测图的局部差异”很有吸引力。若两张图基本匹配，跨图差异向量趋近于零；不匹配节点则在传播中被放大。</p>
+<h3 id="实验说明了什么">实验说明了什么</h3>
+<p>论文先在随机图上构造不同数量的边替换，用 pair AUC 和 triplet accuracy 评价相似度排序。随后在二进制程序控制流图上训练函数相似度模型：同一函数经不同编译器和优化级别得到的图应相似，不同函数应不相似。</p>
+<p>二进制函数数据包含 7940 个函数，每个函数约 8 张控制流图，按函数做 80%/10%/10% 的训练、验证和测试划分。论文的 GMN 在该任务上达到 99.28 pair AUC 和 99.18 triplet accuracy，也优于独立图嵌入和 Siamese 模型。</p>
+<h3 id="为什么它不是修复器">为什么它不是修复器</h3>
+<p>GMN 输出的是相似度或排序，不是修改位置和编辑脚本。跨图注意力可以作为对应关系的线索，却不能直接当成具有电气意义的端子匹配真值。</p>
+<p>它的计算量还包含所有跨图节点对，单层大约为 <code>O(|V1||V2|)</code>。因此更适合：</p>
+<ul>
+<li>从多个参考电路模板中先检索相似候选；</li>
+<li>对少量候选图做精排；</li>
+<li>在节点身份不明确时辅助建立对应；</li>
+<li>作为“学习型图相似度”对比实验。</li>
+</ul>
+<p>对于 LabGuardian 当前“教师已指定参考电路”的场景，直接做确定性映射与图差分通常更清楚、更快，也更容易解释。</p>
+<h2 id="论文五：Graph-Edit-Networks——输出图编辑，而不是一个分数">论文五：Graph Edit Networks——输出图编辑，而不是一个分数</h2>
+<h3 id="它真正贡献了什么">它真正贡献了什么</h3>
+<p>Graph Edit Networks（GEN）提出一种面向图到图预测的输出层。模型不只输出类别或标量，而是预测一系列局部编辑，包括：</p>
+<ul>
+<li>节点插入；</li>
+<li>节点删除；</li>
+<li>节点属性替换；</li>
+<li>边插入；</li>
+<li>边删除。</li>
+</ul>
+<p>这种输出形式与“修复建议”最接近，因为每一步都可以被人理解和执行。</p>
+<p>论文证明：如果训练时知道两张图节点集合之间的映射，就可以构造监督编辑序列；若映射最优，得到的脚本会接近最短图编辑路径。</p>
+<h3 id="为什么不能直接把它写成电路修复依据">为什么不能直接把它写成电路修复依据</h3>
+<p>原论文做的是图动态系统的下一状态预测，实验主要是 edit cycles、degree rules、Game of Life 和树结构等概念验证任务。它没有在电路网表、面包板故障或已知参考电路上评价。</p>
+<p>更关键的是，GEN 的训练需要节点映射。对 LabGuardian 来说，真正困难的往往正是：</p>
+<ul>
+<li>视觉漏检后，观测图与参考图的元件是否还能一一对应；</li>
+<li>两个外观相同的电阻怎样确定身份；</li>
+<li>IC 旋转后引脚编号是否稳定；</li>
+<li>一个端子有多个 Hole-ID 候选时采用哪个映射。</li>
+</ul>
+<p>如果这些对应关系已经确定，那么参考图差分本身就能产生编辑脚本，不必再用模型猜。</p>
+<p>因此，GEN 对我的主要价值是<strong>定义输出接口</strong>，而不是直接成为当前主模型。我可以借鉴它的“编辑序列”思路，但编辑类型要改成电路语义：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">AddConnection(terminal, electrical_node)<br>DeleteConnection(terminal, electrical_node)<br>ReassignTerminal(terminal, old_node, new_node)<br>SwapPins(component, pin_a, pin_b)<br>ReversePolarity(component)<br>InsertMissingComponent(component_type, candidate_region)<br>DeleteExtraComponent(component_id)<br></code></pre></td></tr></table></figure>
+<h2 id="论文六：GNN-based-Hierarchical-Annotation——学习与规则怎样分工">论文六：GNN-based Hierarchical Annotation——学习与规则怎样分工</h2>
+<h3 id="方法主线">方法主线</h3>
+<p>这篇 TCAD 论文输入 SPICE 网表，输出电路层次结构。作者把结构分为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">元件 Elements<br>→ 基本结构 Primitives<br>→ 功能子块 Sub-blocks<br>→ 更大系统 Systems<br></code></pre></td></tr></table></figure>
+<p>功能子块可能有大量拓扑变体，例如 OTA、LNA、Mixer 和 Oscillator，因此用 GNN 做近似子图识别和节点分类；基本结构变化较小，例如差分对和电流镜，因此用模板库、VF2 子图同构和图规则精确识别。</p>
+<p>这套分工非常值得记住：</p>
+<blockquote>
+<p>变化多、边界模糊的部分交给学习；结构稳定、可以形式化的部分交给确定性算法。</p>
+</blockquote>
+<h3 id="电路图表示">电路图表示</h3>
+<p>论文采用“元件节点 + net 节点”的二部多重图，不同边类型表示晶体管 Drain、Gate、Source 和无源器件端口。这比把元件直接互连成普通图更能保留电路端口语义。</p>
+<p>数据集包含：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th style="text-align:right">电路数</th>
+<th style="text-align:right">总节点数</th>
+<th style="text-align:right">标签数</th>
+<th style="text-align:right">特征数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OTA-bias</td>
+<td style="text-align:right">1026</td>
+<td style="text-align:right">52346</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">18</td>
+</tr>
+<tr>
+<td>RF-data</td>
+<td style="text-align:right">2597</td>
+<td style="text-align:right">77918</td>
+<td style="text-align:right">2、3 或 4</td>
+<td style="text-align:right">18</td>
+</tr>
+</tbody>
+</table>
+<p>训练/验证采用 80%/20% 划分，并做五折交叉验证。最佳 GraphSAGE+ 在 OTA-bias 和 RF-data 上的 F1 分别为 92.31 和 90.11。作者还在未进入训练的 OTA、Receiver 变体，以及更大的手工电路系统上测试。</p>
+<p>在 928 节点的 phased array 上，GraphSAGE+ 原始 F1 为 0.87，规则后处理后 F1-p 为 0.98。其他许多测试电路经后处理达到 1.00。推理运行时间为毫秒级。</p>
+<h3 id="我应该怎样解读“后处理接近-100-”">我应该怎样解读“后处理接近 100%”</h3>
+<p>这不是“纯 GNN 达到 100%”，而是 GNN 预测后加入了 channel-connected component 等电路规则。论文恰好说明：<strong>规则不是模型失败后的临时补丁，而是完整系统的一部分。</strong></p>
+<p>同时也要保持谨慎：后处理规则围绕已知模拟 IC 结构设计，测试集数量有限；扩展到新类别仍需要人工整理训练集和模板库。论文结论也承认，新增电路块的主要成本是费力的数据标注。</p>
+<h3 id="对-LabGuardian-的直接启发">对 LabGuardian 的直接启发</h3>
+<p>可以采用相同的职责边界：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">学习模块：处理视觉置信度、候选 Hole-ID、节点对应和候选编辑排序<br>确定性模块：处理面包板连通规则、端口合法性、参考图差分、VF2 和修复后复验<br></code></pre></td></tr></table></figure>
+<p>这比“用 GNN 端到端输出诊断”更容易建立证据链。</p>
+<h2 id="论文七：Image2Net——怎样评价图像到网表">论文七：Image2Net——怎样评价图像到网表</h2>
+<h3 id="为什么它与我的上游非常相关">为什么它与我的上游非常相关</h3>
+<p>Image2Net 的目标是把模拟电路原理图图片转换成网表。它不是面包板照片，但完整展示了从视觉检测到图结构输出的流程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">YOLOv8 检测元件与交叉点<br>→ 二值化和骨架化提取导线<br>→ 包围框与导线交点得到端口<br>→ MobileNetV2 判断方向和镜像<br>→ 处理 jumper / crossing / ground<br>→ 合并连通域形成 net<br>→ 输出端口级网表<br></code></pre></td></tr></table></figure>
+<p>作者开放的数据包含 2914 张完整电路图、84195 个总标注、48930 个元件标注，并保留 104 个经过人工核验的图像—网表评估对。覆盖 22 种元件类型和多种交叉样式。</p>
+<h3 id="NED-指标">NED 指标</h3>
+<p>作者将预测网表和真值网表转成异构图，再计算图编辑距离 GED。节点包括元件和 net，边类型表示具体端口。节点或边的插入、删除、替换成本都设为 1。</p>
+<p>归一化形式为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">NED = GED / (N_device + N_net + N_port)<br></code></pre></td></tr></table></figure>
+<p>NED 越低越好。表格报告：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">Successful Rate</th>
+<th style="text-align:right">平均 NED</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Image2Net</td>
+<td style="text-align:right">80.77%</td>
+<td style="text-align:right">0.116</td>
+</tr>
+<tr>
+<td>AMSNet</td>
+<td style="text-align:right">35.58%</td>
+<td style="text-align:right">0.306</td>
+</tr>
+<tr>
+<td>CHAI</td>
+<td style="text-align:right">46.15%</td>
+<td style="text-align:right">0.382</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一个需要记录的论文内部不一致">一个需要记录的论文内部不一致</h3>
+<p>实验正文中出现了“平均 NED 为 0.659”的句子，但同页表格、摘要和结论都写 0.116，且 0.116 与整体比较和分布图一致。因此我把 0.659 视为正文笔误，引用时采用 0.116，并在自己的记录中保留这个核对过程。</p>
+<h3 id="NED-能做什么，不能做什么">NED 能做什么，不能做什么</h3>
+<p>NED 比只评价元件检测 mAP 更接近最终结构目标，适合 LabGuardian 报告完整网表恢复质量。但它仍不是错误诊断指标：</p>
+<ul>
+<li>单位成本把不同电气严重程度的错误等价处理；</li>
+<li>只给整体距离，不给修复顺序和具体位置正确率；</li>
+<li>精确 GED 一般计算困难，论文为每个样本设置了最长 2 小时计算预算；</li>
+<li>104 个核验样本仍然不大；</li>
+<li>原理图导线追踪与物理面包板 Hole-ID 映射是不同视觉问题。</li>
+</ul>
+<p>所以 NED 可以作为辅助整图指标，但不能取代端子到 Hole-ID、网表边和诊断操作的分项评价。</p>
+<h2 id="论文八：KCLNet——把电学先验放进图表示">论文八：KCLNet——把电学先验放进图表示</h2>
+<h3 id="图表示和物理先验">图表示和物理先验</h3>
+<p>KCLNet 采用“器件节点 + net 节点”的二部图，边类型表示不同 pin。作者进一步根据从电压源到地的电流方向，将电路图转换成有向无环图，并沿深度异步传播消息。</p>
+<p>对比学习目标受到 Kirchhoff 电流定律启发：在不同深度保持流入与流出表示的一致性，同时通过节点遮挡等方式构造电气不一致的负样本。</p>
+<h3 id="下游实验">下游实验</h3>
+<p>论文评价三个任务：</p>
+<ul>
+<li>电路分类；</li>
+<li>子电路检测；</li>
+<li>图编辑距离预测。</li>
+</ul>
+<p>KCLNet 在分类中达到 Acc@1 0.949、F1 0.853；在子电路检测中达到 mAP 0.622、F1 0.753、IoU 0.634。消融实验说明 KCL 目标和异步传播都贡献了结果。</p>
+<p>GED 任务则将一对图编码后回归一个标量编辑距离，使用 MAE/MSE 评价。它没有恢复最优编辑路径，也没有输出错误端子位置。</p>
+<h3 id="版本状态更新-2">版本状态更新</h3>
+<p>KCLNet 已正式发表于 AAAI-26，而不应只记作 arXiv 新预印本。正式页面给出的信息为 <em>Proceedings of the AAAI Conference on Artificial Intelligence</em>，40(2)，1355–1363。</p>
+<h3 id="为什么不能直接搬到面包板">为什么不能直接搬到面包板</h3>
+<p>KCLNet 面向模拟 IC，并依赖 DC 电流方向、已知电压源和地、从电源到地的 DAG 化过程。面包板学生电路可能：</p>
+<ul>
+<li>接线错误导致断路或不满足预期方向；</li>
+<li>包含交流或动态器件；</li>
+<li>缺少可靠的电源/地识别；</li>
+<li>视觉阶段本身就不确定；</li>
+<li>拓扑很小，训练数据远少于论文数据。</li>
+</ul>
+<p>因此，KCLNet 对我最有价值的是三个思想：<strong>二部图、端口类型和物理约束负样本</strong>。是否采用完整 KCLNet 架构需要单独验证，不能因为名字带 KCL 就默认适合所有面包板任务。</p>
+<h2 id="横向比较：我到底应该借哪一部分">横向比较：我到底应该借哪一部分</h2>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th style="text-align:right">能处理漏接</th>
+<th style="text-align:right">能处理多接</th>
+<th style="text-align:right">输出具体位置</th>
+<th style="text-align:right">输出完整编辑</th>
+<th style="text-align:right">使用参考目标图</th>
+<th>主要风险</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SEAL</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">候选边级</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">不需要</td>
+<td>负样本过易、子图膨胀</td>
+</tr>
+<tr>
+<td>GNN-ACLP</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">不直接</td>
+<td style="text-align:right">端口候选级</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">不需要</td>
+<td>单顶点删除不等于整图修复</td>
+</tr>
+<tr>
+<td>GMN</td>
+<td style="text-align:right">间接</td>
+<td style="text-align:right">间接</td>
+<td style="text-align:right">注意力只能作线索</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">一对图</td>
+<td>只给相似度，计算为跨图节点对</td>
+</tr>
+<tr>
+<td>GEN</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">训练需要目标和映射</td>
+<td>原任务是图动态，节点映射本身很难</td>
+</tr>
+<tr>
+<td>层次标注混合框架</td>
+<td style="text-align:right">不做修复</td>
+<td style="text-align:right">不做修复</td>
+<td style="text-align:right">输出结构标签</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">模板库用于局部</td>
+<td>类别扩展需要标注和规则维护</td>
+</tr>
+<tr>
+<td>Image2Net NED</td>
+<td style="text-align:right">反映差异</td>
+<td style="text-align:right">反映差异</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">需要真值网表</td>
+<td>GED 成本高，单位编辑代价过粗</td>
+</tr>
+<tr>
+<td>KCLNet GED</td>
+<td style="text-align:right">反映差异</td>
+<td style="text-align:right">反映差异</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">否</td>
+<td style="text-align:right">训练需图对标签</td>
+<td>标量距离不是修复，物理假设有限</td>
+</tr>
+<tr>
+<td>确定性参考图差分</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">是</td>
+<td style="text-align:right">需要</td>
+<td>节点对应与上游视觉错误</td>
+</tr>
+</tbody>
+</table>
+<p>对当前 LabGuardian，最后一行反而最重要。学习方法不是越靠后越高级，而是必须与任务条件匹配。</p>
+<h2 id="LabGuardian-应采用什么图表示">LabGuardian 应采用什么图表示</h2>
+<h3 id="方案-A：端口节点图">方案 A：端口节点图</h3>
+<p>每个元件端子是节点，电气连接是边。优点是直接贴近 GNN-ACLP，候选链接定义简单；缺点是一个 electrical node 中多个端子的共同连接可能需要展开成大量边。</p>
+<h3 id="方案-B：元件—电气节点二部多重图">方案 B：元件—电气节点二部多重图</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">component/device nodes  ↔  electrical_node/net nodes<br></code></pre></td></tr></table></figure>
+<p>边表示“某元件的某个端子连接到某 electrical node”，边类型保存 terminal type。这个表示更接近 Image2Net、层次标注论文和 KCLNet，也避免把一个多端连接网展开成完全图。</p>
+<p>我当前更倾向方案 B：</p>
+<ul>
+<li>元件节点保存类别、方向、极性和检测证据；</li>
+<li>net 节点保存面包板 electrical_node_id；</li>
+<li>边类型保存 terminal_id / terminal_type；</li>
+<li>hole_id 作为观测证据附在边上；</li>
+<li>一个端子存在多个 Hole-ID 候选时，保留候选分布而不是立即硬选一个。</li>
+</ul>
+<p>这里必须分清：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">hole_id：物理插孔编号，是视觉定位结果<br>electrical_node_id：由面包板内部连通规则合并后的电气节点<br></code></pre></td></tr></table></figure>
+<p>诊断比较最终作用于 electrical node，但反馈必须回到具体 hole_id，学生才知道应该移动到哪里。</p>
+<h2 id="我认为最合理的下游系统">我认为最合理的下游系统</h2>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs text">照片<br>→ 元件与端子检测<br>→ Hole-ID 候选及置信度<br>→ 电气节点合并与观测网表<br>→ 与教师参考网表建立元件/端子对应<br>→ 确定性图差分生成候选编辑<br>→ 学习模型只在不确定候选间排序<br>→ 面包板规则、端口规则和参考图验证<br>→ 输出结构化错误码与证据<br>→ LLM 只负责把已验证结果解释给学生<br></code></pre></td></tr></table></figure>
+<h3 id="确定性模块负责什么">确定性模块负责什么</h3>
+<ul>
+<li>已知元件和端子的匹配；</li>
+<li>expected edge 与 observed edge 的集合差；</li>
+<li>VF2 或约束匹配；</li>
+<li>面包板孔组连通规则；</li>
+<li>端口数量、极性和 IC pin 合法性；</li>
+<li>应用候选编辑后是否与参考图一致；</li>
+<li>正确电路是否保持“不修改”。</li>
+</ul>
+<h3 id="学习模块负责什么">学习模块负责什么</h3>
+<ul>
+<li>多个 Hole-ID 候选排序；</li>
+<li>外观相同元件之间的对应排序；</li>
+<li>上游漏检时的候选缺失端子或元件；</li>
+<li>多个同样能降低图差异的编辑中，选择更符合局部电路先验的一项；</li>
+<li>无参考电路探索场景下的连接合理性评分。</li>
+</ul>
+<h3 id="LLM-负责什么">LLM 负责什么</h3>
+<p>LLM 不判断电路对错，只接收已经验证的结构化结果，例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;error_type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;REASSIGN_TERMINAL&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;component_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;R1&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;terminal_id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;R1.right&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;observed_hole&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;E17&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;expected_hole_candidates&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;E23&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;F23&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;observed_node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;N17&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;expected_node&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;N23&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;confidence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0.94</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;evidence&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;terminal_keypoint&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;hole_mapping&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;reference_netlist&quot;</span><span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>然后把它转成“R1 右端目前插在 E17，请移动到与 N23 相连的 E23 或 F23”。这样才能评价反馈是否忠于证据、是否指出具体位置、是否出现幻觉。</p>
+<h2 id="下一阶段实验应该怎样做">下一阶段实验应该怎样做</h2>
+<h3 id="实验-1：先做-Oracle-图推理上限">实验 1：先做 Oracle 图推理上限</h3>
+<p>完全绕过视觉，直接使用人工标注的观测网表和参考网表：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">GT observed graph + GT reference graph<br>→ diagnosis and edit script<br></code></pre></td></tr></table></figure>
+<p>评价确定性图差分是否能正确处理漏接、多接、错接、引脚交换、极性错误和多故障。这一步如果不成立，后面加入视觉或 GNN 都没有意义。</p>
+<h3 id="实验-2：逐级放开上游误差">实验 2：逐级放开上游误差</h3>
+<p>至少报告三层：</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>输入</th>
+<th>要回答的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle-Graph</td>
+<td>真值网表</td>
+<td>图诊断逻辑的上限是多少</td>
+</tr>
+<tr>
+<td>Oracle-Hole</td>
+<td>真值 Hole-ID + 自动网表</td>
+<td>electrical node 和网表恢复是否正确</td>
+</tr>
+<tr>
+<td>End-to-End</td>
+<td>照片全自动输出</td>
+<td>实际系统最终能修对多少电路</td>
+</tr>
+</tbody>
+</table>
+<p>如果条件允许，再加入真值元件框、真值关键点等中间层。这样能定位性能损失来自检测、Hole-ID、网表恢复还是图推理。</p>
+<h3 id="实验-3：按基础电路划分后再生成故障">实验 3：按基础电路划分后再生成故障</h3>
+<p>正确流程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">独立基础电路<br>→ 按 circuit / board / builder 划分 train, val, test<br>→ 各集合内部独立生成图编辑故障<br></code></pre></td></tr></table></figure>
+<p>错误流程：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">同一基础电路生成上百个变体<br>→ 把相似变体随机分散到 train 和 test<br></code></pre></td></tr></table></figure>
+<p>后一种会严重高估泛化能力。面包板、拍摄背景和搭建者也应该分组，最终保留不同人独立搭建的真实故障测试集。</p>
+<h3 id="实验-4：建立逐级基线">实验 4：建立逐级基线</h3>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">B0：只判断整图是否相同<br>B1：参考图 + 确定性图差分<br>B2：common neighbors / Jaccard / Adamic-Adar<br>B3：SEAL / GNN-ACLP 风格候选边排序<br>B4：GMN 图对相似度或候选对应<br>B5：确定性候选生成 + GNN 排序 + 规则验证<br></code></pre></td></tr></table></figure>
+<p>B1 应是主基线。B5 是我认为最符合实际系统的学习增强方法。GEN 可以作为未来的编辑脚本模型参考，但当前数据量不足时不应强行加入。</p>
+<h3 id="实验-5：指标必须直接对应诊断闭环">实验 5：指标必须直接对应诊断闭环</h3>
+<p>候选层指标：</p>
+<ul>
+<li>Hits@1 / Hits@3 / Hits@5；</li>
+<li>MRR；</li>
+<li>候选编辑 Precision、Recall、F1；</li>
+<li>不同错误类型的分类别结果。</li>
+</ul>
+<p>位置层指标：</p>
+<ul>
+<li>terminal 定位准确率；</li>
+<li>observed hole 准确率；</li>
+<li>expected electrical node 准确率；</li>
+<li>可替代 hole 集合命中率。</li>
+</ul>
+<p>整图层指标：</p>
+<ul>
+<li>Exact Netlist Match；</li>
+<li>Exact Repair Rate；</li>
+<li>应用所有建议后与参考图同构的比例；</li>
+<li>多故障全部修复率；</li>
+<li>正确电路误报率和误修改率；</li>
+<li>NED / GED 作为辅助距离指标。</li>
+</ul>
+<p>拒绝与不确定性指标：</p>
+<ul>
+<li>accepted precision；</li>
+<li>coverage；</li>
+<li>风险—覆盖率曲线；</li>
+<li>在不同置信度阈值下的错误建议率。</li>
+</ul>
+<p>教育反馈指标：</p>
+<ul>
+<li>是否指出正确元件；</li>
+<li>是否指出正确端子和孔位；</li>
+<li>建议是否可执行；</li>
+<li>是否引入结构化证据之外的信息；</li>
+<li>教师评分和学生有效性评分。</li>
+</ul>
+<h3 id="实验-6：分类别报告">实验 6：分类别报告</h3>
+<p>至少分为：</p>
+<ul>
+<li>missing connection；</li>
+<li>extra connection；</li>
+<li>wrong electrical node；</li>
+<li>swapped pins；</li>
+<li>reversed polarity；</li>
+<li>missing component；</li>
+<li>extra component；</li>
+<li>single fault / multiple faults。</li>
+</ul>
+<p>还要按元件类型分开报告，特别关注跳线、IC、极性元件和旋转后容易漏检的类别。一个统一的总体 Accuracy 很容易掩盖最关键的失败模式。</p>
+<h2 id="当前论文方向的取舍">当前论文方向的取舍</h2>
+<h3 id="近期应该作为主贡献的内容">近期应该作为主贡献的内容</h3>
+<ol>
+<li>面包板端子到 Hole-ID 和 electrical node 的可靠映射；</li>
+<li>从检测结果恢复端口级网表；</li>
+<li>与参考电路的确定性图比较；</li>
+<li>可定位、可执行的结构化图编辑诊断；</li>
+<li>从 Oracle 到端到端的分层实验；</li>
+<li>基于证据的 LLM 教学反馈评价。</li>
+</ol>
+<h3 id="可以作为增强或消融的内容">可以作为增强或消融的内容</h3>
+<ul>
+<li>SEAL 风格的候选连接排序；</li>
+<li>GMN 风格的跨图节点对应；</li>
+<li>KCL/端口类型等物理先验；</li>
+<li>不确定条件下的学习型候选编辑重排。</li>
+</ul>
+<h3 id="暂时不应成为核心叙事的内容">暂时不应成为核心叙事的内容</h3>
+<ul>
+<li>在只有六种基础电路时训练复杂端到端图编辑网络；</li>
+<li>用标量 GED 代替错误定位；</li>
+<li>把候选边 AUC 写成完整电路修复率；</li>
+<li>为了显得“用了 AI”而替换确定性参考图判定；</li>
+<li>只在合成错误上验证，不保留学生真实搭建测试集。</li>
+</ul>
+<h2 id="这一组论文暴露出的常见实验陷阱">这一组论文暴露出的常见实验陷阱</h2>
+<h3 id="陷阱-1：训练测试泄漏">陷阱 1：训练测试泄漏</h3>
+<p>同一基础电路的多个编辑版本跨集合出现，或者用测试集 Accuracy 做 early stopping，都会让结果偏乐观。</p>
+<h3 id="陷阱-2：负样本过于简单">陷阱 2：负样本过于简单</h3>
+<p>随机选一个遥远、不可能连接的节点作为负例，模型无需理解电路就能判断。应使用几何接近、端口类型合法但电气错误的困难负样本。</p>
+<h3 id="陷阱-3：把局部分类当成整图成功">陷阱 3：把局部分类当成整图成功</h3>
+<p>单条边 Accuracy 很高，不代表所有边同时预测后整张网表正确。必须报告 Exact Repair Rate。</p>
+<h3 id="陷阱-4：距离正确但位置错误">陷阱 4：距离正确但位置错误</h3>
+<p>模型可能正确预测 GED=1，却不知道是哪条边。教育反馈需要位置级指标。</p>
+<h3 id="陷阱-5：后处理贡献被隐藏">陷阱 5：后处理贡献被隐藏</h3>
+<p>如果最终结果依赖规则修正，要分别报告模型原始输出和规则后结果，并做消融，而不能全部归功于 GNN。</p>
+<h3 id="陷阱-6：只在正确候选必然存在时评价">陷阱 6：只在正确候选必然存在时评价</h3>
+<p>真实系统中可能因为元件漏检或 Hole-ID 全错，正确修复根本不在候选集合。需要分别报告 candidate recall 和候选集合内排序表现。</p>
+<h2 id="给我自己的执行清单">给我自己的执行清单</h2>
+<h3 id="图数据与真值">图数据与真值</h3>
+<ul>
+<li>[ ] 固定元件、端子、hole 和 electrical node 的唯一标识；</li>
+<li>[ ] 确定二部多重图 schema；</li>
+<li>[ ] 为每个正确电路保存标准参考网表；</li>
+<li>[ ] 为错误电路保存最小编辑脚本真值；</li>
+<li>[ ] 记录每条边对应的视觉证据和置信度；</li>
+<li>[ ] 明确一个 electrical node 对应的所有等价孔位。</li>
+</ul>
+<h3 id="数据扩展">数据扩展</h3>
+<ul>
+<li>[ ] 增加独立基础电路类型，而不是只增加照片；</li>
+<li>[ ] 增加不同面包板、相机、角度、背景和搭建者；</li>
+<li>[ ] 先划分基础电路，再生成合成故障；</li>
+<li>[ ] 保留学生真实搭建的单故障和多故障测试；</li>
+<li>[ ] 统计每种元件、端子和错误类型数量。</li>
+</ul>
+<h3 id="诊断实现">诊断实现</h3>
+<ul>
+<li>[ ] 完成 expected 与 observed 图的稳定节点对应；</li>
+<li>[ ] 实现 Add、Delete、Reassign、Swap、Reverse 等编辑；</li>
+<li>[ ] 编辑应用后重新验证参考图一致性；</li>
+<li>[ ] 正确电路必须输出空编辑集；</li>
+<li>[ ] 不确定时允许拒绝，不强行给错误建议。</li>
+</ul>
+<h3 id="实验">实验</h3>
+<ul>
+<li>[ ] 先跑 Oracle-Graph；</li>
+<li>[ ] 再跑 Oracle-Hole；</li>
+<li>[ ] 最后跑 End-to-End；</li>
+<li>[ ] 加入确定性、启发式、SEAL 和混合基线；</li>
+<li>[ ] 报告分类别、位置级、整图级和拒绝指标；</li>
+<li>[ ] 单独报告正确电路误修改率；</li>
+<li>[ ] 对规则后处理和学习排序做消融。</li>
+</ul>
+<h3 id="LLM-反馈">LLM 反馈</h3>
+<ul>
+<li>[ ] 只允许读取结构化诊断证据；</li>
+<li>[ ] 输出中必须包含元件、端子和孔位；</li>
+<li>[ ] 检查是否错误扩展为未验证的电路解释；</li>
+<li>[ ] 由教师评价正确性和可执行性；</li>
+<li>[ ] 由学生评价是否易懂、是否有帮助。</li>
+</ul>
+<h2 id="下一轮阅读顺序">下一轮阅读顺序</h2>
+<p>如果继续深入，我不会再无序寻找“更多 GNN”，而按当前阻塞点阅读：</p>
+<ol>
+<li><strong>节点对应与图差分</strong>：VF2、GED、带属性图匹配、约束匹配；</li>
+<li><strong>图编辑监督</strong>：如何从图对生成唯一或等价的最小编辑脚本；</li>
+<li><strong>不确定图推理</strong>：候选图、概率图和 selective prediction；</li>
+<li><strong>电路故障数据生成</strong>：怎样构造物理合理而不是随机的 hard negatives；</li>
+<li><strong>教育反馈评价</strong>：结构化诊断到自然语言反馈的事实一致性和用户研究。</li>
+</ol>
+<p>其中优先级最高的不是复现 GEN，而是把 LabGuardian 自己的参考网表差分、错误 taxonomy 和评估协议定下来。它们既是确定性系统的基础，也是将来训练图模型时的标签来源。</p>
+<h2 id="最后的阶段判断">最后的阶段判断</h2>
+<p>这一组论文让我确认：我的下游方向确实可以称为图推理，但最准确的研究对象不是笼统的“用 GNN 识别电路”，而是：</p>
+<blockquote>
+<p><strong>从带视觉不确定性的观测网表出发，与参考电路进行端口级对齐，生成可验证的电路图编辑，并将结构化证据转化为教学反馈。</strong></p>
+</blockquote>
+<p>SEAL 和 GNN-ACLP 提供候选连接学习方法，GMN 提供跨图比较思路，GEN 提供编辑脚本接口，Image2Net 提供网表级距离指标，KCLNet 提供电学先验，层次标注论文则告诉我怎样让 GNN、VF2 和规则各自负责最擅长的部分。</p>
+<p>真正属于 LabGuardian 的贡献，不是把这些模型拼成一个排行榜，而是完成这条证据链：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">端子视觉证据<br>→ Hole-ID<br>→ electrical node<br>→ 观测网表<br>→ 参考图差分<br>→ 候选编辑与验证<br>→ 具体、忠实、可执行的反馈<br></code></pre></td></tr></table></figure>
+<p>只要这条链路能用分层实验闭环证明，即使学习模型只作为不确定候选排序器，论文也会比单纯比较 YOLO 或 GNN 型号更完整、更有说服力。</p>
+<h2 id="原始论文与官方页面">原始论文与官方页面</h2>
+<ol>
+<li>Said et al., <a target="_blank" rel="noopener" href="https://doi.org/10.1007/s00521-023-08346-x">Circuit Design Completion Using Graph Neural Networks</a>, <em>Neural Computing and Applications</em>, 2023.</li>
+<li>Zhang and Chen, <a target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper/2018/hash/53f0d7c537d99b3824f0f99d62ea2428-Abstract.html">Link Prediction Based on Graph Neural Networks</a>, NeurIPS 2018.</li>
+<li>Pan et al., <a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0952197625030660">Graph Neural Networks Based Analog Circuit Link Prediction</a>, <em>Engineering Applications of Artificial Intelligence</em>, 2026.</li>
+<li>Li et al., <a target="_blank" rel="noopener" href="https://proceedings.mlr.press/v97/li19d.html">Graph Matching Networks for Learning the Similarity of Graph Structured Objects</a>, ICML 2019.</li>
+<li>Paaßen et al., <a target="_blank" rel="noopener" href="https://iclr.cc/virtual/2021/poster/3122">Graph Edit Networks</a>, ICLR 2021.</li>
+<li>Kunal et al., <a target="_blank" rel="noopener" href="https://people.ece.umn.edu/~sachin/jnl/tcad23kk.pdf">GNN-based Hierarchical Annotation for Analog Circuits</a>, <em>IEEE TCAD</em>, 2023.</li>
+<li>Xu et al., <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2508.13157">Image2Net: Datasets, Benchmark and Hybrid Framework to Convert Analog Circuit Diagrams into Netlists</a>, arXiv, 2025.</li>
+<li>Xu et al., <a target="_blank" rel="noopener" href="https://ojs.aaai.org/index.php/AAAI/article/view/37109">KCLNet: Electrically Equivalence-Oriented Graph Representation Learning for Analog Circuits</a>, AAAI 2026.</li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A7%91%E7%A0%94/" class="category-chain-item">科研</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/LabGuardian/" class="print-no-link">#LabGuardian</a>
+      
+        <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" class="print-no-link">#论文阅读</a>
+      
+        <a href="/tags/%E7%94%B5%E8%B7%AF%E8%AF%8A%E6%96%AD/" class="print-no-link">#电路诊断</a>
+      
+        <a href="/tags/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" class="print-no-link">#图神经网络</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%8C%B9%E9%85%8D/" class="print-no-link">#图匹配</a>
+      
+        <a href="/tags/%E5%9B%BE%E7%BC%96%E8%BE%91/" class="print-no-link">#图编辑</a>
+      
+        <a href="/tags/%E7%BD%91%E8%A1%A8/" class="print-no-link">#网表</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>LabGuardian 论文阅读长笔记 04：从链路预测到可验证的电路图编辑修复</div>
+      <div>https://liusuan110.github.io/2026/08/30/labguardian-paper-reading-04-graph-reasoning-roadmap/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Lusu</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年8月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/08/30/labguardian-paper-reading-03-vision-to-port-graph/" title="LabGuardian 论文阅读笔记 03：从面包板图像到端口级图推理">
+                        <span class="hidden-mobile">LabGuardian 论文阅读笔记 03：从面包板图像到端口级图推理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
