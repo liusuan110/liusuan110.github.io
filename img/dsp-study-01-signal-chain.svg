@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="495" viewBox="0 0 1000 495" role="img" aria-labelledby="title desc">
+<title id="title">数字信号处理的典型链路</title><desc id="desc">模拟输入先经过抗混叠滤波，再采样量化编码，进行数字处理，随后数模转换和重建滤波，输出连续信号。抗混叠发生在采样前。</desc>
+<rect width="1000" height="495" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#72695e"/></marker></defs>
+<text x="40" y="46" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">先限制输入频带，再进入数字处理</text>
+<text x="40" y="80" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">连续输入 xₐ(t) ↓</text>
+<rect x="40" y="105" width="260" height="112" rx="12" fill="#e5f1ed"/>
+<text x="170" y="148" font-size="21" fill="#14796f" text-anchor="middle" font-weight="bold">01  抗混叠滤波</text>
+<text x="170" y="183" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">模拟滤波器抑制带外成分</text>
+<rect x="370" y="105" width="260" height="112" rx="12" fill="#e8edf3"/>
+<text x="500" y="148" font-size="21" fill="#526b86" text-anchor="middle" font-weight="bold">02  采样、量化、编码</text>
+<text x="500" y="183" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">ADC 得到可处理的数字数据</text>
+<rect x="700" y="105" width="260" height="112" rx="12" fill="#e8edf3"/>
+<text x="830" y="148" font-size="21" fill="#526b86" text-anchor="middle" font-weight="bold">03  数字处理</text>
+<text x="830" y="183" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">在序列上执行算法</text>
+<rect x="700" y="300" width="260" height="112" rx="12" fill="#f5eadd"/>
+<text x="830" y="343" font-size="21" fill="#b46638" text-anchor="middle" font-weight="bold">04  数模转换</text>
+<text x="830" y="378" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">D/A 产生连续时间输出</text>
+<rect x="370" y="300" width="260" height="112" rx="12" fill="#f5eadd"/>
+<text x="500" y="343" font-size="21" fill="#b46638" text-anchor="middle" font-weight="bold">05  重建滤波</text>
+<text x="500" y="378" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">抑制输出中的频谱镜像</text>
+<rect x="40" y="300" width="260" height="112" rx="12" fill="#f0ede7"/>
+<text x="170" y="343" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">连续输出 yₐ(t)</text>
+<text x="170" y="378" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">对应所需的处理结果</text>
+<line x1="312.00" y1="161.00" x2="357.00" y2="161.00" stroke="#72695e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<line x1="642.00" y1="161.00" x2="687.00" y2="161.00" stroke="#72695e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<line x1="830.00" y1="229.00" x2="830.00" y2="287.00" stroke="#72695e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<line x1="688.00" y1="356.00" x2="643.00" y2="356.00" stroke="#72695e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<line x1="358.00" y1="356.00" x2="313.00" y2="356.00" stroke="#72695e" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="40" y="258" font-size="21" fill="#14796f" text-anchor="start" font-weight="normal">关键：已混入目标频带的成分，一般不能仅靠后续数字滤波分开。</text>
+<text x="500" y="459" font-size="19" fill="#72695e" text-anchor="middle" font-weight="normal">第一部分研究理想采样；量化误差与实际转换电路在后续另行讨论。</text>
+</g></svg>

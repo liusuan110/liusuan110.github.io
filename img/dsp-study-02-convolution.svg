@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700" role="img" aria-labelledby="title desc">
+<title id="title">卷积：按相同输出编号，将三份响应相加</title><desc id="desc">输入在负一、零、一处为一、二、一。冲激响应在零、一处为一、负一。输出由 h[n+1]、2h[n] 和 h[n-1] 相加，得到编号负一到二处的一、一、负一、负一。</desc>
+<rect width="1000" height="700" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<text x="40" y="42" font-size="27" fill="#2c2825" text-anchor="start" font-weight="bold">卷积：按相同输出编号，将三份响应相加</text>
+<text x="40" y="78" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">x[−1] = 1，x[0] = 2，x[1] = 1；h[0] = 1，h[1] = −1；其余为零</text>
+<rect x="24" y="521" width="952" height="137" rx="12" fill="#eef1eb"/>
+<text x="45" y="153" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">来自 x[−1] = 1</text>
+<text x="45" y="187" font-size="25" fill="#14796f" text-anchor="start" font-weight="bold">h[n + 1]</text>
+<line x1="400.00" y1="165.00" x2="935.00" y2="165.00" stroke="#a89f91" stroke-width="1.4" />
+<text x="380" y="170" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<circle cx="400.00" cy="165.00" r="3" fill="#b9b2a7"/>
+<line x1="400.00" y1="161.00" x2="400.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="400.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-2</text>
+<line x1="507.00" y1="165.00" x2="507.00" y2="142.00" stroke="#14796f" stroke-width="3" />
+<circle cx="507.00" cy="142.00" r="5.5" fill="#14796f"/>
+<text x="507.0" y="130" font-size="19" fill="#14796f" text-anchor="middle" font-weight="bold">1</text>
+<line x1="507.00" y1="161.00" x2="507.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="507.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-1</text>
+<line x1="614.00" y1="165.00" x2="614.00" y2="188.00" stroke="#14796f" stroke-width="3" />
+<circle cx="614.00" cy="188.00" r="5.5" fill="#14796f"/>
+<text x="628.0" y="194" font-size="19" fill="#14796f" text-anchor="start" font-weight="bold">-1</text>
+<line x1="614.00" y1="161.00" x2="614.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="614.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<circle cx="721.00" cy="165.00" r="3" fill="#b9b2a7"/>
+<line x1="721.00" y1="161.00" x2="721.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="721.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<circle cx="828.00" cy="165.00" r="3" fill="#b9b2a7"/>
+<line x1="828.00" y1="161.00" x2="828.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="828.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<circle cx="935.00" cy="165.00" r="3" fill="#b9b2a7"/>
+<line x1="935.00" y1="161.00" x2="935.00" y2="169.00" stroke="#a89f91" stroke-width="1" />
+<text x="935.0" y="227" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<text x="960" y="227" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="45" y="288" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">来自 x[0] = 2</text>
+<text x="45" y="322" font-size="25" fill="#b46638" text-anchor="start" font-weight="bold">2h[n]</text>
+<line x1="400.00" y1="300.00" x2="935.00" y2="300.00" stroke="#a89f91" stroke-width="1.4" />
+<text x="380" y="305" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<circle cx="400.00" cy="300.00" r="3" fill="#b9b2a7"/>
+<line x1="400.00" y1="296.00" x2="400.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="400.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-2</text>
+<circle cx="507.00" cy="300.00" r="3" fill="#b9b2a7"/>
+<line x1="507.00" y1="296.00" x2="507.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="507.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-1</text>
+<line x1="614.00" y1="300.00" x2="614.00" y2="254.00" stroke="#b46638" stroke-width="3" />
+<circle cx="614.00" cy="254.00" r="5.5" fill="#b46638"/>
+<text x="614.0" y="242" font-size="19" fill="#b46638" text-anchor="middle" font-weight="bold">2</text>
+<line x1="614.00" y1="296.00" x2="614.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="614.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="721.00" y1="300.00" x2="721.00" y2="346.00" stroke="#b46638" stroke-width="3" />
+<circle cx="721.00" cy="346.00" r="5.5" fill="#b46638"/>
+<text x="735.0" y="352" font-size="19" fill="#b46638" text-anchor="start" font-weight="bold">-2</text>
+<line x1="721.00" y1="296.00" x2="721.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="721.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<circle cx="828.00" cy="300.00" r="3" fill="#b9b2a7"/>
+<line x1="828.00" y1="296.00" x2="828.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="828.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<circle cx="935.00" cy="300.00" r="3" fill="#b9b2a7"/>
+<line x1="935.00" y1="296.00" x2="935.00" y2="304.00" stroke="#a89f91" stroke-width="1" />
+<text x="935.0" y="362" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<text x="960" y="362" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="45" y="423" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">来自 x[1] = 1</text>
+<text x="45" y="457" font-size="25" fill="#526b86" text-anchor="start" font-weight="bold">h[n − 1]</text>
+<line x1="400.00" y1="435.00" x2="935.00" y2="435.00" stroke="#a89f91" stroke-width="1.4" />
+<text x="380" y="440" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<circle cx="400.00" cy="435.00" r="3" fill="#b9b2a7"/>
+<line x1="400.00" y1="431.00" x2="400.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="400.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-2</text>
+<circle cx="507.00" cy="435.00" r="3" fill="#b9b2a7"/>
+<line x1="507.00" y1="431.00" x2="507.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="507.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-1</text>
+<circle cx="614.00" cy="435.00" r="3" fill="#b9b2a7"/>
+<line x1="614.00" y1="431.00" x2="614.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="614.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="721.00" y1="435.00" x2="721.00" y2="412.00" stroke="#526b86" stroke-width="3" />
+<circle cx="721.00" cy="412.00" r="5.5" fill="#526b86"/>
+<text x="721.0" y="400" font-size="19" fill="#526b86" text-anchor="middle" font-weight="bold">1</text>
+<line x1="721.00" y1="431.00" x2="721.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="721.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<line x1="828.00" y1="435.00" x2="828.00" y2="458.00" stroke="#526b86" stroke-width="3" />
+<circle cx="828.00" cy="458.00" r="5.5" fill="#526b86"/>
+<text x="842.0" y="464" font-size="19" fill="#526b86" text-anchor="start" font-weight="bold">-1</text>
+<line x1="828.00" y1="431.00" x2="828.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="828.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<circle cx="935.00" cy="435.00" r="3" fill="#b9b2a7"/>
+<line x1="935.00" y1="431.00" x2="935.00" y2="439.00" stroke="#a89f91" stroke-width="1" />
+<text x="935.0" y="497" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<text x="960" y="497" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="45" y="568" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">按相同编号相加</text>
+<text x="45" y="602" font-size="25" fill="#2c2825" text-anchor="start" font-weight="bold">y[n] = (x ∗ h)[n]</text>
+<line x1="400.00" y1="580.00" x2="935.00" y2="580.00" stroke="#a89f91" stroke-width="1.4" />
+<text x="380" y="585" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<circle cx="400.00" cy="580.00" r="3" fill="#b9b2a7"/>
+<line x1="400.00" y1="576.00" x2="400.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="400.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-2</text>
+<line x1="507.00" y1="580.00" x2="507.00" y2="557.00" stroke="#2c2825" stroke-width="3" />
+<circle cx="507.00" cy="557.00" r="5.5" fill="#2c2825"/>
+<text x="507.0" y="545" font-size="19" fill="#2c2825" text-anchor="middle" font-weight="bold">1</text>
+<line x1="507.00" y1="576.00" x2="507.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="507.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">-1</text>
+<line x1="614.00" y1="580.00" x2="614.00" y2="557.00" stroke="#2c2825" stroke-width="3" />
+<circle cx="614.00" cy="557.00" r="5.5" fill="#2c2825"/>
+<text x="614.0" y="545" font-size="19" fill="#2c2825" text-anchor="middle" font-weight="bold">1</text>
+<line x1="614.00" y1="576.00" x2="614.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="614.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="721.00" y1="580.00" x2="721.00" y2="603.00" stroke="#2c2825" stroke-width="3" />
+<circle cx="721.00" cy="603.00" r="5.5" fill="#2c2825"/>
+<text x="735.0" y="609" font-size="19" fill="#2c2825" text-anchor="start" font-weight="bold">-1</text>
+<line x1="721.00" y1="576.00" x2="721.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="721.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<line x1="828.00" y1="580.00" x2="828.00" y2="603.00" stroke="#2c2825" stroke-width="3" />
+<circle cx="828.00" cy="603.00" r="5.5" fill="#2c2825"/>
+<text x="842.0" y="609" font-size="19" fill="#2c2825" text-anchor="start" font-weight="bold">-1</text>
+<line x1="828.00" y1="576.00" x2="828.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="828.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<circle cx="935.00" cy="580.00" r="3" fill="#b9b2a7"/>
+<line x1="935.00" y1="576.00" x2="935.00" y2="584.00" stroke="#a89f91" stroke-width="1" />
+<text x="935.0" y="642" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<text x="960" y="642" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="500" y="686" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="normal">输出起始编号：−1 + 0 = −1；覆盖长度：3 + 2 − 1 = 4。</text>
+</g></svg>

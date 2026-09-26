@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640" role="img" aria-labelledby="title desc">
+<title id="title">同一个有理式：三种 ROC，三种序列</title><desc id="desc">例3-3有两个极点，位于实轴二分之一与二。左图收敛域在半径二的圆外，对应右边序列，因果而不稳定；中图收敛域在半径二分之一和二之间，对应双边序列，稳定而非因果；右图收敛域在半径二分之一的圆内，对应左边序列，非因果且不稳定。仅中图的绿色区域包含虚线单位圆。</desc>
+<rect width="1000" height="640" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<text x="40" y="45" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">同一个有理式：三种 ROC，三种序列</text>
+<text x="40" y="82" font-size="23" fill="#72695e" text-anchor="start" font-weight="normal">X(z) = 1 / [(1 − 0.5 z⁻¹)(1 − 2 z⁻¹)]</text>
+<text x="170" y="126" font-size="23" fill="#14796f" text-anchor="middle" font-weight="bold">|z| &gt; 2</text>
+<rect x="30" y="150" width="280" height="280" rx="12" fill="#dfede6" stroke="#e5ded2"/>
+<circle cx="170" cy="290" r="104" stroke="none" fill="#fffdf9" stroke-width="0" stroke-dasharray=""/>
+<line x1="44.00" y1="290.00" x2="298.00" y2="290.00" stroke="#b7aea1" stroke-width="1.2" />
+<line x1="170.00" y1="165.00" x2="170.00" y2="415.00" stroke="#b7aea1" stroke-width="1.2" />
+<circle cx="170" cy="290" r="104" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="170" cy="290" r="26.0" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="170" cy="290" r="52" stroke="#526b86" fill="none" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="296" y="277" font-size="15" fill="#72695e" text-anchor="end" font-weight="normal">Re</text>
+<text x="180" y="176" font-size="15" fill="#72695e" text-anchor="start" font-weight="normal">Im</text>
+<line x1="190.00" y1="284.00" x2="202.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="190.00" y1="296.00" x2="202.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="196.0" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">0.5</text>
+<line x1="268.00" y1="284.00" x2="280.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="268.00" y1="296.00" x2="280.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="274" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">2</text>
+<text x="170" y="465" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="bold">右边序列</text>
+<text x="170" y="500" font-size="18" fill="#72695e" text-anchor="middle" font-weight="normal">两项都向右展开</text>
+<text x="170" y="536" font-size="21" fill="#b46638" text-anchor="middle" font-weight="normal">因果，但不稳定</text>
+<text x="500" y="126" font-size="23" fill="#14796f" text-anchor="middle" font-weight="bold">0.5 &lt; |z| &lt; 2</text>
+<rect x="360" y="150" width="280" height="280" rx="12" fill="#fffdf9" stroke="#e5ded2"/>
+<circle cx="500" cy="290" r="104" stroke="none" fill="#dfede6" stroke-width="0" stroke-dasharray=""/>
+<circle cx="500" cy="290" r="26.0" stroke="none" fill="#fffdf9" stroke-width="0" stroke-dasharray=""/>
+<line x1="374.00" y1="290.00" x2="628.00" y2="290.00" stroke="#b7aea1" stroke-width="1.2" />
+<line x1="500.00" y1="165.00" x2="500.00" y2="415.00" stroke="#b7aea1" stroke-width="1.2" />
+<circle cx="500" cy="290" r="104" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="500" cy="290" r="26.0" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="500" cy="290" r="52" stroke="#526b86" fill="none" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="626" y="277" font-size="15" fill="#72695e" text-anchor="end" font-weight="normal">Re</text>
+<text x="510" y="176" font-size="15" fill="#72695e" text-anchor="start" font-weight="normal">Im</text>
+<line x1="520.00" y1="284.00" x2="532.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="520.00" y1="296.00" x2="532.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="526.0" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">0.5</text>
+<line x1="598.00" y1="284.00" x2="610.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="598.00" y1="296.00" x2="610.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="604" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">2</text>
+<text x="500" y="465" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="bold">双边序列</text>
+<text x="500" y="500" font-size="18" fill="#72695e" text-anchor="middle" font-weight="normal">小极点向右，大极点向左</text>
+<text x="500" y="536" font-size="21" fill="#14796f" text-anchor="middle" font-weight="normal">稳定，但非因果</text>
+<text x="830" y="126" font-size="23" fill="#14796f" text-anchor="middle" font-weight="bold">|z| &lt; 0.5</text>
+<rect x="690" y="150" width="280" height="280" rx="12" fill="#fffdf9" stroke="#e5ded2"/>
+<circle cx="830" cy="290" r="26.0" stroke="none" fill="#dfede6" stroke-width="0" stroke-dasharray=""/>
+<line x1="704.00" y1="290.00" x2="958.00" y2="290.00" stroke="#b7aea1" stroke-width="1.2" />
+<line x1="830.00" y1="165.00" x2="830.00" y2="415.00" stroke="#b7aea1" stroke-width="1.2" />
+<circle cx="830" cy="290" r="104" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="830" cy="290" r="26.0" stroke="#b46638" fill="none" stroke-width="1.5" stroke-dasharray=""/>
+<circle cx="830" cy="290" r="52" stroke="#526b86" fill="none" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="956" y="277" font-size="15" fill="#72695e" text-anchor="end" font-weight="normal">Re</text>
+<text x="840" y="176" font-size="15" fill="#72695e" text-anchor="start" font-weight="normal">Im</text>
+<line x1="850.00" y1="284.00" x2="862.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="850.00" y1="296.00" x2="862.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="856.0" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">0.5</text>
+<line x1="928.00" y1="284.00" x2="940.00" y2="296.00" stroke="#b46638" stroke-width="3" />
+<line x1="928.00" y1="296.00" x2="940.00" y2="284.00" stroke="#b46638" stroke-width="3" />
+<text x="934" y="315" font-size="16" fill="#b46638" text-anchor="middle" font-weight="normal">2</text>
+<text x="830" y="465" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="bold">左边序列</text>
+<text x="830" y="500" font-size="18" fill="#72695e" text-anchor="middle" font-weight="normal">两项都向左展开</text>
+<text x="830" y="536" font-size="21" fill="#b46638" text-anchor="middle" font-weight="normal">非因果，且不稳定</text>
+<rect x="53" y="577" width="20" height="17" rx="2" fill="#dfede6"/>
+<text x="84" y="592" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">绿色：ROC</text>
+<line x1="245.00" y1="585.00" x2="278.00" y2="585.00" stroke="#526b86" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="289" y="592" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">虚线：单位圆</text>
+<line x1="503.00" y1="579.00" x2="515.00" y2="591.00" stroke="#b46638" stroke-width="3" />
+<line x1="503.00" y1="591.00" x2="515.00" y2="579.00" stroke="#b46638" stroke-width="3" />
+<text x="526" y="592" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">叉号：极点（本图省略零点）</text>
+<text x="500" y="627" font-size="18" fill="#2c2825" text-anchor="middle" font-weight="normal">圆形边界不属于 ROC；若用作系统冲激响应，稳定性取决于 ROC 是否包含单位圆。</text>
+</g></svg>
