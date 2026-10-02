@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="775" viewBox="0 0 1100 775" role="img" aria-labelledby="title desc">
+<title id="title">两个实序列打包后的四点DIT蝶形</title><desc id="desc">打包输入z为2加j、1、2j、1加j。倒位序输入为z0、z2、z1、z3。第一级为2加3j、2减j、2加j、负j。第二级自然序输出4加4j、1减j、2j、3减j。每条支路的负号和旋转因子单独标注。</desc>
+<rect width="1100" height="775" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#72695e"/></marker></defs>
+<text x="40" y="45" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">四点 DIT：一次复 FFT 同时处理两条实序列</text>
+<text x="40" y="84" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">z = [2 + j, 1, 2j, 1 + j]；未标权重的支路为 1，连线交叉处不相加。</text>
+<text x="155" y="137" font-size="21" fill="#526b86" text-anchor="middle" font-weight="bold">倒位序输入</text>
+<text x="525" y="137" font-size="21" fill="#14796f" text-anchor="middle" font-weight="bold">第一级：二点蝶形</text>
+<text x="890" y="137" font-size="21" fill="#b46638" text-anchor="middle" font-weight="bold">第二级：自然序输出</text>
+<line x1="240.00" y1="200.00" x2="431.00" y2="200.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="340.00" x2="431.00" y2="200.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="200.00" x2="431.00" y2="340.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="340.00" x2="431.00" y2="340.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="366.07" y="326.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="387.07" y="345.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−1</text>
+<line x1="240.00" y1="480.00" x2="431.00" y2="480.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="620.00" x2="431.00" y2="480.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="480.00" x2="431.00" y2="620.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="240.00" y1="620.00" x2="431.00" y2="620.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="366.07" y="606.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="387.07" y="625.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−1</text>
+<line x1="619.00" y1="200.00" x2="883.00" y2="200.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="619.00" y1="480.00" x2="883.00" y2="200.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="619.00" y1="200.00" x2="883.00" y2="480.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="619.00" y1="480.00" x2="883.00" y2="480.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="835.6" y="466.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="856.6" y="485.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−1</text>
+<line x1="619.00" y1="340.00" x2="883.00" y2="340.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="619.00" y1="620.00" x2="883.00" y2="340.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="835.6" y="354.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="856.6" y="373.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−j</text>
+<line x1="619.00" y1="340.00" x2="883.00" y2="620.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="619.00" y1="620.00" x2="883.00" y2="620.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="835.6" y="606.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="856.6" y="625.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">+j</text>
+<rect x="65" y="175" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="155" y="207" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">z₀ = 2 + j</text>
+<rect x="65" y="315" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="155" y="347" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">z₂ = 2j</text>
+<rect x="65" y="455" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="155" y="487" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">z₁ = 1</text>
+<rect x="65" y="595" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="155" y="627" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">z₃ = 1 + j</text>
+<rect x="435" y="175" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="525" y="207" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">E₀ = 2 + 3j</text>
+<rect x="435" y="315" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="525" y="347" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">E₁ = 2 − j</text>
+<rect x="435" y="455" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="525" y="487" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">O₀ = 2 + j</text>
+<rect x="435" y="595" width="180" height="50" rx="8" fill="#e5f1ed" stroke="#d4e7df"/>
+<text x="525" y="627" font-size="21" fill="#2c2825" text-anchor="middle" font-weight="bold">O₁ = −j</text>
+<circle cx="890" cy="200" r="5" fill="#2c2825"/>
+<text x="908" y="208" font-size="21" fill="#2c2825" text-anchor="start" font-weight="bold">Z₀ = 4 + 4j</text>
+<circle cx="890" cy="340" r="5" fill="#2c2825"/>
+<text x="908" y="348" font-size="21" fill="#2c2825" text-anchor="start" font-weight="bold">Z₁ = 1 − j</text>
+<circle cx="890" cy="480" r="5" fill="#2c2825"/>
+<text x="908" y="488" font-size="21" fill="#2c2825" text-anchor="start" font-weight="bold">Z₂ = 2j</text>
+<circle cx="890" cy="620" r="5" fill="#2c2825"/>
+<text x="908" y="628" font-size="21" fill="#2c2825" text-anchor="start" font-weight="bold">Z₃ = 3 − j</text>
+<text x="40" y="697" font-size="21" fill="#2c2825" text-anchor="start" font-weight="normal">第二级：Z₀ = E₀ + O₀，Z₂ = E₀ − O₀；Z₁ = E₁ − jO₁，Z₃ = E₁ + jO₁。</text>
+<text x="40" y="737" font-size="21" fill="#72695e" text-anchor="start" font-weight="normal">再由 Z[k] 与 Z*[−k mod 4] 的和、差恢复 H[k] 与 G[k]。</text>
+</g></svg>

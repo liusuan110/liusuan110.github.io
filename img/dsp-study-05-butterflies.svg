@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="760" viewBox="0 0 1000 760" role="img" aria-labelledby="title desc">
+<title id="title">DIT和DIF蝶形的旋转因子位置</title><desc id="desc">DIT计算u加Wv和u减Wv，旋转因子在加减之前。DIF计算u加v和u减v再乘W，因子在差支路之后。加法节点为圆圈，未标权重的支路为1。</desc>
+<rect width="1000" height="760" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#72695e"/></marker></defs>
+<text x="40" y="45" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">同样一加一减，旋转因子位置不同</text>
+<text x="40" y="80" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">圆圈为加法节点；未标支路权重为 1，W 为相应旋转因子。</text>
+<text x="40" y="140" font-size="23" fill="#14796f" text-anchor="start" font-weight="bold">DIT：先给 v 乘 W</text>
+<text x="90" y="203" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">u</text>
+<text x="90" y="315" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">v</text>
+<line x1="120.00" y1="310.00" x2="245.00" y2="310.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="248" y="287" width="70" height="46" rx="8" fill="#e5f1ed"/>
+<text x="283" y="318" font-size="21" fill="#14796f" text-anchor="middle" font-weight="normal">× W</text>
+<line x1="120.00" y1="198.00" x2="586.00" y2="198.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="120.00" y1="198.00" x2="586.00" y2="310.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="325.00" y1="310.00" x2="586.00" y2="198.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="325.00" y1="310.00" x2="586.00" y2="310.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="486.7" y="296.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="507.7" y="315.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−1</text>
+<circle cx="600" cy="198" r="14" fill="#fffdf9" stroke="#2c2825"/>
+<text x="600" y="204" font-size="20" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<line x1="615.00" y1="198.00" x2="800.00" y2="198.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<text x="820" y="205" font-size="22" fill="#2c2825" text-anchor="start" font-weight="normal">u + Wv</text>
+<circle cx="600" cy="310" r="14" fill="#fffdf9" stroke="#2c2825"/>
+<text x="600" y="316" font-size="20" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<line x1="615.00" y1="310.00" x2="800.00" y2="310.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<text x="820" y="317" font-size="22" fill="#2c2825" text-anchor="start" font-weight="normal">u − Wv</text>
+<text x="40" y="445" font-size="23" fill="#526b86" text-anchor="start" font-weight="bold">DIF：先作 u − v</text>
+<text x="90" y="508" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">u</text>
+<text x="90" y="620" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">v</text>
+<line x1="120.00" y1="503.00" x2="466.00" y2="503.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="120.00" y1="503.00" x2="466.00" y2="615.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="120.00" y1="615.00" x2="466.00" y2="503.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<line x1="120.00" y1="615.00" x2="466.00" y2="615.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="341.2" y="601.0" width="42" height="25" rx="5" fill="#fffdf9"/>
+<text x="362.2" y="620.0" font-size="17" fill="#72695e" text-anchor="middle" font-weight="bold">−1</text>
+<circle cx="480" cy="503" r="14" fill="#fffdf9" stroke="#2c2825"/>
+<text x="480" y="509" font-size="20" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<line x1="495.00" y1="503.00" x2="800.00" y2="503.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<text x="820" y="510" font-size="22" fill="#2c2825" text-anchor="start" font-weight="normal">u + v</text>
+<circle cx="480" cy="615" r="14" fill="#fffdf9" stroke="#2c2825"/>
+<text x="480" y="621" font-size="20" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<line x1="495.00" y1="615.00" x2="624.00" y2="615.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<rect x="628" y="592" width="70" height="46" rx="8" fill="#e8edf3"/>
+<text x="663" y="623" font-size="21" fill="#526b86" text-anchor="middle" font-weight="normal">× W</text>
+<line x1="702.00" y1="615.00" x2="800.00" y2="615.00" stroke="#72695e" stroke-width="1.8" marker-end="url(#arr)"/>
+<text x="820" y="622" font-size="22" fill="#2c2825" text-anchor="start" font-weight="normal">(u − v)W</text>
+<text x="40" y="724" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">标准排列：DIT 倒位序输入、自然序输出；DIF 自然序输入、倒位序输出。</text>
+</g></svg>

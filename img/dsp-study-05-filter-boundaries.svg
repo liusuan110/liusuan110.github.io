@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="925" viewBox="0 0 1050 925" role="img" aria-labelledby="title desc">
+<title id="title">同一个滤波器的三种边界</title><desc id="desc">两点平均器处理无限正弦、零历史有限四点记录、四点周期输入时，编号0输出分别约0.854、0.5、0.146。三个图纵轴一致。最后一个图的编号4是下一周期首点。</desc>
+<rect width="1050" height="925" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<text x="35" y="45" font-size="27" fill="#2c2825" text-anchor="start" font-weight="bold">公式相同，边界不同：先看前一个样本是谁</text>
+<text x="35" y="84" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">y[n] = (x[n] + x[n − 1]) / 2；保存的四点为 [1, c, 0, −c]，c = √2 / 2</text>
+<text x="35" y="137" font-size="22" fill="#526b86" text-anchor="start" font-weight="bold">无限正弦输入</text>
+<text x="370" y="137" font-size="19" fill="#72695e" text-anchor="start" font-weight="normal">x[−1] = c，x[4] = −1</text>
+<line x1="130.00" y1="318.00" x2="930.00" y2="318.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="324" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">-1</text>
+<line x1="130.00" y1="253.00" x2="930.00" y2="253.00" stroke="#72695e" stroke-width="1" />
+<text x="110" y="259" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<line x1="130.00" y1="188.00" x2="930.00" y2="188.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="194" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">1</text>
+<line x1="180.00" y1="253.00" x2="180.00" y2="197.52" stroke="#526b86" stroke-width="2.5" />
+<circle cx="180" cy="197.5190296114372" r="7" fill="#526b86" stroke="#526b86" stroke-width="2"/>
+<text x="180" y="183.5190296114372" font-size="18" fill="#526b86" text-anchor="middle" font-weight="bold">0.854</text>
+<text x="180" y="354" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="352.00" y1="253.00" x2="352.00" y2="197.52" stroke="#526b86" stroke-width="2.5" />
+<circle cx="352" cy="197.5190296114372" r="5" fill="#526b86" stroke="#526b86" stroke-width="2"/>
+<text x="352" y="183.5190296114372" font-size="18" fill="#526b86" text-anchor="middle" font-weight="normal">0.854</text>
+<text x="352" y="354" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<line x1="524.00" y1="253.00" x2="524.00" y2="230.02" stroke="#526b86" stroke-width="2.5" />
+<circle cx="524" cy="230.0190296114372" r="5" fill="#526b86" stroke="#526b86" stroke-width="2"/>
+<text x="524" y="216.0190296114372" font-size="18" fill="#526b86" text-anchor="middle" font-weight="normal">0.354</text>
+<text x="524" y="354" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<line x1="696.00" y1="253.00" x2="696.00" y2="275.98" stroke="#526b86" stroke-width="2.5" />
+<circle cx="696" cy="275.9809703885628" r="5" fill="#526b86" stroke="#526b86" stroke-width="2"/>
+<text x="696" y="300.9809703885628" font-size="18" fill="#526b86" text-anchor="middle" font-weight="normal">−0.354</text>
+<text x="696" y="354" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<line x1="868.00" y1="253.00" x2="868.00" y2="308.48" stroke="#526b86" stroke-width="2.5" />
+<circle cx="868" cy="308.4809703885628" r="5" fill="#526b86" stroke="#526b86" stroke-width="2"/>
+<text x="868" y="333.4809703885628" font-size="18" fill="#526b86" text-anchor="middle" font-weight="normal">−0.854</text>
+<text x="868" y="354" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">4</text>
+<text x="950" y="354" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="35" y="378" font-size="22" fill="#14796f" text-anchor="start" font-weight="bold">有限记录，零历史</text>
+<text x="370" y="378" font-size="19" fill="#72695e" text-anchor="start" font-weight="normal">x[−1] = 0，x[4] = 0</text>
+<line x1="130.00" y1="559.00" x2="930.00" y2="559.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="565" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">-1</text>
+<line x1="130.00" y1="494.00" x2="930.00" y2="494.00" stroke="#72695e" stroke-width="1" />
+<text x="110" y="500" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<line x1="130.00" y1="429.00" x2="930.00" y2="429.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="435" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">1</text>
+<line x1="180.00" y1="494.00" x2="180.00" y2="461.50" stroke="#14796f" stroke-width="2.5" />
+<circle cx="180" cy="461.5" r="7" fill="#14796f" stroke="#14796f" stroke-width="2"/>
+<text x="180" y="447.5" font-size="18" fill="#14796f" text-anchor="middle" font-weight="bold">0.500</text>
+<text x="180" y="595" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="352.00" y1="494.00" x2="352.00" y2="438.52" stroke="#14796f" stroke-width="2.5" />
+<circle cx="352" cy="438.5190296114372" r="5" fill="#14796f" stroke="#14796f" stroke-width="2"/>
+<text x="352" y="424.5190296114372" font-size="18" fill="#14796f" text-anchor="middle" font-weight="normal">0.854</text>
+<text x="352" y="595" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<line x1="524.00" y1="494.00" x2="524.00" y2="471.02" stroke="#14796f" stroke-width="2.5" />
+<circle cx="524" cy="471.0190296114372" r="5" fill="#14796f" stroke="#14796f" stroke-width="2"/>
+<text x="524" y="457.0190296114372" font-size="18" fill="#14796f" text-anchor="middle" font-weight="normal">0.354</text>
+<text x="524" y="595" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<line x1="696.00" y1="494.00" x2="696.00" y2="516.98" stroke="#14796f" stroke-width="2.5" />
+<circle cx="696" cy="516.9809703885628" r="5" fill="#14796f" stroke="#14796f" stroke-width="2"/>
+<text x="696" y="541.9809703885628" font-size="18" fill="#14796f" text-anchor="middle" font-weight="normal">−0.354</text>
+<text x="696" y="595" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<line x1="868.00" y1="494.00" x2="868.00" y2="516.98" stroke="#14796f" stroke-width="2.5" />
+<circle cx="868" cy="516.9809703885628" r="5" fill="#14796f" stroke="#14796f" stroke-width="2"/>
+<text x="868" y="541.9809703885628" font-size="18" fill="#14796f" text-anchor="middle" font-weight="normal">−0.354</text>
+<text x="868" y="595" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">4</text>
+<text x="950" y="595" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="35" y="619" font-size="22" fill="#b46638" text-anchor="start" font-weight="bold">四点周期输入</text>
+<text x="370" y="619" font-size="19" fill="#72695e" text-anchor="start" font-weight="normal">x[−1] = −c，x[4] = 1</text>
+<line x1="130.00" y1="800.00" x2="930.00" y2="800.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="806" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">-1</text>
+<line x1="130.00" y1="735.00" x2="930.00" y2="735.00" stroke="#72695e" stroke-width="1" />
+<text x="110" y="741" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">0</text>
+<line x1="130.00" y1="670.00" x2="930.00" y2="670.00" stroke="#e5ded2" stroke-width="1" />
+<text x="110" y="676" font-size="16" fill="#72695e" text-anchor="end" font-weight="normal">1</text>
+<line x1="180.00" y1="735.00" x2="180.00" y2="725.48" stroke="#b46638" stroke-width="2.5" />
+<circle cx="180" cy="725.4809703885628" r="7" fill="#b46638" stroke="#b46638" stroke-width="2"/>
+<text x="180" y="711.4809703885628" font-size="18" fill="#b46638" text-anchor="middle" font-weight="bold">0.146</text>
+<text x="180" y="836" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">0</text>
+<line x1="352.00" y1="735.00" x2="352.00" y2="679.52" stroke="#b46638" stroke-width="2.5" />
+<circle cx="352" cy="679.5190296114372" r="5" fill="#b46638" stroke="#b46638" stroke-width="2"/>
+<text x="352" y="665.5190296114372" font-size="18" fill="#b46638" text-anchor="middle" font-weight="normal">0.854</text>
+<text x="352" y="836" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">1</text>
+<line x1="524.00" y1="735.00" x2="524.00" y2="712.02" stroke="#b46638" stroke-width="2.5" />
+<circle cx="524" cy="712.0190296114372" r="5" fill="#b46638" stroke="#b46638" stroke-width="2"/>
+<text x="524" y="698.0190296114372" font-size="18" fill="#b46638" text-anchor="middle" font-weight="normal">0.354</text>
+<text x="524" y="836" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">2</text>
+<line x1="696.00" y1="735.00" x2="696.00" y2="757.98" stroke="#b46638" stroke-width="2.5" />
+<circle cx="696" cy="757.9809703885628" r="5" fill="#b46638" stroke="#b46638" stroke-width="2"/>
+<text x="696" y="782.9809703885628" font-size="18" fill="#b46638" text-anchor="middle" font-weight="normal">−0.354</text>
+<text x="696" y="836" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">3</text>
+<line x1="868.00" y1="735.00" x2="868.00" y2="725.48" stroke="#b46638" stroke-width="2.5" />
+<circle cx="868" cy="725.4809703885628" r="5" fill="#fffdf9" stroke="#b46638" stroke-width="2"/>
+<text x="868" y="711.4809703885628" font-size="18" fill="#b46638" text-anchor="middle" font-weight="normal">0.146</text>
+<text x="868" y="836" font-size="17" fill="#72695e" text-anchor="middle" font-weight="normal">4</text>
+<text x="950" y="836" font-size="18" fill="#72695e" text-anchor="start" font-weight="normal">n</text>
+<text x="35" y="884" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">第三图的空心点：n = 4 是下一周期的首点，不是有限卷积的尾部。</text>
+</g></svg>
