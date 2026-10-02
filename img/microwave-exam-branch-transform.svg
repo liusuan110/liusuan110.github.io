@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="title desc">
+<title id="title">多支路题先变换再并联</title><desc id="desc">根据2023至2024期末A卷第三题独立重绘。先用cd的四分之一波长短路线得到c端开路，再按共同节点c、b依次计算。cd未标注特性阻抗，不另行假定。</desc>
+<rect width="1100" height="660" rx="18" fill="#fffdf9"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#526b86"/></marker></defs>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<text x="40" y="48" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">多支路题：先把每个阻抗移到同一个节点</text>
+<text x="40" y="83" font-size="19" fill="#72695e" text-anchor="start" font-weight="normal">2023—2024 期末 A 卷第三题 · 图示独立重绘，距离与原题一致</text>
+<line x1="100" y1="230" x2="965" y2="230" stroke="#2c2825" stroke-width="2" />
+<line x1="100" y1="255" x2="965" y2="255" stroke="#2c2825" stroke-width="2" />
+<circle cx="100" cy="230" r="5" fill="#2c2825"/>
+<text x="100" y="205" font-size="22" fill="#526b86" text-anchor="middle" font-weight="normal">a</text>
+<circle cx="290" cy="230" r="5" fill="#2c2825"/>
+<text x="290" y="205" font-size="22" fill="#526b86" text-anchor="middle" font-weight="normal">b</text>
+<circle cx="590" cy="230" r="5" fill="#2c2825"/>
+<text x="590" y="205" font-size="22" fill="#526b86" text-anchor="middle" font-weight="normal">c</text>
+<circle cx="965" cy="230" r="5" fill="#2c2825"/>
+<text x="965" y="205" font-size="22" fill="#526b86" text-anchor="middle" font-weight="normal">d</text>
+<text x="185" y="285" font-size="18" fill="#72695e" text-anchor="middle" font-weight="normal">Z₀ = 50 Ω</text>
+<text x="435" y="178" font-size="20" fill="#526b86" text-anchor="middle" font-weight="normal">2Z₀ = 100 Ω</text>
+<text x="435" y="285" font-size="21" fill="#526b86" text-anchor="middle" font-weight="normal">λ/4</text>
+<text x="770" y="285" font-size="20" fill="#72695e" text-anchor="middle" font-weight="normal">λ/4，末端短路</text>
+<line x1="965" y1="230" x2="965" y2="255" stroke="#2c2825" stroke-width="5" />
+<line x1="590" y1="230" x2="590" y2="342" stroke="#2c2825" stroke-width="2" />
+<line x1="620" y1="255" x2="620" y2="342" stroke="#2c2825" stroke-width="2" />
+<line x1="590" y1="342" x2="620" y2="342" stroke="#2c2825" stroke-width="2" />
+<text x="641" y="331" font-size="22" fill="#14796f" text-anchor="start" font-weight="normal">Z₁</text>
+<line x1="290" y1="255" x2="290" y2="412" stroke="#2c2825" stroke-width="2" />
+<line x1="315" y1="255" x2="315" y2="412" stroke="#2c2825" stroke-width="2" />
+<line x1="290" y1="412" x2="315" y2="412" stroke="#2c2825" stroke-width="2" />
+<circle cx="290" cy="395" r="5" fill="#2c2825"/>
+<text x="262" y="402" font-size="22" fill="#526b86" text-anchor="start" font-weight="normal">e</text>
+<text x="335" y="338" font-size="19" fill="#526b86" text-anchor="start" font-weight="normal">Z₀，λ/4</text>
+<text x="335" y="413" font-size="20" fill="#b46638" text-anchor="start" font-weight="normal">Z₂ = 25 Ω</text>
+<rect x="45" y="475" width="295" height="60" rx="10" fill="white" stroke="#526b86"/>
+<text x="192.5" y="512.0" font-size="20" fill="#526b86" text-anchor="middle" font-weight="normal">cd：短路 → c 端开路</text>
+<rect x="395" y="475" width="295" height="60" rx="10" fill="white" stroke="#14796f"/>
+<text x="542.5" y="512.0" font-size="20" fill="#14796f" text-anchor="middle" font-weight="normal">bc：100² / Z₁</text>
+<rect x="745" y="475" width="305" height="60" rx="10" fill="white" stroke="#b46638"/>
+<text x="897.5" y="512.0" font-size="20" fill="#b46638" text-anchor="middle" font-weight="normal">be：50² / 25 = 100 Ω</text>
+<line x1="347" y1="505" x2="384" y2="505" stroke="#526b86" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="697" y1="505" x2="734" y2="505" stroke="#526b86" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="550" y="580" font-size="24" fill="#14796f" text-anchor="middle" font-weight="bold">b 点匹配：100 Ω ∥ 100 Ω = 50 Ω，所以 Z₁ = 100 Ω</text>
+<text x="550" y="625" font-size="20" fill="#72695e" text-anchor="middle" font-weight="normal">不能把 e 点的 25 Ω 直接拿到 b 点并联；也不能把波腹阻抗当成特性阻抗。</text>
+</g></svg>

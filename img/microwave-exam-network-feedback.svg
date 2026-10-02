@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="700" viewBox="0 0 1150 700" role="img" aria-labelledby="title desc">
+<title id="title">三端口失配负载的信号流图</title><desc id="desc">2024至2025期末A卷第八题。由b2=.8a1+j.6a3与b3=j.6a2构成跨负载闭环，两负载返回波分别为a2=.5b2和a3=-.25b3。输入反射为b1/a1。</desc>
+<rect width="1150" height="700" rx="18" fill="#fffdf9"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#526b86"/></marker></defs>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<text x="40" y="48" font-size="28" fill="#2c2825" text-anchor="start" font-weight="bold">三端口接负载：返回波把端口重新连成闭环</text>
+<text x="40" y="83" font-size="19" fill="#72695e" text-anchor="start" font-weight="normal">2024—2025 期末 A 卷第八题 · 严格使用题给 S，不先假定互易或无耗</text>
+<circle cx="80" cy="355" r="7" fill="#2c2825"/>
+<text x="80" y="337" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">a₁</text>
+<circle cx="325" cy="355" r="7" fill="#2c2825"/>
+<text x="325" y="337" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">b₁</text>
+<circle cx="235" cy="170" r="7" fill="#2c2825"/>
+<text x="235" y="152" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">b₂</text>
+<circle cx="555" cy="170" r="7" fill="#2c2825"/>
+<text x="555" y="152" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">a₂</text>
+<circle cx="235" cy="540" r="7" fill="#2c2825"/>
+<text x="235" y="522" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">b₃</text>
+<circle cx="555" cy="540" r="7" fill="#2c2825"/>
+<text x="555" y="522" font-size="23" fill="#2c2825" text-anchor="middle" font-weight="normal">a₃</text>
+<line x1="90.0" y1="355.0" x2="313.0" y2="355.0" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="162" y="338" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">j0.6</text>
+<line x1="86.42219862610408" y1="347.33479518819837" x2="227.2933616486751" y2="179.19824577416196" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="92" y="225" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">0.8</text>
+<line x1="245.0" y1="170.0" x2="543.0" y2="170.0" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="325" y="146" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">Γ₂ = 0.5</text>
+<line x1="245.0" y1="540.0" x2="543.0" y2="540.0" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="330" y="585" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">Γ₃ = −0.25</text>
+<line x1="547.2078654968759" y1="176.26758644816508" x2="334.35056140374894" y2="347.47889626220194" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="420" y="274" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">0.8</text>
+<line x1="547.2078654968759" y1="533.732413551835" x2="334.35056140374894" y2="362.52110373779806" stroke="#526b86" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="420" y="460" font-size="21" fill="#526b86" text-anchor="start" font-weight="normal">0.8</text>
+<path d="M550 181 C655 330 655 490 247 536" fill="none" stroke="#b46638" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="570" y="410" font-size="21" fill="#b46638" text-anchor="start" font-weight="normal">j0.6</text>
+<path d="M551 529 C485 460 335 290 241 181" fill="none" stroke="#14796f" stroke-width="3" marker-end="url(#arrow)"/>
+<text x="340" y="225" font-size="21" fill="#14796f" text-anchor="start" font-weight="normal">j0.6</text>
+<line x1="700" y1="135" x2="700" y2="610" stroke="#e5ded2" stroke-width="1.5" />
+<text x="745" y="170" font-size="24" fill="#2c2825" text-anchor="start" font-weight="bold">先关心 b₂、b₃ 子网络</text>
+<text x="745" y="220" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">b₂ = 0.8 a₁ + j0.6 a₃</text>
+<text x="745" y="262" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">b₃ = j0.6 a₂</text>
+<text x="745" y="320" font-size="23" fill="#2c2825" text-anchor="start" font-weight="bold">闭环增益</text>
+<text x="745" y="360" font-size="20" fill="#b46638" text-anchor="start" font-weight="normal">(j0.6)(−0.25)(j0.6)(0.5)</text>
+<text x="745" y="397" font-size="25" fill="#b46638" text-anchor="start" font-weight="bold">= 0.045</text>
+<text x="745" y="450" font-size="22" fill="#14796f" text-anchor="start" font-weight="normal">消环后分母：1 − 0.045</text>
+<text x="745" y="495" font-size="20" fill="#2c2825" text-anchor="start" font-weight="normal">b₁ = j0.6 a₁ + 0.8 a₂ + 0.8 a₃</text>
+<text x="745" y="553" font-size="22" fill="#14796f" text-anchor="start" font-weight="bold">Γin = 0.335079 + j0.549738</text>
+<text x="575" y="657" font-size="22" fill="#72695e" text-anchor="middle" font-weight="normal">一个端口单独入射时功率平衡，不足以证明网络对任意激励都无耗。</text>
+</g></svg>
