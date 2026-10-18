@@ -1,159 +1,142 @@
-/* global CONFIG */
+/* global CONFIG, jQuery */
+(function () {
+  'use strict';
+  const modal = jQuery('#modalSearch');
+  const input = document.querySelector('#local-search-input');
+  const result = document.querySelector('#local-search-result');
+  if (!input || !result || !modal.length) return;
 
-(function() {
-  // Modified from [hexo-generator-search](https://github.com/wzpan/hexo-generator-search)
-  function localSearchFunc(path, searchSelector, resultSelector) {
-    'use strict';
-    // 0x00. environment initialization
-    var $input = jQuery(searchSelector);
-    var $result = jQuery(resultSelector);
-
-    if ($input.length === 0) {
-      // eslint-disable-next-line no-console
-      throw Error('No element selected by the searchSelector');
-    }
-    if ($result.length === 0) {
-      // eslint-disable-next-line no-console
-      throw Error('No element selected by the resultSelector');
-    }
-
-    if ($result.attr('class').indexOf('list-group-item') === -1) {
-      $result.html('<div class="m-auto text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div><br/>Loading...</div>');
-    }
-
-    jQuery.ajax({
-      // 0x01. load xml file
-      url     : path,
-      dataType: 'xml',
-      success : function(xmlResponse) {
-        // 0x02. parse xml file
-        var dataList = jQuery('entry', xmlResponse).map(function() {
-          return {
-            title  : jQuery('title', this).text(),
-            content: jQuery('content', this).text(),
-            url    : jQuery('url', this).text()
-          };
-        }).get();
-
-        if ($result.html().indexOf('list-group-item') === -1) {
-          $result.html('');
+  // One download and one normalization per page, shared by every modal opening.
+  let loading;
+  let entries;
+  let opened = false;
+  result.setAttribute('aria-live', 'polite');
+  function textOf(entry, name) {
+    const element = entry.querySelector(name);
+    return element ? element.textContent.trim() : '';
+  }
+  function contentOf(entry) {
+    const element = entry.querySelector('content');
+    if (!element) return '';
+    if (element.getAttribute('type') === 'text') return element.textContent.trim();
+    // Compatibility with older indexes; the current index already contains text.
+    const template = document.createElement('template');
+    template.innerHTML = element.textContent;
+    template.content.querySelectorAll('script,style,svg').forEach(node => node.remove());
+    return template.content.textContent.replace(/\s+/g, ' ').trim();
+  }
+  function load() {
+    if (entries) return Promise.resolve(entries);
+    if (loading) return loading;
+    const url = CONFIG.search_path || '/local-search.xml';
+    loading = fetch(url, { credentials: 'same-origin', cache: 'no-cache' }).then(response => {
+      if (!response.ok) throw new Error('Search index: ' + response.status);
+      return response.text();
+    }).then(source => {
+      const xml = new DOMParser().parseFromString(source, 'application/xml');
+      if (xml.querySelector('parsererror')) throw new Error('Invalid search index');
+      entries = Array.from(xml.querySelectorAll('entry'), entry => {
+        const title = textOf(entry, 'title') || 'Untitled';
+        const content = contentOf(entry);
+        return { title, content, url: textOf(entry, 'url'),
+          lowerTitle: title.toLowerCase(), lowerContent: content.toLowerCase() };
+      });
+      return entries;
+    }).catch(error => {
+      loading = undefined;
+      throw error;
+    });
+    return loading;
+  }
+  function message(text) {
+    result.replaceChildren();
+    const status = document.createElement('p');
+    status.className = 'm-auto text-center';
+    status.textContent = text;
+    result.appendChild(status);
+  }
+  function highlighted(text, keywords) {
+    const fragment = document.createDocumentFragment();
+    const lower = text.toLowerCase();
+    let cursor = 0;
+    while (cursor < text.length) {
+      let start = -1;
+      let length = 0;
+      keywords.forEach(keyword => {
+        const at = lower.indexOf(keyword, cursor);
+        if (at >= 0 && (start < 0 || at < start || (at === start && keyword.length > length))) {
+          start = at;
+          length = keyword.length;
         }
-
-        $input.on('input', function() {
-          // 0x03. parse query to keywords list
-          var content = $input.val();
-          var resultHTML = '';
-          var keywords = content.trim().toLowerCase().split(/[\s-]+/);
-          $result.html('');
-          if (content.trim().length <= 0) {
-            return $input.removeClass('invalid').removeClass('valid');
-          }
-          // 0x04. perform local searching
-          dataList.forEach(function(data) {
-            var isMatch = true;
-            if (!data.title || data.title.trim() === '') {
-              data.title = 'Untitled';
-            }
-            var orig_data_title = data.title.trim();
-            var data_title = orig_data_title.toLowerCase();
-            var orig_data_content = data.content.trim().replace(/<[^>]+>/g, '');
-            var data_content = orig_data_content.toLowerCase();
-            var data_url = data.url;
-            var index_title = -1;
-            var index_content = -1;
-            var first_occur = -1;
-            // Skip matching when content is included in search and content is empty
-            if (CONFIG.include_content_in_search && data_content === '') {
-              isMatch = false;
-            } else {
-              keywords.forEach(function (keyword, i) {
-                index_title = data_title.indexOf(keyword);
-                index_content = data_content.indexOf(keyword);
-
-                if (index_title < 0 && index_content < 0) {
-                  isMatch = false;
-                } else {
-                  if (index_content < 0) {
-                    index_content = 0;
-                  }
-                  if (i === 0) {
-                    first_occur = index_content;
-                  }
-                }
-              });
-            }
-            // 0x05. show search results
-            if (isMatch) {
-              resultHTML += '<a href=\'' + data_url + '\' class=\'list-group-item list-group-item-action font-weight-bolder search-list-title\'>' + orig_data_title + '</a>';
-              var content = orig_data_content;
-              if (first_occur >= 0) {
-                // cut out 100 characters
-                var start = first_occur - 20;
-                var end = first_occur + 80;
-
-                if (start < 0) {
-                  start = 0;
-                }
-
-                if (start === 0) {
-                  end = 100;
-                }
-
-                if (end > content.length) {
-                  end = content.length;
-                }
-
-                var match_content = content.substring(start, end);
-
-                // highlight all keywords
-                keywords.forEach(function(keyword) {
-                  var regS = new RegExp(keyword, 'gi');
-                  match_content = match_content.replace(regS, '<span class="search-word">' + keyword + '</span>');
-                });
-
-                resultHTML += '<p class=\'search-list-content\'>' + match_content + '...</p>';
-              }
-            }
-          });
-          if (resultHTML.indexOf('list-group-item') === -1) {
-            return $input.addClass('invalid').removeClass('valid');
-          }
-          $input.addClass('valid').removeClass('invalid');
-          $result.html(resultHTML);
-        });
+      });
+      if (start < 0) {
+        fragment.appendChild(document.createTextNode(text.slice(cursor)));
+        break;
+      }
+      fragment.appendChild(document.createTextNode(text.slice(cursor, start)));
+      const mark = document.createElement('span');
+      mark.className = 'search-word';
+      mark.textContent = text.slice(start, start + length);
+      fragment.appendChild(mark);
+      cursor = start + length;
+    }
+    return fragment;
+  }
+  function search() {
+    if (!entries) return;
+    const query = input.value.trim().toLowerCase();
+    input.classList.remove('invalid', 'valid');
+    result.replaceChildren();
+    if (!query) return;
+    const keywords = Array.from(new Set(query.split(/\s+/).filter(Boolean)));
+    const includeContent = CONFIG.include_content_in_search !== false;
+    const fragment = document.createDocumentFragment();
+    let matches = 0;
+    entries.forEach(entry => {
+      if (!keywords.every(word => entry.lowerTitle.includes(word) ||
+          (includeContent && entry.lowerContent.includes(word)))) return;
+      const href = new URL(entry.url, location.href);
+      if (!['http:', 'https:'].includes(href.protocol)) return;
+      matches++;
+      const link = document.createElement('a');
+      link.href = href.href;
+      link.className = 'list-group-item list-group-item-action font-weight-bolder search-list-title';
+      link.appendChild(highlighted(entry.title, keywords));
+      fragment.appendChild(link);
+      if (includeContent && entry.content) {
+        const positions = keywords.map(word => entry.lowerContent.indexOf(word)).filter(at => at >= 0);
+        const start = Math.max(0, (positions.length ? Math.min(...positions) : 0) - 20);
+        const end = Math.min(entry.content.length, start + 120);
+        const snippet = document.createElement('p');
+        snippet.className = 'search-list-content';
+        if (start) snippet.appendChild(document.createTextNode('…'));
+        snippet.appendChild(highlighted(entry.content.slice(start, end), keywords));
+        if (end < entry.content.length) snippet.appendChild(document.createTextNode('…'));
+        fragment.appendChild(snippet);
       }
     });
+    result.appendChild(fragment);
+    input.classList.add(matches ? 'valid' : 'invalid');
   }
-
-  function localSearchReset(searchSelector, resultSelector) {
-    'use strict';
-    var $input = jQuery(searchSelector);
-    var $result = jQuery(resultSelector);
-
-    if ($input.length === 0) {
-      // eslint-disable-next-line no-console
-      throw Error('No element selected by the searchSelector');
-    }
-    if ($result.length === 0) {
-      // eslint-disable-next-line no-console
-      throw Error('No element selected by the resultSelector');
-    }
-
-    $input.val('').removeClass('invalid').removeClass('valid');
-    $result.html('');
-  }
-
-  var modal = jQuery('#modalSearch');
-  var searchSelector = '#local-search-input';
-  var resultSelector = '#local-search-result';
-  modal.on('show.bs.modal', function() {
-    var path = CONFIG.search_path || '/local-search.xml';
-    localSearchFunc(path, searchSelector, resultSelector);
+  // Namespaced replacement prevents duplicate listeners if initialized again.
+  jQuery(input).off('input.localSearch').on('input.localSearch', search);
+  modal.off('.localSearch');
+  modal.on('show.bs.modal.localSearch', function () {
+    opened = true;
+    if (!entries) message('正在加载搜索索引…');
+    load().then(() => {
+      modal.attr('data-search-state', 'ready');
+      if (opened) search();
+    }).catch(() => {
+      modal.attr('data-search-state', 'error');
+      if (opened) message('搜索索引加载失败，请关闭后重试。');
+    });
   });
-  modal.on('shown.bs.modal', function() {
-    jQuery('#local-search-input').focus();
-  });
-  modal.on('hidden.bs.modal', function() {
-    localSearchReset(searchSelector, resultSelector);
+  modal.on('shown.bs.modal.localSearch', () => input.focus());
+  modal.on('hidden.bs.modal.localSearch', function () {
+    opened = false;
+    input.value = '';
+    input.classList.remove('invalid', 'valid');
+    result.replaceChildren();
   });
 })();
