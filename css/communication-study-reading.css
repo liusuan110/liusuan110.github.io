@@ -1,0 +1,29 @@
+/* Loaded only by the Communication Principles article. */
+.markdown-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:17px;line-height:1.9;letter-spacing:.01em}
+.comm-reading{color:inherit;min-width:0}
+.comm-reading p{margin:1em 0 1.2em;max-width:48em}
+.comm-reading h2{margin:3.1em 0 1.1em;padding-bottom:.45em;line-height:1.5;font-size:1.65em;scroll-margin-top:85px}
+.comm-reading h3{margin:2.6em 0 1em;padding-top:.7em;border-top:1px solid #cfdee5;line-height:1.5;font-size:1.4em;color:#1b536b;scroll-margin-top:85px}
+.comm-reading h4{margin:1.8em 0 .8em;line-height:1.6;font-size:1.08em;scroll-margin-top:85px}
+.comm-reading span[id]{scroll-margin-top:85px}
+.comm-reading mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:12px 3px;margin:1.15em 0!important}
+.comm-reading mjx-container[display="true"] svg{max-width:none}
+.comm-reading img{max-width:100%;height:auto;margin:1.5em auto;border:1px solid #dce6eb;border-radius:7px;background:#fff}
+.comm-reading details{margin:1.6em 0;padding:12px 16px;border:1px solid #d4e1e6;border-radius:7px;background:rgba(34,116,165,.025);font-size:.94em}
+.comm-reading summary{cursor:pointer;font-weight:600;line-height:1.7;color:#1b536b}
+.comm-reading details[open]>summary{margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #d4e1e6}
+.comm-reading details details{font-size:1em;background:transparent}
+.comm-reading blockquote{font-style:normal;font-size:.95em;line-height:1.8}
+.comm-reading li{margin:.45em 0}
+.comm-reading table{font-size:.9em;line-height:1.8;max-width:100%}
+.comm-reading th,.comm-reading td{padding:.65em .8em;vertical-align:top}
+.comm-reading-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:1.6em 0;padding:12px;background:#edf4f6;border:1px solid #d4e1e6;border-radius:8px;font-size:.9em;line-height:1.7}
+.comm-reading-nav a{display:block;min-width:0;padding:7px 10px;background:rgba(255,255,255,.7);border-radius:4px;text-decoration:none!important;color:#1b536b}
+.comm-reading-nav a:hover{background:#fff}
+.comm-reading-nav a:focus-visible,.comm-reading summary:focus-visible{outline:3px solid #2274a5;outline-offset:3px}
+@media(max-width:600px){.markdown-body{font-size:16px;line-height:1.85;letter-spacing:0}.comm-reading h2{font-size:1.45em;margin-top:2.6em}.comm-reading h3{font-size:1.25em;margin-top:2.2em}.comm-reading h4{font-size:1.05em}.comm-reading details{padding:10px 12px}.comm-reading-nav{padding:8px;gap:6px;font-size:.85em}.comm-reading-nav a{padding:7px}.comm-reading table{font-size:.86em}}
+html[data-user-color-scheme=dark] .comm-reading h3,html[data-user-color-scheme=dark] .comm-reading summary{color:#a9cfde}
+html[data-user-color-scheme=dark] .comm-reading-nav{background:#25343e;border-color:#435966}
+html[data-user-color-scheme=dark] .comm-reading-nav a{background:#1b2933;color:#c1dce7}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .comm-reading h3,html:not([data-user-color-scheme=light]) .comm-reading summary{color:#a9cfde}html:not([data-user-color-scheme=light]) .comm-reading-nav{background:#25343e;border-color:#435966}html:not([data-user-color-scheme=light]) .comm-reading-nav a{background:#1b2933;color:#c1dce7}}
+@media print{.comm-reading-nav{display:none}.comm-reading{color:#000}.comm-reading details{background:none;border-color:#ccc}.comm-reading h2{break-before:page}}

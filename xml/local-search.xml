@@ -1832,7 +1832,7 @@ $$
     <link href="/2026/10/02/courses/communication-principles/communication-principles-semester-study/" />
     <url>/2026/10/02/courses/communication-principles/communication-principles-semester-study/</url>
     
-    <content type="html">通信原理研究怎样把消息变成波形，让它经过限带、有噪声的信道，再从观察结果恢复消息。本文以手边的 **北邮《通信原理》PDF 笔记 `PoC.pdf`** 为总框架，结合本学期教师课件逐章讲清定义、符号、公式的中间步骤和物理意义。第二章以文字、公式和图像贯通频谱、相关、复包络及 I/Q 解调；第三章已按 2026 年随机信号课件的顺序重写。
+    <content type="html">通信原理研究怎样把消息变成波形，让它经过限带、有噪声的信道，再从观察结果恢复消息。本文以手边的 **北邮《通信原理》PDF 笔记 `PoC.pdf`** 为总框架，结合本学期教师课件逐章讲清定义、符号、公式的中间步骤和物理意义。六章配合公式、图像和分步例题讲解；较长的辅助推导按需展开，小节导航、公式卡和闭卷自测便于复习回读。第三章按 2026 年随机信号课件的顺序展开。
 
 六章总顺序与原笔记一致：绪论、确定信号分析、随机过程、模拟通信系统、数字基带传输、数字频带传输。每章先对照笔记所在页，再展开原小节的推导和例子，随后用公式卡和闭卷自测验收。八个数学附录也接回其支撑的正文；历史试卷放在理解之后，用于练习模型选择与计算。
 
@@ -1841,6 +1841,10 @@ $$
 **阅读约定：** “对照笔记”标明原小节与页码；新增推导、微型演练和自编题是本文的展开讲解。六章保留 24 道主例题、36 道闭卷自测，相关小节另配旁读演练，六章末尾以同一段 BPSK 波形串起接收过程；PCM 补充另有 6 道自测，后文保留 10 道注明卷别、题号和页码的真题解析。原笔记或所附试卷答案不替代独立推导。
 
 &lt;!-- more --&gt;
+
+&lt;link rel="stylesheet" href="/css/communication-study-reading.css"&gt;
+
+&lt;div class="comm-reading"&gt;
 
 &lt;h2 id="comm-map"&gt;学习导航与全课程主线&lt;/h2&gt;
 
@@ -1925,9 +1929,27 @@ $$
 
 这一章对应笔记正文第 1 页（PDF 第 6 页）的 **1.1「引言」与 1.2「关于本笔记」**。原笔记只用一页介绍课程定位、系统模型和阅读方法，没有展开速率、误码率或能量指标。下面先把这一页真正说明白，再补上阅读后五章所需的基本语言；这些指标讲解和例题是本文补充，不能当成原笔记逐字内容。
 
+&lt;nav class="comm-reading-nav" aria-label="第一章小节导航"&gt;
+&lt;a href="#comm-ch1-chain"&gt;1.1 信号链与信息&lt;/a&gt;
+&lt;a href="#comm-ch1-reading"&gt;1.2 怎样读笔记&lt;/a&gt;
+&lt;a href="#comm-ch1-rates"&gt;1.3 比特率与符号率&lt;/a&gt;
+&lt;a href="#comm-ch1-metrics"&gt;1.4 有效性与可靠性&lt;/a&gt;
+&lt;a href="#comm-ch1-energy"&gt;1.5 功率与能量&lt;/a&gt;
+&lt;a href="#comm-ch1-snr"&gt;1.6 分贝与信噪比&lt;/a&gt;
+&lt;a href="#comm-ch1-methods"&gt;1.7 解题顺序&lt;/a&gt;
+&lt;a href="#comm-formulas-1"&gt;公式卡&lt;/a&gt;
+&lt;a href="#comm-quiz-1"&gt;闭卷自测&lt;/a&gt;
+&lt;/nav&gt;
+
+复习时沿着 **信息 → 比特 → 符号 → 波形 → 接收判决** 读；遇到指标换算，先认清它属于哪一站，再代公式。跨章的参数账本与补充约定可以按需展开。
+
+&lt;span id="comm-ch1-chain"&gt;&lt;/span&gt;
+
 ### 1.1 笔记里的五个方框究竟在传什么
 
-笔记图 1-1 的模型是「信源 → 编码 → 信道 → 译码 → 信宿」。读这个图，不能只背方框名称：要区分**想传的信息、用来表示信息的符号、实际进入信道的波形**。例如文字“你好”是消息；表示文字的一串比特是离散符号；天线端电压随时间变化得到的 $x(t)$ 才是物理信号。通信原理主要研究最后一层如何承载前两层，以及受干扰后能恢复得多好。
+笔记图 1-1 的模型是「信源 → 编码 → 信道 → 译码 → 信宿」，可以对照全文开头的系统链示意图阅读。先区分三层对象：**想传的信息、用来表示信息的符号、实际进入信道的波形**。
+
+例如文字“你好”是消息；表示文字的一串比特是离散符号；天线端电压随时间变化得到的 $x(t)$ 才是物理信号。通信原理主要研究最后一层如何承载前两层，以及受干扰后能恢复得多好。
 
 信源产生要传的信息，发送机选择一种物理表示，信道把它送到接收机，接收机从观察结果中恢复信息，信宿使用恢复的结果。图里的“编码/译码”是简化的总称；在更细的系统图中，还要拆出信源编码、信道编码、脉冲成形、调制与对应的接收过程。
 
@@ -1938,6 +1960,9 @@ $$
 一个二进制符号可以用正、负两个电平表示，也可以用两种载波相位表示。“0”和“1”是信息标签；电压、频率、相位才是信道实际承载的物理状态。第五章研究前一种基带表示，第六章研究载波上的表示。接收机先观察电压或相关器输出，再依据规则判断标签；第六章的“判错”就是物理观测越过了这个规则的边界。
 
 &lt;h4 id="comm-deep-chain-parameters"&gt;旁读演练 自编：给同一条信号链逐站记账&lt;/h4&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开 8PSK 参数账本：把速率、带宽与能量接到同一条信号链&lt;/summary&gt;
 
 暂取一条无编码 8PSK 链路：输入信息速率为 $1.2\,\mathrm{Mbit/s}$，每三个比特选择八种相位中的一种；基带采用滚降系数 $\alpha=0.25$ 的升余弦成形，载频为 $10\,\mathrm{MHz}$。以下带宽关系会在第五、六章推导，此处先借它们给绪论的方框标上可追踪的参数。假定接收参考点的平均信号功率为 $0.6\,\mathrm{mW}$，同一参考点的能量指标也由这个功率计算。
 
@@ -1953,20 +1978,34 @@ $$
 
 再横向检查能量账：$E_s=3E_b$，且 $E_sR_s=E_bR_b=0.6\,\mathrm{mW}$。同一个接收功率可以按“每符号”或“每比特”分摊，但换分母时必须一起换能量。这个表提供的是参数之间的联系；还不能凭这些数断言误码率大小，后面仍要知道噪声、信号距离和判决方法。学习每章时，把它新增的模型接回这一站，就能知道自己正在计算哪一种对象。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch1-reading"&gt;&lt;/span&gt;
+
 ### 1.2 怎样把一页绪论变成整学期的阅读方法
+
+&lt;details&gt;
+&lt;summary&gt;展开笔记的阅读约定：省略步骤、教材页码与 PDF 实页怎样对应&lt;/summary&gt;
 
 原笔记 1.2 说明它是课后整理的重要或驳杂知识点，蓝色公式编号可交叉跳转。这意味着正文常会省掉刚学过的中间步骤，也会把证明放进附录。阅读时遇到“易得”“不难推出”，应先问：这里调用了哪个定义、做了什么换元、有没有换了谱或相关的约定？本文主要把这些被压缩的环节补回来。
 
 原笔记所称“书中页码”指周炯槃等《通信原理（第四版）》的页码；本篇标出的“正文第几页”则指这份 PDF 底部页码，两者不能互换。PDF 含封面和目录，文件实际页序比正文页码多 5。比如第二章从正文第 2 页开始，在阅读器中应跳到 PDF 第 7 页。
 
+&lt;/details&gt;
+
 做一遍完整学习时，先读对应 PDF 小节，再回到本文看定义和推导，最后合上文章算小例子。考试题放在这个流程的后面：它帮助检查理解能否用于计算。仅记住题型而没有读懂式子中的对象，换一个输入波形或噪声定义就很容易失分。下面的四个指标例子是进入后续章节的预备练习。
+
+&lt;span id="comm-ch1-rates"&gt;&lt;/span&gt;
 
 ### 1.3 速率先按每符号携带的比特数换算
 
 对无编码、等长映射的 $M=2^k$ 进制调制，每个符号携带 $k=\log_2M$ 比特，因此
 
 $$
-R_b=R_s\log_2M,\qquad T_s=\frac1{R_s}.
+\begin{aligned}
+R_b&amp;=R_s\log_2M,\\
+T_s&amp;=\frac1{R_s}.
+\end{aligned}
 $$
 
 波特（Bd）表示每秒发送多少个符号；bit/s 表示每秒传输多少比特。二进制时两者数值相等，多进制时不相等。
@@ -1974,8 +2013,10 @@ $$
 如果信道编码率为 $r_c$，信息比特率为 $R_{\rm info}$，编码后传输比特率为 $R_{\rm tx}$，则
 
 $$
-R_{\rm tx}=\frac{R_{\rm info}}{r_c},\qquad
-R_s=\frac{R_{\rm info}}{r_c\log_2M}.
+\begin{aligned}
+R_{\rm tx}&amp;=\frac{R_{\rm info}}{r_c},\\
+R_s&amp;=\frac{R_{\rm info}}{r_c\log_2M}.
+\end{aligned}
 $$
 
 这是用来认清指标的预备关系，编码理论本身不属于本地六章内容。若还存在导频、同步头或循环前缀，应进一步按有效负载比例换算；题目没给这些开销时，不自行补造。
@@ -1989,18 +2030,25 @@ $$
 第二步，无编码时
 
 $$
-R_s=\frac{8\times10^6}{4}=2\times10^6\,\mathrm{Bd},\qquad
-T_s=0.5\,\mu\mathrm s.
+\begin{aligned}
+R_s&amp;=\frac{8\times10^6}{4}=2\times10^6\,\mathrm{Bd},\\
+T_s&amp;=0.5\,\mu\mathrm s.
+\end{aligned}
 $$
 
 第三步，编码后要传输更多比特：
 
 $$
-R_s=\frac{8\times10^6}{(3/4)\times4}
-=\frac83\times10^6\,\mathrm{Bd},\qquad T_s=0.375\,\mu\mathrm s.
+\begin{aligned}
+R_s&amp;=\frac{8\times10^6}{(3/4)\times4}
+=\frac83\times10^6\,\mathrm{Bd},\\
+T_s&amp;=0.375\,\mu\mathrm s.
+\end{aligned}
 $$
 
 检查：保持信息速率时加入编码，符号率应上升，而不是下降。是否能容纳新符号率，还要到第五章检查带宽。
+
+&lt;span id="comm-ch1-metrics"&gt;&lt;/span&gt;
 
 ### 1.4 有效性与可靠性要在相同条件下比较
 
@@ -2036,29 +2084,47 @@ $$
 
 第三步，检查 $P_s/2=0.005\le0.006\le0.01$。本题不能直接写 $P_b=P_s/2$，因为明确出现了两比特同时出错的符号。有限样本的经验错误率也不等于理论期望的精确值。
 
+&lt;span id="comm-ch1-energy"&gt;&lt;/span&gt;
+
 ### 1.5 功率和能量是同一条账的两种记法
 
 平均发送功率为 $P$，符号率为 $R_s$，则平均每符号能量为 $E_s=P/R_s$。无编码、每符号携带 $k$ 比特时
 
 $$
-E_s=kE_b,\qquad E_b=\frac P{R_b}.
+\begin{aligned}
+E_s&amp;=kE_b,\\
+E_b&amp;=\frac P{R_b}.
+\end{aligned}
 $$
+
+![每符号两比特时的时间尺度，以及功率、比特能量和符号能量之间的关系](/img/communication-study-rates-energy.svg)
+
+上图让一个符号持续 $T_s=1\,\mathrm{ms}$，每符号携带两比特：符号时轴走一格，比特时轴走两格，所以 $R_b=2R_s$。同一段时间的总能量可以按符号分，也可以按比特分；**分得越细，每份能量越小，总功率不变**。
 
 比较调制方案时，要把“相同 $E_b/N_0$”“相同 $E_s/N_0$”分开。例如 QPSK 一符号两比特，在相同 $E_b$ 下，它的 $E_s$ 是 BPSK 的两倍；这不意味着 QPSK 每信息比特消耗更多能量。
 
+&lt;details&gt;
+&lt;summary&gt;展开含编码时的能量口径：每信息比特与每编码比特怎样区分&lt;/summary&gt;
+
 若 $E_b$ 专指每信息比特能量，含编码系统有 $E_s=r_c kE_b$。若题目将 $E_b$ 定义为每编码比特能量，则关系改为 $E_s=kE_b$。**指标的文字定义优先于符号外观。**
+
+&lt;/details&gt;
 
 #### 例 1-3 发送功率与比特能量 自编
 
 无编码 QPSK 的平均功率为 $2\,\mathrm{mW}$，比特率为 $1\,\mathrm{Mbit/s}$，求 $E_b$、$E_s$ 和符号率。
 
 $$
-E_b=\frac{2\times10^{-3}}{10^6}=2\times10^{-9}\,\mathrm J,
-\quad R_s=5\times10^5\,\mathrm{Bd},
-\quad E_s=\frac{2\times10^{-3}}{5\times10^5}=4\times10^{-9}\,\mathrm J.
+\begin{aligned}
+E_b&amp;=\frac{2\times10^{-3}}{10^6}=2\times10^{-9}\,\mathrm J,\\
+R_s&amp;=5\times10^5\,\mathrm{Bd},\\
+E_s&amp;=\frac{2\times10^{-3}}{5\times10^5}=4\times10^{-9}\,\mathrm J.
+\end{aligned}
 $$
 
 检查 $E_s=2E_b$；乘回 $E_sR_s$ 应得到 $2\,\mathrm{mW}$。若接下来计算接收误码率，还需接收位置的能量与噪声参数，不能把发送能量直接当作已衰减链路的接收能量。
+
+&lt;span id="comm-ch1-snr"&gt;&lt;/span&gt;
 
 ### 1.6 分贝与信噪比怎样连接后面的章节
 
@@ -2067,8 +2133,10 @@ $$
 若某接收参考点的信号功率为 $P$，噪声功率为 $N_0B_n$，其中 $B_n$ 是与单边噪声水平配套的等效噪声带宽，且 $P=E_bR_b$，则
 
 $$
-\mathrm{SNR}=\frac{P}{N_0B_n}
-=\frac{E_b}{N_0}\frac{R_b}{B_n}.
+\begin{aligned}
+\mathrm{SNR}&amp;=\frac{P}{N_0B_n}\\
+&amp;=\frac{E_b}{N_0}\frac{R_b}{B_n}.
+\end{aligned}
 $$
 
 这里的 $B_n$ 是噪声积分意义上的带宽。若题目使用理想低通 $[-W,W]$ 与双边 $N_0/2$，积分得到 $N=N_0W$，此时 $B_n=W$。不能把完整双边跨度 $2W$ 再乘 $N_0$。
@@ -2080,11 +2148,21 @@ $$
 先换线性值：$\mathrm{SNR}=10$。再计算
 
 $$
-\frac{E_b}{N_0}=10\frac{10^6}{2\times10^6}=5,
-\qquad 10\log_{10}5\approx6.99\,\mathrm{dB}.
+\begin{aligned}
+\frac{E_b}{N_0}&amp;=10\frac{10^6}{2\times10^6}=5,\\
+10\log_{10}5&amp;\approx6.99\,\mathrm{dB}.
+\end{aligned}
 $$
 
 检查：本题每赫兹对应的比特率为 2，因而能量比的 dB 值比给定 SNR 小约 $3.01\,\mathrm{dB}$。这只是参数换算，是否满足误码指标要在第六章检查。
+
+&lt;span id="comm-ch1-methods"&gt;&lt;/span&gt;
+
+### 1.7 易错点与解题顺序
+
+看到系统指标题，先圈出“信息”“编码后”“符号”“基带”“射频”“发送端”“接收端”这些限定词，再列关系。最常见的失分是比特率当符号率、误符号分母当比特分母、dB 值直接入根号，或者比较方案时改动了能量基准。
+
+增加 $M$ 通常可以在相同信息速率下减少符号率，但相邻信号的距离可能缩小，因此不能仅凭 $R_s$ 下降就说通信系统全面变好。有效性和可靠性的权衡要在第五、六章用带宽与误码关系具体计算。
 
 &lt;h3 id="comm-formulas-1"&gt;第一章公式卡&lt;/h3&gt;
 
@@ -2097,12 +2175,6 @@ $$
 | $P_s/k\le P_b\le P_s$ | 固定每符号 $k$ 比特；近似等号需映射和错误模式条件 |
 | $\mathrm{SNR}=(E_b/N_0)(R_b/B_n)$ | 单边水平和噪声等效带宽配套 |
 | $\gamma=10^{\gamma_{\rm dB}/10}$ | $\gamma$ 为功率或能量比 |
-
-### 1.7 易错点与解题顺序
-
-看到系统指标题，先圈出“信息”“编码后”“符号”“基带”“射频”“发送端”“接收端”这些限定词，再列关系。最常见的失分是比特率当符号率、误符号分母当比特分母、dB 值直接入根号，或者比较方案时改动了能量基准。
-
-增加 $M$ 通常可以在相同信息速率下减少符号率，但相邻信号的距离可能缩小，因此不能仅凭 $R_s$ 下降就说通信系统全面变好。有效性和可靠性的权衡要在第五、六章用带宽与误码关系具体计算。
 
 &lt;h3 id="comm-quiz-1"&gt;第一章闭卷自测&lt;/h3&gt;
 
@@ -3010,6 +3082,22 @@ $$
 
 本章按本学期《第三章 随机信号分析（2026）》课件展开，共 119 个 PDF 页面。下表和各小节标注的是**课件 PDF 实页**；原《PoC.pdf》正文第 13—32 页作为辅助对照，其阅读器页码仍需加 5。课件中的原例注明来源页码；“自编”例子用于把中间步骤算清。
 
+&lt;nav class="comm-reading-nav" aria-label="第三章小节导航"&gt;
+&lt;a href="#comm-ch3-intro"&gt;3.1 样本与过程&lt;/a&gt;
+&lt;a href="#comm-ch3-statistics"&gt;3.2 统计量与谱&lt;/a&gt;
+&lt;a href="#comm-ch3-stationarity"&gt;3.3 平稳与遍历&lt;/a&gt;
+&lt;a href="#comm-ch3-complex"&gt;3.4 复过程与 I/Q&lt;/a&gt;
+&lt;a href="#comm-ch3-gaussian"&gt;3.5 高斯噪声&lt;/a&gt;
+&lt;a href="#comm-ch3-matched"&gt;3.6 匹配滤波&lt;/a&gt;
+&lt;a href="#comm-ch3-examples"&gt;3.7 分步练习&lt;/a&gt;
+&lt;a href="#comm-ch3-pitfalls"&gt;3.9 概念自查&lt;/a&gt;
+&lt;a href="#comm-formulas-3"&gt;公式卡&lt;/a&gt;
+&lt;a href="#comm-quiz-3"&gt;闭卷自测&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开课件页码索引：六条主线分别对应哪些 PDF 页面&lt;/summary&gt;
+
 | 跟着课件读 | PDF 实页 | 先抓住的问题 |
 |---|---|---|
 | [3.1 引言](#comm-ch3-intro) | 3—8 | 一条随机过程，为什么同时像“很多波形”和“一族随机变量”？ |
@@ -3018,6 +3106,8 @@ $$
 | [3.4 复随机过程](#comm-ch3-complex) | 53—70 | 为什么把高频波形写成 I/Q，功率中的 2 和 4 从哪里来？ |
 | [3.5 高斯噪声](#comm-ch3-gaussian) | 71—109 | 越过门限的概率、滤波后的噪声方差、包络分布怎样求？ |
 | [3.6 匹配滤波](#comm-ch3-matched) | 110—118 | 怎样把整段有噪声的波形，变成最有利的一次抽样？ |
+
+&lt;/details&gt;
 
 第一次读先完成每节的小例子，再看折叠的进一步推导。把“在什么对象上取平均”“这次用了哪个条件”写在等号旁边，会比一开始背整页公式更容易读懂课件。
 
@@ -3034,6 +3124,10 @@ $$
 | 固定实验 $e$，沿时间看 | 一条样本函数 $x(e,t)$ | 这一次示波器实际画出的曲线 |
 | 固定时刻 $t_0$，换不同实验 | 随机变量 $X(t_0)$ | 每次开机后第 0.1 秒的电压 |
 | 同时固定 $e,t_0$ | 一个确定数值 | 某次记录中的一个点 |
+
+![随机初相正弦的四条样本：固定时刻的统计观察与沿单条记录的时间观察](/img/communication-study-random-averages.svg)
+
+图中只用**随机初相正弦模型的四条样本**示意两种读法：竖切是在同一时刻看不同实验，横向是在同一次实验里随时间走。四条曲线的有限平均不能当成总体期望；统计平均能否由单条时间平均替代，要到 3.3.2 检查遍历条件。
 
 因此，“随机过程是一簇函数”和“随机过程是一族随时间编号的随机变量”说的是同一件事。**不要在同一次实验中，每走一个时间点就重新抽一次实验标号。** 例如 $X(t)=A\cos(2\pi f_0t)$ 中，一次实验选到 $A=2$ 后，这条记录的幅度一直是 2；只有换一次实验，才可能换幅度。
 
@@ -3107,6 +3201,9 @@ $$
 
 每次实验先选一个 $Z$，随后保持不变。对实验平均时，$E[Z]=0$，而正弦是确定的，所以 $m_X(t)=\sin(2\pi t)$。对某条记录做时间平均时，$Z(e)$ 是常数，$\overline{\cos^2}=1/2$、$\overline{\sin}=0$，所以 $\overline{x}_e=Z(e)/2$。**一个结果仍随时间走，一个结果仍随实验换；两种平均消去的变量不同。**
 
+&lt;details&gt;
+&lt;summary&gt;展开课件功率计算：两种平均怎样得到 5/8，单条记录为什么仍不同&lt;/summary&gt;
+
 再算整个过程的平均功率，先对实验求平均平方，再对时间平均：
 
 $$
@@ -3119,6 +3216,8 @@ P_X=\overline{E[X^2(t)]}
 $$
 
 这里 $E[Z^2]=\int_{-1}^1z^2\,dz/2=1/3$；交叉项含 $E[Z]$，所以为零。$1/8$ 是随机部分的平均功率，$1/2$ 是确定正弦的平均功率。按课件第 17—18 页，在适当的可积与极限交换条件下，也可先算各记录的时间平均功率，再对实验平均；**这不意味着每条记录的功率都等于 $5/8$。**
+
+&lt;/details&gt;
 
 读到一道题时，先在旁边写下“这次平均消去谁”：$E[\cdot]$ 消去实验随机性，横线平均消去时间变化。均值可以为零而功率非零，因为正负电压的平均可以抵消，电压平方的平均不能这样抵消。这个区别会一直跟到噪声功率和误码概率。
 
@@ -3192,16 +3291,19 @@ $$
 对有限时长记录，先截取再变换：
 
 $$
-X_L(f)=\int_{-L/2}^{L/2}X(t)e^{-j2\pi ft}\,dt,
-\qquad
-S_X(f)=\lim_{L\to\infty}\frac{E[\lvert X_L(f)\rvert^2]}{L}.
+\begin{aligned}
+X_L(f)&amp;=\int_{-L/2}^{L/2}X(t)e^{-j2\pi ft}\,dt,\\
+S_X(f)&amp;=\lim_{L\to\infty}\frac{E[\lvert X_L(f)\rvert^2]}{L}.
+\end{aligned}
 $$
 
 分母除以时长，将有限记录的“能量按频率分布”转成“功率按频率分布”。在课件讨论的功率信号、相关平均与极限存在等条件下，维纳—辛钦关系为
 
 $$
-S_X(f)=\mathcal F\{\overline R_X(\tau)\},
-\qquad P_X=\overline R_X(0)=\int_{-\infty}^{\infty}S_X(f)\,df.
+\begin{aligned}
+S_X(f)&amp;=\mathcal F\{\overline R_X(\tau)\},\\
+P_X&amp;=\overline R_X(0)=\int_{-\infty}^{\infty}S_X(f)\,df.
+\end{aligned}
 $$
 
 **一般过程变换的是平均相关 $\overline R_X$；到 WSS 情形，原自相关已只依赖时间差，才可去掉横线。** 含谱线时按冲激的面积读功率，不把冲激的“高度”当功率。
@@ -3232,12 +3334,17 @@ $$
 
 输入均值为零，输出均值仍为零；输入均值随时间变，输出均值也要按函数卷积，不能一概写成常数 $H(0)m_X$。
 
+&lt;details&gt;
+&lt;summary&gt;展开一般过程的输出相关：两个卷积为什么产生双重积分&lt;/summary&gt;
+
 自相关要把两个输出同时展开。对实输入、实滤波器，
 
 $$
 R_Y(t_1,t_2)
 =\iint h(u)h(v)R_X(t_1-u,t_2-v)\,du\,dv.
 $$
+
+&lt;/details&gt;
 
 课件第 35—36 页给出的平均谱关系为
 
@@ -3270,17 +3377,26 @@ $$
 宽平稳（WSS）只考察前两阶统计量，要求二阶矩有限，并且
 
 $$
-m_X(t)=m_X,\qquad
-R_X(t+\tau,t)=R_X(\tau).
+\begin{aligned}
+m_X(t)&amp;=m_X,\\
+R_X(t+\tau,t)&amp;=R_X(\tau).
+\end{aligned}
 $$
 
 第二式表示相关只取决于两点相隔多久，与从哪一刻开始观察无关。均值与方差恒定还不够，仍须检查不同时间之间的相关。严平稳加上二阶矩有限，可以推出 WSS；WSS 一般不能推出严平稳。对高斯过程有更强结论，留到高斯一节说明。
 
+判断两条支路能否一起按平稳过程处理，还要检查**互相关只依赖时间差**；各自 WSS 只完成了其中一部分。
+
+&lt;details&gt;
+&lt;summary&gt;展开两个频率共用初相的反例：各自 WSS 为什么仍不联合平稳&lt;/summary&gt;
+
 **课件实页 27、42 的例子。** 一次实验随机选 $\Theta\sim U[0,2\pi)$，构造
 
 $$
-X(t)=\cos(2\pi t+\Theta),\qquad
-Y(t)=\cos(3\pi t+\Theta).
+\begin{aligned}
+X(t)&amp;=\cos(2\pi t+\Theta),\\
+Y(t)&amp;=\cos(3\pi t+\Theta).
+\end{aligned}
 $$
 
 两个过程各自均值为零，自相关分别为 $\tfrac12\cos(2\pi\tau)$、$\tfrac12\cos(3\pi\tau)$，所以各自 WSS。可是它们使用同一个随机相位，互相关为
@@ -3290,6 +3406,8 @@ R_{XY}(t_1,t_2)=\frac12\cos(2\pi t_1-3\pi t_2).
 $$
 
 令 $t_1=t+\tau,t_2=t$，还剩 $\tfrac12\cos(2\pi\tau-\pi t)$，仍依赖起点 $t$。因此它们**不联合平稳**。两条支路各自 WSS，再加互相关只依赖时间差，才是联合 WSS；不能把“各自”偷换为“合在一起”。
+
+&lt;/details&gt;
 
 &lt;details&gt;
 &lt;summary&gt;进一步推导：随机相位为什么让自相关只剩时间差？&lt;/summary&gt;
@@ -3354,8 +3472,10 @@ $$
 对起点做一整周期平均即可得到
 
 $$
-\overline R_X(\tau)=\frac1{T_s}\int_0^{T_s}R_X(t+\tau,t)\,dt,
-\qquad S_X(f)=\frac{\lvert G(f)\rvert^2}{T_s}.
+\begin{aligned}
+\overline R_X(\tau)&amp;=\frac1{T_s}\int_0^{T_s}R_X(t+\tau,t)\,dt,\\
+S_X(f)&amp;=\frac{\lvert G(f)\rvert^2}{T_s}.
+\end{aligned}
 $$
 
 这解释了前面为什么能给非 WSS 数字波形写平均功率谱：算谱时已经对符号时钟相位做了平均。
@@ -3437,10 +3557,10 @@ $$
 
 $$
 \begin{aligned}
-R_Z(\tau)&amp;=R_X(\tau)+R_Y(\tau)
-+j[R_{YX}(\tau)-R_{XY}(\tau)],\\
-J_Z(\tau)&amp;=R_X(\tau)-R_Y(\tau)
-+j[R_{XY}(\tau)+R_{YX}(\tau)].
+R_Z(\tau)&amp;=R_X(\tau)+R_Y(\tau)\\
+&amp;\quad+j[R_{YX}(\tau)-R_{XY}(\tau)],\\
+J_Z(\tau)&amp;=R_X(\tau)-R_Y(\tau)\\
+&amp;\quad+j[R_{XY}(\tau)+R_{YX}(\tau)].
 \end{aligned}
 $$
 
@@ -3513,6 +3633,8 @@ $$
 
 ![实带通过程、解析信号与复包络的频谱和功率关系](/img/communication-study-random-iq.svg)
 
+读图时先认清**哪一幅是实带通谱、哪一幅是解析谱、哪一幅已下移到基带**，再比较面积。谱线位置的移动与谱高度、总功率的变化是三件不同的事。
+
 &lt;h4 id="comm-ch3-topic-13"&gt;3.4.4 I/Q 与真实波形怎样接回去？&lt;/h4&gt;
 
 因为 $Z=X_Le^{j2\pi f_ct}$，取实部便有
@@ -3526,22 +3648,13 @@ $X_c$ 是同相分量，也叫 I；$X_s$ 是正交分量，也叫 Q。它们是�
 **课件 PDF 第 62、66—70 页。** 零均值解析过程满足 $J_Z=0$，下变频后同样有 $J_L=0$。把两条分量写成
 
 $$
-X_c=\frac{X_L+X_L^*}{2},\qquad
-X_s=\frac{X_L-X_L^*}{2j},
-$$
-
-相乘并取期望后，两个“直接相乘”的项为零，剩下两项。因此
-
-$$
 \begin{aligned}
-R_c(\tau)
-&amp;=\frac14 E[(X_L(t+\tau)+X_L^*(t+\tau))
-(X_L(t)+X_L^*(t))]\\
-&amp;=\frac14[0+R_L(\tau)+R_L^*(\tau)+0].
+X_c&amp;=\frac{X_L+X_L^*}{2},\\
+X_s&amp;=\frac{X_L-X_L^*}{2j}.
 \end{aligned}
 $$
 
-Q 的分母还多一个 $j^2=-1$，展开后也留下同样的结果；而 I 与 Q 相乘时，两项改为相减。合起来就是
+利用 $J_L=0$ 展开两条支路的乘积，可以得到相关与功率谱之间的联系：
 
 $$
 \begin{aligned}
@@ -3562,13 +3675,33 @@ $$
 
 所以**每条 I/Q 分量的功率都等于原实带通功率，复包络的平均模平方是它的两倍**。这是课件当前表示方式的换算系数；复数表示没有让实际电路多产生能量。
 
+&lt;details&gt;
+&lt;summary&gt;展开 I/Q 相关的乘法：四项怎样抵消，系数 1/2 与 1/4 怎样出现&lt;/summary&gt;
+
+相乘并取期望后，两个“直接相乘”的项为零，剩下两项。因此
+
+$$
+\begin{aligned}
+R_c(\tau)
+&amp;=\frac14 E[(X_L(t+\tau)+X_L^*(t+\tau))
+(X_L(t)+X_L^*(t))]\\
+&amp;=\frac14[0+R_L(\tau)+R_L^*(\tau)+0].
+\end{aligned}
+$$
+
+Q 的分母还多一个 $j^2=-1$，展开后也留下同样的结果；而 I 与 Q 相乘时，两项改为相减。
+
+&lt;/details&gt;
+
 &lt;h4 id="comm-ch3-topic-14"&gt;自编小例：同一时刻不相关，为什么换个时差就可能相关？&lt;/h4&gt;
 
 令 $X(t)=2\cos(2\pi\times1100t+\Theta)$，$\Theta$ 在 $[0,2\pi)$ 均匀。用 $f_c=1000\,\mathrm{Hz}$ 下变频后，
 
 $$
-X_c(t)=2\cos(2\pi\times100t+\Theta),\qquad
-X_s(t)=2\sin(2\pi\times100t+\Theta).
+\begin{aligned}
+X_c(t)&amp;=2\cos(2\pi\times100t+\Theta),\\
+X_s(t)&amp;=2\sin(2\pi\times100t+\Theta).
+\end{aligned}
 $$
 
 随机相位使两条分量均值为零；原波形、I、Q 的平均平方都是 2，复包络平均模平方是 4。利用 $\cos(a+b)\sin a$ 的平均值，得
@@ -3640,6 +3773,11 @@ $$
 
 &lt;h4 id="comm-deep-gaussian-conditioning"&gt;旁读演练 3-A（自编）：知道一个噪声样本，能帮助猜另一个吗？&lt;/h4&gt;
 
+相关越强，一个样本对另一个样本提供的信息通常越多；下面用条件高斯分布把这种帮助算出来。
+
+&lt;details&gt;
+&lt;summary&gt;展开条件高斯演练：相关系数 0.6 为什么解释 36% 的方差&lt;/summary&gt;
+
 取独立的 $U,V\sim\mathcal N(0,1)$，构造
 
 $$
@@ -3662,6 +3800,8 @@ E[X(t+\tau)\mid X(t)=x]&amp;=m_X+\rho(\tau)(x-m_X),\\
 $$
 
 这里是给定一个样本的条件分布。相关为零时，观测不会改变另一个样本的分布；相关接近正负 1 时，它提供的信息很多。这解释了为什么“采得更密”不一定等于“多得到很多独立信息”。
+
+&lt;/details&gt;
 
 &lt;h4 id="comm-ch3-topic-17"&gt;3.5.3 “加性”“白”“高斯”分别说了什么？&lt;/h4&gt;
 
@@ -3687,8 +3827,8 @@ $$
 \begin{aligned}
 S_n(f)&amp;=\frac{N_0}{2}\lvert H(f)\rvert^2,\\
 \sigma_n^2=E[n^2(t)]
-&amp;=\frac{N_0}{2}\int_{-\infty}^{\infty}\lvert H(f)\rvert^2df
-=\frac{N_0}{2}\int_{-\infty}^{\infty}\lvert h(t)\rvert^2dt.
+&amp;=\frac{N_0}{2}\int_{-\infty}^{\infty}\lvert H(f)\rvert^2df\\
+&amp;=\frac{N_0}{2}\int_{-\infty}^{\infty}\lvert h(t)\rvert^2dt.
 \end{aligned}
 $$
 
@@ -3696,19 +3836,26 @@ $$
 
 ![双边白噪声经过低通后的噪声功率与相关函数](/img/communication-study-noise-filter.svg)
 
+先用左边的谱面积算功率，再到右边检查 $R_n(0)$ 是否相同。带宽越小，留下的噪声越少，但相关曲线在时间轴上越宽；滤波后的相邻样本通常不再独立。
+
 **课件原例：带限白噪声（第 99—101 页）。** 理想低通在 $\lvert f\rvert\le f_H$ 内的幅度增益为 $K_0$，其他频率处为零。输出谱是高为 $N_0K_0^2/2$、总宽为 $2f_H$ 的矩形，所以
 
 $$
 \begin{aligned}
 \sigma_n^2&amp;=N_0K_0^2f_H,\\
-R_n(\tau)&amp;=N_0K_0^2f_H\operatorname{sinc}(2f_H\tau),
-\qquad \operatorname{sinc}(x)=\frac{\sin\pi x}{\pi x}.
+R_n(\tau)&amp;=N_0K_0^2f_H\operatorname{sinc}(2f_H\tau),\\
+\operatorname{sinc}(x)&amp;=\frac{\sin\pi x}{\pi x}.
 \end{aligned}
 $$
 
 课件用 $\operatorname{Sa}(2\pi f_H\tau)$，与这里的 sinc 等价。检查零时差，$R_n(0)$ 正好等于上述功率；检查非零零点，在 $\tau=k/(2f_H)$、整数 $k\ne0$ 处，两个样本不相关，高斯条件下独立。换一种滤波器，相关函数就会改变，这个独立抽样间隔也不能照搬。
 
 &lt;h4 id="comm-deep-noise-bandwidth"&gt;旁读演练 3-B（自编）：3 dB 带宽为什么不等于噪声带宽？&lt;/h4&gt;
+
+噪声功率取决于 $\lvert H(f)\rvert^2$ 的**整段面积**；3 dB 频率只标记一个位置。实际滤波器的衰减尾部也会通过噪声。
+
+&lt;details&gt;
+&lt;summary&gt;展开一阶低通演练：等效噪声带宽为什么是 π/2 倍的 3 dB 带宽&lt;/summary&gt;
 
 实际低通没有垂直截止边缘。以直流增益为 1 的一阶低通为例，$H(f)=1/(1+jf/f_3)$。$f_3$ 是增益平方降到一半的频率，$f&gt;f_3$ 处仍有噪声通过。把实际增益平方的面积换成等面积矩形，定义单侧等效噪声带宽：
 
@@ -3721,6 +3868,8 @@ R_n(\tau)&amp;=\sigma_n^2e^{-2\pi f_3\lvert\tau\rvert}.
 $$
 
 取 $f_3=1000$ Hz、$N_0=2\times10^{-9}$ W/Hz，功率约为 $3.14159\times10^{-6}$ W；直接套 $N_0f_3$ 只得到 $2\times10^{-6}$ W，漏掉了衰减尾部。间隔 0.1 ms 的样本相关系数约为 0.53349，间隔 1 ms 时约为 0.0018674；任何有限非零间隔都不严格为零。面积决定方差，形状决定相关；一个 3 dB 频率不能代替这两件事。
+
+&lt;/details&gt;
 
 &lt;h4 id="comm-ch3-topic-18"&gt;3.5.4 同一份噪声，怎样形成两个独立的接收量？&lt;/h4&gt;
 
@@ -3786,8 +3935,10 @@ $n_c$ 是同相分量，$n_s$ 是正交分量；合称 I/Q。载波负责快振�
 **课件第 90—95 页的核心结论：** 对零均值实平稳窄带高斯噪声，设实带通信号的功率为 $\sigma^2$，则同一时刻
 
 $$
-n_c(t),n_s(t)\sim\mathcal N(0,\sigma^2),
-\qquad \operatorname{cov}[n_c(t),n_s(t)]=0.
+\begin{aligned}
+n_c(t),n_s(t)&amp;\sim\mathcal N(0,\sigma^2),\\
+\operatorname{cov}[n_c(t),n_s(t)]&amp;=0.
+\end{aligned}
 $$
 
 二者联合高斯，所以同一时刻独立。注意每个分量的方差都等于原带通噪声功率，而复包络的平均模平方为 $E[\lvert n_L\rvert^2]=2\sigma^2$。这是表示方式带来的系数，不是噪声凭空多了一倍。
@@ -3811,8 +3962,10 @@ $$
 **课件第 96—98 页。** 同一时刻的复平面噪声没有偏爱的方向，两维密度为圆对称钟形。改用极坐标时，半径为 $a$ 的圆环越大，面积也越大，因此包络密度中多了一个 $a$：
 
 $$
-p_a(a)=\frac a{\sigma^2}e^{-a^2/(2\sigma^2)},\quad a\ge0;
-\qquad p_\varphi(\varphi)=\frac1{2\pi},\quad0\le\varphi&lt;2\pi.
+\begin{aligned}
+p_a(a)&amp;=\frac a{\sigma^2}e^{-a^2/(2\sigma^2)},\quad a\ge0,\\
+p_\varphi(\varphi)&amp;=\frac1{2\pi},\quad0\le\varphi&lt;2\pi.
+\end{aligned}
 $$
 
 这就是**瑞利包络、均匀相位**，同一时刻两者独立。包络只能非负，当然不能直接套零均值高斯密度；其尾概率为 $P(a&gt;b)=e^{-b^2/(2\sigma^2)}$。$E[a^2]=2\sigma^2$ 再次吻合复包络功率。包络检波读的是点的距离，相干接收读的是某个方向的投影，两种接收的噪声规律因此不同。
@@ -3822,16 +3975,20 @@ $$
 **课件第 102—104 页。** 实白噪声先通过单位增益带通，正频率通带为 $[f_c-f_m,f_c+f_m]$，还要计入负频率镜像。总谱宽为 $4f_m$，故带通噪声功率为 $2N_0f_m$。将它乘 $\cos2\pi f_ct$：
 
 $$
+\begin{aligned}
 n(t)\cos2\pi f_ct
-=\frac12n_c(t)
-+\frac12[n_c(t)\cos4\pi f_ct-n_s(t)\sin4\pi f_ct].
+&amp;=\frac12n_c(t)+\frac12n_c(t)\cos4\pi f_ct\\
+&amp;\quad-\frac12n_s(t)\sin4\pi f_ct.
+\end{aligned}
 $$
 
 低通去掉 $2f_c$ 附近的振荡，只留下 $n_o=n_c/2$。I/Q 的低通谱在 $[-f_m,f_m]$ 内高度为 $N_0$，所以
 
 $$
-S_{n_o}(f)=\frac{N_0}{4}\quad(\lvert f\rvert\le f_m),
-\qquad P_{n_o}=\frac{N_0f_m}{2}.
+\begin{aligned}
+S_{n_o}(f)&amp;=\frac{N_0}{4}\quad(\lvert f\rvert\le f_m),\\
+P_{n_o}&amp;=\frac{N_0f_m}{2}.
+\end{aligned}
 $$
 
 这道例子同时检查了三个“二”：带通有正负频带，低通积分宽度为 $2f_m$，乘余弦后幅度又减半。若改用 $2\cos$ 解调，输出噪声就是 $n_c$，方差随增益平方变为原来的四倍。比较抗噪性能时，信号增益也要一起算，不能只看噪声这一边。
@@ -3857,8 +4014,11 @@ $I_0$ 是零阶修正贝塞尔函数，来自把各个方向的概率加起来�
 收到 $r=s+n_w$，其中 $s$ 是已知有限能量波形，$n_w$ 是实 AWGN，双边谱为 $N_0/2$。通过 $h$，在 $t_0$ 时刻抽样：
 
 $$
-y(t_0)=\underbrace{\int s(u)h(t_0-u)du}_{s_o(t_0)}
-+\underbrace{\int n_w(u)h(t_0-u)du}_{Z}.
+\begin{aligned}
+y(t_0)&amp;=s_o(t_0)+Z,\\
+s_o(t_0)&amp;=\int s(u)h(t_0-u)du,\\
+Z&amp;=\int n_w(u)h(t_0-u)du.
+\end{aligned}
 $$
 
 有用部分在这一时刻是确定数，噪声部分是零均值高斯变量。根据上一节投影公式，若 $E_h=\int\lvert h(t)\rvert^2dt$，则 $\operatorname{var}(Z)=N_0E_h/2$。课件要最大化的是
@@ -3874,9 +4034,11 @@ $$
 令 $E_s=\int\lvert s(t)\rvert^2dt$。课件第 112—114 页的结论为
 
 $$
-h(t)=Ks^*(t_0-t),\qquad
-H(f)=KS^*(f)e^{-j2\pi ft_0},
-\qquad \gamma_{\max}=\frac{2E_s}{N_0}.
+\begin{aligned}
+h(t)&amp;=Ks^*(t_0-t),\\
+H(f)&amp;=KS^*(f)e^{-j2\pi ft_0},\\
+\gamma_{\max}&amp;=\frac{2E_s}{N_0}.
+\end{aligned}
 $$
 
 实波形可以删去星号。最直接的理解不是记忆图像操作，而是代到卷积里：抽样时用到 $h(t_0-u)=Ks^*(u)$，恰好把收到的第 $u$ 时刻与模板的同一时刻对齐。反转是为了抵消卷积本来的反向滑动；延迟是把对齐安排在指定的 $t_0$；共轭是让复数相位配合，使 $s(u)s^*(u)=\lvert s(u)\rvert^2$ 同向相加。
@@ -3914,9 +4076,10 @@ $$
 这是下降斜坡。但在 $t=T$ 抽样时，卷积所用的 $h(T-u)=Au/T$ 正好又与上升信号对应：输入后半段更大，模板也给予更大的权重。能量为
 
 $$
-E_g=\int_0^T\left(\frac{At}{T}\right)^2dt
-=\frac{A^2T}{3},\qquad
-\gamma_{\max}=\frac{2A^2T}{3N_0}.
+\begin{aligned}
+E_g&amp;=\int_0^T\left(\frac{At}{T}\right)^2dt=\frac{A^2T}{3},\\
+\gamma_{\max}&amp;=\frac{2A^2T}{3N_0}.
+\end{aligned}
 $$
 
 把“冲激响应图是下降的”与“抽样时权重按输入的上升形状对齐”分开看，就不会觉得反转与匹配矛盾。
@@ -3989,9 +4152,8 @@ $s(t)=2$，$0\le t\le10^{-3}$ s，区间外为零；AWGN 的 $N_0=2\times10^{-3}
 
 | 公式 | 使用前要检查什么 |
 | --- | --- |
-| $m_X(t)=E[X(t)]$，$\sigma_X^2(t)=E[\lvert X(t)-m_X(t)
-vert^2]$ | 平均位置与离开平均位置的波动；方差不能代替总功率 |
-| $m_X(t)=m_X$，$R_X(t+	au,t)=R_X(	au)$ | 二阶矩有限时，两个条件一起说明宽平稳 |
+| $m_X(t)=E[X(t)]$&lt;br&gt;$\sigma_X^2(t)=E[\lvert X(t)-m_X(t)\rvert^2]$ | 平均位置与离开平均位置的波动；方差不能代替总功率 |
+| $m_X(t)=m_X$&lt;br&gt;$R_X(t+\tau,t)=R_X(\tau)$ | 二阶矩有限时，两个条件一起说明宽平稳 |
 | $R_X(0)=\sigma_X^2+m_X^2$ | WSS 实过程；零均值时才等于方差 |
 | $S_X=\mathcal F\{R_X\}$，$P_X=\int S_Xdf$ | WSS，双边谱，$f$ 为 Hz；谱线按面积计功率 |
 | $m_Y=H(0)m_X$，$S_Y=\lvert H\rvert ^2S_X$ | 稳定 LTI，输出二阶量存在 |
@@ -4036,7 +4198,24 @@ vert^2]$ | 平均位置与离开平均位置的波动；方差不能代替总功
 
 &lt;h2 id="comm-part-4"&gt;第四章 模拟通信系统&lt;/h2&gt;
 
-这一章对应 PDF 正文第 33—48 页（阅读器第 38—53 页）。它是在前两章工具上做一套完整接收链：基带消息先调制，再经信道叠加噪声，最后解调。学习重点是解释笔记的式子怎样一行接到下一行，尤其是 SSB 的希尔伯特支路、VSB 的相加条件、噪声经过乘法器的缩放，以及 FM 从相位噪声变成频率噪声的步骤。
+这一章对应 PDF 正文第 33—48 页（阅读器第 38—53 页），沿着“消息 → 调制 → 信道与噪声 → 解调”读一套完整接收链。先看信息改变了载波的哪个量，再看占了多少频带，最后把接收端的信号与噪声放在同一位置比较。SSB 的希尔伯特支路、VSB 的恢复条件和 FM 鉴频后的噪声，分别是这条链上最容易卡住的地方。
+
+复习时先读每节可见的模型、图像与结论，再按需要展开推导。四道例题分别检查功率分配、相干相位、FM 参数和抗噪声比较；它们用到的前提都保留在公式旁边。
+
+&lt;nav class="comm-reading-nav" aria-label="第四章小节导航"&gt;
+&lt;a href="#comm-ch4-model"&gt;模型与 DSB&lt;/a&gt;
+&lt;a href="#comm-ch4-am"&gt;AM 包络与功率&lt;/a&gt;
+&lt;a href="#comm-ch4-ssb"&gt;SSB 与 Hilbert&lt;/a&gt;
+&lt;a href="#comm-ch4-vsb"&gt;VSB 恢复条件&lt;/a&gt;
+&lt;a href="#comm-ch4-noise"&gt;相干接收噪声&lt;/a&gt;
+&lt;a href="#comm-ch4-angle"&gt;FM 与 PM&lt;/a&gt;
+&lt;a href="#comm-ch4-fm-noise"&gt;鉴频噪声与门限&lt;/a&gt;
+&lt;a href="#comm-ch4-examples"&gt;四道分步例题&lt;/a&gt;
+&lt;a href="#comm-formulas-4"&gt;公式卡&lt;/a&gt;
+&lt;a href="#comm-quiz-4"&gt;闭卷自测&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-ch4-model"&gt;&lt;/span&gt;
 
 ### 4.1 调制的一般模型：先固定消息、载波与观察量
 
@@ -4044,27 +4223,38 @@ vert^2]$ | 平均位置与离开平均位置的波动；方差不能代替总功
 
 下文除 AM 的直流偏置外，默认实消息 $m(t)$ 零均值，最高基带频率为 $W$，载频足够高，各搬移谱互不重叠。功率按单位阻抗计算；若题目给负载 $R$，电压平方的平均值再除以 $R$。本章理想相干接收统一乘 **$2\cos(2\pi f_ct+\theta)$**，低通通带 $[-W,W]$、增益为 1。原笔记有些推导乘 $\cos$，有些乘 $2\cos$；前者的输出幅度减半、信号与噪声功率都变为四分之一，SNR 不变，但中间数值不能混用。
 
+&lt;span id="comm-ch4-dsb"&gt;&lt;/span&gt;
+
 ### 4.2 DSB-SC：从谱搬移一直追到周期平稳和载波恢复
 
 **对照笔记 4.2.1，正文第 34—36 页。** 双边带抑制载波为
 
 $$
-s_D(t)=A_cm(t)\cos(2\pi f_ct),\qquad
-X_D(f)=\frac{A_c}{2}[M(f-f_c)+M(f+f_c)].
+\begin{aligned}
+s_D(t)&amp;=A_cm(t)\cos(2\pi f_ct),\\
+X_D(f)&amp;=\frac{A_c}{2}[M(f-f_c)+M(f+f_c)].
+\end{aligned}
 $$
 
 乘余弦产生两个移位谱；在正频率处，范围是 $[f_c-W,f_c+W]$，故 RF 带宽为 $2W$。负频率镜像用于表示实波形，不再另外增加一份物理频带。若消息没有直流，载频处就没有独立谱线，这正是“抑制载波”的意思；$M(0)$ 在连续谱中不为零，并不等于含有直流冲激。
 
+&lt;details&gt;
+&lt;summary&gt;展开：DSB 的时间平均相关、功率谱与接收功率&lt;/summary&gt;
+
 对于 WSS 随机消息，第三章已说明，确定载波会让相关函数出现随起点变化的 $\cos(4\pi f_ct+2\pi f_c\tau)$ 项。时间平均后留下
 
 $$
-\overline R_D(\tau)=\frac{A_c^2}{2}R_m(\tau)\cos(2\pi f_c\tau),\qquad
-\overline S_D(f)=\frac{A_c^2}{4}[S_m(f-f_c)+S_m(f+f_c)].
+\begin{aligned}
+\overline R_D(\tau)&amp;=\frac{A_c^2}{2}R_m(\tau)\cos(2\pi f_c\tau),\\
+\overline S_D(f)&amp;=\frac{A_c^2}{4}[S_m(f-f_c)+S_m(f+f_c)].
+\end{aligned}
 $$
 
 积分得 $P_R=A_c^2P_m/2$。注意波形的傅里叶变换系数是 $A_c/2$，功率谱系数才是 $A_c^2/4$；不能把含冲激的傅里叶变换直接平方。确定消息也可直接对 $A_c^2m^2\cos^2$ 作时间平均，在基带与二倍载频项不混叠的条件下得到同样的功率。
 
-解调时积化和差把乘积拆成基带项与 $2f_c$ 项：
+&lt;/details&gt;
+
+在上述频带分离条件下，接收信号平均功率为 $P_R=A_c^2P_m/2$。解调时积化和差把乘积拆成基带项与 $2f_c$ 项：
 
 $$
 2s_D(t)\cos(2\pi f_ct+\theta)
@@ -4073,7 +4263,14 @@ $$
 
 低通后剩 $A_cm(t)\cos\theta$。固定相差造成幅度损失；若还存在频差 $\Delta f$，则输出变为 $A_cm(t)\cos(2\pi\Delta ft+\theta)$，慢慢起伏、反相，已经不能视为固定增益。包络是 $A_c|m(t)|$，它丢掉正负号，所以一般不能直接恢复任意消息。
 
+&lt;details&gt;
+&lt;summary&gt;选读：抑制载波后，接收机怎样找回相干参考&lt;/summary&gt;
+
 笔记提到的导频法是在消息上加一个小直流，使发射谱出现小载频谱线；接收端用窄带滤波器提取它作本振参考。导频消耗功率并可能需要预留保护频带，但不需要像普通 AM 那样大到托住整个包络。平方环、Costas 环通过非线性处理恢复抑制的载波；它们解决的是相干条件，不能从 $y=A_cm$ 这一理想公式中自动获得。第六章数字相干解调也要解决同样的载波同步问题。
+
+&lt;/details&gt;
+
+&lt;span id="comm-ch4-am"&gt;&lt;/span&gt;
 
 ### 4.3 普通 AM：偏置、包络、谱线与效率是同一笔功率账
 
@@ -4088,42 +4285,63 @@ $$
 其频谱就是一个 DSB 谱再加两条载频冲激，RF 带宽仍为 $2W$。零均值消息使载波与边带的平均交叉功率为零，所以
 
 $$
-P_c=\frac{A_c^2}{2},\quad
-P_{\mathrm{SB}}=\frac{A_c^2\mu^2P_{m_n}}2,\quad
-P_R=P_c+P_{\mathrm{SB}},\quad
-\eta=\frac{\mu^2P_{m_n}}{1+\mu^2P_{m_n}}.
+\begin{aligned}
+P_c&amp;=\frac{A_c^2}{2},\\
+P_{\mathrm{SB}}&amp;=\frac{A_c^2\mu^2P_{m_n}}2,\\
+P_R&amp;=P_c+P_{\mathrm{SB}},\\
+\eta&amp;=\frac{\mu^2P_{m_n}}{1+\mu^2P_{m_n}}.
+\end{aligned}
 $$
 
 单音 $m_n=\cos(2\pi f_mt)$ 的 $P_{m_n}=1/2$，故 $\eta=\mu^2/(2+\mu^2)$，满调制时为 $1/3$。这是单音结论，不能推广为所有消息的统一上限。若 $|m_n|\le1$，一般只有 $P_{m_n}\le1$，满调制效率至多 $1/2$。笔记第 38 页“至少一半分给载波”与单音例题中“三分之二分给载波”分别用了这两个条件。
 
 包络检波的整流及平滑，把快速载波振荡去掉而保留慢包络；理想 RC 检波要求时间常数远大于一个载波周期、又足够小以跟随消息变化。它与“乘本振再低通”的相干方法结构不同。噪声很大或包络接近零时，不能继续用无噪声包络的形状判断恢复质量，需转到 4.6 的随机向量分析。
 
+&lt;span id="comm-ch4-ssb"&gt;&lt;/span&gt;
+
 ### 4.4 SSB：希尔伯特变换为什么恰好消掉一个边带
 
 **对照笔记 4.2.3，正文第 38—40 页。** 实消息的正负频率互为共轭，DSB 的上下边带携带重复信息。希尔伯特变换满足 $\widehat M(f)=-j\operatorname{sgn}(f)M(f)$，所以 $m+j\widehat m$ 的正频率加倍、负频率相消。这是第二、三章解析信号的直接应用。把它乘 $e^{j2\pi f_ct}$ 再取实部，得到
 
 $$
-s_U(t)=\operatorname{Re}\{A_c[m(t)+j\widehat m(t)]e^{j2\pi f_ct}\}
-=A_c[m\cos(2\pi f_ct)-\widehat m\sin(2\pi f_ct)].
+\begin{aligned}
+s_U(t)&amp;=\operatorname{Re}\{A_c[m(t)+j\widehat m(t)]e^{j2\pi f_ct}\}\\
+&amp;=A_c[m\cos(2\pi f_ct)-\widehat m\sin(2\pi f_ct)].
+\end{aligned}
 $$
 
 频域写成
 
 $$
-X_U(f)=A_cM(f-f_c)u(f-f_c)+A_cM(f+f_c)u(-f-f_c).
+\begin{aligned}
+X_U(f)={}&amp;A_cM(f-f_c)u(f-f_c)\\
+&amp;+A_cM(f+f_c)u(-f-f_c).
+\end{aligned}
 $$
 
 正频率只剩 $f_c$ 以上的边带，负频率只剩对应镜像；下边带改成 $m-j\widehat m$，时域中减号变加号。取 $m=\cos(2\pi f_mt)$、$\widehat m=\sin(2\pi f_mt)$，上式变成 $A_c\cos[2\pi(f_c+f_m)t]$，下边带变成 $A_c\cos[2\pi(f_c-f_m)t]$，是检查符号最快的小算例。
 
+&lt;details&gt;
+&lt;summary&gt;展开：滤波法为什么先产生两倍幅度的 DSB&lt;/summary&gt;
+
 笔记的生成结构也可以理解为：先产生 **$2A_cm\cos$** 的 DSB，再通过只保留上边带及其镜像的 RF 滤波器。原 DSB 乘 2 是为了补偿删去一侧时的幅度约定；滤波后的复包络才是 $A_c(m+j\widehat m)$，滤波前的 DSB 复包络为 $2A_cm$。笔记第 38 页把复包络写在这一连续叙述中，阅读时应明确它属于滤波之后。另一种生成法直接用两条正交支路相加：一路 $m\cos$，一路 $-\widehat m\sin$。两条支路的相位与幅度要匹配，才能在不要的边带处抵消。
 
-RF 带宽为 $W$，在本文幅度约定下，$P_R=A_c^2P_m$。对于 WSS 零均值消息，$m$ 与希尔伯特输出的相关关系使随绝对时间变化的项互相抵消，USB 自相关成为
+&lt;/details&gt;
+
+RF 带宽为 $W$，在本文幅度约定下，$P_R=A_c^2P_m$。SSB 与 DSB 写相同 $A_c$ 时功率并不相同；比较抗噪声必须改用同一 $P_R$。
+
+&lt;details&gt;
+&lt;summary&gt;展开：SSB 的自相关怎样消去随绝对时间变化的项&lt;/summary&gt;
+
+对于 WSS 零均值消息，$m$ 与希尔伯特输出的相关关系使随绝对时间变化的项互相抵消，USB 自相关成为
 
 $$
 R_U(\tau)=A_c^2[R_m(\tau)\cos(2\pi f_c\tau)-\widehat R_m(\tau)\sin(2\pi f_c\tau)].
 $$
 
-它只依赖 $\tau$，积分其谱得到同一功率。SSB 与 DSB 写相同 $A_c$ 时功率并不相同；比较抗噪声必须改用同一 $P_R$。
+它只依赖 $\tau$，积分其谱得到同一功率。
+
+&lt;/details&gt;
 
 USB 与有相差的 $2\cos(2\pi f_ct+\theta)$ 相乘低通后，
 
@@ -4132,6 +4350,14 @@ y_U=A_c[m\cos\theta+\widehat m\sin\theta],
 $$
 
 LSB 的正交项反号。单音情况下是基带相位偏移；多音情况下不同正频率被施加相同相角，却不是同一个时间延迟，因为时间延迟的相角应随频率线性变化。基带存在接近零频的成分时，RF 滤波器必须在 $f_c$ 附近非常陡峭；这就是笔记从 SSB 转向 VSB 的设计原因。
+
+把 DSB、AM 和 SSB 放在同一消息下看，区别会更清楚：AM 多出载波，DSB 保留两侧消息，SSB 利用正交支路删去重复的一侧。图中的包络还提醒我们，过调制首先是括号变号造成的折返。
+
+![AM、DSB、SSB 频谱对比与单音 AM 包络](/img/communication-study-linear-modulation.svg)
+
+读图时，频带宽度按正频率处的 RF 区间量取；载频冲激和连续边带表示不同对象。可先用[例 4-1 与例 4-2](#comm-ch4-examples)分别检查功率分配和相干相位的影响。
+
+&lt;span id="comm-ch4-vsb"&gt;&lt;/span&gt;
 
 ### 4.5 VSB：相加条件来自哪两个移回基带的副本
 
@@ -4160,6 +4386,9 @@ $$
 这张“频谱折回后的相加账”与第五章奈奎斯特准则很相似：多个谱副本的总响应需满足恢复条件。VSB 用于频带内的幅度恢复，奈奎斯特准则用于抽样时刻消除码间干扰，二者目标与叠加间隔不同，不应混成一个公式。
 
 &lt;h4 id="comm-deep-vsb-noise"&gt;旁读演练 4-A（自编）：VSB 的信号响应平坦，为什么噪声谱仍可能不平坦？&lt;/h4&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开演练：互补边带的信号相加，与噪声功率相加有何不同&lt;/summary&gt;
 
 先把前面的互补坡度落到一个多音消息上。设过渡半宽 $b=1000$ Hz，消息中有 500 Hz 与 2000 Hz 两个等幅余弦。按无相位畸变的理想 VSB 响应，500 Hz 对应两处 RF 增益为 0.75、0.25；2000 Hz 对应两处增益为 1、0。相干解调后，两组增益分别相加为 1，所以两音都获得相同的 $A_c/2$ 输出增益。每个音有两个携带同一消息、相位对应的谱副本，不能把其中较弱的一侧丢掉后说它“衰减了”。
 
@@ -4194,23 +4423,50 @@ $$
 
 还可以用相位作一次反向检查。某个消息频率对应的总链路两支路幅度仍为 0.75、0.25；若第二支路相对反相，它们的复增益和变为 $0.75-0.25=0.5$，不再是 1。如果只有这一频率附近发生反相，两个消息音就获得不同增益，原波形必然失真；给整个输出乘常数不能修好。相反，若两支路共同增加相同延迟，复增益和只带同一个线性相位，消息整体晚到，仍可无失真恢复。噪声的增益平方却不受单支路相位符号改变影响。这说明同一张幅频曲线能够给出相同的噪声功率，却不能保证相同的消息恢复效果，笔记的 VSB 条件应当作为复响应条件阅读。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch4-noise"&gt;&lt;/span&gt;
+
 ### 4.6 线性调制噪声：从 RF 谱、乘法器到输出功率逐块核对
 
 **对照笔记 4.3，正文第 41—43 页。** 统一输入实 AWGN 双边 PSD 为 $N_0/2$。笔记第 41 页称它为“单边”，应订正为双边；同页的字母 $B$ 又在一般 RF 噪声带宽与具体消息带宽之间切换，本文改用消息带宽 $W$、RF 正频率通带宽 $B_{\mathrm{RF}}$。单位增益实带通的噪声功率为 $N_0B_{\mathrm{RF}}$。
 
-DSB 与 AM 的 RF 通带是 $[f_c-W,f_c+W]$ 及负频率镜像，总积分宽度 $4W$，所以输入噪声为 $2N_0W$。把其噪声写为 $n=n_c\cos-n_s\sin$，两分量在 $[-W,W]$ 内的 PSD 都为 $N_0$。乘 $2\cos(2\pi f_ct+\theta)$、再低通，输出噪声为 $n_c\cos\theta+n_s\sin\theta$。对关于载频对称的白噪声通带，两分量不相关，故噪声 PSD 仍为 $N_0$，方差为 $2N_0W$。相乘没有把这一路 $n_c$ 再减半；二倍本振已经补偿了乘法平均中的 $1/2$。
+先沿下面的路径认清三个观察位置，再代数值。选带滤波器决定进入多少 RF 噪声；乘法器把信号和噪声一起缩放；低通才规定最终输出噪声的积分区间。
+
+![线性相干接收中的射频选带、二倍余弦本振和低通输出噪声路径](/img/communication-study-modulation-noise.svg)
+
+本节保留完整的双边谱约定。图中只要改动本振增益，就必须同时修改信号和噪声功率，不能只改分母。
+
+DSB 与 AM 的 RF 通带是 $[f_c-W,f_c+W]$ 及负频率镜像，总积分宽度 $4W$，所以输入噪声为 $2N_0W$。在本节归一化下，低通输出噪声仍为 $2N_0W$。
+
+&lt;details&gt;
+&lt;summary&gt;展开：带通噪声的 I/Q 分量怎样通过乘法器&lt;/summary&gt;
+
+把其噪声写为 $n=n_c\cos-n_s\sin$，两分量在 $[-W,W]$ 内的 PSD 都为 $N_0$。乘 $2\cos(2\pi f_ct+\theta)$、再低通，输出噪声为 $n_c\cos\theta+n_s\sin\theta$。对关于载频对称的白噪声通带，两分量不相关，故噪声 PSD 仍为 $N_0$，方差为 $2N_0W$。相乘没有把这一路 $n_c$ 再减半；二倍本振已经补偿了乘法平均中的 $1/2$。
+
+&lt;/details&gt;
 
 DSB 有用输出功率为 $A_c^2P_m\cos^2\theta=2P_R\cos^2\theta$，所以
 
 $$
-\left(\frac SN\right)_{o,D}
-=\frac{P_R\cos^2\theta}{N_0W},\qquad
-\left(\frac SN\right)_{i,D}=\frac{P_R}{2N_0W}.
+\begin{aligned}
+\left(\frac SN\right)_{o,D}&amp;=\frac{P_R\cos^2\theta}{N_0W},\\
+\left(\frac SN\right)_{i,D}&amp;=\frac{P_R}{2N_0W}.
+\end{aligned}
 $$
 
 同相时输出/输入 SNR 为 2。它来自信号的同相结构和两侧噪声的谱合成，不能只说“噪声功率除二”而漏掉输出信号也改了尺度。
 
-SSB 只通过 $[f_c,f_c+W]$ 及其镜像，输入噪声为 $N_0W$。直接用谱折回法最清楚：低通输出噪声谱为 $S_{n,\mathrm{RF}}(f-f_c)+S_{n,\mathrm{RF}}(f+f_c)$。对于 DSB，两个副本在每个基带频率相加为 $N_0$；对于 SSB，$f&gt;0$ 与 $f&lt;0$ 各只有一个副本，相加为 $N_0/2$。因此 SSB 输出噪声功率为 $N_0W$、输出有用功率为 $A_c^2P_m=P_R$，得到
+SSB 只通过 $[f_c,f_c+W]$ 及其镜像，输入噪声为 $N_0W$；输出有用功率为 $P_R$，输出噪声功率为 $N_0W$。
+
+&lt;details&gt;
+&lt;summary&gt;展开：SSB 为什么每个基带频率只折回一份噪声谱&lt;/summary&gt;
+
+直接用谱折回法最清楚：低通输出噪声谱为 $S_{n,\mathrm{RF}}(f-f_c)+S_{n,\mathrm{RF}}(f+f_c)$。对于 DSB，两个副本在每个基带频率相加为 $N_0$；对于 SSB，$f&gt;0$ 与 $f&lt;0$ 各只有一个副本，相加为 $N_0/2$。因此 SSB 输出噪声功率为 $N_0W$、输出有用功率为 $A_c^2P_m=P_R$。
+
+&lt;/details&gt;
+
+于是 SSB 的输入、输出 SNR 都是
 
 $$
 \left(\frac SN\right)_{o,U}
@@ -4225,7 +4481,7 @@ $$
 \left(\frac SN\right)_{o,A}=\eta\frac{P_R}{N_0W}.
 $$
 
-包络接收应先写正确的向量长度。令 $a(t)=A_c[1+\mu m_n(t)]\ge0$，则
+换到包络接收，观察量不再是向量的同相投影，而是向量长度。因此先写正确的几何关系。令 $a(t)=A_c[1+\mu m_n(t)]\ge0$，则
 
 $$
 V_r(t)=\sqrt{[a(t)+n_c(t)]^2+n_s^2(t)}.
@@ -4235,30 +4491,45 @@ $$
 
 低 SNR 时，接收向量主要由噪声方向决定，消息乘上随机的方向系数，输出不再是“消息加一个独立小噪声”。包络检波由此出现门限效应：降到某一区间后性能急剧恶化。门限不是所有系统统一的数值，不能在题目没有给模型时随意套一个固定 dB。理想同步线性相干接收没有这种非线性包络门限；现实载波恢复环是否失锁，还要另行分析。
 
+&lt;span id="comm-ch4-angle"&gt;&lt;/span&gt;
+
 ### 4.7 FM 与 PM：单位、积分、频谱和物理鉴频连接起来
 
 **对照笔记 4.4，正文第 44—46 页。** 角调振幅固定，按高载频平均功率约定 $P_R=A_c^2/2$。相位以 rad 表示、瞬时频率以 Hz 表示，所以
 
 $$
-f_i=f_c+\frac1{2\pi}\varphi'(t),\quad
-\varphi_{\mathrm{PM}}=k_pm(t),\quad
-\varphi_{\mathrm{FM}}=2\pi k_f\int_0^t m(u)du.
+\begin{aligned}
+f_i&amp;=f_c+\frac1{2\pi}\varphi'(t),\\
+\varphi_{\mathrm{PM}}&amp;=k_pm(t),\\
+\varphi_{\mathrm{FM}}&amp;=2\pi k_f\int_0^t m(u)du.
+\end{aligned}
 $$
 
 $k_p$ 的单位为 rad/消息单位，$k_f$ 为 Hz/消息单位。FM 的频偏跟消息本身成正比，PM 的频偏跟消息导数成正比。积分器后接 PM 可产生 FM；微分器后接 FM 可产生 PM，但要带上相应的常数比例。只有已调波形、没有指定原消息时，两种产生过程通常不能唯一辨认。
 
+先看同一条消息怎样分别控制瞬时相位和瞬时频率。下面射频短窗只用于辨认疏密变化；定量读数应从频偏曲线与纵轴单位读取。
+
+![同一低频消息下的 FM 与 PM：瞬时频率分别跟随消息及其导数](/img/communication-study-angle-modulation.svg)
+
 单音 $m=A_m\cos(2\pi f_mt)$ 时，FM 相位为 $\beta\sin(2\pi f_mt)$，$\Delta f=k_fA_m$、$\beta=\Delta f/f_m$。PM 相位指数为 $k_pA_m$，最大频偏为 $k_pA_mf_m$。提高消息频率而保持幅度不变，FM 频偏不变而相位指数减小；PM 相位指数不变而频偏增大。频偏单位为 Hz，指数无量纲，算完应作这一次单位核对。
+
+&lt;details&gt;
+&lt;summary&gt;展开：单音 FM 的贝塞尔边频与总功率守恒&lt;/summary&gt;
 
 单音 FM 的频谱从周期复指数展开得到：
 
 $$
-e^{j\beta\sin(2\pi f_mt)}=\sum_{n=-\infty}^{\infty}J_n(\beta)e^{j2\pi nf_mt},\qquad
-s(t)=A_c\sum_nJ_n(\beta)\cos[2\pi(f_c+nf_m)t].
+\begin{aligned}
+e^{j\beta\sin(2\pi f_mt)}&amp;=\sum_{n=-\infty}^{\infty}J_n(\beta)e^{j2\pi nf_mt},\\
+s(t)&amp;=A_c\sum_nJ_n(\beta)\cos[2\pi(f_c+nf_m)t].
+\end{aligned}
 $$
 
 边频间隔是 $f_m$，不是 $\Delta f$；$J_{-n}=(-1)^nJ_n$，负幅度表示反相，功率由平方决定。恒包络复指数的模平方等于 1，由傅里叶级数 Parseval 得 $\sum_nJ_n^2(\beta)=1$，所以总功率仍为 $A_c^2/2$。$J_0$ 在某些指数下过零，只是中心谱线消失，功率转到边频，并不表示信号或信息消失。
 
-理论上有无限多边频，Carson 公式 $B_C\approx2(\Delta f+W)$ 估计主要占用频带，不给出严格硬截止。单音时为 $2(\beta+1)f_m$；多音时 $\Delta f/W$ 更宜理解为偏移比，不能把单音贝塞尔系数直接套到任意消息。若整个相位偏移都很小，则
+&lt;/details&gt;
+
+FM 仍按高载频平均功率约定取 $P_R=A_c^2/2$；调制指数改变功率在各条谱线之间的分配。理论上有无限多边频，Carson 公式 $B_C\approx2(\Delta f+W)$ 估计主要占用频带，不给出严格硬截止。单音时为 $2(\beta+1)f_m$；多音时 $\Delta f/W$ 更宜理解为偏移比，不能把单音贝塞尔系数直接套到任意消息。若整个相位偏移都很小，则
 
 $$
 s(t)\approx A_c\cos(2\pi f_ct)-A_c\varphi(t)\sin(2\pi f_ct).
@@ -4277,6 +4548,9 @@ $$
 微分把频率变化转换成包络变化。若 $f_c+k_fm(t)&gt;0$，包络为 $2\pi A_c[f_c+k_fm(t)]$，去直流后输出 $2\pi A_ck_fm$。这是一种带增益的物理鉴频；下一节使用归一化鉴频器 $\theta'/(2\pi)-f_c$，输出为 $k_fm$，两种增益约定的 SNR 相同。
 
 &lt;h4 id="comm-deep-multitone-angle"&gt;旁读演练 4-B（自编）：消息不是单音时，怎样逐步读出 FM 与 PM？&lt;/h4&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开演练：双音消息的相位、频偏、带宽与直流分量&lt;/summary&gt;
 
 取双音消息
 
@@ -4318,6 +4592,10 @@ $$
 
 最后检查笔记默认的零均值条件。如果把同一个消息改成 $m_0+m(t)$，FM 相位额外出现 $2\pi k_fm_0t$，其作用是把平均载频移到 $f_c+k_fm_0$；PM 相位只额外出现常数 $k_pm_0$，平均载频不变。因此读到“最大频偏”时，先确认题目以原始载频还是偏移后的平均载频作为基准。对带宽估计，恒定的频率平移改变频带所在位置，零均值交流分量的摆动才决定其附近的展宽，不能把静态载频平移又当成一项新的调制展宽。反过来，FM 消息积分前加了不同积分常数，只造成固定初相变化，不改变瞬时频率；积分下限和相位参考也应按这个意义处理。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch4-fm-noise"&gt;&lt;/span&gt;
+
 ### 4.8 FM 噪声、预加重/去加重与门限：为什么微分会放大高频噪声
 
 **对照笔记 4.5—4.6，正文第 46—48 页。** FM 接收链为带通、限幅、鉴频、低通。把噪声转到瞬时信号方向的坐标系，收到的复向量为 $e^{j\varphi(t)}[A_c+n_\parallel(t)+jn_\perp(t)]$。其相位为
@@ -4327,23 +4605,39 @@ $$
 \approx\varphi(t)+\frac{n_\perp(t)}{A_c}.
 $$
 
+下面的输出 SNR 采用大输入 SNR、经典窄带等效和足够平坦的接收通带。鉴频对相位求导，因而高频噪声更强；低通噪声积分随 $W^3$ 增长。
+
+&lt;details&gt;
+&lt;summary&gt;展开：相位小扰动经过鉴频，怎样得到平方频率噪声谱&lt;/summary&gt;
+
 这里的 $n_\perp$ 是相对于瞬时信号方向的正交投影，符号可由复包络约定改变，但功率不变。限幅消除幅度波动，不能消除这个相位扰动。在大输入 SNR、经典窄带等效及接收通带足够平坦的模型下，消息低通范围内取 $S_{n_\perp}(f)=N_0$。归一化鉴频器作相位导数，得到
 
 $$
-y_o\approx k_fm+\frac1{2\pi A_c}\frac{dn_\perp}{dt},\quad
-S_{n,o}(f)=\frac{N_0f^2}{A_c^2},\quad |f|\le W.
+\begin{aligned}
+y_o&amp;\approx k_fm+\frac1{2\pi A_c}\frac{dn_\perp}{dt},\\
+S_{n,o}(f)&amp;=\frac{N_0f^2}{A_c^2},\quad |f|\le W.
+\end{aligned}
 $$
 
-微分的频率响应 $j2\pi f$，与鉴频归一化的 $1/(2\pi)$ 抵消，剩下 $f^2$。积分得到 $P_{n,o}=2N_0W^3/(3A_c^2)$，有用功率为 $k_f^2P_m$，所以
+微分的频率响应 $j2\pi f$，与鉴频归一化的 $1/(2\pi)$ 抵消，剩下 $f^2$。积分得到 $P_{n,o}=2N_0W^3/(3A_c^2)$，有用功率为 $k_f^2P_m$，两者相除就得到下方结论。
+
+&lt;/details&gt;
+
+归一化鉴频器输出的信噪比为
 
 $$
+\begin{aligned}
 \left(\frac SN\right)_{o,F}
-=\frac{3A_c^2k_f^2P_m}{2N_0W^3}
-=3\beta^2P_{m_n}\frac{P_R}{N_0W},\quad
-P_{m_n}=\frac{P_m}{(\max|m|)^2}.
+&amp;=\frac{3A_c^2k_f^2P_m}{2N_0W^3}\\
+&amp;=3\beta^2P_{m_n}\frac{P_R}{N_0W},\\
+P_{m_n}&amp;=\frac{P_m}{(\max|m|)^2}.
+\end{aligned}
 $$
 
 这里 $\beta=\Delta f/W=k_f\max|m|/W$ 是一般消息的偏移比；单音时 $W=f_m$，它与前节单音调制指数一致，且 $P_{m_n}=1/2$，系数变为 $3\beta^2/2$。这里不仅要记结果，还要能重建“相位小扰动—微分—$f^2$ 谱—立方带宽积分”这条链。如果把低通带宽加倍而其他量不变，噪声功率会变成八倍；如果只把 $k_f$ 加倍，预测有用输出功率变成四倍，但 RF 带宽与门限条件也跟着改变。
+
+&lt;details&gt;
+&lt;summary&gt;补充选读：预加重怎样改变鉴频后的噪声积分，以及收益的条件&lt;/summary&gt;
 
 下面的**预加重/去加重是补充讲解，原 PDF 未单列这一节**。因为鉴频后的噪声偏向高频，发射端先增强消息高频，接收端再用互逆响应削弱高频：$H_{\mathrm{pre}}=1+jf/f_d$、$H_{\mathrm{de}}=1/(1+jf/f_d)$。理想乘积为 1，消息恢复，而在接收端才产生的鉴频噪声只通过去加重，功率变为
 
@@ -4354,9 +4648,13 @@ $$
 
 推导只需把 $f^2$ 谱乘 $1/[1+(f/f_d)^2]$ 再积分。取 $f_d=W$，在其余参数固定的这个理想比较中，噪声降为原来的 $3(1-\pi/4)\approx0.6438$，对应约 1.91 dB。实际预加重会增大消息峰值与频偏需求，还要受发射带宽、限幅及允许最大频偏约束；不能在同一频偏预算下直接宣称这个收益免费获得。
 
+&lt;/details&gt;
+
 当输入噪声大到与载波向量相当，合成向量会靠近原点，$\arctan$ 的小扰动近似失效，相位可发生大跳变。鉴频对相位求导，大跳变产生尖峰，FM 输出 SNR 急剧恶化，这就是 FM 的门限效应。增加频偏可以提高门限以上的输出 SNR，同时会扩大接收 RF 带宽，增加输入噪声 $N_0B_{\mathrm{RF}}$；在固定 $P_R$ 下，输入 SNR 反而下降。因此 $\beta^2$ 的公式不能无条件外推。
 
 笔记第 48 页的调制比较，应统一为同一 $P_R,N_0,W$：DSB/SSB 为 $P_R/(N_0W)$，AM 为效率 $\eta$ 乘这个基准，FM 在上述高 SNR 模型下为 $3\beta^2P_{m_n}$ 乘这个基准；RF 带宽分别为 $2W,W,2W,2(\Delta f+W)$，VSB 取决于残留边带与滤波设计。这样才能解释笔记最后一张表：谱效率、接收同步、功率分配与噪声性能，是四笔需要同时比较的账。
+
+&lt;span id="comm-ch4-examples"&gt;&lt;/span&gt;
 
 ### 4.9 四道原创分步例题
 
@@ -4365,7 +4663,10 @@ $$
 在 $1\,\Omega$ 负载下，发送波形为
 
 $$
-s(t)=10[1+0.6\cos(2\pi\cdot1000t)]\cos(2\pi\cdot10^6t)\quad\mathrm{V}.
+\begin{aligned}
+s(t)={}&amp;10[1+0.6\cos(2\pi\cdot1000t)]\\
+&amp;\cdot\cos(2\pi\cdot10^6t)\quad\mathrm{V}.
+\end{aligned}
 $$
 
 1. 读出 $\mu=0.6$、$f_m=1000$ Hz，未过调制。
@@ -4425,9 +4726,15 @@ FM 此时相对 DSB 多出约 15.74 dB 输出 SNR，同时用了 6 倍 RF 带宽
 | 单音 FM：$(S/N)_o=(3/2)\beta^2P_R/(N_0W)$ | 大输入 SNR、理想鉴频与低通、$W=f_m$ |
 | FM：$S_{n,o}=N_0f^2/A_c^2$ | 归一化鉴频增益 $1/(2\pi)$，高 SNR、接收通带平坦的等效模型 |
 
+&lt;span id="comm-ch4-pitfalls"&gt;&lt;/span&gt;
+
 ### 4.10 本章容易失分的地方
 
-把负频率镜像也算进 RF 占用带宽；把 AM 的总功率当成边带功率；把单音 AM 的 $1/3$ 上限推广到所有基带；混淆 SSB 的上下边带正负号；把最大频偏 $\Delta f$ 当作无量纲调制指数；对 PM 不求导就读取频偏；倍频后只改载频、不改频偏；把 Carson 近似当成硬截止；比较噪声性能时混用同系数与同功率；在门限以下仍套大 SNR 公式。一个有效的复查方法是看单位，再画频带，最后检查比较中的功率是否属于同一个量。
+做题后的复查可以按三步进行，避免同时盯着十个容易混淆的量。
+
+1. **先看单位与模型。** $\Delta f$ 是 Hz，调制指数无量纲；PM 的频偏先对相位求导。倍频要同时改变载频、频偏与相位指数；Carson 给的是占用带宽近似，门限以下也不能继续套高 SNR 公式。
+2. **再画频带。** RF 占用带宽不把负频率镜像再加一倍；SSB 上、下边带的 Hilbert 支路符号先用单音检查。
+3. **最后核对功率位置。** AM 的总功率包含载波，单音效率上限 $1/3$ 依赖单音条件；比较抗噪声时先统一接收总功率，再区分输出信号功率、输入噪声功率与输出噪声功率。相同 $A_c$ 不等于相同 $P_R$。
 
 &lt;h3 id="comm-quiz-4"&gt;第四章闭卷自测&lt;/h3&gt;
 
@@ -4453,29 +4760,56 @@ FM 此时相对 DSB 多出约 15.74 dB 输出 SNR，同时用了 6 倍 RF 带宽
 
 &lt;h2 id="comm-part-5"&gt;第五章 数字基带传输&lt;/h2&gt;
 
-这一章要解释一个看似矛盾的问题：数字只有有限种取值，为什么还要研究连续波形、傅里叶变换和随机过程？因为导线上传播的是电压或电流，接收端必须从被信道拉宽、被噪声扰动的连续波形中，重新判断发送的离散符号。笔记正文第 49—63 页把问题分成九节；下面沿着 **符号映射 → 脉冲成形 → 信道 → 接收滤波 → 抽样判决**，补全这些节之间的联系和公式中省略的步骤。
+导线上传播的是连续电压，接收端判断的却是离散符号。本章沿着 **符号映射 → 脉冲成形 → 信道 → 接收滤波 → 抽样判决**，解释波形被拉宽、被噪声扰动以后，怎样恢复发送的数据。
+
+复习时先抓住三件事：**功率谱由什么决定，抽样点怎样避免串扰，噪声怎样跨过判决门限。** 长一点的码型演算和辅助推导可以按需展开。
 
 本章以本地 `PoC.pdf` 第五章与附录 F 为讲解对象。页码均指 PDF 印刷在页脚的正文页码，文件实页要加 5。四道主例题和闭卷自测为自编训练；穿插的笔记原例讲解会明确注明出处。
+
+&lt;nav class="comm-reading-nav" aria-label="第五章小节导航"&gt;
+&lt;a href="#comm-ch5-0"&gt;5.0 速率与能量&lt;/a&gt;
+&lt;a href="#comm-ch5-1"&gt;5.1 PAM 与线路码&lt;/a&gt;
+&lt;a href="#comm-ch5-2"&gt;5.2 PAM 功率谱&lt;/a&gt;
+&lt;a href="#comm-ch5-3"&gt;5.3 匹配与门限&lt;/a&gt;
+&lt;a href="#comm-ch5-4"&gt;5.4 Nyquist 与成形&lt;/a&gt;
+&lt;a href="#comm-ch5-5"&gt;5.5 眼图与均衡&lt;/a&gt;
+&lt;a href="#comm-ch5-6"&gt;5.6 部分响应&lt;/a&gt;
+&lt;a href="#comm-ch5-7"&gt;5.7 符号同步&lt;/a&gt;
+&lt;a href="#comm-ch5-8"&gt;5.8 分步例题&lt;/a&gt;
+&lt;a href="#comm-formulas-5"&gt;公式卡&lt;/a&gt;
+&lt;a href="#comm-quiz-5"&gt;闭卷自测&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-ch5-0"&gt;&lt;/span&gt;
 
 ### 5.0 数字系统的指标：先分清比特、符号与信息量
 
 **对照笔记 5.1，正文第 49—50 页。** $R_b$ 是送入映射器的比特速率，$R_s$ 是每秒发送的符号数，$T_s=1/R_s$ 是符号间隔。固定长度、无编码的 $M=2^k$ 进制映射，把每 $k$ 个输入比特合成一个符号，因此
 
 $$
-k=\log_2M,\qquad R_b=kR_s,\qquad T_s=kT_b,\quad T_b=1/R_b.
+\begin{aligned}
+k&amp;=\log_2M,&amp;R_b&amp;=kR_s,\\
+T_b&amp;=1/R_b,&amp;T_s&amp;=kT_b=1/R_s.
+\end{aligned}
 $$
 
 例如 4-PAM 的四个电平对应 $00,01,10,11$，发送一次电平就是一个符号，承载两位输入比特；发送 6000 个比特每秒只需 3000 个符号每秒。提高进制降低了所需符号速率，却让有限能量下的电平间距缩小，所以不能只按带宽选进制。
 
-笔记开头的 $-\sum p_i\log_2p_i$ 是**平均每符号信息量（熵）**。某个具体符号的信息量是 $-\log_2p_i$，两者不能混称。独立二元源若 $P(1)=1/4$，熵为 $H_2(1/4)\approx0.8113$ bit/源符号；每秒输出 1000 个二元符号时，未经压缩的比特流仍占 1000 bit/s，其平均信息产生率却是约 811.3 bit/s。若符号相关，还需考虑熵率。**i.i.d. 只表示独立同分布，不包含等概率**；后续出现零门限或零均值时，要另外检查等概条件。
+笔记开头的 $-\sum p_i\log_2p_i$ 是**平均每符号信息量（熵）**。某个具体符号的信息量是 $-\log_2p_i$，两者不能混称。独立二元源若 $P(1)=1/4$，熵为 $H_2(1/4)\approx0.8113$ bit/源符号；每秒输出 1000 个二元符号时，未经压缩的比特流仍占 1000 bit/s，其平均信息产生率却是约 811.3 bit/s。若符号相关，还需考虑熵率。
 
-平均发送功率为 $P$ 时，$E_s=P/R_s$、$E_b=P/R_b$，所以 $E_s=kE_b$。有信道编码时要区分净信息速率和编码后速率。误比特率 $P_b$ 是错误比特比例，误符号率 $P_s$ 是错误符号比例；一符号一比特时相等，多进制时一个错误符号可能错一位，也可能错多位。BER 的英文为 Bit Error Rate/Ratio，笔记第 50 页写作 Symbol 是笔误。
+**i.i.d. 只表示独立同分布，不包含等概率**；后续出现零门限或零均值时，要另外检查等概条件。
+
+平均发送功率为 $P$ 时，$E_s=P/R_s$、$E_b=P/R_b$，所以 $E_s=kE_b$。有信道编码时要区分净信息速率和编码后速率。
+
+误比特率 $P_b$ 是错误比特比例，误符号率 $P_s$ 是错误符号比例；一符号一比特时相等，多进制时一个错误符号可能错一位，也可能错多位。BER 的英文为 Bit Error Rate/Ratio，笔记第 50 页写作 Symbol 是笔误。
 
 频带利用率也有两个口径：$\eta_b=R_b/W$ 的单位为 bit/s/Hz，$\eta_s=R_s/W$ 为 Bd/Hz；它们相差 $k$ 倍。应保留速率与带宽的口径，不能因为 Hz 量纲为每秒，就把两者混成同一个数。全文采用 Hz、傅里叶核 $e^{-j2\pi ft}$、归一化 $\operatorname{sinc}(x)=\sin(\pi x)/(\pi x)$；实 AWGN 双边 PSD 为 $N_0/2$，正态分布第二参数表示方差，高斯尾概率为
 
 $$
 Q(x)=\frac1{\sqrt{2\pi}}\int_x^\infty e^{-u^2/2}\,du.
 $$
+
+&lt;span id="comm-ch5-1"&gt;&lt;/span&gt;
 
 ### 5.1 PAM 与线路码：幅度集合和脉冲形状各管一件事
 
@@ -4499,11 +4833,19 @@ $a_n$ 回答“本次是哪种符号”，$g_T$ 回答“用怎样的连续波�
 
 表中的 0/1 是低、高电平标签。讨论“无直流”时应把它们映射到相对于中点的 $-A,+A$；若物理电路采用 $0,A$，还可能带有公共直流偏置。笔记采用半占空 RZ 的 AMI/HDB3 波形，本章按该具体模型解释；AMI 的正负交替规则本身不强制所有实现都采用这个占空比。非零脉冲极性连续反转可以检出一部分错误，但不能检出所有误码，也不能自动纠错。
 
+&lt;details&gt;
+&lt;summary&gt;展开同一输入的三种线路码：逐位检查状态&lt;/summary&gt;
+
 **把 CMI、Manchester、Miller 对同一输入写出来。** 输入 $1,1,0,1,0,0,1,0$，CMI 初次 1 取 11，得到 $11|00|01|11|01|01|00|01$；Manchester 得到 $10|10|01|10|01|01|10|01$。Miller 初始低电平，依“中点跃变”和“连续零边界跃变”逐位追踪，得到笔记表中的 $01|10|00|01|11|00|01|11$。这里第三个比特为 0，沿用前一位末尾低电平，不能凭“0 用 00”解释后面的 11。Miller 的带宽要依其相关谱及所选口径分析，不能因为也写成两段电平，就一概等同 Manchester 的频谱。
+
+&lt;/details&gt;
 
 $n$B$m$B 表示每 $n$ 个输入比特映射成 $m$ 个码位，输入速率 $R_b$ 对应线路码位速率 $mR_b/n$，编码效率为 $n/m$。例如 5B6B 在输入 10 Mbit/s 时需要 12 Mcode-bit/s；选出哪些码字才能约束连零和数字和，才是编码设计的内容。ASCII 的字符表示和可选奇偶校验不能直接当作通用线路编码，更不能把第八位一概称为 1 CRC。
 
 **HDB3 的两状态推演。** 记住上一非零极性，以及上次违例脉冲 $V$ 后普通数据 1 的计数 $c$。数据 1 按 AMI 反转；四连 0 若 $c$ 为奇数，用 $000V$，$V$ 与上一非零同极性；若 $c$ 为偶数，用 $B00V$，$B$ 与上一非零反极性，$V$ 与 $B$ 同极性。每个 $V$ 后清零 $c$。两个替代形式都使相邻 $V$ 极性交替，辅助脉冲抵消长时间的偏置，也保证连续零码元不超过三个。
+
+&lt;details&gt;
+&lt;summary&gt;展开 HDB3 编码与译码：跟踪极性、计数和违例&lt;/summary&gt;
 
 约定初始上一非零为负、$c=0$，输入 $1|0000|1|0000|0000$：
 
@@ -4517,9 +4859,20 @@ $n$B$m$B 表示每 $n$ 个输入比特映射成 $m$ 个码位，输入速率 $R_
 
 译码沿同样的初始极性检查非零脉冲，同极性连续出现即发现 $V$，再把 $V$ 及之前三个位都恢复为 0。因此 $B00V$ 中的 $B$ 也必须删除，不能误当数据 1。其余非零恢复为 1。**发现违例不一定说明传错：HDB3 故意使用受规则控制的违例传递替代信息。**
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch5-2"&gt;&lt;/span&gt;
+
 ### 5.2 PAM 功率谱：先看相关性，再代入脉冲
 
-**对照笔记 5.2.2，正文第 51—53 页，附录 F 第 96—97 页。** 固定符号时钟下的 PAM 通常是周期平稳过程；本节计算时间平均 PSD，也可理解为将时钟初相位均匀随机化后的平稳模型。定义 $R_a[\ell]=\mathbb E[a_{n+\ell}a_n^*]$，并令单脉冲相关函数 $R_g(\tau)=\int g_T(u+\tau)g_T^*(u)du$。展开 $s(t+\tau)s^*(t)$，令 $\ell=n-m$，再对一个符号间隔平均，所有平移的积分区间刚好拼成整条时间轴，得到
+**对照笔记 5.2.2，正文第 51—53 页，附录 F 第 96—97 页。** 固定符号时钟下的 PAM 通常是周期平稳过程；本节计算时间平均 PSD，也可理解为将时钟初相位均匀随机化后的平稳模型。
+
+定义 $R_a[\ell]=\mathbb E[a_{n+\ell}a_n^*]$，并令单脉冲相关函数 $R_g(\tau)=\int g_T(u+\tau)g_T^*(u)du$。
+
+&lt;details&gt;
+&lt;summary&gt;展开 PSD 中的 1/Tₛ：时间平均为什么出现这个系数&lt;/summary&gt;
+
+展开 $s(t+\tau)s^*(t)$，令 $\ell=n-m$，再对一个符号间隔平均，所有平移的积分区间刚好拼成整条时间轴，得到
 
 $$
 \overline R_s(\tau)=\frac1{T_s}\sum_{\ell=-\infty}^{\infty}R_a[\ell]R_g(\tau-\ell T_s).
@@ -4527,9 +4880,13 @@ $$
 
 每秒平均有 $1/T_s$ 份脉冲，是这个系数的物理来源。傅里叶变换把时间平移变成指数、把 $R_g$ 变成 $|G_T|^2$，于是
 
+&lt;/details&gt;
+
 $$
-\boxed{S_s(f)=\frac{|G_T(f)|^2}{T_s}
-\sum_{\ell=-\infty}^{\infty}R_a[\ell]e^{-j2\pi f\ell T_s}}.
+\begin{aligned}
+S_s(f)&amp;=\frac{|G_T(f)|^2}{T_s}\\
+&amp;\quad\times\sum_{\ell=-\infty}^{\infty}R_a[\ell]e^{-j2\pi f\ell T_s}.
+\end{aligned}
 $$
 
 **独立情形只是这条一般式的特例。** 若均值为 $m_a$、方差为 $\sigma_a^2$，独立同分布给出 $R_a[\ell]=\sigma_a^2\delta[\ell]+|m_a|^2$，再利用冲激梳恒等式
@@ -4542,9 +4899,12 @@ $$
 可得
 
 $$
-S_s(f)=\frac{\sigma_a^2}{T_s}|G_T(f)|^2+
-\frac{|m_a|^2}{T_s^2}\sum_{q=-\infty}^{\infty}
-\left|G_T\!\left(\frac q{T_s}\right)\right|^2\delta\!\left(f-\frac q{T_s}\right).
+\begin{aligned}
+S_s(f)&amp;=\underbrace{\frac{\sigma_a^2}{T_s}|G_T(f)|^2}_{\text{连续谱}}\\
+&amp;\quad+\underbrace{\frac{|m_a|^2}{T_s^2}\sum_{q=-\infty}^{\infty}
+\left|G_T\!\left(\frac q{T_s}\right)\right|^2
+\delta\!\left(f-\frac q{T_s}\right)}_{\text{离散谱线}}.
+\end{aligned}
 $$
 
 连续谱来自符号的随机偏差，谱线来自周期性均值。均值非零不保证每个整数倍时钟都有谱线，还须检查脉冲频响在该点是否为零。$S_s(0)$ 非零只是连续谱在零频的密度，$C\delta(f)$ 才是面积为 $C$ 的离散直流功率。
@@ -4562,6 +4922,9 @@ $$
 
 等概独立符号乘上这份波形，连续谱在零频处为零，第一正零点在 $2R_b$。位中间一定有跃变不等于原随机波形一定有离散 $R_b$ 谱线；非线性处理或跃变检测仍可用于提取时钟。
 
+&lt;details&gt;
+&lt;summary&gt;展开笔记原例：三电平不等于独立三元源&lt;/summary&gt;
+
 **逐步讲解笔记原例 $a_n=b_n+b_{n-1}$。** $b_n=\pm1$ 等概独立，展开相关函数时，只有指标相同的乘积期望为 1，其余均为零：
 
 $$
@@ -4577,19 +4940,29 @@ $$
 
 第二种解释是把独立源先发成 NRZ，再过 $H(f)=1+e^{-j2\pi fT_b}$；第三种解释是两份相邻矩形合并成宽 $2T_b$ 的脉冲，但仍每隔 $T_b$ 发送一次。三种方法相同，提醒我们：**不能看到三电平就按独立三元源计算，相关性才是本例频谱收窄的原因。** 平均功率为 $\mathbb E[a_n^2]=2$（按 1 Ω 归一化），积分 $4T_b\operatorname{sinc}^2(2fT_b)$ 也恰为 2。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch5-3"&gt;&lt;/span&gt;
+
 ### 5.3 AWGN 接收：匹配滤波、似然与门限
 
 **对照笔记 5.3，正文第 56—57 页。** 两个候选波形为 $s_i(t)=a_i g(t)$，$E_g=\int|g(t)|^2dt$。匹配滤波器 $h(t)=g^*(t_0-t)$ 在正确时刻得到
 
 $$
-y=a_iE_g+v,\qquad v\sim\mathcal N(0,N_0E_g/2).
+\begin{aligned}
+y&amp;=a_iE_g+v,\\
+v&amp;\sim\mathcal N(0,N_0E_g/2).
+\end{aligned}
 $$
 
 信号值是内积 $a_i\int|g|^2$；噪声方差来自第三章的 $\sigma_v^2=(N_0/2)\int|h|^2$。将 $y$ 除以 $\sqrt{E_g}$，就变成单位基函数投影 $z=a_i\sqrt{E_g}+w$，其中 $w$ 的方差为 $N_0/2$。这两个变量的门限和噪声方差都要一起缩放，不能混用。
 
 为什么匹配滤波合理？输出信号内积的平方不超过 $E_g\int|h|^2$，等号在滤波器与反向共轭脉冲成比例时成立；噪声方差又正比于 $\int|h|^2$，所以这种选择最大化抽样 SNR。对 AWGN 中二元同形幅度信号，相关器输出包含判决所需的信息，再按似然作判决即可。它不会把噪声全部消掉，也不独立保证多符号系统无 ISI。
 
-令 $z|H_i\sim\mathcal N(\mu_i,\sigma^2)$，$\mu_1&gt;\mu_0$。等误判代价下，MAP 比较 $P_1p(z|H_1)$ 与 $P_0p(z|H_0)$，取对数后有
+令 $z|H_i\sim\mathcal N(\mu_i,\sigma^2)$，$\mu_1&gt;\mu_0$。等误判代价下，MAP 比较 $P_1p(z|H_1)$ 与 $P_0p(z|H_0)$。两个对数高斯密度的差化简后，得到下面的单门限：
+
+&lt;details&gt;
+&lt;summary&gt;展开 MAP 门限：两个高斯密度取对数后如何化简&lt;/summary&gt;
 
 $$
 \ln\frac{P_1p(z|H_1)}{P_0p(z|H_0)}
@@ -4599,21 +4972,32 @@ $$
 
 两平方项中的 $z^2$ 相消，得到一个线性边界：
 
+&lt;/details&gt;
+
 $$
-\boxed{\gamma=\frac{\mu_0+\mu_1}{2}
-+\frac{\sigma^2}{\mu_1-\mu_0}\ln\frac{P_0}{P_1}}.
+\begin{aligned}
+\gamma&amp;=\frac{\mu_0+\mu_1}{2}\\
+&amp;\quad+\frac{\sigma^2}{\mu_1-\mu_0}\ln\frac{P_0}{P_1}.
+\end{aligned}
 $$
 
 $z&gt;\gamma$ 判 1，否则判 0。等先验是两均值中点，也就是一维最近距离判决；$P_0$ 较大时门限升高，常见假设得到更大判决区。若条件方差不同，平方项通常不能完全相消，可能有两个边界，本式不适用。
 
 $$
-P_e=P_0Q\!\left(\frac{\gamma-\mu_0}{\sigma}\right)
-+P_1Q\!\left(\frac{\mu_1-\gamma}{\sigma}\right).
+\begin{aligned}
+P_e&amp;=P_0Q\!\left(\frac{\gamma-\mu_0}{\sigma}\right)\\
+&amp;\quad+P_1Q\!\left(\frac{\mu_1-\gamma}{\sigma}\right).
+\end{aligned}
 $$
 
 在未归一化 $y$ 中，双极 $a_i=\pm1$ 给出门限 $N_0\ln(P_0/P_1)/4$，等概时 $E_b=E_g$、$P_b=Q(\sqrt{2E_b/N_0})$。单极 $a_i=0,1$ 给出门限 $E_g/2+(N_0/2)\ln(P_0/P_1)$；**仅在等概时**平均 $E_b=E_g/2$，$P_b=Q(\sqrt{E_b/N_0})$。若两种系统采用相同平均功率与速率，双极的两均值距离更大，这就是 3 dB 差距的几何来源。
 
 &lt;h4 id="comm-deep-matched-observation"&gt;旁读演练：把整段电压变成匹配滤波判决样本&lt;/h4&gt;
+
+相关器把整段波形投影成一个数；某一小段电压变负，并不等于整符号已经判错。下面用四段平均电压比较完整匹配与局部观测。
+
+&lt;details&gt;
+&lt;summary&gt;展开四段平均电压的观测：完整窗口与只看一段有何差别&lt;/summary&gt;
 
 **以下为自编演练。** 为了把笔记第 56 页的“匹配滤波器在最佳时刻输出”落到一次观测，取单位高度矩形脉冲，持续一个 $T_s$；候选发送幅度为 $a=\pm1$。此时单位能量基函数是窗口内的 $1/\sqrt{T_s}$，相关器不是读取某个瞬时电压，而是计算
 
@@ -4636,15 +5020,31 @@ $$
 
 如果接收机只利用第三个四分之一窗口，仍按正负判决，信号平均值还是 $\pm1$，但噪声方差是完整窗口平均值的四倍。按 $E_b=T_s$ 的归一化，取 $E_b/N_0=2$：完整相关器的 BER 为 $Q(2)\approx0.02275$，只用一段则为 $Q(1)\approx0.15866$。差别来自丢掉了四分之三的观测能量。这也解释了匹配滤波为什么强调**整段波形及正确窗口**，而不是仅仅寻找示波器上最高的那一点；实际有成形或信道拖尾时，权重还须随到达脉冲改变。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch5-4"&gt;&lt;/span&gt;
+
 ### 5.4 带限传输与 Nyquist：重叠不等于串扰
 
 **对照笔记 5.4，正文第 57—60 页。** 信道削弱高频，会把窄脉冲变宽。真正要检查的是发送、信道、接收三者卷积后的总体脉冲 $p=g_T*c*g_R$，补偿固定时延后
 
 $$
-y_m=a_mp(0)+\underbrace{\sum_{n\ne m}a_np((m-n)T_s)}_{\text{ISI}}+v_m.
+\begin{aligned}
+y_m&amp;=a_mp(0)\\
+&amp;\quad+\underbrace{\sum_{n\ne m}a_np((m-n)T_s)}_{\text{ISI}}+v_m.
+\end{aligned}
 $$
 
-时域脉冲可以重叠，只要相邻脉冲在本次抽样时都为零，就不会串扰。归一化 $p(0)=1$ 后，要求 $p(\ell T_s)=\delta[\ell]$；若保留增益 $A_0=p(0)$，则右端为 $A_0\delta[\ell]$。
+时域脉冲可以重叠，只要相邻脉冲在本次抽样时都为零，就不会串扰。
+
+![Nyquist 脉冲重叠与非 Nyquist 拖尾在抽样点的区别](/img/communication-study-nyquist-eye.svg)
+
+读图时先认抽样竖线。上图取 $p(t)=\operatorname{sinc}(t/T_s)$，下图取 $q(t)=\operatorname{sinc}(0.6t/T_s)$，两者都限带、都彼此重叠。发送相邻三符号 $(1,-1,1)$ 时，上图在 $t=0$ 得到 $-1$；下图两邻符号各贡献约 $0.50455$，样值变为约 $0.00910$。**是否有 ISI，要检查总体脉冲的抽样值；限带本身并不必然产生 ISI。** 这里比较脉冲形状，下图带宽仅为 $0.3/T_s$，不能把它当成原波形通过单位增益信道的直接输出。
+
+归一化 $p(0)=1$ 后，要求 $p(\ell T_s)=\delta[\ell]$；若保留增益 $A_0=p(0)$，则右端为 $A_0\delta[\ell]$。
+
+&lt;details&gt;
+&lt;summary&gt;展开 Nyquist 频域条件：冲激梳取样与频谱副本叠加&lt;/summary&gt;
 
 **把笔记第 58 页的变形逐行说明。** 以冲激梳 $\operatorname{III}_{T_s}(t)=\sum_n\delta(t-nT_s)$ 对总体脉冲取样，无 ISI 意味着
 
@@ -4661,9 +5061,20 @@ $$
 
 这里 $P(f)$ 是总体脉冲的傅里叶变换，**不是功率谱**。若 $p(0)=A_0$，叠加常数相应为 $A_0T_s$。这解释了为什么换一个脉冲尺度，Nyquist 频域右端也要变，而不能机械保留同一数值。
 
+&lt;/details&gt;
+
+无 ISI 的频域检验是 $\sum_q P(f-q/T_s)=T_s$；这里 $P$ 是**总体脉冲的频响**，归一化仍为 $p(0)=1$。
+
 若支持为 $|f|\leq W$，其中 $W$ 为单边低通带宽，相邻谱副本间隔 $R_s$。$R_s&gt;2W$ 时副本之间有空隙，不可能叠成非零常数；$R_s=2W$ 时只在边界相接，理想矩形响应给出 sinc 脉冲；$R_s&lt;2W$ 时允许边沿重叠，只要互补叠加即可。因此理想无 ISI 符号速率满足 $R_s\leq2W$。它是符号波形条件，不等于有噪声信道的信息容量，也不同于第二章连续信号重建时的采样频率下界。
 
-升余弦用滚降段的互补关系消除副本的起伏。对 $0&lt;\alpha\leq1$，
+升余弦用滚降段的互补关系消除副本的起伏。下图把频谱滚降与抽样零点放在一起：滚降改变过渡形状，无 ISI 仍由整数抽样点控制。
+
+![升余弦滚降频谱与符号抽样点的零ISI条件](/img/communication-study-raised-cosine.svg)
+
+&lt;details&gt;
+&lt;summary&gt;展开升余弦完整分段频响&lt;/summary&gt;
+
+对 $0&lt;\alpha\leq1$，
 
 $$
 P_{\rm RC}(f)=\begin{cases}
@@ -4675,17 +5086,21 @@ T_s,&amp; |f|\leq\dfrac{1-\alpha}{2T_s},\\[3pt]
 \end{cases}
 $$
 
+&lt;/details&gt;
+
 在两个副本的重叠区，一段的余弦角为 $\theta$，另一段为 $\pi-\theta$；$\cos(\pi-\theta)=-\cos\theta$，两段和恰为 $T_s$。时域与带宽为
 
 $$
-p_{\rm RC}(t)=\operatorname{sinc}(t/T_s)
-\frac{\cos(\pi\alpha t/T_s)}{1-(2\alpha t/T_s)^2},
-\qquad W=\frac{1+\alpha}{2}R_s.
+\begin{aligned}
+p_{\rm RC}(t)&amp;=\operatorname{sinc}(t/T_s)
+\frac{\cos(\pi\alpha t/T_s)}{1-(2\alpha t/T_s)^2},\\
+W&amp;=\frac{1+\alpha}{2}R_s.
+\end{aligned}
 $$
 
 非零整数抽样点由 sinc 的零点消除 ISI；可去奇点 $t=\pm T_s/(2\alpha)$ 取极限 $\tfrac\pi4\operatorname{sinc}(1/(2\alpha))$。$\alpha=0$ 按极限回到矩形频响。滚降是相对 Nyquist 带宽 $R_s/2$ 多出的比例，**不是相对 $R_s$ 多出的比例**。例如 $R_s=3000$ Bd、$\alpha=1/3$，$W=2000$ Hz，比 1500 Hz 的 Nyquist 带宽增加 1/3。大滚降让拖尾和定时敏感性通常更易处理，但严格带限脉冲仍无限时长，有限长实现有残余 ISI；$\alpha&gt;0.2$ 不是普遍定理。
 
-![升余弦滚降频谱与符号抽样点的零ISI条件](/img/communication-study-raised-cosine.svg)
+&lt;span id="comm-ch5-5"&gt;&lt;/span&gt;
 
 ### 5.5 最佳配合、眼图和均衡：把噪声与 ISI 同时考虑
 
@@ -4697,7 +5112,9 @@ $$
 
 理想信道在占用频带内 $C(f)=1$，去掉时延与常数后，总体响应为 $|G_T(f)|^2$。想让它是 RC，发送端就要取 $G_T=\sqrt{P_{\rm RC}}$，接收端匹配它，形成两端 RRC。**单个 RRC 不需要在整数符号点为零；两端相乘后的 RC 才需要满足 Nyquist。** 第三章匹配滤波、这一章频谱副本互补和第四章的信道噪声模型，在这里合成同一项设计。
 
-$P_{\rm RC}$ 以 $p(0)=1$ 归一化时积分为 1，因而 $\int|G_T|^2df=1$，发送脉冲为单位能量。独立零均值符号的发送 PSD 为 $\sigma_a^2P_{\rm RC}/T_s$，平均功率为 $\sigma_a^2/T_s$。这也说明**发送 PSD**和**总体频响**虽然形状可相同，单位和含义仍不同。如果信道有深衰落或噪声为有色，简单取两个相同 RRC 就不再自动同时解决匹配与无 ISI。
+$P_{\rm RC}$ 以 $p(0)=1$ 归一化时积分为 1，因而 $\int|G_T|^2df=1$，发送脉冲为单位能量。独立零均值符号的发送 PSD 为 $\sigma_a^2P_{\rm RC}/T_s$，平均功率为 $\sigma_a^2/T_s$。这也说明**发送 PSD**和**总体频响**虽然形状可相同，单位和含义仍不同。
+
+如果信道有深衰落或噪声为有色，简单取两个相同 RRC 就不再自动同时解决匹配与无 ISI。
 
 笔记原设计例（第 60—61 页）：$R_b=6000$ bit/s、$W=2000$ Hz，$M$ 尽量小且 $\alpha\geq0.25$。二进制仅 Nyquist 带宽就要 3000 Hz，不可行；4-PAM 的 $R_s=3000$ Bd，带宽约束给 $\alpha\leq2W/R_s-1=1/3$，故 $0.25\leq\alpha\leq1/3$ 都可。取 $\alpha=1/3$ 是充分利用信道的一种设计，**不是题目强制唯一答案**。8-PAM 也可行，但违背最小进制要求。最后说明平坦信道内两端 RRC 配合，才算给出完整传输系统。
 
@@ -4705,16 +5122,30 @@ $P_{\rm RC}$ 以 $p(0)=1$ 归一化时积分为 1，因而 $\int|G_T|^2df=1$，�
 
 若抽样偏移 $\varepsilon$ 很小，$p(\ell T_s+\varepsilon)\approx p(\ell T_s)+\varepsilon p'(\ell T_s)$。原本为零的邻符号贡献变成 $a_n\varepsilon p'((m-n)T_s)$，于是斜率越大、时刻越偏，ISI 越容易出现。这是横向开口和定时误差关联的数学解释。眼图不能直接给精确 BER；某次竖向开口很大，也不能证明所有实际同步和错误机制都已排除。
 
-**均衡器怎样减少拖尾，又为什么会放大噪声？** 抽样后的模型记作 $y_n=\sum_k h_ka_{n-k}+v_n$，线性均衡器 $\hat a_n=\sum_\ell w_\ell y_{n-\ell}$ 使等效抽头 $w*h$ 尽量接近单个延迟。迫零 ZF 令频域 $W_{\rm ZF}=1/H$，但某频率 $|H|=0.1$ 时，噪声功率密度放大 100 倍。对符号与噪声互不相关的平稳模型，允许非因果滤波的频域 MMSE 形式如下；这里 $\theta$ 为离散归一化角频率，单位 rad/sample，以 $2\pi$ 为周期：
+**均衡器怎样减少拖尾，又为什么会放大噪声？** 抽样后的模型记作 $y_n=\sum_k h_ka_{n-k}+v_n$，线性均衡器 $\hat a_n=\sum_\ell w_\ell y_{n-\ell}$ 使等效抽头 $w*h$ 尽量接近单个延迟。迫零 ZF 令频域 $W_{\rm ZF}=1/H$，但某频率 $|H|=0.1$ 时，噪声功率密度放大 100 倍。
+
+&lt;details&gt;
+&lt;summary&gt;展开理想 MMSE 频响：为什么它不像 ZF 那样完全求逆&lt;/summary&gt;
+
+对符号与噪声互不相关的平稳模型，允许非因果滤波的频域 MMSE 形式如下；这里 $\theta$ 为离散归一化角频率，单位 rad/sample，以 $2\pi$ 为周期：
 
 $$
 W_{\rm MMSE}(e^{j\theta})=
 \frac{H^*(e^{j\theta})S_a(\theta)}{|H(e^{j\theta})|^2S_a(\theta)+S_v(\theta)}.
 $$
 
-同一频率取 $S_a=1,S_v=0.01,H=0.1$，ZF 增益为 10，MMSE 为 5；后者没有完全消除衰减，却减少噪声增强。有限 FIR 的抽头由训练或自适应估计求得，不能简单逐频套这条非因果理想式。判决反馈均衡 DFE 可利用过去已判符号取消后游标 ISI，减少某些噪声增强，但错误判决也可能传播。笔记重点是 ZF 与 MMSE 的取舍，考试中至少要能说明“无 ISI”和“最小错误”不是同一目标。
+同一频率取 $S_a=1,S_v=0.01,H=0.1$，ZF 增益为 10，MMSE 为 5；后者没有完全消除衰减，却减少噪声增强。有限 FIR 的抽头由训练或自适应估计求得，不能简单逐频套这条非因果理想式。
+
+&lt;/details&gt;
+
+判决反馈均衡 DFE 可利用过去已判符号取消后游标 ISI，减少某些噪声增强，但错误判决也可能传播。笔记重点是 ZF 与 MMSE 的取舍，考试中至少要能说明“无 ISI”和“最小错误”不是同一目标。
 
 &lt;h4 id="comm-deep-isi-eye"&gt;旁读演练：从三个抽头算序列、眼高与误判&lt;/h4&gt;
+
+这一演练把主抽头固定为 1，避免把单纯放大电压误当成眼图改善。阅读顺序是：**先算邻符号改变了哪些样值，再算到门限的余量，最后检查均衡后的噪声。**
+
+&lt;details&gt;
+&lt;summary&gt;展开三个抽头的演算：序列、眼高、BER 与有限均衡&lt;/summary&gt;
 
 **以下为自编演练。** 把笔记第 61 页的眼图和均衡讨论放到同一离散模型：主抽头已对齐并归一化，两个后游标抽头分别为 $0.25,-0.15$，二元符号为 $\pm1$，于是
 
@@ -4745,12 +5176,12 @@ $$
 进一步令符号独立等概，$v_n$ 是与符号独立的零均值高斯噪声，标准差为 $\sigma=0.2$。四种邻状态等概率，正、负符号的平均误判率相同，因此精确逐符号 BER 是四个条件尾概率的平均：
 
 $$
-P_b=\frac14\left[
-Q\!\left(\frac{0.6}{\sigma}\right)+
-Q\!\left(\frac{0.9}{\sigma}\right)+
-Q\!\left(\frac{1.1}{\sigma}\right)+
-Q\!\left(\frac{1.4}{\sigma}\right)\right]
-\approx3.3832\times10^{-4}.
+\begin{aligned}
+P_b&amp;=\frac14\left[
+Q\!\left(\frac{0.6}{\sigma}\right)+Q\!\left(\frac{0.9}{\sigma}\right)\right.\\
+&amp;\qquad\left.+Q\!\left(\frac{1.1}{\sigma}\right)+Q\!\left(\frac{1.4}{\sigma}\right)\right]\\
+&amp;\approx3.3832\times10^{-4}.
+\end{aligned}
 $$
 
 无 ISI 时同一噪声标准差给 $Q(5)\approx2.8665\times10^{-7}$。不能把“最坏余量 0.6”直接代入一个 $Q$ 函数，当成所有数据组合的精确 BER；这里 $Q(3)$ 是最坏状态的条件错误概率，而不是平均值。反过来，眼高为正也不保证高斯噪声永不越界。这一演练把眼图、ISI 求和和错误概率连起来：均衡器调整抽头后，需要重新检查各状态的边界距离，同时检查均衡后噪声方差，而不能只看轨迹变得整齐。
@@ -4771,6 +5202,10 @@ $$
 
 比较两张眼图时还要统一电压增益。如果仅把整段接收波形放大，眼高会随增益增加，噪声标准差和门限也一起增加，归一化的边界距离并不改善。因此“眼张得更大”的有效结论，应建立在相同主抽头尺度，或相同电平间距的比较上。本例始终把主抽头固定为 1，才可以把前后眼高与噪声余量放在一起讨论。
 
+&lt;/details&gt;
+
+&lt;span id="comm-ch5-6"&gt;&lt;/span&gt;
+
 ### 5.6 部分响应：让已知记忆成为可译码的结构
 
 **对照笔记 5.8，正文第 61—63 页。** 零 ISI 之外还有一条路：主动保留已知的一项记忆，让接收端按规则译码。第一类部分响应取
@@ -4778,6 +5213,9 @@ $$
 $$
 c_n=a_n+a_{n-1},\qquad a_n\in\{-1,1\},\quad c_n\in\{-2,0,2\}.
 $$
+
+&lt;details&gt;
+&lt;summary&gt;展开部分响应的频域与时域：为什么恰好保留两个抽头&lt;/summary&gt;
 
 在频域，相关编码因子为 $1+e^{-j2\pi fT_s}=2\cos(\pi fT_s)e^{-j\pi fT_s}$。与 Nyquist 理想矩形响应相乘，按本章 $p(0)=1$ 的尺度写为
 
@@ -4795,6 +5233,8 @@ $$
 
 $t=0,T_s$ 取极限均为 1，其余整数点为零，所以恰好留下两个相邻抽头。频带边缘的余弦落到零，拖尾量级从单个 sinc 的 $1/|t|$ 改善为 $1/t^2$。仍须时延和截断近似实现，不能说理想严格带限滤波器因此已成为有限时长。笔记的频域式省略了 $T_s$ 尺度；这里把频域与时域一起归一化，避免照抄后单位不一致。
 
+&lt;/details&gt;
+
 直接递推 $\hat a_n=c_n-\hat a_{n-1}$ 时，若某次产生误差 $e_n=\hat a_n-a_n$，后续无新错误也有 $e_{n+1}=-e_n$，旧错会交替传播。预编码改为
 
 $$
@@ -4805,6 +5245,8 @@ $b_n=0$ 时 $d_n=d_{n-1}$，所以 $a_n=a_{n-1}$、$c_n=\pm2$；$b_n=1$ 时两�
 
 预编码没有纠正噪声造成的当前误判，也没有增加最小星座距离。部分响应通过有规则的 ISI 改变频谱，是带宽、信号记忆与检测方法的重新配合；它不是忽略普通 Nyquist 条件之后仍声称逐符号零 ISI。
 
+&lt;span id="comm-ch5-7"&gt;&lt;/span&gt;
+
 ### 5.7 符号同步：找到正确的速率和抽样相位
 
 **对照笔记 5.9，正文第 63 页。** 符号时钟要同时确定“间隔是多少”和“从哪里起数”。即使标称 $R_s$ 正确，抽样相位偏移也会离开零 ISI 点；两端时钟频率略有差别时，偏移还会不断积累。
@@ -4814,6 +5256,8 @@ $b_n=0$ 时 $d_n=d_{n-1}$，所以 $a_n=a_{n-1}$、$c_n=\pm2$；$b_n=1$ 时两�
 超前—滞后方法在当前估计时刻前后各取一份样本。若训练脉冲峰值左右对称，可以比较 $|y(t-\Delta)|^2$ 与 $|y(t+\Delta)|^2$：后者更大提示当前位于峰值之前，应把抽样时刻往后移；前者更大则往前移。数据波形中需按适当的平均或判决辅助方法提取误差信号，不能无条件比较两个带符号电压的大小。小步长反馈不断更新相位，稳定时左右统计量相等。
 
 例如 $p(t)=\operatorname{sinc}(t/T_s)$，只看邻符号 $n=m-1$，理想时 $p(T_s)=0$；若偏移 $0.05T_s$，其贡献变成 $p(1.05T_s)\approx-0.04742$ 倍该符号。原本没有的串扰因此出现。这和上一节眼图斜率、Nyquist 抽样零点是同一个问题的三种表达。符号同步解决抽样，帧同步寻找数据块起点，第六章载波同步解决本振频率与相位，三者不能互相替代。
+
+&lt;span id="comm-ch5-8"&gt;&lt;/span&gt;
 
 ### 5.8 四道自编分步例题
 
@@ -4893,6 +5337,8 @@ $$
 | RRC 配对 | $G_TG_R=P_{\rm RC}$ | 平坦信道、匹配接收，尺度与延时一致 |
 | 第一类部分响应 | $c_n=a_n+a_{n-1}$ | 接收端按相应记忆模型译码 |
 
+&lt;span id="comm-ch5-10"&gt;&lt;/span&gt;
+
 ### 5.10 易错点与固定解题顺序
 
 先写 $M,R_b,R_s,T_s$，再写带宽口径；接收题先定义统计量和噪声方差，再讨论门限；频谱题先写均值与相关函数。最常见错误是把总频率宽度 $2W$ 当作单边 $W$，把方差写成标准差，漏掉 PSD 的 $1/T_s$，以及在不等先验时仍机械使用零门限。
@@ -4933,9 +5379,28 @@ $$
 
 &lt;h2 id="comm-part-6"&gt;第六章 数字频带传输&lt;/h2&gt;
 
-第五章已经解释了如何把比特变成基带脉冲；本章把这些脉冲送到载波附近，并回答“不同调制方式为什么有不同误码率”。笔记正文第 64—77 页分成引言、二进制调制、四相调制、$M$ 进制调制四节。最贯通的读法，是把每条候选波形看成信号空间中的一个点，再问：**噪声沿哪个方向运动，移动多远会跨过判决边界？**
+第五章把比特变成基带脉冲；本章把脉冲送到载波附近。理解不同调制方式的误码率，可以先把候选波形画成点，再问：**噪声沿哪个方向运动，移动多远会跨过判决边界？**
+
+复习时按“**波形与能量 → 星座与边界 → 判决统计量 → 错误概率**”阅读。理想接收的核心关系放在正文，分布细节、频率正交的积分和较长的标签计数留在折叠推导中。
 
 本章以 `PoC.pdf` 第六章和附录 G、H 为讲解对象，沿用 $R_b,R_s,T_s,E_b,E_s$、归一化 sinc、$N_0/2$ 与尾概率 $Q(x)$ 的约定。同相、正交坐标写作 $I,Q_{\rm c}$，与尾概率函数区分。四道主例题和六道自测均为自编；笔记原公式的疑误在对应讲解处说明。
+
+&lt;nav class="comm-reading-nav" aria-label="第六章小节导航"&gt;
+&lt;a href="#comm-ch6-0"&gt;6.0 调制模型&lt;/a&gt;
+&lt;a href="#comm-ch6-1"&gt;6.1 信号空间&lt;/a&gt;
+&lt;a href="#comm-ch6-2"&gt;6.2 OOK 与 FSK&lt;/a&gt;
+&lt;a href="#comm-ch6-3"&gt;6.3 BPSK 与同步&lt;/a&gt;
+&lt;a href="#comm-ch6-4"&gt;6.4 频谱与正交&lt;/a&gt;
+&lt;a href="#comm-ch6-5"&gt;6.5 两种差分接收&lt;/a&gt;
+&lt;a href="#comm-ch6-6"&gt;6.6 QPSK 家族&lt;/a&gt;
+&lt;a href="#comm-ch6-7"&gt;6.7 多进制星座&lt;/a&gt;
+&lt;a href="#comm-ch6-8"&gt;6.8 分步例题&lt;/a&gt;
+&lt;a href="#comm-formulas-6"&gt;公式卡&lt;/a&gt;
+&lt;a href="#comm-quiz-6"&gt;闭卷自测&lt;/a&gt;
+&lt;a href="#comm-chain-workthrough"&gt;六章贯通旁读&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-ch6-0"&gt;&lt;/span&gt;
 
 ### 6.0 引言：控制哪一个参量，还要看有没有记忆
 
@@ -4943,7 +5408,11 @@ $$
 
 无记忆映射由当前输入符号决定当前候选点；DPSK 的当前绝对相位还依赖上一状态，所以有记忆。连续相位 FSK 的相位需要积分频率，先前数据影响当前相位，也不能看成每个间隔独立重置的正弦波。这一分类会影响频谱和接收方法，是后面套公式前必须确定的模型。
 
-除另有说明，以下性能比较假定：等概符号、无编码、AWGN、定时正确、无 ISI、理想匹配接收；相干接收还要求本振频率和相位正确。$P_s=\Pr(\hat S\ne S)$；$P_b$ 为错误比特比例。高进制时它们的关系由标签和错误方向决定，不能直接相等。固定比特速率和平均功率时 $E_b=P/R_b$ 不变，而 $E_s=E_b\log_2M$；若改成固定符号能量，得到的是另一种比较。
+除另有说明，以下性能比较假定：**等概符号、无编码、AWGN、定时正确、无 ISI、理想匹配接收**；相干接收还要求本振频率和相位正确。
+
+$P_s=\Pr(\hat S\ne S)$；$P_b$ 为错误比特比例。高进制时它们的关系由标签和错误方向决定，不能直接相等。固定比特速率和平均功率时 $E_b=P/R_b$ 不变，而 $E_s=E_b\log_2M$；若改成固定符号能量，得到的是另一种比较。
+
+&lt;span id="comm-ch6-1"&gt;&lt;/span&gt;
 
 ### 6.1 信号空间：从波形似然到欧氏距离
 
@@ -4961,8 +5430,10 @@ MAP 要选后验最大的点，等价于最小化 $\|\boldsymbol r-\boldsymbol s
 两个等先验候选点相距 $d$，中垂面是边界。将噪声投影到连线方向，其方差仍为 $N_0/2$，越界所需位移为 $d/2$，所以
 
 $$
-\boxed{P_b=Q\!\left(\frac d{\sqrt{2N_0}}\right)},\qquad
- d^2=E_0+E_1-2\operatorname{Re}\langle s_0,s_1\rangle.
+\begin{aligned}
+P_b&amp;=Q\!\left(\frac d{\sqrt{2N_0}}\right),\\
+d^2&amp;=E_0+E_1-2\operatorname{Re}\langle s_0,s_1\rangle.
+\end{aligned}
 $$
 
 等能量 $E_b$、实相关系数 $\rho=\langle s_0,s_1\rangle/E_b$ 时，
@@ -4973,7 +5444,11 @@ $$
 
 反相 $\rho=-1$ 使距离最大；正交 $\rho=0$ 使计算与接收结构简单；相同波形 $\rho=1$ 没有可辨别信息，只能猜测，错误率为 $1/2$。笔记第 68 页一般距离式的内积交叉项漏了系数 2，这里从平方范数展开订正。这个方法把二进制 ASK、FSK、PSK 统一起来，也把本章接回第五章门限判决。
 
-![单位平均符号能量下的BPSK QPSK和16QAM星座](/img/communication-study-constellation.svg)
+![BPSK 门限、噪声投影与 QPSK 二维判决边界](/img/communication-study-decision-geometry.svg)
+
+图中星座按平均符号能量 $E_s=1$ 归一化。上图的一维投影决定是否越过 BPSK 门限；下图的 QPSK 点要分别检查两条坐标边界。Gray 标签使相邻越界只改变一位；跨过两条边界时，仍可能同时错两位。
+
+&lt;span id="comm-ch6-2"&gt;&lt;/span&gt;
 
 ### 6.2 OOK 与 2FSK：相干和非相干究竟差在哪里
 
@@ -4994,12 +5469,19 @@ OOK 的矩形 NRZ 基带幅度有非零均值，所以第五章直流线经乘�
 
 #### 6.2.2 非相干 OOK：判的是包络，不是一维带符号高斯量
 
-未知相位时可保留两个正交相关器输出，再取包络 $R=\sqrt{I^2+Q_{\rm c}^2}$。空号只有二维高斯噪声，所以 $R$ 为 Rayleigh 分布；传号是二维均值长度 $\nu=\sqrt{E_1}$ 的高斯量，所以 $R$ 为 Rice 分布。记每轴噪声方差 $\sigma^2=N_0/2$，则
+未知相位时可保留两个正交相关器输出，再取包络 $R=\sqrt{I^2+Q_{\rm c}^2}$。空号只有二维高斯噪声，所以 $R$ 为 Rayleigh 分布；传号是二维均值长度 $\nu=\sqrt{E_1}$ 的高斯量，所以 $R$ 为 Rice 分布。
+
+&lt;details&gt;
+&lt;summary&gt;展开非相干 OOK：Rayleigh/Rice 分布与最佳包络门限&lt;/summary&gt;
+
+记每轴噪声方差 $\sigma^2=N_0/2$，则
 
 $$
-f_0(r)=\frac r{\sigma^2}e^{-r^2/(2\sigma^2)},\quad
-f_1(r)=\frac r{\sigma^2}e^{-(r^2+E_1)/(2\sigma^2)}
+\begin{aligned}
+f_0(r)&amp;=\frac r{\sigma^2}e^{-r^2/(2\sigma^2)},\\
+f_1(r)&amp;=\frac r{\sigma^2}e^{-(r^2+E_1)/(2\sigma^2)}
 I_0\!\left(\frac{r\sqrt{E_1}}{\sigma^2}\right),\quad r\geq0,
+\end{aligned}
 $$
 
 其中 $I_0$ 为零阶第一类修正贝塞尔函数。等先验最佳包络门限 $\lambda$ 满足
@@ -5012,7 +5494,16 @@ $$
 
 第一项是空号噪声越过门限的误报，第二项是传号包络低于门限的漏报。它们不是两个相同的高斯尾概率，最佳门限也并非在所有信噪比下都恰为 $\sqrt{E_1}/2$。不必在考试前背贝塞尔函数细节，但要知道公式背后的判决变量和两种分布。
 
-笔记第 66 页给出的 $\tfrac12e^{-E_b/(2N_0)}$ 是所采用高 SNR 包络近似；**不要将它标成非相干 OOK 的普遍精确式，也不要据此与正交 FSK 的精确式混为一谈。** 例如按上述单位基函数最优门限模型，$N_0=1,E_b=5,E_1=10$，门限约为 1.9222，BER 约为 0.026856，而该简化指数式为 0.041042。此处的数值差别来自接收机模型与近似，不是能量换算错误。
+&lt;/details&gt;
+
+笔记第 66 页给出的 $\tfrac12e^{-E_b/(2N_0)}$ 是所采用高 SNR 包络近似；**不要将它标成非相干 OOK 的普遍精确式，也不要据此与正交 FSK 的精确式混为一谈。** 
+
+&lt;details&gt;
+&lt;summary&gt;展开一个数值对照：精确门限与高 SNR 简化式&lt;/summary&gt;
+
+例如按上述单位基函数最优门限模型，$N_0=1,E_b=5,E_1=10$，门限约为 1.9222，BER 约为 0.026856，而该简化指数式为 0.041042。此处的数值差别来自接收机模型与近似，不是能量换算错误。
+
+&lt;/details&gt;
 
 #### 6.2.3 2FSK：两个频率支路怎样判决
 
@@ -5035,6 +5526,8 @@ $$
 
 它比较“带信号的 Rice 包络”与“只有噪声的 Rayleigh 包络”，与 OOK 的“单一包络超过固定门限”不是同一判决。相干和非相干接收所需的频率正交条件将在 6.4 具体区分。
 
+&lt;span id="comm-ch6-3"&gt;&lt;/span&gt;
+
 ### 6.3 BPSK：误码率、平方环和相位模糊连起来看
 
 **对照笔记 6.2.3—6.2.4，正文第 69—70 页。** BPSK 两波形相位差为 $\pi$，写作 $s_1=+\sqrt{E_b}\phi$、$s_0=-\sqrt{E_b}\phi$。因此调制幅度系数应为 $\pm1$；笔记第 69 页表达式中的 $a_n\in\{0,1\}$ 若直接乘载波是 OOK，属于与后面分段波形矛盾的笔误。
@@ -5042,9 +5535,11 @@ $$
 相关器输出 $z=\pm\sqrt{E_b}+w$，$w\sim\mathcal N(0,N_0/2)$；等概门限为零。发送正点时错误事件 $w&lt;-\sqrt{E_b}$，除以标准差可得
 
 $$
-P_b=Q\!\left(\frac{\sqrt{E_b}}{\sqrt{N_0/2}}\right)
-=\boxed{Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right)}
-=\frac12\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\right).
+\begin{aligned}
+P_b&amp;=Q\!\left(\frac{\sqrt{E_b}}{\sqrt{N_0/2}}\right)\\
+&amp;=Q\!\left(\sqrt{\frac{2E_b}{N_0}}\right)\\
+&amp;=\frac12\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\right).
+\end{aligned}
 $$
 
 根号里的 2 来自投影噪声方差。两点距离 $2\sqrt{E_b}$，相比同平均能量下相干 OOK 或正交 2FSK 的 $\sqrt{2E_b}$ 更大，达到相同 BER 少需一半能量，即约 3.01 dB。这里限定等能量或统一平均能量的理想二元 AWGN 比较；高进制、衰落和同步失锁不能直接沿用这一结论。
@@ -5063,6 +5558,11 @@ $$
 Costas 环用同相与正交混频支路：相位误差为 $\theta_e$ 时，低通输出近似与 $b(t)\cos\theta_e$、$b(t)\sin\theta_e$ 成比例；相乘形成误差信号 $e\propto b^2(t)\sin(2\theta_e)$，反馈调整本振。在正确的小误差范围内，符号的正负通过平方消失，环路可跟踪相位，但 $\theta_e$ 与 $\theta_e+\pi$ 仍无法区分。若锁在相反载波，相干判决的整串 0/1 会反转；这不是普通偶发噪声误码。已知导频或唯一字可消除模糊，差分编码则把信息改放在相邻相位变化中。
 
 &lt;h4 id="comm-deep-carrier-phase"&gt;旁读演练：相位差怎样移动 BPSK 与 QPSK 样本&lt;/h4&gt;
+
+相位误差改变的是样本到判决边界的距离：BPSK 的有效投影会缩短甚至反号，QPSK 的两个坐标会互相混合。下面保留具体角度与 BER 的计算，可与第二章 I/Q 旋转图对照。
+
+&lt;details&gt;
+&lt;summary&gt;展开恒定相位偏差的定量例题：BPSK 投影与 QPSK 串扰&lt;/summary&gt;
 
 **以下为自编演练。** 固定符号定时正确、无 ISI，接收机本振存在恒定相位偏差 $\theta$，仍按原零门限判决。BPSK 的波形没有变短，单位基相关器却只接收到它在错误方向上的投影：
 
@@ -5096,7 +5596,13 @@ $$
 
 同样在 10 dB 下，仅 $15^\circ$ 偏差就给出约 $3.9136\times10^{-4}$，因为一半比特的边界距离被明显压缩。这里噪声仍是两轴独立、同方差高斯量，退化来自**均值位置**。若旋转到 $45^\circ$，四个点均有一个坐标落在门限上；随信噪比增大，该坐标仍有一半机会判错，所以平均 BER 趋向 $1/4$。先恢复相位、把星座转回去，才可重新使用理想 QPSK 公式；同步环的作用也就从方框图中的一个模块，变成了“恢复样本到判决边界的距离”。这些式子分析的是给定恒定偏差，不是把随机环路误差也当成同一个角度。
 
+&lt;/details&gt;
+
 ![统一比特能量比条件下四种理想接收方式的误码曲线](/img/communication-study-ber.svg)
+
+读这张图要固定横轴 $E_b/N_0$ 及图示接收方式。曲线采用理想同步条件；上方演练中的恒定相位偏差会改变模型，不能继续沿用同一条曲线。
+
+&lt;span id="comm-ch6-4"&gt;&lt;/span&gt;
 
 ### 6.4 频谱与 FSK 正交：半个符号倒数为什么不能通用
 
@@ -5108,7 +5614,14 @@ $$
 
 它沿用第五章单边低通 $W$，不能不加说明地套到所有 FSK。
 
-定义两音间隔 $\delta f=|f_1-f_0|$，中心最大频偏 $\Delta f_{\rm dev}=\delta f/2$。笔记用 $2\Delta f$ 表示两音间隔，做题时先把这两种记号对应起来。矩形窗 $[0,T_s]$ 内、已知零初相的实余弦波形，内积含两个积分：
+定义两音间隔 $\delta f=|f_1-f_0|$，中心最大频偏 $\Delta f_{\rm dev}=\delta f/2$。笔记用 $2\Delta f$ 表示两音间隔，做题时先把这两种记号对应起来。在本节矩形窗 $[0,T_s]$ 模型里，**相干已知零初相**可取 $f_i=(L+i/2)/T_s$（$i=0,1$，$L$ 为正整数），最小音间隔为 $1/(2T_s)$。
+
+**非相干 I/Q** 要让两套正交分量都互相正交：取两个载频为 $1/T_s$ 的不同正整数倍，可用最小音间隔 $1/T_s$。仅记住间隔而遗漏窗口与载频条件，会把两种模型混用。
+
+&lt;details&gt;
+&lt;summary&gt;展开相干与非相干 FSK 正交：差频项、和频项与窗口条件&lt;/summary&gt;
+
+矩形窗 $[0,T_s]$ 内、已知零初相的实余弦波形，内积含两个积分：
 
 $$
 \int_0^{T_s}\cos(2\pi f_0t)\cos(2\pi f_1t)dt
@@ -5127,13 +5640,25 @@ $$
 
 差频项需要 $\delta fT_s$ 为非零整数；对于有限窗口的实载波 I/Q 支路，还须让和频项及各频率的正弦、余弦交叉项为零，例如两个载频都取 $1/T_s$ 的整数倍。这时常用最小间隔为 $1/T_s$。若只用差频积分、忽略和频项，则属于高载频下的近似。因此上例 500 Hz 的间隔不自动满足非相干条件，改成 20 kHz 和 21 kHz 才符合本模型的完整正交取法。
 
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;旁读：负相关是否能优于正交，结论的边界在哪里&lt;/summary&gt;
+
 忽略高载频和频项且初相固定时，相关系数近似为 $\rho=\operatorname{sinc}(2\delta fT_s)$，即笔记的 $\operatorname{sinc}(4\Delta f_{\rm dev}T_s)$。它的第一负极小给出 $\delta f\approx0.71515R_s$、$\rho\approx-0.21723$，比正交的距离略大；这是**该二元波形模型下**的优化，不能从一段积分推出所有连续相位 FSK 的全序列最优间隔。记忆、相位状态和接收机都可能改变问题。
 
+&lt;/details&gt;
+
 按矩形窗正弦脉冲的外侧主瓣边界估算，两音中心相距 $\delta f$，两边各延伸 $R_s$，得 $B\approx\delta f+2R_s$；$M$ 音等间隔时为 $(M-1)\delta f+2R_s$。这是有无限旁瓣波形的带宽口径，不是严格频率支持。连续相位 FSK 频谱还取决于调制指数和相位记忆，不能一概当作独立 OOK 谱相加；Carson 式也要另外说明最大频偏和有效调制带宽。
+
+&lt;span id="comm-ch6-5"&gt;&lt;/span&gt;
 
 ### 6.5 DPSK：同一种编码，两个接收机
 
 **对照笔记 6.2.5，正文第 70—71 页。** 预编码 $d_n=b_n\oplus d_{n-1}$，再把 $d_n=1,0$ 映射为相位 $0,\pi$。信息 1 表示当前相位相对上一符号翻转，0 表示不变；整串同时旋转 $\pi$ 不改变相邻差。这和第五章部分响应的预编码使用相同异或递推，但发送波形与接收判据不同，不能混用误码式。
+
+&lt;details&gt;
+&lt;summary&gt;展开六个输入比特的差分编码与相位变化&lt;/summary&gt;
 
 初始 $d_{-1}=0$、$\theta_{-1}=\pi$，输入 $1,0,1,1,0,0$：
 
@@ -5143,6 +5668,8 @@ $$
 | $d_n$ | 1 | 1 | 0 | 1 | 1 | 1 |
 | $\theta_n$ | 0 | 0 | $\pi$ | 0 | 0 | 0 |
 | 相邻相位差（模 $2\pi$） | $\pi$ | 0 | $\pi$ | $\pi$ | 0 | 0 |
+
+&lt;/details&gt;
 
 **接收机一：相邻波形差分检测。** 当前接收信号与延迟 $T_b$ 的接收信号相乘，再低通，理想信号项含 $\cos(2\pi f_cT_b+\theta_n-\theta_{n-1})$。要简化为相位差余弦，应有 $f_cT_b$ 为整数，或补偿那段已知固定相移；笔记写作 $f_c=nT_b$ 的单位不对。实际可在复基带做 $\operatorname{Re}(R_nR_{n-1}^*)$，把正负映射为不变/翻转。上一符号也带噪声，不能把参考当成理想载波。在理想二进制差分 AWGN 模型下
 
@@ -5155,12 +5682,16 @@ $$
 **接收机二：先相干 BPSK，再硬差分译码。** 先借恢复载波得到 $\hat d_n$，再 $\hat b_n=\hat d_n\oplus\hat d_{n-1}$。设相干硬判决误码率为 $p=Q(\sqrt{2E_b/N_0})$，相邻错误独立时，一次译码错误恰是两个判决中只有一个错：
 
 $$
-P_b=\underbrace{p(1-p)}_{\text{当前错、前一正确}}
-+\underbrace{(1-p)p}_{\text{当前正确、前一错}}
-=2p(1-p).
+\begin{aligned}
+P_b&amp;=\underbrace{p(1-p)}_{\text{当前错、前一正确}}\\
+&amp;\quad+\underbrace{(1-p)p}_{\text{当前正确、前一错}}\\
+&amp;=2p(1-p).
+\end{aligned}
 $$
 
 两个同时错反而相互抵消。单个硬判决错误可能影响两个相邻输出比特，却不会像第五章未预编码的递推减法那样无限交替传播。整体 0/1 反转同样会在异或中抵消。这两个 BER 式来自不同接收统计量，名称里都带“差分”并不意味着可互换。
+
+&lt;span id="comm-ch6-6"&gt;&lt;/span&gt;
 
 ### 6.6 QPSK、DQPSK、OQPSK：串并、标签和相位变化
 
@@ -5180,25 +5711,40 @@ Gray 标签可以取 $00:(+,+)$、$01:(+,-)$、$11:(-,-)$、$10:(-,+)$；沿圆�
 两坐标噪声独立，各坐标的比特判决都是 BPSK，因此相干 Gray QPSK
 
 $$
-P_b=Q(\sqrt{2E_b/N_0}),\qquad
-P_s=1-(1-P_b)^2=2P_b-P_b^2.
+\begin{aligned}
+P_b&amp;=Q(\sqrt{2E_b/N_0}),\\
+P_s&amp;=1-(1-P_b)^2=2P_b-P_b^2.
+\end{aligned}
 $$
 
 它的 BER 与 BPSK 精确相同；SER 却是至少一轴错的概率。若两轴错误概率均为 $p$，符号错一次时可能含一个或两个错比特，故 $P_b=P_s/2$ 仅为小错误率近似。相同 $R_b$、平均功率、$N_0$ 和滚降时，QPSK 与 BPSK 的 $E_b/N_0$ 相同，QPSK 符号速率及带宽减半；若固定的是 $E_s/N_0$，就不能照搬“性能相同”。
 
 #### 6.6.2 DQPSK 具体差分什么，OQPSK 具体错开什么
 
-**对照笔记 6.3.2—6.3.3，正文第 72 页。** QPSK 载波恢复可有四重相位模糊。DQPSK 把一个双比特标签映射到相邻符号的相位增量，例如 $00\mapsto0$、$01\mapsto\pi/2$、$11\mapsto\pi$、$10\mapsto-\pi/2$，然后 $\theta_n=\theta_{n-1}+\Delta\theta_n\pmod{2\pi}$。从初始相位 0 发送标签 $00,01,11,10$，绝对相位依次为 $0,\pi/2,3\pi/2,\pi$；四个相位一起旋转不影响增量。若先恢复载波再差分译码，与直接用相邻复采样的相位差判决，依然是不同的接收机；不能直接套二进制 DPSK 指数式给四进制 BER。
+**对照笔记 6.3.2—6.3.3，正文第 72 页。** QPSK 载波恢复可有四重相位模糊。DQPSK 把一个双比特标签映射到相邻符号的相位增量，例如 $00\mapsto0$、$01\mapsto\pi/2$、$11\mapsto\pi$、$10\mapsto-\pi/2$，然后 $\theta_n=\theta_{n-1}+\Delta\theta_n\pmod{2\pi}$。
+
+从初始相位 0 发送标签 $00,01,11,10$，绝对相位依次为 $0,\pi/2,3\pi/2,\pi$；四个相位一起旋转不影响增量。
+
+若先恢复载波再差分译码，与直接用相邻复采样的相位差判决，依然是不同的接收机；不能直接套二进制 DPSK 指数式给四进制 BER。
 
 普通 QPSK 的 I、Q 可在同一个边界同时翻转，形成 $\pi$ 的点间跳变，例如 $(+,+)$ 到 $(-,-)$。带限成形使过渡平滑，可能经过原点附近，包络会明显下降，对非线性放大器不利。OQPSK 让 Q 路延迟 $T_s/2=T_b$，于是两路跳变时刻交错，单次最多改变一坐标，避免这种同时反向的跳变。接收端应按两路的时刻分别采样并对齐再并串转换；它没有让每个 QPSK 符号多承载比特。
 
 理想独立双极支路模型中，时间平移不改变支路 PSD 和能量，故带宽及对应理想 BER 可保持；成形后的 OQPSK 仍不必严格恒包络，不能把“减轻包络变化”升级成适用于一切脉冲和放大器的保证。
 
+&lt;span id="comm-ch6-7"&gt;&lt;/span&gt;
+
 ### 6.7 多进制：用平均能量固定尺度，再数判决边界
+
+先固定平均符号能量，再比较点间距离。图中的 BPSK、QPSK、16-QAM 都按 $E_s=1$ 绘制；增加点数可以降低给定比特率下的符号速率，也会让点变密。
+
+![单位平均符号能量下的BPSK QPSK和16QAM星座](/img/communication-study-constellation.svg)
 
 #### 6.7.1 M-PAM/M-ASK：从奇数平方和到精确 SER
 
 **对照笔记 6.4.1，正文第 73—74 页，附录 G 第 98 页。** 相干双极 $M$-ASK 与一轴上的 $M$-PAM 具有相同几何。设相邻点距离为 $d$，坐标 $x_i=(2i-1-M)d/2$。等概星座对称，均值为零；平均能量需要先算奇数平方和。
+
+&lt;details&gt;
+&lt;summary&gt;展开 M-PAM 平均能量：奇数平方和与概率归一化&lt;/summary&gt;
 
 附录 G 可用普通求和公式直接补完：
 
@@ -5215,14 +5761,20 @@ $$
 E_s=\frac{(M^2-1)d^2}{12}.
 $$
 
+&lt;/details&gt;
+
+下面计算仍使用 $E_s=(M^2-1)d^2/12$；这里 $d$ 是**相邻点距离**，$E_s$ 是等概平均符号能量。
+
 笔记第 73 页的 $\sigma_a^2=M(M^2-1)/3$ 漏除概率分母 $M$；另一个 $E_g$ 记号在该节是基带脉冲能量，最小非零带通信号能量实际为 $E_g/2$，不是 $E_g$。改用 $d,E_s$ 可避免两种尺度混淆。若幅度全非负而非关于原点对称，均值和平均能量都改变，不能原样套本节式子。
 
 每个外侧点只有一个半间距边界，内点有左右两个。单侧越界概率 $q=Q(d/\sqrt{2N_0})$，平均得到
 
 $$
-P_s=\frac{2q+(M-2)2q}{M}
-=\frac{2(M-1)}M
+\begin{aligned}
+P_s&amp;=\frac{2q+(M-2)2q}{M}\\
+&amp;=\frac{2(M-1)}M
 Q\!\left(\sqrt{\frac{6E_s}{(M^2-1)N_0}}\right).
+\end{aligned}
 $$
 
 这是等概 AWGN 最近点接收的精确 SER。这里“越过单侧边界”已经包括沿该方向跳到更远符号，并不只计算恰好落入最近邻区间。Gray 标签只在高 SNR、近邻错误占主导时给 $P_b\approx P_s/\log_2M$。
@@ -5260,9 +5812,11 @@ $$
 每轴各有一半平均符号能量，代入 $L$-PAM 精确结果得到
 
 $$
-p_{\rm axis}=2\left(1-\frac1{\sqrt M}\right)
-Q\!\left(\sqrt{\frac{3E_s}{(M-1)N_0}}\right),
-\qquad P_s=1-(1-p_{\rm axis})^2.
+\begin{aligned}
+p_{\rm axis}&amp;=2\left(1-\frac1{\sqrt M}\right)
+Q\!\left(\sqrt{\frac{3E_s}{(M-1)N_0}}\right),\\
+P_s&amp;=1-(1-p_{\rm axis})^2.
+\end{aligned}
 $$
 
 两轴都正确才是符号正确，所以必须保留交集项：$P_s=2p_{\rm axis}-p_{\rm axis}^2$。小错误率时忽略平方项才有
@@ -5276,6 +5830,11 @@ $$
 16-QAM 未缩放平均能量为 10，归一化 $E_s=1$ 后相邻距离 $2/\sqrt{10}\approx0.63246$。16-PSK 同能量时最近距离 $2\sin(\pi/16)\approx0.39018$，说明 QAM 如何更有效地利用二维面积。它的符号能量和包络随点位置变化，放大器线性要求也随之变化；“更省能量”与“更易做恒包络放大”是不同指标。例 6-4 会完整计算其 SER 与 Gray BER 近似。
 
 &lt;h4 id="comm-deep-qam-bit-count"&gt;旁读演练：从 16-QAM 接收点数出错误比特&lt;/h4&gt;
+
+先用坐标确定最近点，再查标签、数错误比特。**SER 只看点有没有判错；BER 还看错误点的标签相差几位。** 这也是 Gray 最近邻换算必须保留近似号的原因。
+
+&lt;details&gt;
+&lt;summary&gt;展开 16-QAM 标签计数：跨边界、数错位与重复事件&lt;/summary&gt;
 
 **以下为自编演练。** 笔记第 76 页把 Gray BER 写成 SER 除以每符号比特数；先用几个接收点看清这个近似的来源。沿用未缩放电平 $-3,-1,1,3$，每轴 Gray 标签依次为 $00,01,11,10$，整个符号标签写为“I 路两位，再 Q 路两位”。等概最近点判决的每轴门限为 $-2,0,2$；归一化星座时，应把电平、门限和接收坐标一起除以 $\sqrt{10}$，标签不变。
 
@@ -5312,6 +5871,8 @@ $$
 
 未缩放星座中，每条近邻判决边界离发送点都是 1，若每轴噪声标准差为 $\sigma$，单侧越界概率为 $q=Q(1/\sigma)$。数邻居于是给出高 SNR 下 $P_s\approx3q$，与 $4(1-1/\sqrt{16})=3$ 相符。不过“向上”和“向右”可同时越界，直接相加会把这部分符号错误重复计算；由本节两轴方法得到的精确结果为 $P_s=3q-2.25q^2$。这个平方项是重复事件的扣除，不是某种额外编码增益。对于 BER，还须再看这些方向对应的标签位数；几何邻居数只能帮助计算符号错的概率，无法代替标签计数。
 
+&lt;/details&gt;
+
 #### 6.7.4 M-FSK：多维正交、联合界和附录 H 的比特计数
 
 **对照笔记 6.4.4，正文第 76—77 页，附录 H 第 99 页。** $M$ 个等能量正交波形对应 $M$ 个坐标轴上的点 $\boldsymbol s_i=\sqrt{E_s}\boldsymbol e_i$；任意两点距离均为 $\sqrt{2E_s}$。相干相关器组有 $M$ 路，发送 $i$ 时 $r_i=\sqrt{E_s}+w_i$，其余 $r_j=w_j$，选择输出最大的支路。
@@ -5324,7 +5885,12 @@ $$
 
 它不是精确总 SER。笔记第 77 页上界 erfc 的根号漏了分母中的 2，正确应为 $(M-1)\operatorname{erfc}(\sqrt{E_s/(2N_0)})/2$。在已知相位、矩形脉冲的正交取法中，两音间隔可为 $1/(2T_s)$，外侧主瓣估算 $B\approx(M+3)/(2T_s)$；非相干的取法与公式要改用对应模型。更多正交维度需要更多频带，不能认为增大 $M$ 一定减少带宽。
 
-**把附录 H 的 BER 换算讲成数标签。** 设 $M=2^k$，正交等概 AWGN 星座对称，发送任一点时，一旦出错，其余 $M-1$ 点等概率。对固定 $k$ 位标签，与它恰差 $h$ 位的其他标签有 $\binom kh$ 个。因此每次符号错的平均错误位数为
+**把附录 H 的 BER 换算讲成数标签。** 设 $M=2^k$，正交等概 AWGN 星座对称，发送任一点时，一旦出错，其余 $M-1$ 点等概率。
+
+&lt;details&gt;
+&lt;summary&gt;展开附录 H：一次符号错平均损失多少位&lt;/summary&gt;
+
+对固定 $k$ 位标签，与它恰差 $h$ 位的其他标签有 $\binom kh$ 个。因此每次符号错的平均错误位数为
 
 $$
 \overline h=\frac1{M-1}\sum_{h=1}^k h\binom kh
@@ -5333,11 +5899,15 @@ $$
 
 求和也可不用代数：对每一位，在所有 $2^k$ 个标签中有一半与发送标签不同；$k$ 位合计 $k2^{k-1}$ 个“错误位”，发送标签自身贡献零。再除以每符号的 $k$ 位，得到
 
+&lt;/details&gt;
+
 $$
 \boxed{P_b=\frac{M}{2(M-1)}P_s}.
 $$
 
 例如 8-FSK 从 000 出错到其他七个标签，三个相差 1 位、三个相差 2 位、一个相差 3 位，平均错误位数 $(3+6+3)/7=12/7$；除以 3 得 $P_b=4P_s/7$。它不是 $P_s/3$，因为错误会等概率落在所有其他轴，而非只落在某个 Gray 最近邻。若频率波形不正交、各符号功率不同、误判概率不对称，这个精确换算也要重新检查。
+
+&lt;span id="comm-ch6-8"&gt;&lt;/span&gt;
 
 ### 6.8 四道自编分步例题
 
@@ -5366,9 +5936,10 @@ P_b^{\rm BPSK}=Q(\sqrt{2\gamma_b})\approx2.388\times10^{-3},
 $$
 
 $$
-P_b^{\rm coh\,FSK}=Q(\sqrt{\gamma_b})\approx2.301\times10^{-2},
-\qquad
-P_b^{\rm DBPSK}=\tfrac12e^{-\gamma_b}\approx9.333\times10^{-3}.
+\begin{aligned}
+P_b^{\rm coh\,FSK}&amp;=Q(\sqrt{\gamma_b})\approx2.301\times10^{-2},\\
+P_b^{\rm DBPSK}&amp;=\tfrac12e^{-\gamma_b}\approx9.333\times10^{-3}.
+\end{aligned}
 $$
 
 **第三步，解释差距。** 相干 BPSK 的两点距离更大；DPSK 以相邻带噪符号提供参考。这一比较已经固定理想接收条件，没有包括同步捕获难度与硬件实现代价。
@@ -5419,6 +5990,8 @@ $$
 | 方形 QAM | $P_s=1-(1-p_{\rm axis})^2$ | $M=4^\ell$，等概相干 AWGN |
 | Gray 最近邻换算 | $P_b\approx P_s/\log_2M$ | 高信噪比且最近邻错误主导 |
 
+&lt;span id="comm-ch6-10"&gt;&lt;/span&gt;
+
 ### 6.10 易错点与比较顺序
 
 先固定比特速率、平均功率、噪声密度和带宽口径；再确定 $M$ 与 $E_s/E_b$；最后核对相干条件、星座标签和误码公式。比较表中写着同一个“10 dB”，不表示比较公平：必须看它是 $E_b/N_0$、$E_s/N_0$ 还是接收带宽内的总信噪比。
@@ -5457,6 +6030,11 @@ $$
 
 #### 先把标签变成单位能量波形
 
+把标签映射成 $b=\pm1$，再发送 $s_b(t)=b\sqrt{E_b}\phi(t)$，其中 $\int\phi^2dt=1$。信息标签、连续波形和信号坐标对应起来，两个候选点的距离便是 $2\sqrt{E_b}$。
+
+&lt;details&gt;
+&lt;summary&gt;展开发射端：矩形载波基函数如何归一化&lt;/summary&gt;
+
 把信息标签 $1,0$ 分别映射为 $b=+1,-1$。取比特间隔 $T_b$，且 $f_cT_b$ 为正整数，定义
 
 $$
@@ -5478,7 +6056,23 @@ $$
 
 第四章的谱搬移工具解释了载波从何而来：矩形基带脉冲乘余弦，其谱搬到正负载频附近。消息为二进制时，幅度系数的正负也可以读成载波相差 $\pi$，于是得到第六章的 BPSK。第四章和第六章复用了同一套谱搬移运算。
 
+&lt;/details&gt;
+
 #### 接收机把整段观察变成一个随机数
+
+匹配滤波在正确时刻把整段观察压成一个坐标：
+
+$$
+\begin{aligned}
+z&amp;=b\sqrt{E_b}+w,\\
+w&amp;\sim\mathcal N(0,N_0/2).
+\end{aligned}
+$$
+
+这个式子要求定时与载波正确、邻符号没有抽样干扰；随机过程 $n(t)$ 经积分后才成为判决噪声变量 $w$。
+
+&lt;details&gt;
+&lt;summary&gt;展开接收端：波形内积、噪声投影与 ISI 检查&lt;/summary&gt;
 
 收到 $r(t)=s_b(t)+n(t)$。用 $h(t)=\phi(T_b-t)$ 做匹配滤波，在 $T_b$ 抽样，等价于计算
 
@@ -5500,7 +6094,18 @@ $$
 
 第五章把滤波、抽样与门限放在一条链路上；对于无重叠的这些矩形符号，匹配滤波后在正确时刻抽样，邻符号不贡献样值。若实际信道限带或抽样时刻偏移，必须重新检查总体脉冲与 ISI，不能继续沿用上面只有一项信号的式子。
 
+&lt;/details&gt;
+
 #### 最后一条误码公式来自哪里
+
+等先验下，$z&gt;0$ 判 $+1$，$z&lt;0$ 判 $-1$。信号点离零门限 $\sqrt{E_b}$，噪声标准差是 $\sqrt{N_0/2}$，所以
+
+$$
+P_b=Q\!\left(\sqrt{2E_b/N_0}\right).
+$$
+
+&lt;details&gt;
+&lt;summary&gt;展开最近距离判决：从平方距离差到 Q 函数&lt;/summary&gt;
 
 等先验、等代价时，选择离 $z$ 更近的候选坐标。两个平方距离之差为
 
@@ -5516,6 +6121,8 @@ P_b=Q\left(\frac{\sqrt{E_b}}{\sqrt{N_0/2}}\right)
 =Q\left(\sqrt{2E_b/N_0}\right).
 $$
 
+&lt;/details&gt;
+
 如果 $E_b/N_0=2$，把坐标归一化为 $z'=z/\sqrt{E_b}$ 后，两个信号点是 $+1,-1$，噪声标准差为 $1/2$。信号点距门限两个标准差，所以 $P_b=Q(2)\approx0.02275$。观察到 $z'=0.3$ 就判 $+1$；一次判决结果不能说明理论误码率变成 0，也不能用这一点反推出发送标签必定为 1。
 
 再改变一个条件，检查是否真正读懂：如果接收模板乘上非零实常数 $c$，信号坐标和噪声标准差都会乘 $|c|$，判决方向同时作相应调整，理想误码率不变。若只在计算里放大信号、却遗漏噪声的缩放，就会得到不存在的增益。若载波相位错了、先验不等或信道产生 ISI，改变的则是接收模型，需要回到相应章节重新建立 $z$ 的表达式。
@@ -5523,6 +6130,17 @@ $$
 &lt;h2 id="comm-note-appendices"&gt;附录 A 至 H 怎样帮助读懂正文&lt;/h2&gt;
 
 笔记的八个数学附录不是需要另背的一套公式。它们分别支撑正文中的某一步：A 和 B 解释波形与复包络，C 和 D 解释内积与相关，E 和 F 解释功率谱，G 和 H 解释多进制调制的能量与错误统计。遇到正文证明中“根据某定理”而卡住时，再回读相应附录。
+
+&lt;nav class="comm-reading-nav" aria-label="数学附录小节导航"&gt;
+&lt;a href="#comm-app-a"&gt;A 抽样与 FFT&lt;/a&gt;
+&lt;a href="#comm-app-b"&gt;B Hilbert 条件&lt;/a&gt;
+&lt;a href="#comm-app-cd"&gt;C/D 投影与相关&lt;/a&gt;
+&lt;a href="#comm-app-e"&gt;E 相关到功率谱&lt;/a&gt;
+&lt;a href="#comm-app-fh"&gt;F—H 数字调制&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开 A—H 页码对照：需要哪一步证明，就回读哪一份附录&lt;/summary&gt;
 
 | PDF 附录 | 正文页 / PDF 实页 | 回接的知识 |
 |---|---|---|
@@ -5534,6 +6152,10 @@ $$
 | F PAM 信号的频谱特性的推导 | 96–97 / 101–102 | 第五章有相关性和非零均值的序列谱 |
 | G MASK 中数列求和的计算问题 | 98 / 103 | 第六章 M-PAM/MASK 的平均符号能量 |
 | H MFSK 中误符号率与误比特率的换算关系 | 99 / 104 | 第六章等概率错向其他符号时的 BER |
+
+&lt;/details&gt;
+
+&lt;span id="comm-app-a"&gt;&lt;/span&gt;
 
 ### A 从变换性质走到抽样和计算机仿真
 
@@ -5552,19 +6174,26 @@ $$
 附录 A.7 切到离散时间时，要补上物理频率与数字频率之间的桥梁。以 $\theta$ 表示 rad/sample，避免和本文的连续角频率 $\omega=2\pi f$ 混淆：
 
 $$
-x[n]=x_a(n\Delta t),\qquad
-X_d(e^{j\theta})=\sum_nx[n]e^{-jn\theta},\qquad
-X_d(e^{j2\pi f\Delta t})
-=\frac1{\Delta t}\sum_k X_a(f-kf_s).
+\begin{aligned}
+x[n]&amp;=x_a(n\Delta t),\\
+X_d(e^{j\theta})&amp;=\sum_nx[n]e^{-jn\theta},\\
+X_d(e^{j2\pi f\Delta t})&amp;=\frac1{\Delta t}\sum_k X_a(f-kf_s).
+\end{aligned}
 $$
 
-没有混叠时，在选定主频带内 $X_a(f)=\Delta t\,X_d(e^{j2\pi f\Delta t})$。FFT 计算的是有限序列 DFT，既有抽样又有截断，不能直接把 FFT 的数字当作连续变换的幅度。长度为 $N$、从 $t_0$ 开始采样时，连续积分的矩形求积给出
+没有混叠时，在选定主频带内 $X_a(f)=\Delta t\,X_d(e^{j2\pi f\Delta t})$。
+
+&lt;details&gt;
+&lt;summary&gt;展开仿真幅度核对：FFT 和离散卷积中的 Δt 为什么不能漏&lt;/summary&gt;
+
+FFT 计算的是有限序列 DFT，既有抽样又有截断，不能直接把 FFT 的数字当作连续变换的幅度。长度为 $N$、从 $t_0$ 开始采样时，连续积分的矩形求积给出
 
 $$
-X_a(f_k)\approx
-\Delta t\,e^{-j2\pi f_kt_0}
-\sum_{n=0}^{N-1}x_a(t_0+n\Delta t)e^{-j2\pi kn/N},
-\qquad f_k=\frac{k}{N\Delta t}.
+\begin{aligned}
+X_a(f_k)&amp;\approx\Delta t\,e^{-j2\pi f_kt_0}\\
+&amp;\quad\times\sum_{n=0}^{N-1}x_a(t_0+n\Delta t)e^{-j2\pi kn/N},\\
+f_k&amp;=\frac{k}{N\Delta t}.
+\end{aligned}
 $$
 
 这里 $\Delta t$ 来自积分面积元，指数因子来自起始时刻。这个近似还受截断、求积误差与频谱混叠影响。比如宽 $1\,\mathrm{ms}$、幅度 1 的矩形脉冲，连续谱在 $f=0$ 的值应为面积 $0.001$；以 $\Delta t=10\,\mu\mathrm s$ 放入 100 个有效采样点，FFT 直流和是 100，乘 $\Delta t$ 才得到 $0.001$。
@@ -5577,6 +6206,10 @@ y_a(n\Delta t)\approx
 $$
 
 所以若程序中的离散冲激响应定义为 $h[k]=\Delta t\,h_a(k\Delta t)$，离散卷积外面就不再乘 $\Delta t$；若定义为 $h[k]=h_a(k\Delta t)$，外面必须乘。以两个单位高度、宽 $1\,\mathrm{ms}$ 的矩形脉冲为例，连续卷积峰值是重叠面积 $0.001$，100 个采样值的离散和为 100，仍需乘 $10\,\mu\mathrm s$ 才得到相同量纲。用 FFT 实现有限序列的线性卷积还需补零到至少 $N_x+N_h-1$ 点，否则得到循环卷积，会把尾部叠回开头。
+
+&lt;/details&gt;
+
+&lt;span id="comm-app-b"&gt;&lt;/span&gt;
 
 ### B 希尔伯特变换的条件比变换表更重要
 
@@ -5593,6 +6226,8 @@ u(t)\longleftrightarrow\frac12\delta(f)+\operatorname{PV}\frac1{j2\pi f},
 $$
 
 将频域卷积的实部和虚部分开，可以得到 $H_R=\mathscr H_f[H_I]$、$H_I=-\mathscr H_f[H_R]$。下标 $f$ 表示这次希尔伯特变换作用于**频率变量**，不是再对时间波形做一次变换。对不衰减的频响，可能需要先扣除直接通路等项，不能省略适用条件。它说明因果系统的实虚响应受约束；它并不意味着任意幅频响应都能直接实现为因果系统。
+
+&lt;span id="comm-app-cd"&gt;&lt;/span&gt;
 
 ### C 和 D 用投影与共轭顺序整理公式
 
@@ -5618,6 +6253,8 @@ $$
 
 读表时用三个检查代替机械背诵：交换下标应得到 $R_{yx}(\tau)=R_{xy}^*(-\tau)$；令两个信号相同且 $\tau=0$，应得到能量或平均功率；经 $y=h*x$ 后，因 $y$ 位于互谱哪一侧而出现 $H$ 或 $H^*$。比如 $S_{yx}=HS_x$、$S_{xy}=H^*S_x$。附录 D 的两行互功率谱都印成 $P_{xy}$，第二行应对应 $P_{yx}$；自相关上界对复信号应写成 $|R_x(\tau)|\le R_x(0)$。
 
+&lt;span id="comm-app-e"&gt;&lt;/span&gt;
+
 ### E 把维纳–辛钦证明中换元的区域画出来
 
 这页最容易卡在“交换积分次序”。先截取宽平稳过程的一段，设
@@ -5625,6 +6262,9 @@ $$
 $$
 F_T(f)=\int_{-T/2}^{T/2}x(t)e^{-j2\pi ft}\,dt.
 $$
+
+&lt;details&gt;
+&lt;summary&gt;展开换元区域：为什么积分长度是 T−|τ|，哪些上下限容易写反&lt;/summary&gt;
 
 第一步展开模平方。第二个因子必须取共轭：
 
@@ -5645,9 +6285,11 @@ $$
 
 两种长度分别是 $T-\tau$ 和 $T+\tau$，合并为 $T-|\tau|$。原附录 E 的这两处内积分上下限颠倒；最后得到的正三角权重是正确方向，不能照抄中间的负长度。
 
+&lt;/details&gt;
+
 ![有限观测时间下的相关时延和三角权重](/img/communication-study-correlation-window.svg)
 
-第四步把这一段长度积掉，得到
+把两个时刻能够共同落入观测窗的区间长度积掉，得到
 
 $$
 \frac1T\mathbb E|F_T(f)|^2
@@ -5657,6 +6299,9 @@ $$
 
 为什么远时延权重小？长度为 $T$ 的记录中，两个相距接近 $T$ 的时刻能同时出现的机会少；零时延则有整段记录可以配对。若 $R_x$ 绝对可积，取 $T\to\infty$ 可以得到 $S_x(f)=\int R_x(\tau)e^{-j2\pi f\tau}d\tau$。对于不绝对可积、含谱线的过程，需要按广义函数或谱测度理解，不能用普通函数的收敛直接跳步。
 
+&lt;details&gt;
+&lt;summary&gt;展开有限观测的零频验算：T=2 时为什么暂未到达无限时长极限&lt;/summary&gt;
+
 一个检查换元是否正确的小例子：取 $R_x(\tau)=e^{-|\tau|}$，则无限观测时 $S_x(0)=2$。有限 $T$ 时零频期望周期图为
 
 $$
@@ -5665,6 +6310,10 @@ $$
 $$
 
 当 $T=2$，结果约为 $1.1353$，比 2 小；$T$ 增大时趋向 2。这个差别来自有限观测的三角权重，不是把真实噪声功率“滤掉了一部分”。
+
+&lt;/details&gt;
+
+&lt;span id="comm-app-fh"&gt;&lt;/span&gt;
 
 ### F 至 H 把序列谱和错误统计接回数字调制
 
@@ -5682,6 +6331,16 @@ $$
 
 以下三道例题来自该资料的题目条件，均以独立推导给出解法。该文件前 7 页是课程代码 3112100142 的题面，后 7 页是代码 3112100140 的另一份题面及答案；两份存在题目差异。下文注明所用版本，不能只按空格序号对答案。
 
+&lt;nav class="comm-reading-nav" aria-label="抽样与 PCM 小节导航"&gt;
+&lt;a href="#comm-pcm-sampling"&gt;抽样与频带&lt;/a&gt;
+&lt;a href="#comm-pcm-uniform"&gt;均匀量化 / PCM-1&lt;/a&gt;
+&lt;a href="#comm-pcm-alaw"&gt;A 律编码 / PCM-2&lt;/a&gt;
+&lt;a href="#comm-pcm-onebit"&gt;最优重建 / PCM-3&lt;/a&gt;
+&lt;a href="#comm-quiz-pcm"&gt;闭卷自测&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-pcm-sampling"&gt;&lt;/span&gt;
+
 ### 抽样先判断频谱位置
 
 对最高频率为 $B_m$ 的实基带信号，理想低通抽样重建通常要求 $f_s\ge2B_m$；严格处理临界频点时还需检查是否有恰好位于边界的谱线及其相位。工程上给过渡带留下余量，先用抗混叠滤波限制频带。
@@ -5696,6 +6355,8 @@ $$
 
 例如带通范围 $[5,8]$ kHz，取 $n=2$ 得可行区间 $[8,10]$ kHz，因此理想临界最低值为 8 kHz；虽然频带宽只有 3 kHz，6 kHz 却不在可行区间中。
 
+&lt;span id="comm-pcm-uniform"&gt;&lt;/span&gt;
+
 ### 均匀量化的三个条件
 
 抽样给出时间离散的幅度，量化把幅度分成有限个区间，编码再给每个区间一个比特标签。$n$ bit 量化提供 $L=2^n$ 个码字；输入满量程为 $[-A,A]$、使用均匀中升量化时，步长为 $\Delta=2A/2^n$。
@@ -5703,8 +6364,10 @@ $$
 在无过载、误差近似均匀于 $[-\Delta/2,\Delta/2]$ 等条件下，量化噪声功率为
 
 $$
-N_q\approx\frac{\Delta^2}{12},\qquad
-\mathrm{SQNR}=\frac{\mathbb E[X^2]}{N_q}.
+\begin{aligned}
+N_q&amp;\approx\frac{\Delta^2}{12},\\
+\mathrm{SQNR}&amp;=\frac{\mathbb E[X^2]}{N_q}.
+\end{aligned}
 $$
 
 这一近似不能无条件用于低分辨率、强相关输入或过载。满量程均匀输入有 $\mathbb E[X^2]=A^2/3$，得到 $\mathrm{SQNR}=2^{2n}$，约 $6.02n$ dB；满量程正弦输入则为 $A^2/2$，得到约 $6.02n+1.76$ dB。**输入统计量不同，常数项便不同。**
@@ -5716,11 +6379,15 @@ $$
 第一步，最低理想抽样率为 $f_s=10$ kHz。第二步，每个样本变成 5 bit，所以 $R_b=nf_s=50$ kbit/s。第三步，均匀输入给出
 
 $$
-\mathrm{SQNR}=2^{10}=1024,\qquad
-\mathrm{SQNR}_{\rm dB}=10\log_{10}1024\approx30.10\,\mathrm{dB}.
+\begin{aligned}
+\mathrm{SQNR}&amp;=2^{10}=1024,\\
+\mathrm{SQNR}_{\rm dB}&amp;=10\log_{10}1024\approx30.10\,\mathrm{dB}.
+\end{aligned}
 $$
 
 检查：不能因为记住了“每 bit 约 6 dB”，就给本题再加 $1.76$ dB；那是不同输入波形的结果。
+
+&lt;span id="comm-pcm-alaw"&gt;&lt;/span&gt;
 
 ### A律十三折线要把区间表写出来
 
@@ -5757,6 +6424,8 @@ $$
 
 检查：编码取下整找到区间，不能把 $15.5$ 四舍五入成 16；本段只有 0 至 15 共 16 个编号。
 
+&lt;span id="comm-pcm-onebit"&gt;&lt;/span&gt;
+
 ### 单比特量化可以从最小均方误差推导
 
 对关于零对称的输入，固定阈值为 0、输出为 $Y=A\operatorname{sgn}X$。此时
@@ -5783,8 +6452,10 @@ $$
 三角输入：用对称性积分，
 
 $$
-\mathbb E[X^2]=2\int_0^1x^2(1-x)dx=\frac16,
-\qquad\mathbb E|X|=2\int_0^1x(1-x)dx=\frac13.
+\begin{aligned}
+\mathbb E[X^2]&amp;=2\int_0^1x^2(1-x)dx=\frac16,\\
+\mathbb E|X|&amp;=2\int_0^1x(1-x)dx=\frac13.
+\end{aligned}
 $$
 
 所以 $A_*=1/3$、$N_{q,\min}=1/18$，信噪比为 $3$，约 $4.77$ dB。三角密度的支持按 $|x|\le1$ 理解，先检查积分为 1；原卷个别区间写法若有遗漏，不把它当成合法概率密度照抄。
@@ -5817,9 +6488,23 @@ $$
 
 本节依据本地 [2023–2024 第一学期期末资料](https://byrdocs.org/?q=fe279e45e578a0115b1ee43c7fa600f0)。已逐页查看 PDF 公式和图示，而非仅凭文字提取推断题意。卷面考试日期为 **2024 年 1 月 2 日**，均标为 A 卷。以下只转述三道训练题的必要条件，解法独立推导；不复制整份试卷。
 
+&lt;nav class="comm-reading-nav" aria-label="2023—2024 期末训练小节导航"&gt;
+&lt;a href="#comm-exam-2023-versions"&gt;辨认版本&lt;/a&gt;
+&lt;a href="#comm-exam-2023-map"&gt;题号地图&lt;/a&gt;
+&lt;a href="#comm-exam-2023-bandwidth"&gt;1 带宽口径&lt;/a&gt;
+&lt;a href="#comm-exam-2023-isi"&gt;2 抽样与 ISI&lt;/a&gt;
+&lt;a href="#comm-exam-2023-design"&gt;3 业务设计&lt;/a&gt;
+&lt;a href="#comm-exam-2023-review"&gt;复习顺序&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-exam-2023-versions"&gt;&lt;/span&gt;
+
 ### 一份 PDF，两个课程代码：页码与答案先分清
 
 这个 PDF 共 14 实页，由两份各 7 页的试卷组成。**PDF 实页 1-7 的课程代码为 3112100142，没有附解答；实页 8-14 的课程代码为 3112100140，附有参考解答。** 后半份不是前半份统一加上的答案：选择题存在较大差异，最后一题的设计约束也不同。
+
+&lt;details&gt;
+&lt;summary&gt;展开两份试卷的首页与设计约束对照&lt;/summary&gt;
 
 | 位置 | PDF 实页 | 卷内页码 | 课程代码 | 已确认差异 |
 | --- | --- | --- | --- | --- |
@@ -5828,11 +6513,18 @@ $$
 | 第一份设计题 | 7 | 7/7 | 3112100142 | 要求调制阶数尽量低、滚降系数尽量大 |
 | 第二份设计题 | 14 | 7/7 | 3112100140 | 另要求适应存在非线性失真的功放、实现复杂度尽量低 |
 
+&lt;/details&gt;
+
 两份中的第二至第五大题题面相同，可分别在实页 3/10、4/11、5/12、6/13 对照。第二份所附解答是**文件内的参考材料**，不把它当成已经确认的教务官方答案，也不跨版本照搬选择题空格号。
+
+&lt;span id="comm-exam-2023-map"&gt;&lt;/span&gt;
 
 ### 原卷题号、分值与学习模块的对应
 
 两份试卷的分值结构都为：第一大题 20 分，第二至第六大题各 16 分，总计 100 分。选择题按每个编号空格 1 分计；一条题干可能包含多个空格。
+
+&lt;details&gt;
+&lt;summary&gt;展开 3112100142 题号地图：题面、分值与回读章节&lt;/summary&gt;
 
 | 第一份 3112100142 的题号 | 空格号/分值 | 实页/卷内页 | 题面主题 | 本文章回读位置 |
 | --- | --- | --- | --- | --- |
@@ -5850,6 +6542,11 @@ $$
 | 五 | 16 分 | 6 / 6 | 单比特量化的最优重建电平及量化噪声 | 第三章矩与期望；补充模块 |
 | 六 | 16 分 | 7 / 7 | 多路业务合并、最小调制阶数、最大滚降及收发结构 | 第一、五、六章 |
 
+&lt;/details&gt;
+
+&lt;details&gt;
+&lt;summary&gt;展开 3112100140 选择题地图：先确认版本，再核对空号&lt;/summary&gt;
+
 | 第二份 3112100140 的选择题号 | 空格号/分值 | 实页/卷内页 | 已确认主题 |
 | --- | --- | --- | --- |
 | 一-1 | (1)-(2)，2 分 | 8 / 1 | 带通与基带采样 |
@@ -5863,6 +6560,8 @@ $$
 | 一-9 | (15)-(17)，3 分 | 9 / 2 | MFSK 进制变化，第六章 |
 | 一-10 | (18)，1 分 | 9 / 2 | 加性独立噪声的条件似然，第三、六章 |
 | 一-11 | (19)-(20)，2 分 | 9 / 2 | MAP、ML 与最小距离的条件，第六章 |
+
+&lt;/details&gt;
 
 第二份的第二至第六大题均为 16 分，依次位于实页 10-14、卷内第 3-7 页。上述表格是**这一份 PDF 的内容地图**，不是统计多年的题频。本地六章以调制和传输为主，但这份真卷已经明确出现抽样、PCM 和最优量化，所以需要补充相应学习模块。当前两版本没有单列 AM/FM 大题，也不能据此断言本学期不考模拟通信。
 
@@ -5895,8 +6594,11 @@ $$
 **来源与必要条件：** 第三大题，第一份 PDF 实页 4、卷内第 4 页，16 分；同题在第二份实页 11、卷内第 4 页附参考解答。题目给出的**总体**脉冲为
 
 $$
-x(t)=\operatorname{sinc}(t)\frac{\cos(\pi t)}{1-4t^2},\qquad
-x_n=x(nT_b),\qquad y_n=\sum_{k=-\infty}^{\infty}a_kx_{n-k},
+\begin{aligned}
+x(t)&amp;=\operatorname{sinc}(t)\frac{\cos(\pi t)}{1-4t^2},\\
+x_n&amp;=x(nT_b),\\
+y_n&amp;=\sum_{k=-\infty}^{\infty}a_kx_{n-k}.
+\end{aligned}
 $$
 
 其中 $a_k$ 独立等概取 $\pm1$，不考虑噪声，分别考察 $R_b=1$ bit/s 和 2 bit/s。图示频率支撑到 $\pm1$ Hz，且为升余弦滚降。这里的 $x(t)$ 已包括发送、信道与接收滤波，不能拿单个 RRC 脉冲替换它。
@@ -5904,8 +6606,10 @@ $$
 **第一步，先处理可去奇点。** 直接代入 $t=\pm1/2$ 得到 $0/0$，不能说它等于零。由极限
 
 $$
-\lim_{t\to1/2}\frac{\cos(\pi t)}{1-4t^2}=\frac\pi4,
-\qquad \operatorname{sinc}(1/2)=\frac2\pi,
+\begin{aligned}
+\lim_{t\to1/2}\frac{\cos(\pi t)}{1-4t^2}&amp;=\frac\pi4,\\
+\operatorname{sinc}(1/2)&amp;=\frac2\pi.
+\end{aligned}
 $$
 
 可得 $x(\pm1/2)=1/2$，同时 $x(0)=1$。
@@ -5913,8 +6617,10 @@ $$
 **第二步，1 bit/s 时只取整数抽样点。** 此时 $T_b=1$ s。对非零整数 $n$，$\operatorname{sinc}(n)=0$，分母不为零，所以
 
 $$
-x_n=\begin{cases}1,&amp;n=0,\\0,&amp;n\ne0.\end{cases}
-\qquad y_n=a_n.
+\begin{aligned}
+x_n&amp;=\begin{cases}1,&amp;n=0,\\0,&amp;n\ne0,\end{cases}\\
+y_n&amp;=a_n.
+\end{aligned}
 $$
 
 没有 ISI。独立等概双极符号满足 $E[a_n]=0$、$\operatorname{Var}(a_n)=1$，因此 $E[y_n]=0$、$\operatorname{Var}(y_n)=1$。
@@ -5922,19 +6628,23 @@ $$
 **第三步，2 bit/s 时取半整数抽样点。** 此时 $T_b=1/2$ s。$n=\pm1$ 落在刚刚求过的可去奇点；其余非零偶数落在 sinc 零点，奇数 $|n|\ge3$ 则落在 $\cos(\pi n/2)$ 的零点。故
 
 $$
-x_n=\begin{cases}
+\begin{aligned}
+x_n&amp;=\begin{cases}
 1,&amp;n=0,\\
 1/2,&amp;n=\pm1,\\
 0,&amp;\text{其余 }n,
-\end{cases}
-\qquad y_n=a_n+\frac12a_{n-1}+\frac12a_{n+1}.
+\end{cases}\\
+y_n&amp;=a_n+\frac12a_{n-1}+\frac12a_{n+1}.
+\end{aligned}
 $$
 
 其他符号在当前抽样点贡献不为零，所以有 ISI。三个符号独立且均值为零，协方差项消失：
 
 $$
-E[y_n]=0,\qquad
-\operatorname{Var}(y_n)=1+\left(\frac12\right)^2+\left(\frac12\right)^2=\frac32.
+\begin{aligned}
+E[y_n]&amp;=0,\\
+\operatorname{Var}(y_n)&amp;=1+\left(\frac12\right)^2+\left(\frac12\right)^2=\frac32.
+\end{aligned}
 $$
 
 以上结果与文件内参考解答一致，但每一步均可从已确认公式独立得到。尤其不要看到图上最高频率是 1 Hz，就只用 $R_s\le2W$ 宣称 2 bit/s 一定零 ISI：这个界给出可能性，**指定总体响应**仍须逐点满足 Nyquist 条件。原响应的宽滚降是按另一符号间隔设计的，换速率后不能自动保留原来的抽样零点。
@@ -5972,6 +6682,8 @@ $$
 
 **与实页 14 的另一版本怎样区分？** 第二份仍给相同业务和信道带宽，但还要求适应非线性功放、实现复杂度尽量低；其附图含一路 $T_b$ 延迟，属于 OQPSK 结构。它的 $R_s=4.096$ MBd、$\alpha=0.5$ 与前面数值相同，但工程论证不能直接搬过来：OQPSK 避免两路同时翻转，减轻包络骤降；经过限带成形后仍不能无条件称为严格恒包络。第一份题面没有非线性功放条件，用 QPSK 完成最低阶数及最大滚降的设计即可。
 
+&lt;span id="comm-exam-2023-review"&gt;&lt;/span&gt;
+
 ### 怎样用这三题安排复习
 
 先闭卷做带宽题，确认 $R_b\to R_s\to W\to B_{\rm RF}$ 的换算；再做 ISI 题，确认可去奇点、抽样零点及独立符号方差；最后做综合题，把速率、带宽、阶数、滚降与收发结构接起来。第一次做错时，应记录错的是“带宽口径”“总体响应”“概率矩”还是“题面优化目标”，随后回读对应模块。三题都算对以后，再接入 PCM 量化与 FSK 接收题，避免只会套一个星座公式。
@@ -5982,6 +6694,16 @@ $$
 &lt;h2 id="comm-exam-midterm"&gt;期中训练：前半学期如何闭卷验收&lt;/h2&gt;
 
 期中复习的目标，是把一张系统框图连续算到频谱、功率、噪声和判决概率。先复习第二至第五章的推导，再用原卷检查自己能否独立选出适用条件、统一单位并完成计算。下面的定位依据已经整理好的七个期中文件，可从 [BYR 文档的通信原理搜索入口](https://byrdocs.org/?q=%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86&amp;c=all)查找对应学年和版本。页码统一指 **PDF 从第一页起计数的实际页码**，不是答案部分重新编号后的页码。原题只作简述，示范解法为独立推导。
+
+&lt;nav class="comm-reading-nav" aria-label="期中训练小节导航"&gt;
+&lt;a href="#comm-midterm-identity"&gt;卷面身份&lt;/a&gt;
+&lt;a href="#comm-midterm-map"&gt;按章找题&lt;/a&gt;
+&lt;a href="#comm-midterm-dsb"&gt;随机相位 DSB&lt;/a&gt;
+&lt;a href="#comm-midterm-triangle"&gt;三角脉冲检测&lt;/a&gt;
+&lt;a href="#comm-midterm-checks"&gt;四个检查点&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-midterm-identity"&gt;&lt;/span&gt;
 
 ### 先辨认资料，再开始计时
 
@@ -6004,9 +6726,14 @@ $$
 
 以上页面均没有核到具体的月日考试日期、学院名称或课程代码。2014、2018 两份的学年来自文件名，不能当作页面确认的考试日期；PDF 的创建时间也不等于考试时间。去除整套正文重复后，能区分五个题面组，但这仍不证明五次独立的考试实施记录。这里据此选择训练题，不作未经核实的题频统计。
 
+&lt;span id="comm-midterm-map"&gt;&lt;/span&gt;
+
 ### 按章节找题，而不是从第一页随意刷起
 
 先看题目要求的输出量，再决定回到哪一章。频谱图通常连接第二章与第四章；噪声通过滤波器连接第三章与接收机；PAM 的谱、采样和判决则连接第三章与第五章。
+
+&lt;details&gt;
+&lt;summary&gt;展开五组期中题面地图：按章节定位原卷题号和 PDF 页码&lt;/summary&gt;
 
 | 题面组 | 确定信号与随机过程 | 模拟调制与接收噪声 | 数字基带与匹配滤波 |
 | --- | --- | --- | --- |
@@ -6016,9 +6743,13 @@ $$
 | 2024—2025 A 卷 | 一(1)—一(4)，p1：实/复信号功率、时限能量、PSD 与相关函数、Hilbert；一(8)—一(9)，p2：窄带噪声、等效基带；三，p3，15 分：Hilbert 组合的平稳性及解调相位 | 二，p2，15 分：由 AM 包络读参数，再求 FM 频偏及 Carson 带宽；四，p3，14 分：SSB/AM 接收机 SNR；一(5)，p1：鉴频噪声与频率的关系 | 一(6)，p1：PAM 方差；一(7)，p2：码型能量与主瓣带宽；五，p3，15 分：半占空 RZ 与双相码的 PAM 谱、非等概谱线；六，p3，15 分：相关接收机的条件密度、门限和误判 |
 | 2025—2026 A 卷 | 二，p2，15 分：有限时 DSB 的能量、主瓣、复包络、等效基带及卷积；三，p2，15 分：随机相位 DSB 的平稳性、I/Q 相关与 PSD | 六，p3，20 分：AM/FM 的输出 SNR、功率和带宽联合约束；一(3)、一(6)—一(8)，p1：SSB、角调制、模拟制式及 FDM | 四，p2，15 分：半占空 PAM 的瞬时二阶矩、平均功率与 PSD；五，p2，15 分：三角脉冲匹配滤波；一(1)—一(2)、一(5)，p1：码型、噪声投影及 4-PAM 的速率和误码界 |
 
+&lt;/details&gt;
+
 表中的“一(数字)”表示第一大题中印出的题目组号，括号内的答案空另行编号。例如 2025 卷一(5)是 4-PAM 题组，不能与第 5 个答案空混淆。重复 A 卷组的分值在所核正文中没有标明；2018 选择题印“每空 1 分，最高得 50 分”，虽列出 55 个空，大题分值没有标明。2019 B 卷第一大题为 40 空、每空 1 分，二至六各 12 分；2024 A 卷选择 26 分；2025 A 卷选择 20 分。
 
 从这些已核题面，可以直接组织前五章的期中训练。第六章 ASK、FSK、PSK、QAM 的专题仍要按课程与期末材料单独验收，不能凭期中卷决定删除。2019 B 卷一(14)，p3，写的是“二进制方式在基带信道中传送”，不要把它误读成 BPSK 频带传输题。
+
+&lt;span id="comm-midterm-dsb"&gt;&lt;/span&gt;
 
 ### 最新原题示范一：随机相位为什么使 DSB 平稳
 
@@ -6027,11 +6758,25 @@ $$
 原题给出零均值平稳过程 $m(t)$，自相关为 $R_m(\tau)$，且 $R_m(0)=2$。随机相位 $\theta$ 在 $[0,2\pi]$ 均匀分布，与整个 $m(t)$ 过程独立。信号和两路分量为
 
 $$
-s(t)=m(t)\cos(2\pi f_ct+\theta),\qquad
-I(t)=m(t)\cos\theta,\quad Q(t)=m(t)\sin\theta.
+\begin{aligned}
+s(t)&amp;=m(t)\cos(2\pi f_ct+\theta),\\
+I(t)&amp;=m(t)\cos\theta,\\
+Q(t)&amp;=m(t)\sin\theta.
+\end{aligned}
 $$
 
 要求三个过程的均值与平均功率、$s(t)$ 的自相关和平稳性，以及 $R_{IQ}(\tau)=E[I(t+\tau)Q(t)]$ 和互功率谱密度。先闭卷写出均匀相位的三个期望，再打开解法。
+
+**复习时核对这组结果：** 三个均值均为零，$P_I=P_Q=P_{\rm sig}=1$；
+
+$$
+\begin{aligned}
+R_s(\tau)&amp;=\frac12R_m(\tau)\cos(2\pi f_c\tau),\\
+R_{IQ}(\tau)&amp;=0,\qquad S_{IQ}(f)=0.
+\end{aligned}
+$$
+
+$s$ 的相关只依赖时间差，因而是广义平稳过程；I/Q 不相关不能直接推出独立。完整过程在下面逐步展开。
 
 &lt;details&gt;
 &lt;summary&gt;展开独立解法：先对相位平均，再用平稳性的定义&lt;/summary&gt;
@@ -6039,9 +6784,11 @@ $$
 **第一步：把随机相位的矩单独算出来。**
 
 $$
-E[\cos\theta]=E[\sin\theta]=0,\quad
-E[\cos^2\theta]=E[\sin^2\theta]=\frac12,\quad
-E[\sin\theta\cos\theta]=0.
+\begin{aligned}
+E[\cos\theta]=E[\sin\theta]&amp;=0,\\
+E[\cos^2\theta]=E[\sin^2\theta]&amp;=\frac12,\\
+E[\sin\theta\cos\theta]&amp;=0.
+\end{aligned}
 $$
 
 由于 $m$ 与相位独立，$E[s(t)]=E[I(t)]=E[Q(t)]=0$。这里的 $\theta$ 是对整个过程固定的一次随机抽取，不是在每个时刻独立重抽。
@@ -6086,11 +6833,26 @@ $$
 
 &lt;/details&gt;
 
+&lt;span id="comm-midterm-triangle"&gt;&lt;/span&gt;
+
 ### 最新原题示范二：三角脉冲怎样一路算到误判概率
 
 **来源：2025—2026 第一学期《通信原理 I》期中 A 卷，文件 `2025-2026 第一学期 通信原理I 期中试卷.pdf`，第五大题，15 分，PDF 第 2 页。**
 
 原题的输入是 $r(t)=g(t)+n_w(t)$。$g(t)$ 在 $0$ 和 $T_b$ 处为零，在 $T_b/2$ 处达到高度 $1$，两段均为直线；$n_w(t)$ 为单边 PSD 为 $N_0$ 的 AWGN，即本文采用的双边 PSD 为 $N_0/2$。接收滤波器对 $g(t)$ 匹配，在 $T_b$ 采样得到 $y$，再取 $\hat b=\operatorname{sgn}(y)$。要求脉冲能量、匹配滤波器、采样 SNR、$y$ 的均值方差和 $P(\hat b=-1)$。
+
+**把题目串成一条计算链：** 先积 $g^2$ 得能量，再由匹配模板算信号峰值与噪声方差，最后把 $y&lt;0$ 变成高斯尾概率。取 $K=1$ 时，关键结果为
+
+$$
+\begin{aligned}
+E_g=\mu_y&amp;=\frac{T_b}{3},\\
+\operatorname{Var}(y)&amp;=\frac{N_0T_b}{6},\\
+\mathrm{SNR}_{\rm sample}&amp;=\frac{2T_b}{3N_0},\\
+P(\hat b=-1)&amp;=Q\!\left(\sqrt{\frac{2T_b}{3N_0}}\right).
+\end{aligned}
+$$
+
+这是**已发送正脉冲的条件误判概率**。反转、积分与标准化的步骤可以分别沿下面的四步验算。
 
 &lt;details&gt;
 &lt;summary&gt;展开独立解法：能量 → 匹配输出 → 高斯尾概率&lt;/summary&gt;
@@ -6139,10 +6901,11 @@ $$
 因此
 
 $$
-\mu_y=\frac{T_b}{3},\qquad
-\operatorname{Var}(y)=\frac{N_0T_b}{6},\qquad
-\mathrm{SNR}_{\mathrm{sample}}=\frac{\mu_y^2}{\sigma_z^2}
-=\frac{2T_b}{3N_0}.
+\begin{aligned}
+\mu_y&amp;=\frac{T_b}{3},\\
+\operatorname{Var}(y)&amp;=\frac{N_0T_b}{6},\\
+\mathrm{SNR}_{\mathrm{sample}}&amp;=\frac{\mu_y^2}{\sigma_z^2}=\frac{2T_b}{3N_0}.
+\end{aligned}
 $$
 
 若改取任意 $K&gt;0$，均值乘 $K$、方差乘 $K^2$，采样 SNR 和符号判断的错误概率不变。
@@ -6154,14 +6917,16 @@ $$
 P(\hat b=-1)
 &amp;=P\left(z&lt;-\frac{T_b}{3}\right)\\
 &amp;=Q\left(\frac{T_b/3}{\sqrt{N_0T_b/6}}\right)\\
-&amp;=Q\left(\sqrt{\frac{2T_b}{3N_0}}\right)
-=\frac12\operatorname{erfc}\left(\sqrt{\frac{T_b}{3N_0}}\right).
+&amp;=Q\left(\sqrt{\frac{2T_b}{3N_0}}\right)\\
+&amp;=\frac12\operatorname{erfc}\left(\sqrt{\frac{T_b}{3N_0}}\right).
 \end{aligned}
 $$
 
 这是本题所求的正脉冲条件下符号误判概率。如果另行建立等概发送 $\pm g$ 的反相信号模型，因对称性它才同时等于该模型的平均误比特率；原题没有要求我们补设这个发送模型。
 
 &lt;/details&gt;
+
+&lt;span id="comm-midterm-checks"&gt;&lt;/span&gt;
 
 ### 做完两题以后，还要过四个检查点
 
@@ -6177,6 +6942,17 @@ $$
 
 &lt;h2 id="comm-exam-final"&gt;历年期末训练：从题面选模型&lt;/h2&gt;
 
+&lt;nav class="comm-reading-nav" aria-label="历年期末训练小节导航"&gt;
+&lt;a href="#comm-final-identity"&gt;卷面身份&lt;/a&gt;
+&lt;a href="#comm-final-scope"&gt;2024—2025 范围&lt;/a&gt;
+&lt;a href="#comm-final-map"&gt;六章题号地图&lt;/a&gt;
+&lt;a href="#comm-final-orthogonal"&gt;正交信号与门限&lt;/a&gt;
+&lt;a href="#comm-final-qam"&gt;QAM 带宽与速率&lt;/a&gt;
+&lt;a href="#comm-final-review"&gt;复习循环&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;span id="comm-final-identity"&gt;&lt;/span&gt;
+
 ### 先确认拿到的是哪一份卷
 
 这里核对了本地 7 个旧期末 PDF：2011/12、2012/13、2016/17、2017/18、2019/20 的两个文件，以及文件名为 2020/21 的材料。**7 个文件不等于 7 套独立真题。** 两份 2019/20 文件都是 2020 年 1 月 2 日、课号 3112100140 的 B 卷，题目和解答对应，只是扫描、排版和批注不同。文件名为 2020/21 的材料，卷内只印《通信原理》期末考试参考答案，未印学年、日期和课号，因此该年份只能按文件名记录。
@@ -6185,11 +6961,18 @@ $$
 
 原文件名按本地整理版本记录，可从 [BYR Docs“通信原理”检索入口](https://byrdocs.org/?q=%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86)查找相关资料。以下页码统一为 **PDF 文件页码，从 1 开始**。本节把题目接到模块，没有统计题型频率，也不代替本学期教师公布的范围。2011/12 与 2012/13 副本带有商业资料水印，卷内标题可核对，但分发来源没有因此得到认证。
 
+&lt;span id="comm-final-scope"&gt;&lt;/span&gt;
+
 ### 2024—2025 资料的范围
 
 另核对的 `2024-2025 第一学期 通信原理 期末试卷.pdf` 共 11 页，封面明确为 2024/25 学年 JP/JEI、BBU6302 *Principles of Telecommunication Systems*、Paper A，带北邮与 Queen Mary 两校标识，考试 2 小时、英文作答；卷内没有中文学院名、“通信原理 I/II”或第一学期标注，不能直接等同课号 3112100140 系列卷。第 1 题为 25 个单选空、25 分，四道大题依次为 2FSK 检测 20 分（p5–6）、星座与能量设计 20 分（p7）、量化 15 分（p8）、TDM 与数字调制系统设计 20 分（p9），本文件是未填写的题册，未附解答。它与六章主线有交集，尤其可训练噪声投影、升余弦和数字频带检测，但量化、带通采样等题目仍需补充模块，不能只凭文件名推断本班考试范围。
 
+&lt;span id="comm-final-map"&gt;&lt;/span&gt;
+
 ### 六章各自从哪些题开始练
+
+&lt;details&gt;
+&lt;summary&gt;展开六章期末题号地图：从已知条件选择第一条公式&lt;/summary&gt;
 
 | 模块 | 可追到原卷的练习 | 做题的第一步 |
 | --- | --- | --- |
@@ -6200,7 +6983,11 @@ $$
 | 第五章：数字基带 | 2011/12 二题，12 分，p6；2012/13 四题，10 分，p7；2019/20 二题，分值未标，p3–4 | 画发送脉冲、信道、接收滤波器和抽样点。无码间干扰检查总响应，发送功率检查发送脉冲。 |
 | 第六章：数字频带 | 2012/13 五、六题，各 10 分，p8–9；2019/20 三、四题，分值未标，p4–6 | 先求点概率、能量与距离，再确定接收方式、ML/MAP 和判决域。固定门限不能悄悄换成 MAP 门限。 |
 
+&lt;/details&gt;
+
 这些题会跨章。2017/18 二题就是“内积→噪声方差→错误概率”，不是看到二进制调制就只翻误码公式。卷内还出现采样、量化、PCM、复用及分组码，属于当前六章之外的补充清单；正文到第六章，不等于已经覆盖全部已见题目。
+
+&lt;span id="comm-final-orthogonal"&gt;&lt;/span&gt;
 
 ### 真题练习一：正交波形为什么仍需要非零门限
 
@@ -6209,8 +6996,10 @@ $$
 在 $0\le t\le T_b$，等概发送
 
 $$
-s_1(t)=2\cos\frac{20\pi t}{T_b},\qquad
-s_2(t)=\sqrt2\cos\left(\frac{22\pi t}{T_b}+\frac\pi4\right).
+\begin{aligned}
+s_1(t)&amp;=2\cos\frac{20\pi t}{T_b},\\
+s_2(t)&amp;=\sqrt2\cos\left(\frac{22\pi t}{T_b}+\frac\pi4\right).
+\end{aligned}
 $$
 
 噪声为实 AWGN，双边功率谱 $N_0/2$。接收端以两波形为模板作相关，判决量 $y=y_1-y_2$，门限取两个条件均值的中点。
@@ -6227,12 +7016,16 @@ $$
 于是 $V_T=(A_1+A_2)/2=T_b/2$，两均值到门限的距离都是 $3T_b/2$。令 $Q(x)$ 表示标准正态分布的右尾概率，得到
 
 $$
-P_b=Q\left(\frac{3T_b/2}{\sqrt{(3/2)N_0T_b}}\right)
-=Q\left(\sqrt{\frac{E_b}{N_0}}\right)
-=\frac12\operatorname{erfc}\left(\sqrt{\frac{E_b}{2N_0}}\right).
+\begin{aligned}
+P_b&amp;=Q\left(\frac{3T_b/2}{\sqrt{(3/2)N_0T_b}}\right)\\
+&amp;=Q\left(\sqrt{\frac{E_b}{N_0}}\right)\\
+&amp;=\frac12\operatorname{erfc}\left(\sqrt{\frac{E_b}{2N_0}}\right).
+\end{aligned}
 $$
 
 **正交不意味着能量相同。** 等概二元 AWGN 检测的差路门限为 $(E_1-E_2)/2$，这题不能取零；也不能直接换成 BPSK 的 $Q(\sqrt{2E_b/N_0})$。独立推导与卷附解答一致。
+
+&lt;span id="comm-final-qam"&gt;&lt;/span&gt;
 
 ### 真题练习二：从射频带宽倒推 QAM 比特率
 
@@ -6241,13 +7034,18 @@ $$
 每个 16QAM 符号固定对应 4 bit，$R_b=4R_s$。基带支路的单边截止宽度 $W=(1+\alpha)R_s/2$，搬到载波后的完整正频带宽度 $B=2W=(1+\alpha)R_s$。因此
 
 $$
-R_s=\frac{12\ \mathrm{MHz}}{1.5}=8\ \mathrm{MBd},\qquad
-R_b=32\ \mathrm{Mbit/s},\qquad W=6\ \mathrm{MHz}.
+\begin{aligned}
+R_s&amp;=\frac{12\ \mathrm{MHz}}{1.5}=8\ \mathrm{MBd},\\
+R_b&amp;=32\ \mathrm{Mbit/s},\\
+W&amp;=6\ \mathrm{MHz}.
+\end{aligned}
 $$
 
 功率谱在载波附近呈升余弦轮廓，平坦段满足 $|f-f_c|\le(1-\alpha)R_s/2=2\,\mathrm{MHz}$，到 $|f-f_c|=6\,\mathrm{MHz}$ 截止；实信号在 $-f_c$ 还有镜像。谱的绝对高度还需符号能量和脉冲归一化，不能自行指定。相干接收依次连接 I/Q 下变频、匹配滤波、符号时刻抽样、联合星座判决和 4 bit 解映射。
 
 **把 $W$、$B$、$R_s$、$R_b$ 写在四个位置。** 若把 12 MHz 当作低通单边宽度，会把速率扩大两倍。附解的 32 Mbit/s 正确，但 p14 谱图把平坦段画到 $f_c\pm4\,\mathrm{MHz}$；按条件应为 $f_c\pm2\,\mathrm{MHz}$。做真题仍要用公式核对图，不能直接照搬附解。
+
+&lt;span id="comm-final-review"&gt;&lt;/span&gt;
 
 ### 真题怎样进入复习循环
 
@@ -6301,14 +7099,15 @@ $$
 
 &lt;h2 id="comm-sources"&gt;资料依据与后续更新&lt;/h2&gt;
 
-六章总框架及八个附录对照本地 105 页 `PoC.pdf`；第三章按本学期《第三章 随机信号分析（2026）》课件的 119 个 PDF 页面展开。章节内分别标注课件实页与原笔记正文页码。来源为 [BuptPoCNoteBook 原作者笔记](https://github.com/phydx0803/BuptPoCNoteBook)；[北邮出版社第四版目录](https://www.buptpress.com/StaticPage/bookcontent_76A9AC8342357EB3.html)和[北邮课程团队公开课程](https://www.icourse163.org/course/BUPT-1002543002)用于核对课程全貌。本文统一重写频率、共轭和噪声谱约定，本文把原笔记省略的推导展开，在相应小节说明已核实的漏项、笔误与条件；原 PDF 保留原样，可逐页对照。
+六章总框架及八个附录对照本地 105 页 `PoC.pdf`；第二章结合本学期《第二章 确定信号分析（2026）》课件的 81 个 PDF 页面，第三章按《第三章 随机信号分析（2026）》课件的 119 个 PDF 页面展开。其余章节本次统一阅读排版，保留已有推导、例题和来源边界。章节内分别标注课件实页与原笔记正文页码。来源为 [BuptPoCNoteBook 原作者笔记](https://github.com/phydx0803/BuptPoCNoteBook)；[北邮出版社第四版目录](https://www.buptpress.com/StaticPage/bookcontent_76A9AC8342357EB3.html)和[北邮课程团队公开课程](https://www.icourse163.org/course/BUPT-1002543002)用于核对课程全貌。本文统一重写频率、共轭和噪声谱约定，本文把原笔记省略的推导展开，在相应小节说明已核实的漏项、笔误与条件；原 PDF 保留原样，可逐页对照。
 
 数字调制性能的公式条件同时对照 [MathWorks 官方解析说明](https://www.mathworks.com/help/comm/ug/analytical-expressions-used-in-berawgn-function-and-bit-error-rate-analysis-app.html)。图中曲线来自本文明示的解析模型，属于理论值，没有代表实际硬件实验。
 
 考试依据为本地“真题”目录中的原文件；每个解析标明原 PDF 实页、卷内页和版本。可从 [BYR Docs 通信原理搜索页](https://byrdocs.org/?q=%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86&amp;c=all)追查资源。资料标签不能替代题面身份和答案审校，本文没有把文件数量当成独立考试次数，也没有据此宣布本学期必考或题型权重。
 
-第三章已优先对齐当前教师课件的顺序、符号和例题；后续章节随课堂材料推进。每次更新继续沿用同一篇文章：先补 PDF 对照讲解，再接课堂问题和练习；保留原出处，订正错误结论，把例子放在它所依赖的概念之后。
+第二、三章已优先对齐当前教师课件的顺序、符号和例题；后续章节随课堂材料推进。每次更新继续沿用同一篇文章：先补 PDF 对照讲解，再接课堂问题和练习；保留原出处，订正错误结论，把例子放在它所依赖的概念之后。
 
+&lt;/div&gt;
 </content>
     
     
