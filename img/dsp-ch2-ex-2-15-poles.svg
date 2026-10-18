@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="370" viewBox="0 0 800 370" role="img" aria-labelledby="title desc">
+<title id="title">习题2.15：零点−3，极点0.5，稳定ROC为半径0.5的圆外</title>
+<desc id="desc">复平面中，空心圆表示负实轴上的零点−3，叉号表示正实轴上的极点0.5。虚线圆为单位圆，浅绿色区域为半径0.5的圆外收敛域，包含单位圆。</desc>
+<defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="#665f58"/></marker></defs>
+<rect width="800" height="370" rx="18" fill="#fffdf9"/>
+<g font-family="PingFang SC,Microsoft YaHei,sans-serif" fill="#2c2825">
+<text x="34" y="42" font-size="23" font-weight="bold">从结构图读出的零极点</text>
+<text x="34" y="70" font-size="17" fill="#665f58">H(z)=(z+3)/(z−0.5)；稳定 ROC：|z| &gt; 0.5</text>
+<rect x="70" y="90" width="645" height="220" rx="12" fill="#eaf5ef"/>
+<circle cx="480" cy="197" r="45" fill="#fffdf9" stroke="#b46638" stroke-width="1.5" stroke-dasharray="4 4"/>
+<circle cx="480" cy="197" r="90" fill="none" stroke="#526b86" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M90,197 H695 M480,300 V100" fill="none" stroke="#665f58" stroke-width="1.3" marker-end="url(#arrow)"/>
+<path d="M90,197 H695" fill="none" stroke="#665f58" stroke-width="1.3" marker-end="url(#arrow)"/>
+<text x="707" y="202" font-size="17">Re z</text>
+<text x="490" y="109" font-size="17">Im z</text>
+<circle cx="210" cy="197" r="8" fill="#fffdf9" stroke="#14796f" stroke-width="3"/>
+<text x="210" y="231" font-size="18" text-anchor="middle">−3</text>
+<text x="210" y="263" font-size="18" fill="#14796f" text-anchor="middle">零点 ○</text>
+<path d="M517,189 L533,205 M517,205 L533,189" stroke="#b46638" stroke-width="3"/>
+<rect x="504" y="211" width="42" height="24" rx="4" fill="#fffdf9"/>
+<text x="525" y="230" font-size="18" text-anchor="middle">0.5</text>
+<text x="480" y="222" font-size="16" text-anchor="end">0</text>
+<text x="581" y="235" font-size="17" fill="#b46638">极点 ×</text>
+<text x="565" y="125" font-size="17" fill="#526b86">单位圆</text>
+<text x="585" y="284" font-size="16" fill="#14796f">浅绿：ROC</text>
+<text x="34" y="341" font-size="17">稳定性看极点与 ROC；单位圆外的零点不使该系统失稳。</text>
+</g></svg>

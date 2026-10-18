@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="610" viewBox="0 0 1080 610" role="img" aria-labelledby="title desc">
+<title id="title">习题2.15结构图的连接关系</title><desc id="desc">输入直接到上方加法器。输入的3倍与输出的0.5倍在下方相加，其整体经过一个单位延迟送回上方加法器。两个加法器均为加号。</desc>
+<rect width="1080" height="610" rx="18" fill="#fffdf9"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#2c2825">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#72695e"/></marker></defs>
+<text x="35" y="45" font-size="27" fill="#2c2825" text-anchor="start" font-weight="bold">图 2.15 读图：先给内部节点命名，再列方程</text>
+<text x="35" y="82" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">v[n] = 3x[n] + 0.5y[n]；整个 v[n] 延迟一拍后，才与直接输入相加。</text>
+<line x1="105.00" y1="170.00" x2="565.00" y2="170.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="615.00" y1="170.00" x2="1000.00" y2="170.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<text x="100" y="148" font-size="23" fill="#2c2825" text-anchor="start" font-weight="normal">x[n]</text>
+<text x="985" y="148" font-size="23" fill="#14796f" text-anchor="end" font-weight="normal">y[n]</text>
+<line x1="200.00" y1="170.00" x2="200.00" y2="435.00" stroke="#72695e" stroke-width="2" />
+<line x1="900.00" y1="170.00" x2="900.00" y2="435.00" stroke="#72695e" stroke-width="2" />
+<circle cx="200" cy="170" r="5" fill="#2c2825"/>
+<circle cx="900" cy="170" r="5" fill="#2c2825"/>
+<line x1="200.00" y1="435.00" x2="285.00" y2="435.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="375.00" y1="435.00" x2="565.00" y2="435.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="900.00" y1="435.00" x2="825.00" y2="435.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="735.00" y1="435.00" x2="615.00" y2="435.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="285" y="407" width="90" height="56" rx="8" fill="#e8edf3" stroke="#526b86"/>
+<text x="330" y="444" font-size="23" fill="#526b86" text-anchor="middle" font-weight="bold">× 3</text>
+<rect x="735" y="407" width="90" height="56" rx="8" fill="#e8edf3" stroke="#b46638"/>
+<text x="780" y="444" font-size="23" fill="#b46638" text-anchor="middle" font-weight="bold">× 0.5</text>
+<circle cx="590" cy="170" r="23" fill="#fffdf9" stroke="#2c2825" stroke-width="2"/>
+<text x="590" y="178" font-size="26" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<circle cx="590" cy="435" r="23" fill="#fffdf9" stroke="#2c2825" stroke-width="2"/>
+<text x="590" y="443" font-size="26" fill="#2c2825" text-anchor="middle" font-weight="normal">+</text>
+<line x1="590.00" y1="410.00" x2="590.00" y2="336.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<line x1="590.00" y1="270.00" x2="590.00" y2="195.00" stroke="#72695e" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="540" y="270" width="100" height="66" rx="8" fill="#e5f1ed" stroke="#14796f"/>
+<text x="590" y="312" font-size="27" fill="#14796f" text-anchor="middle" font-weight="bold">z⁻¹</text>
+<text x="623" y="388" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">v[n]</text>
+<text x="623" y="239" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">v[n − 1]</text>
+<text x="35" y="535" font-size="24" fill="#2c2825" text-anchor="start" font-weight="bold">y[n] = x[n] + v[n − 1] = x[n] + 3x[n − 1] + 0.5y[n − 1]</text>
+<text x="35" y="577" font-size="20" fill="#72695e" text-anchor="start" font-weight="normal">上、下节点均相加；直接输入支路没有延迟。</text>
+</g></svg>
