@@ -120,10 +120,9 @@
   }
   function start() {
     const roots=document.querySelectorAll('.comm-ch2-demo[data-demo]');
-    if('IntersectionObserver' in window){
-      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){init(entry.target);observer.unobserve(entry.target);}}),{rootMargin:'300px'});
-      roots.forEach(root=>observer.observe(root));
-    } else roots.forEach(init);
+    // Three small SVG models are cheap to initialize together. Empty placeholders
+    // stay hidden without JavaScript; observing hidden nodes would never reveal them.
+    roots.forEach(init);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
