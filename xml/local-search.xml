@@ -2165,8 +2165,10 @@ $$
 $k\ne m$ 时，频率差对应整数圈旋转，积分相消；$k=m$ 时，被积函数恒为 1。于是适当条件下的周期信号可分解为
 
 $$
-x(t)=\sum_{k=-\infty}^{\infty}c_ke^{j2\pi kf_0t},\qquad
-c_k=\frac1{T_0}\int_{t_1}^{t_1+T_0}x(t)e^{-j2\pi kf_0t}\,dt.
+\begin{aligned}
+x(t)&amp;=\sum_{k=-\infty}^{\infty}c_ke^{j2\pi kf_0t},\\
+c_k&amp;=\frac1{T_0}\int_{t_1}^{t_1+T_0}x(t)e^{-j2\pi kf_0t}\,dt.
+\end{aligned}
 $$
 
 乘共轭基函数再积分，就是从混合波形里提取一个坐标。复指数还有一个与通信直接相关的优点：它通过 LTI 系统后只乘一个复数 $H(f)$，仍保持原来的频率。这使滤波可以逐频率分析。
@@ -2285,9 +2287,10 @@ $$
 在 $f=0$ 处取极限，得到脉冲面积 $AT$。还可以从它推出两对常用结果：
 
 $$
-\operatorname{sinc}(t/T)\longleftrightarrow T\operatorname{rect}(Tf),
-\qquad
-\operatorname{tri}(t/T)\longleftrightarrow T\operatorname{sinc}^2(fT),
+\begin{aligned}
+\operatorname{sinc}(t/T)&amp;\longleftrightarrow T\operatorname{rect}(Tf),\\
+\operatorname{tri}(t/T)&amp;\longleftrightarrow T\operatorname{sinc}^2(fT),
+\end{aligned}
 $$
 
 其中 $\operatorname{tri}u=\max(1-|u|,0)$。后一对来自两个宽 $T$ 的单位矩形卷积：重叠长度是 $T\operatorname{tri}(t/T)$，频域则是 $T^2\operatorname{sinc}^2(fT)$。它也为下一节的三角自相关做了准备。
@@ -2644,8 +2647,10 @@ $$
 $\operatorname{atan2}$ 同时判断象限；仅用 $\arctan(Q/I)$ 会把相差 $\pi$ 的方向混淆。$A=0$ 时相位没有定义。让这个向量再以角速度 $2\pi f_c$ 旋转，实轴投影就是
 
 $$
-\operatorname{Re}\{(I+jQ)e^{j2\pi f_ct}\}
-=I\cos(2\pi f_ct)-Q\sin(2\pi f_ct).
+\begin{aligned}
+&amp;\operatorname{Re}\{(I+jQ)e^{j2\pi f_ct}\}\\
+&amp;\quad=I\cos(2\pi f_ct)-Q\sin(2\pi f_ct).
+\end{aligned}
 $$
 
 同一载波频率下，两个正交投影的系数共同决定幅度和初相。只给 $I$，不知道 $Q$，就不能知道向量指向哪边。接收机需要两条支路，正是要分别测出这两个坐标。
@@ -2657,9 +2662,10 @@ $$
 定义 $\hat x=\mathscr H\{x\}$，其频率响应为
 
 $$
-H_{\mathcal H}(f)=-j\operatorname{sgn}f,
-\qquad
-\hat X(f)=-j\operatorname{sgn}f\,X(f).
+\begin{aligned}
+H_{\mathcal H}(f)&amp;=-j\operatorname{sgn}f,\\
+\hat X(f)&amp;=-j\operatorname{sgn}f\,X(f).
+\end{aligned}
 $$
 
 正频率乘 $-j$，相移 $-\pi/2$；负频率乘 $+j$，相移 $+\pi/2$；按 $\operatorname{sgn}0=0$，直流被消去。正负频率相移相反，才能继续保持实信号的共轭对称。如果两边都乘 $-j$，结果一般成为纯虚波形，并不是实波形的 Hilbert 变换。
@@ -2667,8 +2673,10 @@ $$
 检查最简单的一对：对 $f_0&gt;0$，
 
 $$
-\mathscr H\{\cos(2\pi f_0t)\}=\sin(2\pi f_0t),\qquad
-\mathscr H\{\sin(2\pi f_0t)\}=-\cos(2\pi f_0t).
+\begin{aligned}
+\mathscr H\{\cos(2\pi f_0t)\}&amp;=\sin(2\pi f_0t),\\
+\mathscr H\{\sin(2\pi f_0t)\}&amp;=-\cos(2\pi f_0t).
+\end{aligned}
 $$
 
 实域写法是 $\hat x=x*(1/(\pi t))$，其中奇异积分按柯西主值理解。Hilbert 变换对每个非零频率保持幅度，却不等于固定时间延迟：延迟 $d$ 的相移为 $-2\pi fd$，随频率成比例；Hilbert 的正频率相移始终为 $-\pi/2$。对某一条正弦，它相当于四分之一周期延迟；换一个频率，四分之一周期所需时间就变了，不能用同一个 $d$ 实现。
@@ -2678,8 +2686,10 @@ $$
 构造
 
 $$
-x_a(t)=x(t)+j\hat x(t),\qquad
-X_a(f)=[1+\operatorname{sgn}f]X(f).
+\begin{aligned}
+x_a(t)&amp;=x(t)+j\hat x(t),\\
+X_a(f)&amp;=[1+\operatorname{sgn}f]X(f).
+\end{aligned}
 $$
 
 对 $f&gt;0$，$j\hat X=j(-j)X=X$，与原谱相加变成 $2X$；对 $f&lt;0$，$j\hat X=j(j)X=-X$，与原谱抵消。因此解析信号正频率加倍、负频率为零，直流保留。它不是将原双边谱切掉一半后原样保留另一半。
@@ -2697,8 +2707,10 @@ $$
 若实信号的正频带位于 $[f_c-B,f_c+B]$，且 $f_c&gt;B&gt;0$，定义
 
 $$
-x_L(t)=x_a(t)e^{-j2\pi f_ct},\qquad
-X_L(f)=X_a(f+f_c).
+\begin{aligned}
+x_L(t)&amp;=x_a(t)e^{-j2\pi f_ct},\\
+X_L(f)&amp;=X_a(f+f_c).
+\end{aligned}
 $$
 
 解析信号先保留正频带，再整体左移 $f_c$，于是得到 $[-B,B]$ 内的基带谱。**解析信号只有非负频率，复包络却通常同时含正、负基带频率。** 后者的正负只是相对于参考载频的偏移，不能再次删掉负半边。
@@ -2743,8 +2755,10 @@ $$
 第二项既镜像又共轭，才能保证 $X(-f)=X^*(f)$。当搬移后的两份频带分离时，
 
 $$
-\Psi_x(f)=\tfrac14\Psi_L(f-f_c)+\tfrac14\Psi_L(-f-f_c),
-\qquad E_x=\tfrac12E_L.
+\begin{aligned}
+\Psi_x(f)&amp;=\tfrac14\Psi_L(f-f_c)+\tfrac14\Psi_L(-f-f_c),\\
+E_x&amp;=\tfrac12E_L.
+\end{aligned}
 $$
 
 功率情形把 $\Psi,E$ 换成 $S,P$，同样有 $P_x=P_L/2$。例如 $x_L=2e^{j\phi}$ 的模平方为 4，而实载波 $2\cos(2\pi f_ct+\phi)$ 的平均功率为 2。每份**频谱幅度**减半，每份**谱密度**乘 $1/4$，两边积分后才是总量的一半。
@@ -2754,8 +2768,10 @@ $$
 对输入占据的 $|f|\le B$，定义 $H_e(f)=H(f_c+f)$，就有 $Y_L=X_LH_e$。若将实带通冲激响应 $h$ 本身也按相同参考载波构造复包络 $h_L$，在这一基带区间内其变换满足 $H_L(f)=2H(f_c+f)$，故
 
 $$
-H_e(f)=\frac12H_L(f),\qquad
-y_L=x_L*h_e=\frac12x_L*h_L.
+\begin{aligned}
+H_e(f)&amp;=\frac12H_L(f),\\
+y_L&amp;=x_L*h_e=\frac12x_L*h_L.
+\end{aligned}
 $$
 
 复包络无失真允许一个共同的复增益：若
@@ -2807,8 +2823,10 @@ $$
 每条支路都得到一个目标基带项和一组 $2f_c$ 附近的分量。低通若在 $|f|\le B$ 内增益为 1，并充分抑制二倍载频频带，就留下
 
 $$
-I_r=\operatorname{LPF}\{2x\cos\omega_ct\}=I,\qquad
-Q_r=\operatorname{LPF}\{-2x\sin\omega_ct\}=Q.
+\begin{aligned}
+I_r&amp;=\operatorname{LPF}\{2x\cos\omega_ct\}=I,\\
+Q_r&amp;=\operatorname{LPF}\{-2x\sin\omega_ct\}=Q.
+\end{aligned}
 $$
 
 系数 2 抵消混频的 $1/2$；若实际混频器只乘单位幅度的余弦和负正弦，输出就是 $I/2,Q/2$，需要后级增益补偿。正交支路的负号与 $x_L=I+jQ$ 一起约定，改其中一个却不改另一个会把星座上下翻转。
@@ -2824,10 +2842,12 @@ $$
 若两条本振共同使用 $\omega_ct+\theta$，按照相同的乘法和低通运算，得到
 
 $$
+\begin{gathered}
 \begin{pmatrix}I_r\\Q_r\end{pmatrix}
 =\begin{pmatrix}\cos\theta&amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}
-\begin{pmatrix}I\\Q\end{pmatrix},\qquad
+\begin{pmatrix}I\\Q\end{pmatrix},\\
 I_r+jQ_r=x_Le^{-j\theta}.
+\end{gathered}
 $$
 
 本振角度超前 $\theta$，等于接收坐标轴也超前；同一个物理向量在新坐标系里表现为顺时针转 $\theta$。向量长度不变，但两坐标混合，判决可能出错。考试中可取 $x_L=1$、小正角 $\theta$ 检查符号：结果应为 $\cos\theta-j\sin\theta$，即落在实轴下方。
@@ -2841,8 +2861,10 @@ $$
 QPSK 每个符号选一个复坐标，例如 $a_k\in\{(\pm1\pm j)/\sqrt2\}$。经脉冲成形 $p(t)$ 后，
 
 $$
-x_L(t)=\sum_k a_kp(t-kT_s),\qquad
-x(t)=\operatorname{Re}\{x_L(t)e^{j2\pi f_ct}\}.
+\begin{aligned}
+x_L(t)&amp;=\sum_k a_kp(t-kT_s),\\
+x(t)&amp;=\operatorname{Re}\{x_L(t)e^{j2\pi f_ct}\}.
+\end{aligned}
 $$
 
 $a_k$ 决定 I/Q 两路符号，$p$ 决定它们怎样随时间过渡、占据多宽频带。画成方框的理想矩形码元便于理解，但其 sinc 尾部无限延伸；精确的带限、频谱分离分析须采用相应成形条件。
