@@ -1,0 +1,29 @@
+/* Reading styles scoped to the CMC retrospective. */
+.cmc-reading{min-width:0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:17px;font-weight:400;line-height:1.85;letter-spacing:0}
+.cmc-reading p{margin:0 0 1em;text-align:left}
+.cmc-reading h2{margin:2.7em 0 1em;line-height:1.55}
+.cmc-reading h3{line-height:1.6}
+.cmc-reading .cmc-anchor{display:block;scroll-margin-top:90px}
+.cmc-reading h2,.cmc-reading h3,.cmc-reading h4{scroll-margin-top:90px}
+.cmc-reading mjx-container{max-width:100%}
+.cmc-reading mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:8px 2px;margin:1em 0!important}
+.cmc-reading mjx-container[display="true"] svg{max-width:none}
+.cmc-reading table{display:block;max-width:100%;overflow-x:auto;font-size:.92em;line-height:1.7}
+.cmc-reading td,.cmc-reading th{padding:.6em .75em;vertical-align:top}
+.cmc-formula-sheet{--cmc-accent:#176c68;--cmc-line:#cbdedb;--cmc-tint:rgba(23,108,104,.045);min-width:0}
+.cmc-formula-sheet h3{margin:2.6em 0 1.1em;padding:.7em 0 .65em;border-top:2px solid var(--cmc-line);border-bottom:1px solid var(--cmc-line);color:var(--cmc-accent);font-size:1.32em}
+.cmc-formula-sheet h4{margin:1.8em 0 .75em;padding-left:.7em;border-left:3px solid var(--cmc-accent);font-size:1.07em;line-height:1.7}
+.cmc-formula-sheet strong{font-weight:650}
+.cmc-formula-sheet ul,.cmc-formula-sheet ol{padding-left:1.5em}
+.cmc-formula-sheet li{margin:.35em 0}
+.cmc-formula-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:1.3em 0 1.8em;padding:12px;border:1px solid var(--cmc-line);border-radius:8px;background:var(--cmc-tint)}
+.cmc-formula-nav a{display:block;min-width:0;padding:7px 9px;line-height:1.6;border:1px solid var(--cmc-line);border-radius:5px;text-decoration:none!important;color:var(--cmc-accent)!important;background:var(--board-bg-color,transparent)}
+.cmc-formula-nav a:hover{background:var(--cmc-tint)}
+.cmc-formula-sheet details{margin:1.2em 0;padding:10px 14px;border:1px solid var(--cmc-line);border-radius:7px;background:var(--cmc-tint)}
+.cmc-formula-sheet summary{cursor:pointer;font-weight:600;line-height:1.7;color:var(--cmc-accent)}
+.cmc-formula-sheet details[open]>summary{margin-bottom:1em;padding-bottom:.55em;border-bottom:1px solid var(--cmc-line)}
+.cmc-formula-sheet summary:focus-visible,.cmc-formula-nav a:focus-visible{outline:2px solid var(--cmc-accent);outline-offset:3px}
+html[data-user-color-scheme=dark] .cmc-formula-sheet{--cmc-accent:#9cd1ca;--cmc-line:#49645f;--cmc-tint:rgba(156,209,202,.045)}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .cmc-formula-sheet{--cmc-accent:#9cd1ca;--cmc-line:#49645f;--cmc-tint:rgba(156,209,202,.045)}}
+@media(max-width:767px){.cmc-reading{font-size:16px;line-height:1.85}.cmc-reading h2{font-size:1.4em}.cmc-formula-sheet h3{font-size:1.22em}.cmc-formula-sheet h4{font-size:1.04em}.cmc-formula-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:8px;font-size:.9em}.cmc-formula-nav a{padding:7px}.cmc-reading table{font-size:.88em}.cmc-reading td,.cmc-reading th{padding:.5em .6em}.cmc-formula-sheet details{padding:10px}}
+@media print{.cmc-formula-nav{display:none}.cmc-reading{font-size:11pt}.cmc-formula-sheet h3,.cmc-formula-sheet h4{break-after:avoid}.cmc-reading mjx-container[display="true"]{overflow:visible}}
