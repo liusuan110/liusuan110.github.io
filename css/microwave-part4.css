@@ -1,0 +1,6 @@
+/* Additional chapter 4 diagrams use the article's existing controls and palette. */
+.mw-reading .mw-part4-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+.mw-reading .mw-part4-route{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mw-reading .mw-part4-panels .mw-demo-plot{min-width:0}
+.mw-reading .mw-part4-panels svg{width:100%;height:auto}
+@media(max-width:700px){.mw-reading .mw-part4-panels,.mw-reading .mw-part4-route{grid-template-columns:1fr}.mw-reading .mw-part4-panels{gap:5px}}

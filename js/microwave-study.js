@@ -41,6 +41,7 @@
   const button=(host,text,fn)=>{const b=mk('button',{type:'button'},text);b.addEventListener('click',fn);host.append(b);return b;};
   function legend(host,items){const d=mk('div',{class:'mw-demo-legend'});items.forEach(([t,c])=>{const s=mk('span'),i=mk('i');i.style.background=c;s.append(i,document.createTextNode(t));d.append(s);});host.append(d);}
   function init(root){
+    if(!['standing-wave','smith','waveguide'].includes(root.dataset.mwDemo))return;
     if(root.dataset.ready)return;root.dataset.ready='true';const kind=root.dataset.mwDemo;
     const title=mk('strong',{class:'mw-demo-title'}),controls=mk('div',{class:'mw-demo-controls'}),actions=mk('div',{class:'mw-demo-actions'}),plot=mk('div',{class:'mw-demo-plot'}),readout=mk('p',{class:'mw-demo-readout','aria-live':'polite','aria-atomic':'true'}),note=mk('p',{class:'mw-demo-note'});
     root.replaceChildren(title,controls,actions,plot);let draw;
