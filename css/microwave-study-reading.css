@@ -1,6 +1,8 @@
 /* Reading and demonstrations scoped to the microwave course article. */
 .mw-reading{--mw-ink:#243b3a;--mw-muted:#627371;--mw-accent:#137e73;--mw-blue:#326fa6;--mw-orange:#b75f20;--mw-line:#d9e2dc;--mw-soft:#f1f6f3;--mw-paper:#fffefa;min-width:0;line-height:1.95;overflow-wrap:break-word}
 .mw-reading h2,.mw-reading h3,.mw-reading h4,.mw-reading span[id]{scroll-margin-top:88px}
+/* Scroll margin replaces the theme heading shim, which can cover preceding controls. */
+.mw-reading h2::before,.mw-reading h3::before,.mw-reading h4::before{display:none}
 .mw-reading h2{margin:3em 0 1em;line-height:1.5;padding-bottom:.6em;border-bottom:2px solid var(--mw-accent)}
 .mw-reading h3{margin:2.3em 0 1em;padding-top:.5em;line-height:1.55;color:var(--mw-accent)}
 .mw-reading h4{margin:1.7em 0 .8em;line-height:1.65}

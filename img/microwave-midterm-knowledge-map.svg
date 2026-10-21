@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="560" viewBox="0 0 920 560" role="img" aria-labelledby="title desc">
+<title id="title">六部分怎样连起来：期中先走第一、二部分</title><desc id="desc">当前优先第一部分传输线和第二部分圆图匹配，依据保存的2022至2023期中七大题样本，不代表本学期考纲。第三和第四部分解释几何、介质、可传播模式与传播参数的来源，参数回到第一、第二部分使用；增加封闭端面后进入第五部分谐振与Q，第五仍为拓展。第六部分以S和ABCD统一端口连接、返回波和功率，可以直接承接第一、第二部分，不需要先学完第五部分。场阻抗不能未经端口定义直接当成电路阻抗。</desc>
+<rect width="920" height="560" rx="16" fill="#f5f8fb"/>
+<defs>
+<marker id="arrow-14796f" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#14796f"/></marker>
+<marker id="arrow-2563eb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker>
+<marker id="arrow-687c88" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#687c88"/></marker>
+</defs>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" fill="#183344">
+<text x="27" y="36" font-size="27" fill="#183344" text-anchor="start" font-weight="700">六部分怎样连起来：期中先走第一、二部分</text>
+<text x="28" y="67" font-size="18" fill="#687c88" text-anchor="start" font-weight="400">优先级依据：2022—2023 期中七道大题样本；不代替本学期考纲</text>
+<rect x="30" y="94" width="390" height="145" rx="13" fill="#e7f4ee" stroke="#14796f" stroke-width="1.8"/>
+<rect x="500" y="94" width="390" height="145" rx="13" fill="#eaf1fd" stroke="#2563eb" stroke-width="1.8"/>
+<text x="49" y="126" font-size="24" fill="#14796f" text-anchor="start" font-weight="700">一 · 传输线</text>
+<text x="519" y="126" font-size="24" fill="#2563eb" text-anchor="start" font-weight="700">二 · 圆图与匹配</text>
+<rect x="323" y="105" width="80" height="25" rx="13" fill="#14796f" stroke="#14796f" stroke-width="1.3"/>
+<text x="363" y="123" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="700">当前优先</text>
+<rect x="793" y="105" width="80" height="25" rx="13" fill="#2563eb" stroke="#2563eb" stroke-width="1.3"/>
+<text x="833" y="123" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="700">当前优先</text>
+<text x="49" y="159" font-size="21" fill="#14796f" text-anchor="start" font-weight="400">R′ L′ G′ C′ → 行波与反波</text>
+<text x="49" y="188" font-size="20" fill="#183344" text-anchor="start" font-weight="400">负载 → Γ → 驻波 / 输入阻抗</text>
+<text x="49" y="216" font-size="20" fill="#183344" text-anchor="start" font-weight="400">再用平均功率作检查</text>
+<text x="519" y="159" font-size="20" fill="#2563eb" text-anchor="start" font-weight="400">同一个 Γ，用 z / y 读圆图</text>
+<text x="519" y="188" font-size="20" fill="#183344" text-anchor="start" font-weight="400">选接入面 → 支节 / 变换段</text>
+<text x="519" y="216" font-size="20" fill="#183344" text-anchor="start" font-weight="400">回代：源侧 Zin = Z0</text>
+<line x1="432" y1="168" x2="488" y2="168" stroke="#14796f" stroke-width="3" marker-end="url(#arrow-14796f)"/>
+<text x="460" y="198" font-size="18" fill="#687c88" text-anchor="middle" font-weight="400">再设计</text>
+<line x1="150" y1="304" x2="150" y2="281" stroke="#687c88" stroke-width="2.2"/>
+<line x1="410" y1="304" x2="410" y2="281" stroke="#687c88" stroke-width="2.2"/>
+<line x1="150" y1="281" x2="410" y2="281" stroke="#687c88" stroke-width="2.2"/>
+<line x1="280" y1="281" x2="280" y2="244" stroke="#687c88" stroke-width="2.2" marker-end="url(#arrow-687c88)"/>
+<text x="294" y="269" font-size="17" fill="#687c88" text-anchor="start" font-weight="400">给出 β、Zc 与传播条件</text>
+<text x="49" y="269" font-size="17" fill="#687c88" text-anchor="start" font-weight="400">后续连线</text>
+<rect x="30" y="305" width="240" height="135" rx="13" fill="#eef2f5" stroke="#dbe5ed" stroke-width="1.3"/>
+<rect x="290" y="305" width="240" height="135" rx="13" fill="#eef2f5" stroke="#dbe5ed" stroke-width="1.3"/>
+<rect x="580" y="305" width="310" height="135" rx="13" fill="#f3f1ed" stroke="#d8d2c8" stroke-width="1.3"/>
+<text x="49" y="336" font-size="22" fill="#687c88" text-anchor="start" font-weight="700">三 · 矩形波导</text>
+<text x="49" y="372" font-size="19" fill="#687c88" text-anchor="start" font-weight="400">截面 → 合法模式</text>
+<text x="49" y="402" font-size="18" fill="#687c88" text-anchor="start" font-weight="400">截止 → β、λg、场阻抗</text>
+<text x="309" y="336" font-size="22" fill="#687c88" text-anchor="start" font-weight="700">四 · 各类传输线</text>
+<text x="309" y="372" font-size="19" fill="#687c88" text-anchor="start" font-weight="400">圆管 / 同轴 / 微带</text>
+<text x="309" y="402" font-size="19" fill="#687c88" text-anchor="start" font-weight="400">几何与介质 → 参数</text>
+<line x1="274" y1="373" x2="286" y2="373" stroke="#687c88" stroke-width="1.8" marker-end="url(#arrow-687c88)"/>
+<line x1="537" y1="373" x2="572" y2="373" stroke="#687c88" stroke-width="2.2" marker-end="url(#arrow-687c88)"/>
+<text x="554" y="355" font-size="16" fill="#687c88" text-anchor="middle" font-weight="400">端面</text>
+<text x="599" y="336" font-size="22" fill="#687c88" text-anchor="start" font-weight="700">五 · 谐振器（拓展）</text>
+<text x="599" y="372" font-size="20" fill="#687c88" text-anchor="start" font-weight="400">封闭边界 → 允许频率</text>
+<text x="599" y="402" font-size="20" fill="#687c88" text-anchor="start" font-weight="400">储能、损耗 → Q</text>
+<line x1="280" y1="443" x2="280" y2="472" stroke="#687c88" stroke-width="2.2" marker-end="url(#arrow-687c88)"/>
+<text x="295" y="462" font-size="17" fill="#687c88" text-anchor="start" font-weight="400">定义端口后再连接</text>
+<line x1="735" y1="443" x2="735" y2="472" stroke="#687c88" stroke-width="2.2" marker-end="url(#arrow-687c88)"/>
+<text x="749" y="462" font-size="17" fill="#687c88" text-anchor="start" font-weight="400">加载与耦合</text>
+<rect x="30" y="477" width="860" height="66" rx="13" fill="#eef2f5" stroke="#dbe5ed" stroke-width="1.3"/>
+<text x="49" y="508" font-size="23" fill="#687c88" text-anchor="start" font-weight="700">六 · 微波网络</text>
+<text x="235" y="507" font-size="20" fill="#687c88" text-anchor="start" font-weight="400">S / ABCD → 统一连接、返回波与功率</text>
+<text x="235" y="533" font-size="17" fill="#687c88" text-anchor="start" font-weight="400">先定端口、参考面、模式与归一化；不必先学完第五部分</text>
+<path d="M891 173H905V511H893" fill="none" stroke="#687c88" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-687c88)"/>
+<text x="873" y="269" font-size="17" fill="#687c88" text-anchor="end" font-weight="400">端口统一</text>
+</g></svg>

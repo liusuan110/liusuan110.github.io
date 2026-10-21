@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+<title id="title">综合例M-1：驻波测量、负载反演与两组并联短路支节</title>
+<desc id="desc">使用2022到2023期中原题的电压峰值6伏、1伏，相邻极大间距50毫米，首极小距负载10毫米。先恢复反射系数与负载，再新增两组同波长短路支节匹配。圆图上蓝色表示沿线旋转，橙色表示在同一结点加纯电纳。匹配后源侧驻波比1，负载侧驻波比仍为6；图示和新增追问不代表当前考试范围。</desc>
+<rect x="0" y="0" width="920" height="520" rx="16" fill="#f5f8fb" stroke="none"/>
+<defs>
+<marker id="arrow-2563eb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#2563eb"/></marker>
+<marker id="arrow-c66a22" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#c66a22"/></marker>
+<marker id="arrow-587080" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#587080"/></marker>
+</defs>
+<text x="25" y="36" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" text-anchor="start" font-weight="700">综合例 M-1：测得驻波，怎样走到完整匹配方案</text>
+<text x="26" y="66" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">原题：反演与平均功率；新增追问：支节匹配与源条件。电压均为峰值，距离从负载向源量。</text>
+<rect x="20" y="88" width="240" height="126" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<rect x="285" y="88" width="300" height="126" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<rect x="610" y="88" width="290" height="126" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<text x="35" y="117" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" text-anchor="start" font-weight="700">① 测量给出模与相位</text>
+<text x="35" y="146" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">波腹间距 50 mm → λ = 100 mm</text>
+<text x="35" y="171" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">6 V / 1 V → ρ = 6，|ΓL| = 5/7</text>
+<text x="35" y="196" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">首波节 10 mm → φL = −108°</text>
+<line x1="265.000" y1="151.000" x2="280.000" y2="151.000" stroke="#587080" stroke-width="2" marker-end="url(#arrow-587080)"/>
+<text x="300" y="117" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" text-anchor="start" font-weight="700">② 恢复负载，分离行波功率</text>
+<text x="300" y="146" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">ΓL ≈ −0.220726 − j0.679326</text>
+<text x="300" y="171" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">ZL ≈ 12.548 − j34.808 Ω</text>
+<text x="300" y="196" fill="#14796f" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="start" font-weight="400">122.5 − 62.5 = 60 mW</text>
+<line x1="590.000" y1="151.000" x2="605.000" y2="151.000" stroke="#587080" stroke-width="2" marker-end="url(#arrow-587080)"/>
+<text x="625" y="117" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" text-anchor="start" font-weight="700">③ 同一负载，两组短路支节</text>
+<text x="625" y="148" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">A：d=3.831，l_s=7.250 mm</text>
+<text x="625" y="175" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">B：d=16.169，l_s=42.750 mm</text>
+<text x="625" y="199" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">两种长度必须成对，不能交叉取值</text>
+<rect x="20" y="234" width="420" height="244" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<rect x="460" y="234" width="440" height="244" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<text x="38" y="262" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" text-anchor="start" font-weight="700">实际电压 Γ 平面：两种动作不能混用</text>
+<text x="478" y="262" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" text-anchor="start" font-weight="700">④ 回代到结点，再说明功率条件</text>
+<line x1="101.000" y1="365.000" x2="299.000" y2="365.000" stroke="#dbe5ed" stroke-width="1.3"/>
+<line x1="200.000" y1="266.000" x2="200.000" y2="464.000" stroke="#dbe5ed" stroke-width="1.3"/>
+<circle cx="200.000" cy="365.000" r="90.000" fill="none" stroke="#dbe5ed" stroke-width="1.3"/>
+<circle cx="200.000" cy="365.000" r="64.286" fill="none" stroke="#a6c0e8" stroke-width="1.6"/>
+<circle cx="155.000" cy="365.000" r="45.000" fill="none" stroke="#e6bd9d" stroke-width="1.6"/>
+<polyline points="180.135,426.139 178.588,425.615 177.056,425.052 175.538,424.450 174.036,423.809 172.551,423.131 171.084,422.415 169.635,421.662 168.206,420.873 166.797,420.048 165.410,419.187 164.045,418.291 162.704,417.361 161.386,416.397 160.093,415.399 158.826,414.370 157.586,413.308 156.372,412.215 155.188,411.092 154.031,409.939 152.905,408.757 151.809,407.547 150.744,406.310 149.711,405.046 148.710,403.756 147.742,402.441 146.808,401.101 145.909,399.739 145.044,398.354 144.215,396.948 143.421,395.521 142.665,394.074 141.945,392.609 141.262,391.126 140.618,389.625 140.012,388.109 139.444,386.579 138.916,385.034 138.427,383.476 137.977,381.906 137.568,380.326 137.199,378.736 136.870,377.136 136.582,375.529 136.335,373.915 136.130,372.296 135.965,370.671 135.842,369.043 135.760,367.413 135.719,365.780 135.720,364.148 135.762,362.516 135.846,360.885 135.971,359.257 136.138,357.633 136.345,356.014 136.594,354.400 136.884,352.793 137.214,351.194 137.585,349.604 137.996,348.024 138.447,346.455 138.938,344.898 139.468,343.354 140.037,341.824 140.645,340.308 141.292,338.809 141.976,337.326 142.697,335.862 143.456,334.416 144.250,332.990 145.081,331.585 145.948,330.201 146.849,328.839 147.784,327.501 148.753,326.187 149.756,324.898 150.790,323.635 151.857,322.399 152.954,321.190 154.082,320.009" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-2563eb)"/>
+<polyline points="154.082,409.991 154.838,410.000 155.607,409.996 156.389,409.979 157.184,409.947 157.993,409.900 158.814,409.838 159.647,409.759 160.494,409.663 161.352,409.549 162.223,409.417 163.106,409.264 164.000,409.091 164.906,408.896 165.822,408.679 166.749,408.439 167.685,408.175 168.631,407.886 169.586,407.570 170.549,407.228 171.519,406.858 172.495,406.460 173.478,406.031 174.464,405.573 175.455,405.083 176.447,404.560 177.441,404.005 178.436,403.416 179.429,402.792 180.419,402.133 181.405,401.439 182.385,400.708 183.358,399.940 184.323,399.135 185.276,398.292 186.217,397.412 187.143,396.493 188.053,395.537 188.944,394.543 189.815,393.511 190.664,392.442 191.488,391.337 192.286,390.195 193.055,389.017 193.793,387.806 194.499,386.560 195.170,385.283 195.804,383.974 196.400,382.636 196.956,381.271 197.469,379.879 197.939,378.463 198.364,377.025 198.742,375.567 199.072,374.091 199.354,372.600 199.585,371.096 199.766,369.581 199.896,368.058 199.974,366.530 200.000,365.000" fill="none" stroke="#c66a22" stroke-width="2.7" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-c66a22)"/>
+<polyline points="154.082,320.009 154.838,320.000 155.607,320.004 156.389,320.021 157.184,320.053 157.993,320.100 158.814,320.162 159.647,320.241 160.494,320.337 161.352,320.451 162.223,320.583 163.106,320.736 164.000,320.909 164.906,321.104 165.822,321.321 166.749,321.561 167.685,321.825 168.631,322.114 169.586,322.430 170.549,322.772 171.519,323.142 172.495,323.540 173.478,323.969 174.464,324.427 175.455,324.917 176.447,325.440 177.441,325.995 178.436,326.584 179.429,327.208 180.419,327.867 181.405,328.561 182.385,329.292 183.358,330.060 184.323,330.865 185.276,331.708 186.217,332.588 187.143,333.507 188.053,334.463 188.944,335.457 189.815,336.489 190.664,337.558 191.488,338.663 192.286,339.805 193.055,340.983 193.793,342.194 194.499,343.440 195.170,344.717 195.804,346.026 196.400,347.364 196.956,348.729 197.469,350.121 197.939,351.537 198.364,352.975 198.742,354.433 199.072,355.909 199.354,357.400 199.585,358.904 199.766,360.419 199.896,361.942 199.974,363.470 200.000,365.000" fill="none" stroke="#c66a22" stroke-width="2.7" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow-c66a22)"/>
+<circle cx="180.135" cy="426.139" r="4.500" fill="#2563eb" stroke="white" stroke-width="1.2"/>
+<text x="190.135" y="433.139" fill="#2563eb" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="start" font-weight="700">L</text>
+<circle cx="200.000" cy="365.000" r="4.000" fill="#14796f" stroke="white" stroke-width="1"/>
+<text x="212" y="357" fill="#14796f" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" text-anchor="start" font-weight="400">M：Γ = 0</text>
+<circle cx="154.082" cy="409.991" r="4.500" fill="#c66a22" stroke="white" stroke-width="1.2"/>
+<text x="137.082" y="428.991" fill="#c66a22" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="end" font-weight="700">A</text>
+<circle cx="154.082" cy="320.009" r="4.500" fill="#c66a22" stroke="white" stroke-width="1.2"/>
+<text x="137.082" y="310.009" fill="#c66a22" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="end" font-weight="700">B</text>
+<line x1="305.000" y1="322.000" x2="326.000" y2="322.000" stroke="#2563eb" stroke-width="3"/>
+<text x="334" y="327" fill="#2563eb" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">沿线</text>
+<line x1="305.000" y1="350.000" x2="326.000" y2="350.000" stroke="#c66a22" stroke-width="3"/>
+<text x="334" y="355" fill="#c66a22" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">加电纳</text>
+<text x="305" y="389" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">先 g = 1</text>
+<text x="305" y="414" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">再消电纳</text>
+<text x="38" y="463" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">先沿等 |Γ| 圆旋转，再沿 g = 1 圆加支节电纳</text>
+<line x1="484.000" y1="329.000" x2="866.000" y2="329.000" stroke="#183344" stroke-width="2.2"/>
+<circle cx="652.000" cy="329.000" r="4.000" fill="#14796f" stroke="#14796f" stroke-width="1.2"/>
+<line x1="652.000" y1="329.000" x2="652.000" y2="389.000" stroke="#183344" stroke-width="2.2"/>
+<line x1="640.000" y1="389.000" x2="664.000" y2="389.000" stroke="#183344" stroke-width="3"/>
+<rect x="843" y="315" width="40" height="28" rx="3" fill="#ffffff" stroke="#183344"/>
+<text x="863" y="334" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="middle" font-weight="400">ZL</text>
+<text x="490" y="307" fill="#14796f" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">源侧 ρ = 1</text>
+<text x="744" y="307" fill="#c66a22" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="middle" font-weight="400">负载侧 ρ = 6</text>
+<text x="639" y="309" fill="#14796f" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="middle" font-weight="700">J</text>
+<text x="748" y="354" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="middle" font-weight="400">主线距离 d</text>
+<text x="673" y="380" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" text-anchor="start" font-weight="400">短路支节 l_s</text>
+<text x="479" y="422" fill="#183344" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">yJ = (1 ± j2.04124) + (∓j2.04124) = 1</text>
+<text x="479" y="452" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">理想支节不耗有功；负载侧仍保留驻波</text>
+<text x="26" y="505" fill="#587080" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" text-anchor="start" font-weight="400">匹配后功率取决于保持哪个参考面的入射波及信号源阻抗；原卷未给定这些新增条件。</text>
+</svg>
