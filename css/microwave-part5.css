@@ -1,0 +1,6 @@
+/* Resonator teaching figures share the original article's reading palette. */
+.mw-reading .mw-resonator-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0}
+.mw-reading .mw-resonator-panel{min-width:0}
+.mw-reading .mw-resonator-panels svg{width:100%;height:auto}
+.mw-reading .mw-resonator-panels .mw-demo-legend{line-height:1.7}
+@media(max-width:700px){.mw-reading .mw-resonator-panels{grid-template-columns:1fr;gap:10px}}
