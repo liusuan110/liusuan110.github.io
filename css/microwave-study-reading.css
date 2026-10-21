@@ -1,0 +1,50 @@
+/* Reading and demonstrations scoped to the microwave course article. */
+.mw-reading{--mw-ink:#243b3a;--mw-muted:#627371;--mw-accent:#137e73;--mw-blue:#326fa6;--mw-orange:#b75f20;--mw-line:#d9e2dc;--mw-soft:#f1f6f3;--mw-paper:#fffefa;min-width:0;line-height:1.95;overflow-wrap:break-word}
+.mw-reading h2,.mw-reading h3,.mw-reading h4,.mw-reading span[id]{scroll-margin-top:88px}
+.mw-reading h2{margin:3em 0 1em;line-height:1.5;padding-bottom:.6em;border-bottom:2px solid var(--mw-accent)}
+.mw-reading h3{margin:2.3em 0 1em;padding-top:.5em;line-height:1.55;color:var(--mw-accent)}
+.mw-reading h4{margin:1.7em 0 .8em;line-height:1.65}
+.mw-reading p{line-height:inherit}
+.mw-reading mjx-container{max-width:100%}
+.mw-reading mjx-container[display=true]{display:block;overflow-x:auto;overflow-y:hidden;padding:12px 3px;margin:1.2em 0!important;overscroll-behavior-x:contain}
+.mw-reading mjx-container[display=true] svg{max-width:none}
+.mw-reading img{display:block;max-width:100%;height:auto;margin:1.5em auto .6em;border:1px solid var(--mw-line);border-radius:8px}
+.mw-reading img+em,.mw-reading p:has(>img)+p>em:only-child{display:block;font-size:.88em;line-height:1.8;color:var(--mw-muted)}
+.mw-reading table{display:block;max-width:100%;width:max-content;overflow-x:auto;font-size:.92em;line-height:1.85;margin:1.4em 0;overscroll-behavior-x:contain}
+.mw-reading td,.mw-reading th{padding:.65em .9em;vertical-align:top;min-width:5em;border-color:var(--mw-line)}
+.mw-reading th{background:var(--mw-soft);font-weight:600}
+.mw-reading details{margin:1.3em 0;padding:12px 17px;border:1px solid var(--mw-line);border-radius:8px;background:var(--mw-soft)}
+.mw-reading details.mw-solution{background:transparent;border-left:3px solid var(--mw-accent)}
+.mw-reading summary{cursor:pointer;color:var(--mw-accent);font-weight:600;line-height:1.8}
+.mw-reading details[open]>summary{padding-bottom:.6em;margin-bottom:1em;border-bottom:1px solid var(--mw-line)}
+.mw-reading details>:last-child{margin-bottom:.2em}
+.mw-reading summary:focus-visible,.mw-reading button:focus-visible,.mw-reading a:focus-visible,.mw-reading input:focus-visible{outline:3px solid var(--mw-blue);outline-offset:4px}
+.mw-quick-nav,.mw-chapter-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:13px;margin:1.6em 0;background:var(--mw-soft);border:1px solid var(--mw-line);border-radius:8px;font-family:system-ui,-apple-system,"PingFang SC",sans-serif;font-size:.88em}
+.mw-quick-nav a,.mw-chapter-nav a{display:block;min-width:0;padding:8px 10px;color:var(--mw-accent);line-height:1.7;text-decoration:none!important;border-radius:4px;background:var(--mw-paper)}
+.mw-quick-nav small{display:block;color:var(--mw-muted);font-size:.91em}
+.mw-reading .mw-back{margin:2em 0;font-size:.85em;text-align:right}
+.mw-reading .mw-demo{min-width:0;margin:1.6em 0 2em;padding:18px 16px 14px;border:1px solid var(--mw-line);border-radius:10px;background:var(--mw-paper);font:15px/1.7 system-ui,-apple-system,"PingFang SC",sans-serif;color:var(--mw-ink)}
+.mw-demo-title{display:block;margin-bottom:12px;font-size:1.05em;font-weight:650;line-height:1.6}
+.mw-demo-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin-bottom:14px}
+.mw-control{min-width:0}
+.mw-control-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px;font-size:.9em}
+.mw-control output{color:var(--mw-accent);font-variant-numeric:tabular-nums}
+.mw-demo input[type=range]{display:block;width:100%;height:28px;margin:2px 0 0;accent-color:var(--mw-accent);cursor:pointer}
+.mw-demo-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:8px 0 12px;font-size:.88em}
+.mw-demo button{padding:7px 12px;border:1px solid var(--mw-line);border-radius:5px;background:var(--mw-soft);color:var(--mw-ink);cursor:pointer;font:inherit;line-height:1.6;min-height:36px}
+.mw-demo button:hover{border-color:var(--mw-accent)}
+.mw-demo-actions label{display:flex;align-items:center;gap:7px;cursor:pointer;margin:0}
+.mw-demo input[type=checkbox]{width:17px;height:17px;accent-color:var(--mw-accent)}
+.mw-demo-plot{min-width:0;width:100%;overflow:hidden}
+.mw-demo svg{display:block;max-width:100%;height:auto;font-family:system-ui,-apple-system,"PingFang SC",sans-serif}
+.mw-demo svg text{fill:var(--mw-muted);font-size:12px}
+.mw-demo-legend{display:flex;flex-wrap:wrap;gap:5px 16px;font-size:.83em;margin:4px 0 10px}
+.mw-demo-legend span{display:inline-flex;align-items:center;gap:5px}
+.mw-demo-legend i{display:inline-block;width:18px;height:3px;border-radius:2px}
+.mw-demo .mw-demo-readout{margin:10px 0 0;padding:10px 12px;background:var(--mw-soft);border-radius:5px;font-size:.9em;line-height:1.85;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.mw-demo .mw-demo-note{margin:10px 0 0;color:var(--mw-muted);font-size:.83em;line-height:1.8}
+.mw-reading .mw-reading-note{padding:12px 16px;background:var(--mw-soft);border-left:3px solid var(--mw-accent);font-size:.93em}
+@media(max-width:650px){.mw-reading{line-height:1.9}.mw-reading h2{font-size:1.38em;margin-top:2.4em}.mw-reading h3{font-size:1.18em}.mw-reading h4{font-size:1.05em}.mw-quick-nav{grid-template-columns:repeat(2,minmax(0,1fr));padding:9px}.mw-chapter-nav{grid-template-columns:1fr;gap:5px;padding:8px}.mw-reading table{font-size:.87em}.mw-reading td,.mw-reading th{padding:.6em .7em}.mw-reading details{padding:11px 12px}.mw-reading .mw-demo{padding:14px 10px}.mw-demo-controls{grid-template-columns:1fr;gap:9px}.mw-demo-title{font-size:1em}.mw-demo button{min-height:40px}.mw-demo svg text{font-size:12px}}
+html[data-user-color-scheme=dark] .mw-reading{--mw-ink:#d9e8e3;--mw-muted:#acc1b8;--mw-accent:#8dd0bf;--mw-blue:#8ec3f1;--mw-orange:#edaa70;--mw-line:#42594f;--mw-soft:#263934;--mw-paper:#1e2c28}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .mw-reading{--mw-ink:#d9e8e3;--mw-muted:#acc1b8;--mw-accent:#8dd0bf;--mw-blue:#8ec3f1;--mw-orange:#edaa70;--mw-line:#42594f;--mw-soft:#263934;--mw-paper:#1e2c28}}
+@media print{.mw-reading .mw-demo{break-inside:avoid}.mw-demo-controls,.mw-demo-actions,.mw-back{display:none}.mw-reading details{background:transparent}.mw-reading details:not([open])>*:not(summary){display:block!important}}
