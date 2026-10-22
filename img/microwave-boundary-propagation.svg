@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="520" viewBox="0 0 920 520" role="img" aria-labelledby="title desc">
+<title id="title">已知一个参考面，沿线求另一个参考面</title><desc id="desc">负载位于z等于0，已知面z等于负l。物理坐标z向负载增加，电流也朝正z；原文章的距离d朝源增加，所以d等于负z。由已知面到观察点的有向位移为z加l，向负载推进时电压、电流传播矩阵的交叉项带负号。</desc>
+<rect width="920" height="520" rx="16" fill="#f5f8fb"/>
+<g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+<text x="27" y="39" font-size="27" fill="#183344" text-anchor="start" font-weight="700">先固定方向，再把已知面作为起点</text>
+<text x="28" y="71" font-size="19" fill="#587080" text-anchor="start" font-weight="400">eʲωᵗ；电流始终朝 +z（向负载）；图中的 l &gt; 0</text>
+<rect x="26" y="90" width="868" height="244" rx="12" fill="#ffffff" stroke="#dbe5ed"/>
+<line x1="130" y1="179" x2="760" y2="179" stroke="#2563eb" stroke-width="5"/>
+<line x1="130" y1="232" x2="760" y2="232" stroke="#2563eb" stroke-width="5"/>
+<line x1="760" y1="179" x2="760" y2="193" stroke="#183344" stroke-width="2.5"/>
+<rect x="751" y="193" width="18" height="36" fill="#183344"/>
+<line x1="760" y1="229" x2="760" y2="232" stroke="#183344" stroke-width="2.5"/>
+<text x="782" y="216" font-size="21" fill="#183344" text-anchor="start" font-weight="400">ZL</text>
+<text x="169" y="128" font-size="20" fill="#14796f" text-anchor="middle" font-weight="700">已知面</text>
+<text x="169" y="154" font-size="20" fill="#14796f" text-anchor="middle" font-weight="400">V₁，I₁</text>
+<text x="478" y="128" font-size="20" fill="#2563eb" text-anchor="middle" font-weight="700">观察面</text>
+<text x="478" y="154" font-size="20" fill="#2563eb" text-anchor="middle" font-weight="400">V(z)，I(z)</text>
+<text x="760" y="128" font-size="20" fill="#c66a22" text-anchor="middle" font-weight="700">负载面</text>
+<line x1="169" y1="165" x2="169" y2="280" stroke="#14796f" stroke-width="1.2"/>
+<text x="169" y="303" font-size="21" fill="#14796f" text-anchor="middle" font-weight="700">−l</text>
+<line x1="478" y1="165" x2="478" y2="280" stroke="#2563eb" stroke-width="1.2"/>
+<text x="478" y="303" font-size="21" fill="#2563eb" text-anchor="middle" font-weight="700">z</text>
+<line x1="760" y1="165" x2="760" y2="280" stroke="#c66a22" stroke-width="1.2"/>
+<text x="760" y="303" font-size="21" fill="#c66a22" text-anchor="middle" font-weight="700">0</text>
+<line x1="615" y1="165" x2="695" y2="165" stroke="#14796f" stroke-width="2.5"/><polygon points="695,165 685,160.2 685,169.8" fill="#14796f"/>
+<text x="655" y="145" font-size="18" fill="#14796f" text-anchor="middle" font-weight="400">I &gt; 0</text>
+<line x1="116" y1="279" x2="820" y2="279" stroke="#183344" stroke-width="2.5"/><polygon points="820,279 810,274.2 810,283.8" fill="#183344"/>
+<text x="832" y="286" font-size="20" fill="#183344" text-anchor="start" font-weight="400">+z</text>
+<line x1="180" y1="263" x2="466" y2="263" stroke="#c66a22" stroke-width="2.5"/><polygon points="466,263 456,258.2 456,267.8" fill="#c66a22"/>
+<text x="323" y="254" font-size="20" fill="#c66a22" text-anchor="middle" font-weight="400">Δ = z − (−l) = z + l</text>
+<line x1="721" y1="319" x2="539" y2="319" stroke="#587080" stroke-width="2.5"/><polygon points="539,319 549,323.8 549,314.2" fill="#587080"/>
+<text x="441" y="325" font-size="18" fill="#587080" text-anchor="end" font-weight="400">距离 d 朝源增加：d = −z</text>
+<rect x="26" y="351" width="421" height="139" rx="12" fill="#e9f5ef" stroke="#dbe5ed"/>
+<rect x="465" y="351" width="429" height="139" rx="12" fill="#ecf2fd" stroke="#dbe5ed"/>
+<text x="45" y="381" font-size="22" fill="#14796f" text-anchor="start" font-weight="700">从已知面向负载推进 Δ</text>
+<text x="45" y="414" font-size="20" fill="#183344" text-anchor="start" font-weight="400">V = V₁ cosh(γΔ) − Zc I₁ sinh(γΔ)</text>
+<text x="45" y="449" font-size="19" fill="#183344" text-anchor="start" font-weight="400">I = I₁ cosh(γΔ) − (V₁/Zc) sinh(γΔ)</text>
+<text x="485" y="381" font-size="22" fill="#2563eb" text-anchor="start" font-weight="700">反向求输入：用逆矩阵</text>
+<text x="502" y="415" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">V₁</text>
+<text x="502" y="449" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">I₁</text>
+<text x="540" y="433" font-size="21" fill="#183344" text-anchor="middle" font-weight="400">=</text>
+<text x="618" y="415" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">cosh</text>
+<text x="743" y="415" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">+Zc sinh</text>
+<text x="618" y="449" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">+sinh/Zc</text>
+<text x="743" y="449" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">cosh</text>
+<text x="851" y="415" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">V</text>
+<text x="851" y="449" font-size="19" fill="#183344" text-anchor="middle" font-weight="400">I</text>
+<text x="28" y="512" font-size="18" fill="#587080" text-anchor="start" font-weight="400">双曲函数的自变量均为 γΔ；Δ = 0 时必须精确回到 V₁、I₁。</text>
+<path d="M491 395H485V458H491 M513 395H519V458H513" fill="none" stroke="#183344" stroke-width="1.5"/>
+<path d="M569 395H563V458H569 M796 395H802V458H796" fill="none" stroke="#183344" stroke-width="1.5"/>
+<path d="M840 395H834V458H840 M863 395H869V458H863" fill="none" stroke="#183344" stroke-width="1.5"/>
+</g></svg>
