@@ -1,0 +1,73 @@
+/* Scoped shunt-stub lessons; colors follow the existing microwave article. */
+.mw-demo.mwt-lab{--mwt-blue:#2865af;--mwt-orange:#bd6225;--mwt-green:#167b68;--mwt-purple:#8a5aa6;--mwt-grid:#cbd7df;--mwt-axis:#6d8795;min-width:0;box-sizing:border-box;color:var(--mw-ink);background:var(--mw-paper);font:15px/1.75 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;overflow-wrap:break-word}
+.mwt-lab *{box-sizing:border-box}
+.mwt-lab .mwt-title{display:block;margin:0 0 8px;font-size:1.1em;line-height:1.6;font-weight:700}
+.mwt-lab .mwt-intro,.mwt-lab .mwt-note{margin:7px 0 12px;color:var(--mw-muted);font-size:.84em;line-height:1.9}
+.mwt-lab .mwt-presets{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.mw-reading .mwt-lab button,.mwt-lab button{max-width:100%;min-height:41px;padding:7px 10px;border:1px solid var(--mw-line);border-radius:6px;background:var(--mw-soft);color:var(--mw-ink);font:inherit;font-size:.87em;line-height:1.7;text-align:left;white-space:normal;cursor:pointer;touch-action:manipulation}
+.mwt-lab button:hover{border-color:var(--mwt-green)}
+.mwt-lab button[aria-pressed=true]{border-color:var(--mwt-green);box-shadow:inset 0 0 0 1px var(--mwt-green);color:var(--mwt-green);font-weight:650}
+.mwt-lab button:disabled{opacity:.55;cursor:not-allowed}
+.mwt-lab button:focus-visible,.mwt-lab input:focus-visible,.mwt-lab select:focus-visible{outline:3px solid var(--mwt-blue);outline-offset:3px}
+.mwt-lab .mwt-circuit-diagram{display:block;width:100%;max-width:100%;height:auto;margin:16px 0 0;border:1px solid var(--mw-line);border-radius:7px;background:var(--mw-soft)}
+.mwt-lab .mwt-circuit-wire{stroke:var(--mwt-blue);stroke-width:3}
+.mwt-lab .mwt-circuit-stub{stroke:var(--mwt-orange);stroke-width:2.5}
+.mwt-lab .mwt-circuit-load{fill:var(--mw-paper);stroke:var(--mwt-green);stroke-width:2}
+.mwt-lab .mwt-circuit-open{fill:var(--mw-paper);stroke:var(--mwt-orange);stroke-width:1.5}
+.mw-reading .mwt-lab svg .mwt-circuit-label,.mwt-lab svg .mwt-circuit-label{fill:var(--mw-muted);font-size:18px}
+.mwt-lab .mwt-circuit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0 17px;padding:10px;border:1px solid var(--mw-line);border-radius:7px;background:var(--mw-soft)}
+.mwt-lab .mwt-circuit button{display:block;width:100%;min-width:0;min-height:55px;background:var(--mw-paper);font-size:.78em}
+.mwt-lab .mwt-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.9fr);gap:17px;align-items:start}
+.mwt-lab .mwt-figure{min-width:0;width:100%;margin:0;padding:0}
+.mwt-lab .mwt-figure svg{display:block;width:100%;height:auto;max-width:100%;border:0;background:transparent;overflow:visible}
+.mw-reading .mwt-lab svg text,.mwt-lab svg text{fill:var(--mw-muted);font:18px system-ui,-apple-system,"PingFang SC",sans-serif}
+.mw-reading .mwt-lab svg .mwt-point-label,.mwt-lab svg .mwt-point-label{fill:var(--mw-ink);font-size:20px;font-weight:700;paint-order:stroke;stroke:var(--mw-paper);stroke-width:4px;stroke-linejoin:round}
+.mw-reading .mwt-lab svg .mwt-axis,.mwt-lab svg .mwt-axis{font-size:18px;fill:var(--mwt-axis)}
+.mwt-lab svg path,.mwt-lab svg circle{vector-effect:non-scaling-stroke}
+.mwt-lab .mwt-grid{fill:none;stroke:var(--mwt-grid);stroke-width:.65}
+.mwt-lab .mwt-boundary{fill:none;stroke:var(--mwt-axis);stroke-width:1.25}
+.mwt-lab .mwt-target{fill:none;stroke:var(--mwt-green);stroke-width:1.7;stroke-dasharray:5 4}
+.mwt-lab .mwt-aux{fill:none;stroke:var(--mwt-purple);stroke-width:1.7;stroke-dasharray:8 4}
+.mwt-lab .mwt-first-g{fill:none;stroke:var(--mwt-orange);stroke-width:1.2;stroke-dasharray:2 4}
+.mwt-lab .mwt-line-path{fill:none;stroke:var(--mwt-blue);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.mwt-lab .mwt-shunt-path{fill:none;stroke:var(--mwt-orange);stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.mwt-lab .mwt-ghost{stroke-width:1.2;opacity:.22}
+.mwt-lab .mwt-stage-point{fill:var(--mwt-green);stroke:var(--mw-paper);stroke-width:1.2}
+.mwt-lab .mwt-current-point{fill:var(--mwt-orange);stroke:var(--mw-paper);stroke-width:1.8}
+.mwt-lab .mwt-legend{display:flex;flex-wrap:wrap;gap:5px 13px;margin:7px 0;font-size:.78em;line-height:1.7;color:var(--mw-muted)}
+.mwt-lab .mwt-legend span{display:inline-flex;align-items:center;gap:5px}
+.mwt-lab .mwt-legend i{display:inline-block;width:17px;flex:none;border-top:2px solid}
+.mwt-lab .mwt-key-line{color:var(--mwt-blue)}
+.mwt-lab .mwt-key-shunt{color:var(--mwt-orange)}
+.mwt-lab .mwt-key-target{color:var(--mwt-green);border-top-style:dashed!important}
+.mwt-lab .mwt-key-aux{color:var(--mwt-purple);border-top-style:dashed!important}
+.mwt-lab .mwt-controls{min-width:0}
+.mwt-lab .mwt-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 11px}
+.mwt-lab .mwt-field{min-width:0}
+.mwt-lab .mwt-field[hidden]{display:none}
+.mwt-lab .mwt-field label{display:block;margin:0 0 4px;font-size:.8em;line-height:1.65;font-weight:600}
+.mwt-lab input[type=number],.mwt-lab select{display:block;width:100%;min-width:0;max-width:100%;height:41px;margin:0;padding:7px 8px;border:1px solid var(--mw-line);border-radius:5px;background:var(--mw-paper);color:var(--mw-ink);font:16px/1.5 system-ui,-apple-system,"PingFang SC",sans-serif}
+.mwt-lab input[aria-invalid=true]{border-color:var(--mwt-orange)}
+.mwt-lab input[type=range]{display:block;width:100%;height:32px;margin:7px 0;accent-color:var(--mwt-green);cursor:pointer}
+.mwt-lab .mwt-actions{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
+.mwt-lab .mwt-error{margin:8px 0;color:var(--mwt-orange);font-size:.83em;line-height:1.8}
+.mwt-lab .mwt-error:empty{display:none}
+.mwt-lab .mwt-stage-description{margin:11px 0;padding:8px 10px;border-left:3px solid var(--mwt-orange);background:var(--mw-soft);font-size:.85em;line-height:1.9}
+.mwt-lab .mwt-result{padding:5px 10px;border:1px solid var(--mw-line);border-radius:6px;background:var(--mw-soft);font-size:.78em;line-height:1.85}
+.mwt-lab .mwt-result p{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:5px 10px;margin:0;padding:6px 0;border-bottom:1px solid var(--mw-line)}
+.mwt-lab .mwt-result span{color:var(--mw-muted)}
+.mwt-lab .mwt-result b{font-weight:500;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.mwt-lab .mwt-result p.mwt-match-status{display:block;border:0;color:var(--mwt-green);font-weight:600}
+.mwt-lab .mwt-solutions{margin:17px 0 0;padding:13px 0 0;border-top:1px solid var(--mw-line)}
+.mwt-lab .mwt-solutions>strong{display:block;margin-bottom:10px;font-size:1em;line-height:1.7}
+.mwt-lab .mwt-solution-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mwt-lab .mwt-solution{min-width:0;padding:10px 12px;border:1px solid var(--mw-line);border-radius:7px;background:var(--mw-soft)}
+.mwt-lab .mwt-solution button{display:block;width:100%;background:var(--mw-paper);font-weight:650;color:var(--mwt-green)}
+.mwt-lab .mwt-solution p{margin:7px 0 0;font-size:.82em;line-height:1.9;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.mwt-lab .mwt-status{margin:13px 0 9px;padding:8px 10px;border-left:3px solid var(--mwt-green);background:var(--mw-soft);font-size:.84em;line-height:1.85}
+@media(max-width:850px){.mwt-lab .mwt-layout{grid-template-columns:1fr}.mwt-lab .mwt-figure{max-width:560px;margin:0 auto}.mwt-lab .mwt-result p{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}}
+@media(max-width:540px){.mwt-lab .mwt-title{font-size:1em}.mwt-lab .mwt-presets{display:grid;grid-template-columns:1fr}.mwt-lab .mwt-presets button{width:100%}.mwt-lab .mwt-circuit{grid-template-columns:repeat(2,minmax(0,1fr));padding:8px;gap:6px}.mwt-lab .mwt-circuit button{font-size:.75em;padding:6px;min-height:53px}.mwt-lab .mwt-solution-cards{grid-template-columns:1fr}.mwt-lab .mwt-result p{grid-template-columns:1fr;gap:0}.mwt-lab .mwt-result{font-size:.86em}.mwt-lab .mwt-fields{gap:10px}.mwt-lab .mwt-field label{font-size:.82em}}
+html[data-user-color-scheme=dark] .mwt-lab{--mwt-blue:#93c7ff;--mwt-orange:#ffb77f;--mwt-green:#8dd5b9;--mwt-purple:#d2aef5;--mwt-grid:#456070;--mwt-axis:#9ab4c1}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .mwt-lab{--mwt-blue:#93c7ff;--mwt-orange:#ffb77f;--mwt-green:#8dd5b9;--mwt-purple:#d2aef5;--mwt-grid:#456070;--mwt-axis:#9ab4c1}}
+@media(prefers-reduced-motion:reduce){.mwt-lab *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{.mwt-lab .mwt-fields,.mwt-lab .mwt-actions,.mwt-lab .mwt-presets,.mwt-lab input,.mwt-lab select{display:none!important}.mwt-lab .mwt-layout{grid-template-columns:1fr 1fr}.mwt-lab .mwt-solution button{display:none}}

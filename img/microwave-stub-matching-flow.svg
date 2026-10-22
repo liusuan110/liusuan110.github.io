@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="850" viewBox="0 0 920 850" role="img" aria-labelledby="title desc">
+<title id="title">单支节与双支节的物理结构和计算顺序</title>
+<desc id="desc">从负载向源计算。单支节先变换到单位电导接入面，再补电纳。双支节先移到近支节，补第一电纳，通过固定间距线段后补第二电纳，最后移到输入。两支节之间不能直接把电纳相加。</desc>
+<rect x="0" y="0" width="920" height="850" rx="16" fill="#f3f7fa" stroke="none"/>
+<text x="25" y="36" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" text-anchor="start">单支节与双支节：把每一步放回真实的接入面</text>
+<text x="25" y="66" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">主线距离朝源增加；电流朝负载。蓝色是传播，橙色只在同一结点补电纳。</text>
+<rect x="20" y="86" width="880" height="292" rx="10" fill="white" stroke="#d2dfe7"/>
+<text x="38" y="119" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" text-anchor="start">单支节：可调 d 和 l₁，分别负责电导与电纳</text>
+<line x1="90" y1="171" x2="810" y2="171" stroke="#2865af" stroke-width="4" />
+<line x1="465" y1="171" x2="465" y2="243" stroke="#bd6225" stroke-width="3" />
+<line x1="475" y1="171" x2="475" y2="243" stroke="#bd6225" stroke-width="3" />
+<line x1="462" y1="243" x2="478" y2="243" stroke="#bd6225" stroke-width="4" />
+<text x="487" y="232" fill="#bd6225" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">l₁；短路示意</text>
+<rect x="801" y="153" width="18" height="36" rx="2" fill="#e9f4f0" stroke="#167b68"/>
+<text x="827" y="179" fill="#167b68" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" text-anchor="start">ZL</text>
+<text x="90" y="157" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">源侧</text>
+<text x="641" y="157" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="middle">d（可调）</text>
+<text x="470" y="157" fill="#bd6225" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="middle">接入点</text>
+<line x1="780" y1="198" x2="520" y2="198" stroke="#2865af" stroke-width="2" />
+<path d="M520,198l9,-5v10z" fill="#2865af"/>
+<text x="700" y="225" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="middle">向源传播 ←</text>
+<rect x="35" y="265" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="47" y="291" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">0  归一化负载</text>
+<text x="47" y="318" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">yL = Z₀/ZL</text>
+<text x="47" y="343" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">先转导纳，主线与支节同基准</text>
+<rect x="320" y="265" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="332" y="291" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">1  选接入位置 d</text>
+<text x="332" y="318" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₁⁻ = T(d/λ)[yL]</text>
+<text x="332" y="343" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">沿等 |Γ| 圆，到 g=1 交点</text>
+<rect x="605" y="265" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="617" y="291" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">2  调支节长度 l₁</text>
+<text x="617" y="318" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₁⁺ = y₁⁻ + jb₁ = 1</text>
+<text x="617" y="343" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">b₁=−b；d 与 l₁ 必须成对</text>
+<rect x="20" y="396" width="880" height="415" rx="10" fill="white" stroke="#d2dfe7"/>
+<text x="38" y="430" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" text-anchor="start">双支节：d、Δ 固定，分别调 l₁ 和 l₂</text>
+<line x1="90" y1="484" x2="810" y2="484" stroke="#2865af" stroke-width="4" />
+<line x1="305" y1="484" x2="305" y2="556" stroke="#bd6225" stroke-width="3" />
+<line x1="315" y1="484" x2="315" y2="556" stroke="#bd6225" stroke-width="3" />
+<circle cx="305" cy="556" r="3" fill="white" stroke="#bd6225"/>
+<circle cx="315" cy="556" r="3" fill="white" stroke="#bd6225"/>
+<text x="327" y="545" fill="#bd6225" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">l₂；远开路</text>
+<line x1="585" y1="484" x2="585" y2="556" stroke="#bd6225" stroke-width="3" />
+<line x1="595" y1="484" x2="595" y2="556" stroke="#bd6225" stroke-width="3" />
+<line x1="582" y1="556" x2="598" y2="556" stroke="#bd6225" stroke-width="4" />
+<text x="607" y="545" fill="#bd6225" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">l₁；近短路</text>
+<rect x="801" y="466" width="18" height="36" rx="2" fill="#e9f4f0" stroke="#167b68"/>
+<text x="827" y="492" fill="#167b68" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" text-anchor="start">ZL</text>
+<text x="90" y="469" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="start">输入</text>
+<text x="198" y="469" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="middle">a</text>
+<text x="450" y="469" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="middle">Δ（固定间距）</text>
+<text x="700" y="469" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="400" text-anchor="middle">d（固定）</text>
+<text x="38" y="579" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">2023–2024 A：近短 l₁、远开 l₂。双短路结构的远支节也用 −cot 公式。</text>
+<rect x="35" y="596" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="47" y="622" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">0  负载</text>
+<text x="47" y="649" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">yL = Z₀/ZL</text>
+<text x="47" y="674" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">不能把负载直接当第一面</text>
+<rect x="320" y="596" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="332" y="622" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">1  先走固定 d</text>
+<text x="332" y="649" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₁⁻ = T(d/λ)[yL]</text>
+<text x="332" y="674" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">用这里的 g 判断盲区</text>
+<rect x="605" y="596" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="617" y="622" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">2  加近支节</text>
+<text x="617" y="649" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₁⁺ = g + j(b+b₁)</text>
+<text x="617" y="674" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">在等 g 圆上找辅助圆交点</text>
+<rect x="35" y="701" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="47" y="727" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">3  再走固定 Δ</text>
+<text x="47" y="754" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₂⁻ = T(Δ/λ)[y₁⁺]</text>
+<text x="47" y="779" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">要求 g₂=1，不能跨线加电纳</text>
+<rect x="320" y="701" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="332" y="727" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">4  加远支节</text>
+<text x="332" y="754" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">y₂⁺ = y₂⁻ + jb₂ = 1</text>
+<text x="332" y="779" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">b₂=−Im(y₂⁻)；两根长度成对</text>
+<rect x="605" y="701" width="280" height="94" rx="10" fill="#f7fafc" stroke="#d2dfe7"/>
+<text x="617" y="727" fill="#183c48" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="700" text-anchor="start">5  移到输入面</text>
+<text x="617" y="754" fill="#2865af" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="19" font-weight="400" text-anchor="start">yin = T(a/λ)[1] = 1</text>
+<text x="617" y="779" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="400" text-anchor="start">源侧行波，负载侧仍可有驻波</text>
+<text x="25" y="837" fill="#577180" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="400" text-anchor="start">T 的参数为波长比例；−/＋表示接入该面支节之前／之后。电纳统一按主线 Y₀ 归一化。</text>
+</svg>
