@@ -1,0 +1,62 @@
+/* Chapter 2 learning routes and adjacent practice; shared widgets reuse chapter 3. */
+.dsp-ch2 { min-width: 0; }
+.dsp-ch2-route {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 1.6em 0;
+}
+.dsp-ch2-route a {
+  display: grid;
+  gap: 3px;
+  padding: 13px 16px;
+  border: 1px solid #d5e1dc;
+  border-radius: 8px;
+  background: rgba(20, 121, 111, .035);
+  color: inherit;
+  line-height: 1.6;
+  text-decoration: none !important;
+}
+.dsp-ch2-route b { color: #14796f; font-size: .97em; }
+.dsp-ch2-route span { font-size: .85em; }
+.dsp-ch2-route a:hover { border-color: #14796f; }
+.dsp-ch2-route a:focus-visible { outline: 3px solid #14796f; outline-offset: 3px; }
+.dsp-ch2 .dsp-ch2-practice-set {
+  margin: 2em 0 2.3em;
+  padding: 5px 0 3px 18px;
+  border-left: 3px solid #8cb6aa;
+  min-width: 0;
+}
+.dsp-ch2 .dsp-ch2-set-title { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; margin: .5em 0; font-size: .94em; }
+.dsp-ch2-set-title a { font-size: .85em; }
+.dsp-ch2 .dsp-ch2-exercise { padding: 6px 0 12px; min-width: 0; }
+.dsp-ch2 .dsp-ch2-exercise + .dsp-ch2-exercise { margin-top: 1em; border-top: 1px dashed #cddbd5; }
+.dsp-ch2 h5.dsp-ch2-ex-title { margin: 1em 0; font-size: 1.03em; line-height: 1.7; scroll-margin-top: 90px; }
+.dsp-ch2 .dsp-ch2-first-try { padding: 10px 13px; margin: 1em 0; background: rgba(20, 121, 111, .045); border-radius: 5px; font-size: .91em; }
+.dsp-ch2 details.dsp-ch2-answer { margin: 1em 0 .3em; }
+.dsp-ch2 .dsp-ch2-exercise-index summary { scroll-margin-top: 90px; }
+.dsp-ch2 .dsp-ch2-exercise-index { margin: 1.7em 0 2.4em; }
+html[data-user-color-scheme=dark] .dsp-ch2-route b { color: #a8d0c6; }
+html[data-user-color-scheme=dark] .dsp-ch2-route a { border-color: #42594f; background: rgba(168,208,198,.04); }
+@media (prefers-color-scheme: dark) {
+  html:not([data-user-color-scheme=light]) .dsp-ch2-route b { color: #a8d0c6; }
+  html:not([data-user-color-scheme=light]) .dsp-ch2-route a { border-color: #42594f; background: rgba(168,208,198,.04); }
+}
+@media (max-width: 600px) {
+  .dsp-ch2-demo .dsp-ch3-flow::before {
+    content: "宽图可左右滑动，查看完整坐标与过程 →";
+    display: block;
+    position: sticky;
+    left: 0;
+    width: 100%;
+    margin: 0 0 8px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--dsp-muted);
+  }
+  .dsp-ch2-route { grid-template-columns: 1fr; gap: 8px; }
+  .dsp-ch2-route a { padding: 10px 12px; }
+  .dsp-ch2 .dsp-ch2-practice-set { padding-left: 11px; }
+  .dsp-ch2 h5.dsp-ch2-ex-title { font-size: 1em; }
+  .dsp-ch2 .dsp-ch2-answer { padding: 10px; }
+}
