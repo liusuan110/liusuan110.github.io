@@ -1,0 +1,381 @@
+/* Local teaching widgets; no page-wide resets or external assets. */
+:where(.dsp-ch3, .dsp-ch3-demo) {
+  --dsp-blue: #2275a4;
+  --dsp-teal: #147f73;
+  --dsp-orange: #b56427;
+  --dsp-red: #bb4949;
+  --dsp-ink: #27313b;
+  --dsp-muted: #596b77;
+  --dsp-grid: #d8e1e4;
+  --dsp-paper: #fffefa;
+  --dsp-ch3-grid: var(--dsp-grid);
+  min-width: 0;
+  max-width: 100%;
+  color: var(--dsp-ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.dsp-ch3-demo {
+  margin: 1.9em 0 2.1em;
+  padding: 18px 20px;
+  border: 1px solid var(--dsp-grid);
+  border-radius: 10px;
+  background: var(--dsp-paper);
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo),
+:where(.dsp-ch3, .dsp-ch3-demo) * {
+  box-sizing: border-box;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) h4,
+.dsp-ch3-title {
+  margin: 0 0 .65em;
+  color: var(--dsp-ink);
+  font-size: 1.1em;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.dsp-ch3-question,
+.dsp-ch3-demo > p:first-of-type {
+  margin: .5em 0 1em;
+  color: var(--dsp-muted);
+}
+
+/* JavaScript reveals only a successfully initialized widget. */
+.dsp-ch3-live {
+  display: none;
+  min-width: 0;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo):is(.ready, .is-ready, .dsp-ch3-ready, [data-ready="true"]) .dsp-ch3-live {
+  display: block;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo):is(.ready, .is-ready, .dsp-ch3-ready, [data-ready="true"]) .dsp-ch3-fallback {
+  display: none;
+}
+
+.dsp-ch3-fallback {
+  margin: .75em 0 0;
+  color: var(--dsp-muted);
+  font-size: 15px;
+}
+
+.dsp-ch3-controls,
+.dsp-ch3-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 10px 12px;
+  min-width: 0;
+  max-width: 100%;
+  margin: .85em 0;
+}
+
+.dsp-ch3-controls > label,
+.dsp-ch3-control {
+  display: grid;
+  gap: 4px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  color: var(--dsp-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) select,
+:where(.dsp-ch3, .dsp-ch3-demo) button,
+:where(.dsp-ch3, .dsp-ch3-demo) input {
+  max-width: 100%;
+  color: var(--dsp-ink);
+  font: inherit;
+  font-size: 14px;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) select {
+  min-width: 0;
+  min-height: 38px;
+  padding: 5px 26px 5px 9px;
+  border: 1px solid var(--dsp-grid);
+  border-radius: 5px;
+  background-color: var(--dsp-paper);
+  color-scheme: light;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) button {
+  min-height: 38px;
+  padding: 6px 11px;
+  border: 1px solid var(--dsp-grid);
+  border-radius: 5px;
+  background: transparent;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) button:hover:not(:disabled),
+:where(.dsp-ch3, .dsp-ch3-demo) button[aria-pressed="true"] {
+  border-color: var(--dsp-teal);
+  background-color: color-mix(in srgb, var(--dsp-teal) 8%, var(--dsp-paper));
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) button:disabled,
+:where(.dsp-ch3, .dsp-ch3-demo) select:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) :is(button, select, input):focus-visible {
+  outline: 3px solid var(--dsp-blue);
+  outline-offset: 3px;
+}
+
+.dsp-ch3-toolbar {
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--dsp-grid);
+  border-bottom: 1px solid var(--dsp-grid);
+}
+
+.dsp-ch3-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 180px;
+  min-width: 0;
+  max-width: 100%;
+  accent-color: var(--dsp-blue);
+}
+
+.dsp-ch3-progress input[type="range"] { flex: 1 1 auto; min-width: 0; }
+.dsp-ch3-demo-title { color: var(--dsp-ink) !important; }
+.dsp-ch3-motion-note, .dsp-ch3-validation { color: var(--dsp-muted); font-size: 14px; }
+.dsp-ch3-controls input[type="text"] { border: 1px solid var(--dsp-grid); border-radius: 5px; padding: 7px 9px; background: var(--dsp-paper); }
+
+.dsp-ch3-toolbar input[type="range"] {
+  min-width: 100px;
+  max-width: 100%;
+  min-height: 28px;
+  accent-color: var(--dsp-blue);
+}
+
+.dsp-ch3-step {
+  color: var(--dsp-muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.dsp-ch3-canvas,
+.dsp-ch3-grid,
+.dsp-ch3-plots,
+.dsp-ch3-plot,
+.dsp-ch3-flow,
+.dsp-ch3-table {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dsp-ch3-canvas {
+  margin: 1.15em 0;
+}
+
+.dsp-ch3-grid,
+.dsp-ch3-plots,
+.dsp-ch3-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  align-items: start;
+  gap: 14px 18px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.dsp-ch3-plot svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.dsp-ch3-flow,
+.dsp-ch3-table {
+  display: block;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dsp-grid) var(--dsp-paper);
+  -webkit-overflow-scrolling: touch;
+}
+
+.dsp-ch3-flow {
+  margin: .8em 0 1.1em;
+  padding-bottom: 7px;
+}
+
+.dsp-ch3-flow svg {
+  display: block;
+  max-width: none;
+  color: var(--dsp-ink);
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) svg {
+  color: var(--dsp-ink);
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.dsp-ch3, .dsp-ch3-demo) svg :is(text[font-size="10"], text[font-size="11"], text[font-size="12"], text[font-size="13"]),
+.dsp-ch3-tick,
+.dsp-ch3-axis {
+  font-size: 14px;
+}
+
+.dsp-ch3-flow::-webkit-scrollbar,
+.dsp-ch3-table::-webkit-scrollbar {
+  height: 9px;
+}
+
+.dsp-ch3-flow::-webkit-scrollbar-thumb,
+.dsp-ch3-table::-webkit-scrollbar-thumb {
+  border: 2px solid var(--dsp-paper);
+  border-radius: 8px;
+  background: var(--dsp-grid);
+}
+
+.dsp-ch3-table,
+.dsp-ch3-table table {
+  margin: .8em 0 1em;
+  border-collapse: collapse;
+  color: var(--dsp-ink);
+  font-size: 14px;
+  line-height: 1.65;
+  font-variant-numeric: tabular-nums;
+}
+
+.dsp-ch3-table table {
+  min-width: 100%;
+}
+
+.dsp-ch3-table :is(th, td) {
+  padding: 7px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--dsp-grid);
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.dsp-ch3-table th {
+  color: var(--dsp-muted);
+  font-weight: 600;
+}
+
+.dsp-ch3-readout,
+.dsp-ch3-formula,
+.dsp-ch3-result,
+.dsp-ch3-explain {
+  min-width: 0;
+  max-width: 100%;
+  margin: .8em 0;
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.dsp-ch3-formula {
+  padding-top: 12px;
+  border-top: 1px solid var(--dsp-grid);
+  color: var(--dsp-blue);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "PingFang SC", monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.dsp-ch3-result {
+  color: var(--dsp-ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.dsp-ch3-readout,
+.dsp-ch3-explain {
+  color: var(--dsp-muted);
+}
+
+/* Fluid's explicit choice takes precedence over the operating system. */
+html[data-user-color-scheme="dark"] :where(.dsp-ch3, .dsp-ch3-demo) {
+  --dsp-blue: #7fc4ef;
+  --dsp-teal: #7fd0bc;
+  --dsp-orange: #e6ad77;
+  --dsp-red: #f09191;
+  --dsp-ink: #e0e7ec;
+  --dsp-muted: #acbbc6;
+  --dsp-grid: #41505c;
+  --dsp-paper: #202933;
+}
+
+html[data-user-color-scheme="dark"] :where(.dsp-ch3, .dsp-ch3-demo) select {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-user-color-scheme="light"]) :where(.dsp-ch3, .dsp-ch3-demo) {
+    --dsp-blue: #7fc4ef;
+    --dsp-teal: #7fd0bc;
+    --dsp-orange: #e6ad77;
+    --dsp-red: #f09191;
+    --dsp-ink: #e0e7ec;
+    --dsp-muted: #acbbc6;
+    --dsp-grid: #41505c;
+    --dsp-paper: #202933;
+  }
+  html:not([data-user-color-scheme="light"]) :where(.dsp-ch3, .dsp-ch3-demo) select {
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 600px) {
+  .dsp-ch3-demo {
+    padding: 14px 12px;
+    border-radius: 7px;
+    font-size: 15px;
+  }
+  .dsp-ch3-controls > label,
+  .dsp-ch3-control {
+    flex: 1 1 140px;
+  }
+  .dsp-ch3-controls select {
+    width: 100%;
+  }
+  .dsp-ch3-toolbar {
+    gap: 8px;
+  }
+  .dsp-ch3-toolbar button {
+    min-height: 44px;
+  }
+  .dsp-ch3-progress {
+    flex-basis: 100%;
+  }
+  .dsp-ch3-readout,
+  .dsp-ch3-formula,
+  .dsp-ch3-result,
+  .dsp-ch3-explain {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.dsp-ch3, .dsp-ch3-demo),
+  :where(.dsp-ch3, .dsp-ch3-demo) * {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

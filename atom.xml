@@ -145,7 +145,7 @@
     <published>2026-09-25T16:00:00.000Z</published>
     <summary type="html">&lt;p&gt;在一篇文章中整理数字信号处理课程，已完成采样与混叠、序列与系统、Z 变换与 ROC、DTFT/DFT，以及循环卷积、分段处理与 FFT。结合 BYR 试题，配 31 道分步例题、44 道自测、15 张原创图与公式卡；补有八点 FFT 逐级计算、OLA 输出对齐及前五部分综合串讲，后续继续数字滤波器结构和设计。&lt;/p&gt;&lt;p&gt;&lt;a href="https://liusuan110.github.io/2026/09/26/courses/digital-signal-processing/dsp-study-01-sampling-aliasing/"&gt;阅读全文&lt;/a&gt;&lt;/p&gt;</summary>
     <title>数字信号处理课程总结：从采样到数字滤波（持续更新）</title>
-    <updated>2026-10-17T16:00:00.000Z</updated>
+    <updated>2026-10-21T16:00:00.000Z</updated>
   </entry>
   <entry>
     <author>
