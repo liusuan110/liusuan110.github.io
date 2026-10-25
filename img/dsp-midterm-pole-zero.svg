@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-labelledby="title desc">
+  <title id="title">a等于二分之一时的零极点与因果收敛域</title>
+  <desc id="desc">实轴上圆圈零点位于负二，叉号极点位于负二分之一。浅色区域为半径二分之一的圆外，包含虚线单位圆，收敛域向图外延伸。</desc>
+  <rect width="400" height="250" rx="8" fill="#fffefa"/>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#253b40;font-size:18px}.halo{paint-order:stroke;stroke:#fffefa;stroke-width:4px;stroke-linejoin:round}</style>
+  <text x="18" y="29" font-weight="600">a = 1/2：ROC 为 |z| &gt; 1/2</text>
+  <path d="M18 47H382V204H18Z M267.5 124A32.5 32.5 0 1 0 202.5 124A32.5 32.5 0 1 0 267.5 124Z" fill="#e9f3ee" fill-rule="evenodd"/>
+  <path d="M25 124H375M235 196V47" stroke="#81958e" stroke-width="1.3"/>
+  <path d="M375 124l-7-4v8zM235 47l-4 7h8z" fill="#81958e"/>
+  <circle cx="235" cy="124" r="65" fill="none" stroke="#3576a2" stroke-width="1.7" stroke-dasharray="6 4"/>
+  <circle cx="235" cy="124" r="32.5" fill="none" stroke="#33816b" stroke-width="1.8" stroke-dasharray="3 4"/>
+  <circle cx="105" cy="124" r="6.5" fill="#fffefa" stroke="#3576a2" stroke-width="2.5"/>
+  <path d="M196.5 118l12 12M196.5 130l12-12" stroke="#b24f38" stroke-width="2.7"/>
+  <text x="105" y="157" text-anchor="middle" class="halo">零点 −2</text>
+  <text x="187" y="96" text-anchor="middle" class="halo">极点 −1/2</text>
+  <text x="299" y="76" class="halo">单位圆</text>
+  <text x="242" y="148" class="halo">0</text>
+  <text x="341" y="151">Re z</text>
+  <text x="248" y="61">Im z</text>
+  <text x="18" y="229">浅色区域向图外延伸；极点不在 ROC 内</text>
+</svg>
