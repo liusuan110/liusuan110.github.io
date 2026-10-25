@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" role="img" aria-labelledby="title desc">
+  <title id="title">信通卷二点二，a等于二分之一时的零极点与因果收敛域</title>
+  <desc id="desc">圆圈零点在正实轴二，叉号极点在二分之一。浅色为半径二分之一的圆外，包含虚线单位圆。</desc>
+  <rect width="400" height="250" rx="8" fill="#fffefa"/>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#253b40;font-size:18px}.halo{paint-order:stroke;stroke:#fffefa;stroke-width:4px}</style>
+  <text x="18" y="29" font-weight="600">a = 1/2：H(z) = (z−2)/(z−1/2)</text>
+  <path d="M18 47H382V204H18Z M197.5 124A32.5 32.5 0 1 0 132.5 124A32.5 32.5 0 1 0 197.5 124Z" fill="#e9f3ee" fill-rule="evenodd"/>
+  <path d="M25 124H375M165 196V47" stroke="#81958e" stroke-width="1.3"/>
+  <path d="M375 124l-7-4v8zM165 47l-4 7h8z" fill="#81958e"/>
+  <circle cx="165" cy="124" r="65" fill="none" stroke="#3576a2" stroke-width="1.7" stroke-dasharray="6 4"/>
+  <circle cx="165" cy="124" r="32.5" fill="none" stroke="#33816b" stroke-width="1.8" stroke-dasharray="3 4"/>
+  <circle cx="295" cy="124" r="6.5" fill="#fffefa" stroke="#3576a2" stroke-width="2.5"/>
+  <path d="M191.5 118l12 12M191.5 130l12-12" stroke="#b24f38" stroke-width="2.7"/>
+  <text x="295" y="157" text-anchor="middle" class="halo">零点 2</text>
+  <text x="229" y="96" text-anchor="middle" class="halo">极点 1/2</text>
+  <text x="48" y="76" class="halo">单位圆</text>
+  <text x="145" y="148" class="halo">0</text>
+  <text x="341" y="151">Re z</text>
+  <text x="178" y="61">Im z</text>
+  <text x="18" y="229">浅色 ROC：|z| &gt; 1/2，向图外延伸</text>
+</svg>

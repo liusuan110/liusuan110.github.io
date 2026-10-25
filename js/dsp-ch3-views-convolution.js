@@ -71,13 +71,15 @@
   }
 
   V.convolution = function convolution(api) {
+    const exam = api.root.dataset.exam === 'true';
     const presets = [
       {label: 'x=[1,2,3,4]，h=[1,1]', x: [1, 2, 3, 4], h: [1, 1]},
       {label: '含负数：x=[2,−1,1]，h=[1,−1,1]', x: [2, -1, 1], h: [1, -1, 1]},
       {label: '冲激移位：x=[0,1,0,0]，h=[1,2]', x: [0, 1, 0, 0], h: [1, 2]}
     ];
-    const preset = select(api, '输入预设', 'preset', presets.map((p, i) => [i, p.label]), 0);
-    const nControl = select(api, '圆周卷积点数 N', 'N', [4, 5, 8].map(n => [n, String(n)]), 4);
+    if (exam) presets.push({label: '信通卷四.1：x=R₃，h=[2,1,3,2]', x: [1, 1, 1], h: [2, 1, 3, 2]});
+    const preset = select(api, '输入预设', 'preset', presets.map((p, i) => [i, p.label]), exam ? presets.length - 1 : 0);
+    const nControl = select(api, '圆周卷积点数 N', 'N', (exam ? [4, 5, 6, 8] : [4, 5, 8]).map(n => [n, String(n)]), 4);
     const id = 'dsp-ch3-fold-' + (++serial);
     let data;
 
@@ -207,27 +209,45 @@
   };
 
   V.blocks = function blocks(api) {
-    const x = [1, 2, 3, 4, 5, 6];
+    const exam = api.root.dataset.exam === 'true';
+    const profiles = {
+      'future-ola': {method: 'OLA', x: [2, 4, -1, 3, 1, 5, -2, 0], h: [1, -1, 2]},
+      'ict-ols': {method: 'OLS', x: [2, 3, 4, 8, 8, 8, 4, 3, 2], h: [-2, 1, 2]}
+    };
+    const profileControl = exam ? select(api, '真题与指定分块法', 'profile', [['future-ola', '未来卷计算.3：OLA，新输入 B=3'], ['ict-ols', '信通卷四.2：OLS，有效输出 B=3']], 'future-ola') : null;
+    let x = [1, 2, 3, 4, 5, 6];
     const method = select(api, '分块方法', 'method', [['OLA', 'OLA 重叠相加'], ['OLS', 'OLS 重叠保留']], 'OLA');
     const lhControl = select(api, '滤波器长度 Lh', 'Lh', [2, 3, 4].map(n => [n, `${n}（全 1）`]), 3);
-    const nControl = select(api, '每块 DFT 点数 N', 'N', [4, 5, 8].map(n => [n, String(n)]), 5);
+    const nControl = select(api, '每块 DFT 点数 N', 'N', (exam ? [5, 8] : [4, 5, 8]).map(n => [n, String(n)]), 5);
     const bControl = select(api, '每块新数据 B', 'B', [[1, '1'], [2, '2'], [3, '3']], 3);
+    if (exam) {
+      method.disabled = true;
+      lhControl.replaceChildren(api.U.el('option', {value: '3'}, '3（按原题系数）'));
+      lhControl.value = '3'; lhControl.disabled = true;
+    }
     let data;
 
     function rebuild() {
+      const profile = exam ? profiles[profileControl.value] : null;
+      if (exam) {
+        x = profile.x.slice(); method.value = profile.method;
+        nControl.disabled = profile.method === 'OLS';
+        if (profile.method === 'OLS') nControl.value = '5';
+      }
       const N = Number(nControl.value), Lh = Number(lhControl.value), maxB = N - Lh + 1;
       const previousB = Math.max(1, Number(bControl.value) || 1);
       bControl.replaceChildren();
       for (let b = 1; b <= maxB; b++) bControl.append(api.U.el('option', {value: String(b)}, String(b)));
-      bControl.value = String(method.value === 'OLS' ? maxB : Math.min(previousB, maxB));
-      bControl.disabled = method.value === 'OLS';
+      bControl.value = String(exam ? 3 : method.value === 'OLS' ? maxB : Math.min(previousB, maxB));
+      bControl.disabled = exam || method.value === 'OLS';
       bControl.setAttribute('aria-disabled', String(bControl.disabled));
-      const h = Array(Lh).fill(1), B = Number(bControl.value);
+      const h = exam ? profile.h.slice() : Array(Lh).fill(1), B = Number(bControl.value);
       const trace = method.value === 'OLA' ? api.M.olaTrace(x, h, B, N) : api.M.olsTrace(x, h, N);
       data = {method: method.value, h, N, Lh, B, trace, linear: api.M.linearConvolution(x, h)};
     }
     const update = () => {rebuild(); api.changed();};
     [method, lhControl, nControl, bControl].forEach(field => api.listen(field, 'change', update));
+    if (profileControl) api.listen(profileControl, 'change', () => {nControl.value = '5'; update();});
     rebuild();
     const total = () => 2 + 5 * data.trace.blocks.length;
 
@@ -352,4 +372,6 @@
     }
     return {steps: total, render};
   };
+  V.examConvolution = api => V.convolution(api);
+  V.examBlocks = api => V.blocks(api);
 })();

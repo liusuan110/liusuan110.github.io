@@ -21,6 +21,8 @@
     rows.forEach(row=>{const r=el('tr');row.forEach(v=>r.append(el('td',String(v))));body.append(r);});t.append(body);wrap.append(t);return wrap;
   }
   function presets(M,N,key){
+    if(key==='exam')return [2,1,3,4];
+    if(key==='exam-packed')return [M.cx(2,1),1,M.cx(0,2),M.cx(1,1)];
     if(key==='textbook')return N===4?[1,M.cx(0,2),0,0]:[4,-3,2,0,-1,-2,3,1];
     if(key==='impulse')return Array.from({length:N},(_,n)=>n===0?1:0);
     if(key==='r4')return Array.from({length:N},(_,n)=>n<4?1:0);
@@ -28,9 +30,12 @@
     return Array.from({length:N},(_,n)=>n+1);
   }
   function setupControls(api){
-    const N=select('变换点数','N',[['8','8 点'],['4','4 点']],api.controls);
-    const preset=select('输入序列','preset',[['textbook','教材例 3.11（8 点）'],['sequence','1, 2, …, N'],['r4','R₄：4 个 1，其余补零'],['impulse','单位冲激 δ[n]'],['complex','复序列（非平凡旋转）']],api.controls);
-    const update=()=>{preset.options[0].textContent=N.value==='4'?'教材例 3.10（4 点）':'教材例 3.11（8 点）';};
+    const exam=api.root.dataset.exam==='true';
+    const packed=api.root.dataset.profile==='ict-packed';
+    const N=select('变换点数','N',exam?[['4','4 点（原题）']]:[['8','8 点'],['4','4 点']],api.controls);
+    const preset=select('输入序列','preset',exam?[[packed?'exam-packed':'exam',packed?'信通卷五.2：z=h+jg':'未来卷一.7：x=[2,1,3,4]']]:[['textbook','教材例 3.11（8 点）'],['sequence','1, 2, …, N'],['r4','R₄：4 个 1，其余补零'],['impulse','单位冲激 δ[n]'],['complex','复序列（非平凡旋转）']],api.controls);
+    if(exam){N.disabled=true;preset.disabled=true;}
+    const update=()=>{if(!exam)preset.options[0].textContent=N.value==='4'?'教材例 3.10（4 点）':'教材例 3.11（8 点）';};
     api.listen(N,'change',()=>{update();api.changed();});api.listen(preset,'change',()=>api.changed());
     return {N,preset,input:()=>presets(api.M,Number(N.value),preset.value)};
   }
@@ -237,4 +242,6 @@
     };
     return {steps:()=>{sync();return opsD.length+3;},render:show};
   };
+  views.examFft=api=>views.compare(api);
+  views.examPacked=api=>views.fft(api);
 })(typeof globalThis!=='undefined'?globalThis:this);

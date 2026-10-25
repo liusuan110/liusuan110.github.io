@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 285" role="img" aria-labelledby="title desc">
+  <title id="title">未来学院计算题二的零极点位置</title>
+  <desc id="desc">实轴上圆圈零点在零和零点三，叉号极点在零点五和一点二。虚线单位圆半径为一，极点一点二在其外。因果ROC为模z大于一点二，不能包含单位圆。</desc>
+  <rect width="420" height="285" rx="8" fill="#fffefa"/>
+  <style>text{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;fill:#253b40;font-size:18px}.halo{paint-order:stroke;stroke:#fffefa;stroke-width:4px}</style>
+  <text x="16" y="28" font-weight="600">H(z) = z(z−0.3)/[(z−0.5)(z−1.2)]</text>
+  <path d="M26 135H395M165 229V48" stroke="#81958e" stroke-width="1.3"/>
+  <path d="M395 135l-7-4v8zM165 48l-4 7h8z" fill="#81958e"/>
+  <circle cx="165" cy="135" r="80" fill="none" stroke="#3576a2" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <circle cx="165" cy="135" r="96" fill="none" stroke="#b24f38" stroke-width="1.3" stroke-dasharray="3 5"/>
+  <circle cx="165" cy="135" r="6" fill="#fffefa" stroke="#3576a2" stroke-width="2.5"/>
+  <circle cx="189" cy="135" r="6" fill="#fffefa" stroke="#3576a2" stroke-width="2.5"/>
+  <path d="M199 129l12 12M199 141l12-12M255 129l12 12M255 141l12-12" stroke="#b24f38" stroke-width="2.7"/>
+  <text x="157" y="167" text-anchor="end" class="halo">0</text>
+  <text x="190" y="193" text-anchor="middle" class="halo">0.3</text>
+  <text x="215" y="115" text-anchor="middle" class="halo">0.5</text>
+  <text x="271" y="167" text-anchor="middle" class="halo">1.2</text>
+  <text x="49" y="70" class="halo">虚线：单位圆</text>
+  <text x="346" y="164">Re z</text>
+  <text x="178" y="61">Im z</text>
+  <text x="16" y="255">○ 零点　× 极点；因果 ROC：|z| &gt; 1.2</text>
+  <text x="16" y="280" font-size="16">圆外因果响应不稳定；环域可另选稳定双边响应</text>
+</svg>

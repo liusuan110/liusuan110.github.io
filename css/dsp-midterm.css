@@ -1,0 +1,10 @@
+/* Real-paper walkthroughs use the established course typography and playback. */
+.dsp-real-paper { min-width: 0; margin: 2em 0; padding: 0 0 .8em 16px; border-left: 3px solid #86afa4; }
+.dsp-real-paper h4 { scroll-margin-top: 90px; }
+.dsp-real-paper > p { margin: .9em 0; }
+.dsp-real-paper > details { margin-bottom: 1.3em; }
+.dsp-exam-demo { margin-left: 0; margin-right: 0; }
+@media(max-width:600px) {
+  .dsp-real-paper { padding-left: 10px; }
+  .dsp-exam-demo .dsp-ch3-flow::before { content: "宽图可左右滑动，查看全部编号与步骤 →"; display: block; position: sticky; left: 0; width: 100%; margin-bottom: 8px; font-size: 13px; color: var(--dsp-muted); }
+}
