@@ -27,3 +27,8 @@ html[data-user-color-scheme=dark] .comm-reading-nav{background:#25343e;border-co
 html[data-user-color-scheme=dark] .comm-reading-nav a{background:#1b2933;color:#c1dce7}
 @media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .comm-reading h3,html:not([data-user-color-scheme=light]) .comm-reading summary{color:#a9cfde}html:not([data-user-color-scheme=light]) .comm-reading-nav{background:#25343e;border-color:#435966}html:not([data-user-color-scheme=light]) .comm-reading-nav a{background:#1b2933;color:#c1dce7}}
 @media print{.comm-reading-nav{display:none}.comm-reading{color:#000}.comm-reading details{background:none;border-color:#ccc}.comm-reading h2{break-before:page}}
+
+/* These headings use scroll-margin-top; the theme's legacy negative-margin
+   anchor boxes otherwise extend over preceding formula-reference summaries. */
+.comm-reading #comm-ch3-formula-reference::before,
+.comm-reading h4[id^="comm-ch3-ref-"]::before{content:none;display:none}
