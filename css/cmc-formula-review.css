@@ -5,6 +5,7 @@
 .cmc-reading h3{line-height:1.6}
 .cmc-reading .cmc-anchor{display:block;scroll-margin-top:90px}
 .cmc-reading h2,.cmc-reading h3,.cmc-reading h4{scroll-margin-top:90px}
+.cmc-reading h4::before{display:none!important}
 .cmc-reading mjx-container{max-width:100%}
 .cmc-reading mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:8px 2px;margin:1em 0!important}
 .cmc-reading mjx-container[display="true"] svg{max-width:none}
