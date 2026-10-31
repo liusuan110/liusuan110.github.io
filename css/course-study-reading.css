@@ -1,0 +1,82 @@
+/* Shared compact typography and native index for published course articles. */
+.course-study-page .markdown-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.72;letter-spacing:0}
+.course-study-page .course-reading{color:inherit;min-width:0}
+.course-study-page .course-reading p{margin:.6em 0 .8em;max-width:none}
+.course-study-page .course-reading h2{margin:2.2em 0 .8em;padding-bottom:.35em;line-height:1.45;font-size:1.5em;scroll-margin-top:85px}
+.course-study-page .course-reading h3{margin:1.7em 0 .75em;padding-top:.5em;border-top:1px solid #cfdee5;line-height:1.45;font-size:1.25em;scroll-margin-top:85px}
+.course-study-page .course-reading h4{margin:1.3em 0 .65em;line-height:1.5;font-size:1.06em;scroll-margin-top:85px}
+.course-study-page .course-reading span[id]{scroll-margin-top:85px}
+.course-study-page .course-reading mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:6px 3px;margin:.7em 0!important}
+.course-study-page .course-reading mjx-container[display="true"] svg{max-width:none}
+.course-study-page .course-reading img{max-width:100%;height:auto;margin:1em auto;border:1px solid #dce6eb;border-radius:7px;background:#fff}
+.course-study-page .course-reading details{margin:1em 0;padding:10px 14px;border:1px solid #d4e1e6;border-radius:7px;background:rgba(34,116,165,.025);font-size:1em}
+.course-study-page .course-reading summary{cursor:pointer;font-weight:600;line-height:1.7;color:#1b536b}
+.course-study-page .course-reading details[open]>summary{margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #d4e1e6}
+.course-study-page .course-reading details details{font-size:1em;background:transparent}
+.course-study-page .course-reading blockquote{font-style:normal;font-size:.95em;line-height:1.8}
+.course-study-page .course-reading li{margin:.25em 0}
+.course-study-page .course-reading table{font-size:.9em;line-height:1.65;max-width:100%}
+.course-study-page .course-reading th,.course-study-page .course-reading td{padding:.5em .7em;vertical-align:top}
+.course-study-page .course-reading-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:1em 0;padding:10px;background:#edf4f6;border:1px solid #d4e1e6;border-radius:8px;font-size:.9em;line-height:1.7}
+.course-study-page .course-reading-nav a{display:block;min-width:0;padding:5px 8px;background:rgba(255,255,255,.7);border-radius:4px;text-decoration:none!important;color:#1b536b}
+.course-study-page .course-reading-nav a:hover{background:#fff}
+.course-study-page .course-reading-nav a:focus-visible,.course-study-page .course-reading summary:focus-visible{outline:3px solid #2274a5;outline-offset:3px}
+@media(max-width:600px){.course-study-page .markdown-body{font-size:15.5px;line-height:1.72;letter-spacing:0}.course-study-page .course-reading h2{font-size:1.4em;margin-top:2em}.course-study-page .course-reading h3{font-size:1.2em;margin-top:1.7em}.course-study-page .course-reading h4{font-size:1.05em}.course-study-page .course-reading details{padding:10px 12px}.course-study-page .course-reading-nav{padding:8px;gap:6px;font-size:.85em}.course-study-page .course-reading-nav a{padding:7px}.course-study-page .course-reading table{font-size:.92em}}
+html[data-user-color-scheme=dark] .course-study-page .course-reading h3,html[data-user-color-scheme=dark] .course-study-page .course-reading summary{color:#a9cfde}
+html[data-user-color-scheme=dark] .course-study-page .course-reading-nav{background:#25343e;border-color:#435966}
+html[data-user-color-scheme=dark] .course-study-page .course-reading-nav a{background:#1b2933;color:#c1dce7}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .course-study-page .course-reading h3,html:not([data-user-color-scheme=light]) .course-study-page .course-reading summary{color:#a9cfde}html:not([data-user-color-scheme=light]) .course-study-page .course-reading-nav{background:#25343e;border-color:#435966}html:not([data-user-color-scheme=light]) .course-study-page .course-reading-nav a{background:#1b2933;color:#c1dce7}}
+@media print{.course-study-page .course-reading-nav{display:none}.course-study-page .course-reading{color:#000}.course-study-page .course-reading details{background:none;border-color:#ccc}.course-study-page .course-reading h2{break-before:page}}
+
+/* Use the existing desktop side columns; give the reading column its wasted left space. */
+@media(min-width:992px){
+ .course-study-page .course-study-leading-column{flex:0 0 4%;max-width:4%}
+ .course-study-page .course-study-content-column{flex:0 0 74%;max-width:74%}
+ .course-study-page .course-study-index-column{flex:0 0 22%;max-width:22%;padding:0 18px 0 12px}
+ .course-study-page #board-ctn{max-width:1120px}
+ .course-study-page .post-content{max-width:1040px;padding-left:clamp(24px,3vw,44px);padding-right:clamp(24px,3vw,44px)}
+}
+@media(min-width:1200px){.course-study-page .course-reading-nav{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* Native scrolling uses scroll-margin; legacy invisible anchor boxes can cover summaries. */
+.course-study-page .course-reading h2::before,.course-study-page .course-reading h3::before,.course-study-page .course-reading h4::before{content:none;display:none}
+.course-study-page .course-reading h2,.course-study-page .course-reading h3,.course-study-page .course-reading h4{scroll-margin-top:90px}
+.course-study-index{position:sticky;top:82px;display:flex;flex-direction:column;max-height:calc(100vh - 100px);max-height:calc(100dvh - 100px);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;font-size:13px;line-height:1.5;color:var(--text-color,#213c50);min-width:0}
+.course-index-header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 4px 10px;border-bottom:1px solid #cfdee5;font-size:15px;flex-shrink:0}
+.course-index-tree{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#93abb7 transparent;padding:8px 4px 12px 0}
+.course-index-tree::-webkit-scrollbar{width:5px}
+.course-index-tree::-webkit-scrollbar-thumb{background:#93abb7;border-radius:5px}
+.course-index-list{list-style:none;margin:0;padding:0}
+.course-index-list .course-index-list{margin:2px 0 5px 6px;padding-left:10px;border-left:1px solid #d5e0e5}
+.course-index-item{margin:0;padding:0;min-width:0}
+.course-index-group{margin:0;padding:0;border:0;background:none}
+.course-index-summary{display:list-item;cursor:pointer;list-style:disclosure-closed;list-style-position:outside;margin-left:14px;color:#627d8b}
+.course-index-group[open]>.course-index-summary{list-style-type:disclosure-open}
+.course-index-link{display:block;padding:5px 6px;border-radius:4px;color:inherit!important;text-decoration:none!important;overflow-wrap:anywhere;line-height:1.5;font-size:13px}
+.course-index-summary>.course-index-link{display:inline-block;max-width:100%;vertical-align:top}
+.course-index-link:hover{background:rgba(34,116,165,.08)}
+.course-index-link[aria-current=location]{color:#176584!important;background:rgba(34,116,165,.12);font-weight:600}
+.course-index-link:focus-visible,.course-index-summary:focus-visible,.course-index-launch:focus-visible,.course-index-close:focus-visible{outline:2px solid #2274a5;outline-offset:2px}
+.course-index-launch,.course-index-close{font:inherit;cursor:pointer;border:1px solid #b7cbd5;border-radius:6px;background:var(--board-bg-color,#fff);color:var(--text-color,#213c50);padding:7px 12px}
+.course-index-launch{display:none;position:fixed;right:18px;bottom:20px;z-index:1000;font-size:14px;box-shadow:0 2px 10px #0002;min-height:42px}
+.course-index-close{display:none;font-size:14px}
+.course-index-dialog{padding:16px;width:min(420px,calc(100% - 24px));max-width:none;height:100%;height:100dvh;max-height:100dvh;margin:0 0 0 auto;border:0;background:var(--board-bg-color,#fff);color:var(--text-color,#213c50)}
+.course-index-dialog::backdrop{background:#0007}
+.course-index-dialog .course-study-index{position:static;height:100%;max-height:100%}
+.course-index-dialog .course-index-close{display:block}
+.course-index-dialog .course-index-link{font-size:14px;padding:7px 6px}
+.course-index-open{overflow:hidden}
+@media(max-width:991px){.course-index-launch{display:block}}
+html[data-user-color-scheme=dark] .course-index-link[aria-current=location]{color:#a9d7e8!important;background:#244758}
+@media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .course-index-link[aria-current=location]{color:#a9d7e8!important;background:#244758}}
+@media print{.course-study-index,.course-index-launch,.course-index-dialog{display:none!important}}
+
+/* Keep the theme return-to-top control clear of the reading index. */
+.course-study-page #scroll-top-button{left:12px;right:auto!important}
+
+/* Let dedicated diagrams, controls and theme palettes keep their own styling. */
+.course-study-page .markdown-body .dsp-reading,.course-study-page .markdown-body .mw-reading{line-height:inherit}
+.course-study-page .course-reading h1{font-size:1.65em;line-height:1.45;margin:2em 0 .8em}
+.course-study-page .course-reading h5{font-size:1.02em;line-height:1.5;margin:1.15em 0 .6em}
+.course-study-page .course-reading h6{font-size:1em;line-height:1.5;margin:1em 0 .6em}
+.course-study-page .course-reading h1::before,.course-study-page .course-reading h5::before,.course-study-page .course-reading h6::before{content:none;display:none}
+.course-study-page .course-reading h1,.course-study-page .course-reading h5,.course-study-page .course-reading h6{scroll-margin-top:90px}
