@@ -28,3 +28,17 @@ html[data-user-color-scheme=dark] .cmc-formula-sheet{--cmc-accent:#9cd1ca;--cmc-
 @media(prefers-color-scheme:dark){html:not([data-user-color-scheme=light]) .cmc-formula-sheet{--cmc-accent:#9cd1ca;--cmc-line:#49645f;--cmc-tint:rgba(156,209,202,.045)}}
 @media(max-width:767px){.cmc-reading{font-size:16px;line-height:1.85}.cmc-reading h2{font-size:1.4em}.cmc-formula-sheet h3{font-size:1.22em}.cmc-formula-sheet h4{font-size:1.04em}.cmc-formula-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:8px;font-size:.9em}.cmc-formula-nav a{padding:7px}.cmc-reading table{font-size:.88em}.cmc-reading td,.cmc-reading th{padding:.5em .6em}.cmc-formula-sheet details{padding:10px}}
 @media print{.cmc-formula-nav{display:none}.cmc-reading{font-size:11pt}.cmc-formula-sheet h3,.cmc-formula-sheet h4{break-after:avoid}.cmc-reading mjx-container[display="true"]{overflow:visible}}
+
+/* Denser reading only for the two past-paper articles. */
+.cmc-reading.cmc-compact{font-size:16px;line-height:1.65}
+.cmc-reading.cmc-compact p{margin:0 0 .6em;line-height:inherit}
+.cmc-reading.cmc-compact h2{margin:1.8em 0 .65em;font-size:1.4em;line-height:1.45}
+.cmc-reading.cmc-compact h3{margin:1.6em 0 .7em;padding:.45em 0;font-size:1.18em;line-height:1.5}
+.cmc-reading.cmc-compact h4{margin:1.2em 0 .55em;font-size:1.04em;line-height:1.5}
+.cmc-reading.cmc-compact ul,.cmc-reading.cmc-compact ol{margin:.4em 0 .65em;padding-left:1.4em}
+.cmc-reading.cmc-compact li{margin:.2em 0;line-height:inherit}
+.cmc-reading.cmc-compact mjx-container[display="true"]{margin:.65em 0!important;padding:4px 2px}
+.cmc-reading.cmc-compact table{line-height:1.55}
+.cmc-reading.cmc-compact td,.cmc-reading.cmc-compact th{padding:.4em .6em}
+@media(max-width:767px){.cmc-reading.cmc-compact{font-size:15px;line-height:1.7}.cmc-reading.cmc-compact h2{font-size:1.32em}.cmc-reading.cmc-compact h3{font-size:1.14em}.cmc-reading.cmc-compact h4{font-size:1.02em}}
+@media print{.cmc-reading.cmc-compact{font-size:11pt;line-height:1.5}}
