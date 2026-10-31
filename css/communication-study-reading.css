@@ -32,3 +32,10 @@ html[data-user-color-scheme=dark] .comm-reading-nav a{background:#1b2933;color:#
    anchor boxes otherwise extend over preceding formula-reference summaries. */
 .comm-reading #comm-ch3-formula-reference::before,
 .comm-reading h4[id^="comm-ch3-ref-"]::before{content:none;display:none}
+
+/* New homework headings use scroll-margin rather than invisible hit boxes. */
+.comm-reading #comm-ch3-homework::before,
+.comm-reading #comm-ch4-homework::before,
+.comm-reading #comm-midterm-fortnight::before,
+.comm-reading h4[id^="comm-ch3-hw-"]::before,
+.comm-reading h4[id^="comm-ch4-hw-"]::before{content:none;display:none}
