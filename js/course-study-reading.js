@@ -88,6 +88,46 @@
         stack[stack.length - 1].list.append(item);
       }
     });
+    // Only oversized inline formulas become scroll boxes. Short formulas keep
+    // their original line boxes, and hidden answers are fitted when opened.
+    let inlineFrame = 0, fittedWidth = 0;
+    const fitInlineMath = () => {
+      inlineFrame = 0;
+      const blocks = new Map(), jobs = [];
+      article.querySelectorAll('mjx-container:not([display="true"])').forEach(node => {
+        if (!node.getClientRects().length) return;
+        const svg = node.querySelector('svg');
+        const block = node.closest('p,li,td,th,h1,h2,h3,h4,h5,h6,blockquote,.markdown-body');
+        if (!svg || !block) return;
+        if (!blocks.has(block)) {
+          const style = getComputedStyle(block);
+          blocks.set(block, block.clientWidth - parseFloat(style.paddingLeft || 0) - parseFloat(style.paddingRight || 0));
+        }
+        jobs.push([node, svg.getBoundingClientRect().width > blocks.get(block) + 1]);
+      });
+      jobs.forEach(([node, wide]) => {
+        node.classList.toggle('course-inline-math-scroll', wide);
+        if (wide && !node.hasAttribute('tabindex')) {
+          node.tabIndex = 0;
+          node.dataset.courseMathTab = 'true';
+        } else if (!wide && node.dataset.courseMathTab) {
+          node.removeAttribute('tabindex');
+          delete node.dataset.courseMathTab;
+        }
+        if (wide && !node.hasAttribute('title')) {
+          node.title = '较长公式，可左右滚动';
+          node.dataset.courseMathTitle = 'true';
+        } else if (!wide && node.dataset.courseMathTitle) {
+          node.removeAttribute('title');
+          delete node.dataset.courseMathTitle;
+        }
+      });
+      fittedWidth = article.clientWidth;
+    };
+    const requestInlineFit = () => { if (!inlineFrame) inlineFrame = requestAnimationFrame(fitInlineMath); };
+    window.addEventListener('resize', requestInlineFit, {passive: true});
+    article.addEventListener('toggle', requestInlineFit, true);
+    requestInlineFit();
     const mobile = window.matchMedia('(max-width: 991px)');
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const dialog = create('dialog', 'course-index-dialog');
@@ -254,8 +294,11 @@
     window.addEventListener('scroll', schedule, {passive: true});
     window.addEventListener('resize', invalidate, {passive: true});
     article.addEventListener('toggle', invalidate, true);
-    if ('ResizeObserver' in window) new ResizeObserver(invalidate).observe(article);
-    if (document.fonts?.ready) document.fonts.ready.then(invalidate);
+    if ('ResizeObserver' in window) new ResizeObserver(() => {
+      invalidate();
+      if (article.clientWidth !== fittedWidth) requestInlineFit();
+    }).observe(article);
+    if (document.fonts?.ready) document.fonts.ready.then(() => { invalidate(); requestInlineFit(); });
     if (hashTarget()) requestAnimationFrame(() => jump(hashTarget(), false));
     schedule();
   };

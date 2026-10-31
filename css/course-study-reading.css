@@ -80,3 +80,8 @@ html[data-user-color-scheme=dark] .course-index-link[aria-current=location]{colo
 .course-study-page .course-reading h6{font-size:1em;line-height:1.5;margin:1em 0 .6em}
 .course-study-page .course-reading h1::before,.course-study-page .course-reading h5::before,.course-study-page .course-reading h6::before{content:none;display:none}
 .course-study-page .course-reading h1,.course-study-page .course-reading h5,.course-study-page .course-reading h6{scroll-margin-top:90px}
+
+/* Long inline formulas scroll locally without changing short formula baselines. */
+.course-study-page .course-reading mjx-container.course-inline-math-scroll{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:0}
+.course-study-page .course-reading mjx-container.course-inline-math-scroll>svg{max-width:none}
+.course-study-page .course-reading mjx-container.course-inline-math-scroll:focus-visible{outline:2px solid #2274a5;outline-offset:2px}
